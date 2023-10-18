@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Stray = require('./models/stray');
+const User = require('./models/user');
+const bcrypt = require('bcrypt');
 
 // express app
 const app = express();
@@ -43,6 +45,14 @@ app.get('/about', (req, res) =>{
     res.render('about', { title: 'ABOUT' });
 })
 
+app.get('/create', (req, res) =>{
+    res.render('create', { title: 'CREATE' });
+});
+
+app.get('/admin', (req, res) =>{
+    res.render('admin-dashboard', { title: 'ADMIN' });
+});
+
 app.post('/create', (req, res) =>{
     const stray = new Stray(req.body);
     stray.save()
@@ -54,10 +64,46 @@ app.post('/create', (req, res) =>{
         });
 })
 
-app.get('/create', (req, res) =>{
-    res.render('create');
+
+app.post('/signup', async (req, res) => {
+    console.log('signing up...');
+    try{
+        
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const user = new User({ username: req.body.username, email: req.body.email, password: hashedPassword });
+        user.save()
+            .then((result) => {
+                res.redirect('/admin')
+            })
+            .catch((err) => {
+                res.status(500).send()
+            });
+    } catch {
+        res.status(500).send()
+    }
 });
 
-app.get('/admin', (req, res) =>{
-    res.render('admin-dashboard', { title: 'ADMIN' });
-});
+app.post('/signin', async (req, res) => {
+    const email = { email: req.body.email };
+
+    try {
+        const match = await User.find(email)
+        .then(result => {return result} );
+
+        if (match.length == 0) {
+            res.status(400).redirect('/');
+            return; // If no match, redirect and exit the function
+        }
+        if (await bcrypt.compare(req.body.password, match[0].password)) {
+            res.redirect('/admin');
+        } else {
+            res.status(400).redirect('/');
+        }
+    } catch (err) {
+        res.status(500).send();
+    }
+})
+
+app.use((req, res) => {
+        res.render('404');
+})

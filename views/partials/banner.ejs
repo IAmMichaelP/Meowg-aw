@@ -21,17 +21,19 @@
         <div class="popup-content" id="popup-content">
             <span class="close" onclick="closePopup('signin-popup')">&times;</span>
 
-            <form>
+            <form action="/signup" method="POST">
                 <img src="pics/icon.png">
                 <h3>Sign Up to MeowgAw</h3>
 
                 <div class="inputs">
+                    <label for="username">Username</label><br>
+                    <input type="text" id="username" name="username" required><br>
                     <label for="email">Email Address</label><br>
-                    <input type="email" id="email"><br>
+                    <input type="email" id="email" name="email" required><br>
                     <label for="password">Password</label><br>
-                    <input type="password" id="password"><br>
+                    <input type="password" id="password" name="password" required><br>
                     <label for="repassword">Re-enter Password</label><br>
-                    <input type="password" id="repassword"><br>
+                    <input type="password" id="repassword" name="repassword" required><br>
                 </div>
 
                 <button type="submit" class="submit">Sign Up</button>
@@ -47,15 +49,15 @@
     <div id="login-popup" class="popup">
         <div class="popup-content" id="popup-content">
             <span class="close" onclick="closePopup('login-popup')">&times;</span>
-            <form>
+            <form action="/signin" method="POST">
                 <img src="pics/icon.png">
                 <h3>Sign into MeowgAw</h3>
 
                 <div class="inputs">
                     <label for="email">Email Address</label><br>
-                    <input type="email" id="email"><br>
+                    <input type="email" id="email" name="email" required><br>
                     <label for="password">Password</label><br>
-                    <input type="password" id="password"><br>
+                    <input type="password" id="password" name="password" required><br>
                 </div>
 
                 <button type="submit" class="submit">Sign In</button>
