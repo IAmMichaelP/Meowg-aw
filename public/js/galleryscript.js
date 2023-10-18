@@ -90,6 +90,7 @@ function showStrayData(category) {
     document.getElementById('allBtn').classList.remove('active');
     document.getElementById('catBtn').classList.remove('active');
     document.getElementById('dogBtn').classList.remove('active');
+    document.getElementById('otherBtn').classList.remove('active');
     
     document.getElementById(category + 'Btn').classList.add('active');
 

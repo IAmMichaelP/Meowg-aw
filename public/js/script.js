@@ -27,25 +27,7 @@ sr.reveal('.reveal', {
     origin: 'top' 
 });
 
-
-/********change bg color on scroll*********/
-function changeBg() {
-  var header = document.getElementById('header');
-  var scrollValue = window.scrollY;
-
-  if (scrollValue < 550) {
-    header.classList.remove('headerOnScroll');
-    header.classList.add('header');
-  } else {
-    header.classList.remove('header');
-    header.classList.add('headerOnScroll');
-  }
-}
-
-window.addEventListener('scroll', changeBg);
-
-
-/*************scroll down button***********/
+// ABOUT PAGE
 function showContent(section) {
     const buttons = document.querySelectorAll('.misvis-btn');
 
@@ -76,18 +58,72 @@ function showContent(section) {
 document.getElementById('missionContent').style.display = 'block';
 document.querySelector('.misvis-btn[onclick="showContent(\'mission\')"]').classList.add('active');
 
-
+// POP UPS
 // Show and hide popups
 function openPopup(popupId) {
     var popup = document.getElementById(popupId);
-    popup.style.display = "block";
+    popup.style.display = "flex";
+    setTimeout(function () {
+        popup.classList.add('show');
+        popup.querySelector('.popup-content').style.opacity = '1';
+        popup.querySelector('.popup-content').style.transform = 'translateY(0)';
+    }, 0);
+}
+
+// switching pop-up
+function switchPopup(currentPopupId, newPopupId) {
+    event.preventDefault();
+
+    var currentPopup = document.getElementById(currentPopupId);
+    var newPopup = document.getElementById(newPopupId);
+
+    currentPopup.querySelector('.popup-content').style.opacity = '0';
+    currentPopup.querySelector('.popup-content').style.transform = 'translateY(-50px)';
+
+    setTimeout(function () {
+        currentPopup.classList.remove('show');
+        currentPopup.style.display = "none";
+
+        newPopup.style.display = "flex";
+
+        setTimeout(function () {
+            newPopup.classList.add('show');
+            newPopup.querySelector('.popup-content').style.opacity = '1';
+            newPopup.querySelector('.popup-content').style.transform = 'translateY(0)';
+        }, 50); 
+    }, 500); 
 }
 
 function closePopup(popupId) {
     var popup = document.getElementById(popupId);
+    popup.querySelector('.popup-content').style.opacity = '0';
+    popup.querySelector('.popup-content').style.transform = 'translateY(-50px)';
+    setTimeout(function () {
+        popup.classList.remove('show');
         popup.style.display = "none";
+    }, 500);
 }
 
+// when clicked outside of modal
+function clickOutside(event) {
+    var popupContents = document.querySelectorAll('.popup-content');
+    for (var i = 0; i < popupContents.length; i++) {
+        if (event.target == popupContents[i]) {
+            return; 
+        }
+    }
+    var popups = document.querySelectorAll('.popup');
+    for (var i = 0; i < popups.length; i++) {
+        if (popups[i].classList.contains('show')) {
+            closePopup(popups[i].id);
+            break;
+        }
+    }
+}
+
+document.addEventListener('click', clickOutside);
+
+// HEART REACT FOR GALLERY PAGE
 // heart
 function toggleHeart(element) {
   element.classList.toggle('liked');

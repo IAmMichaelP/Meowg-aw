@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) =>{
     Stray.find()
         .then((result) => {
-            res.render('index', { strays: result });
+            res.render('index', { title: 'HOME', strays: result });
         })
         .catch((err) => {
             console.log(err);
@@ -32,7 +32,7 @@ app.get('/gallery', (req, res) =>{
     
     Stray.find()
         .then((result) => {
-            res.render('gallery', { strays: result });
+            res.render('gallery', { title: 'GALLERY', strays: result });
         })
         .catch((err) => {
             console.log(err);
@@ -40,7 +40,7 @@ app.get('/gallery', (req, res) =>{
 })
 
 app.get('/about', (req, res) =>{
-    res.render('about');
+    res.render('about', { title: 'ABOUT' });
 })
 
 app.post('/create', (req, res) =>{
@@ -59,5 +59,5 @@ app.get('/create', (req, res) =>{
 });
 
 app.get('/admin', (req, res) =>{
-    res.render('admin-dashboard');
+    res.render('admin-dashboard', { title: 'ADMIN' });
 });
