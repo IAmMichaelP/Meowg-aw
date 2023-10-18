@@ -1,0 +1,167 @@
+/*css file for admin dashboard and user profile*/
+
+:root {
+    --darkpink: #a96357;
+    --pink: #f1c5b7;
+    --lightpink: #ffdcd1;
+    --darkgreen: #566f64;
+    --green: #6d897a;
+    --lightgreen: #a6d0ac;
+}
+
+header{
+	position: static;
+}
+
+.user-account{
+	cursor: pointer;
+	display: flex;
+	margin-right: 60px;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-account .username{
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 0 0 0 15px;
+}
+
+.user-account .username:hover{
+	color: var(--darkpink);
+}
+
+.user-account img {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    cursor: pointer;
+    border: var(--darkpink) 2px solid;
+    transition: all 0.5s ease;
+}
+
+.user-account img:hover{
+	border: white 2px solid;
+}
+
+.profile-popup {
+	z-index: 10005;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+}
+
+.profile-dropdown {
+	display: flex;
+	flex-direction: column;
+    background-color: #fefefe;
+    margin: 75px 15px 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+}
+
+.profile-dropdown button{
+	background-color: transparent;
+	padding: 15px 0;
+	border: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+	outline: none;
+}
+
+.profile-dropdown button:hover{
+	color: white;
+	background-color: var(--darkgreen);
+}
+
+/************admin***************/
+.container{
+	width: 100%;
+	display: flex;
+}
+
+.buttons-container{
+	padding: 30px 0;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--darkgreen);
+}
+
+.buttons-container button{
+	outline: none;
+	border: none;
+	background-color: transparent;
+	padding: 15px 70px;
+	margin: 5px 0;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	transition: all 0.5s ease;
+}
+
+.buttons-container button:hover{
+	color: var(--darkgreen);
+	background-color: white;
+}
+
+.admin-searchBar{
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	z-index: 999;
+	height: auto;
+	margin: 0 auto;
+	border-radius: 10px;
+	outline: none;
+}
+
+.admin-searchBar::focus{
+	outline: none;
+}
+
+.admin-searchBar input[type="search"] {
+	width: 350px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+	border-radius: 10px 0 0 10px;
+}
+
+.admin-searchBar button {
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    color: #fff;
+}
+
+.admin-searchBar button:hover{
+    color: var(--darkgreen);
+    background-color: #fff;
+}
+
+.buttons-container button.active {
+    color: var(--darkgreen);
+    background-color: #fff;
+}
+
+.content.active {
+    display: block;
+}
+
+.content {
+    display: none;
+}
+
+.content-container{
+	padding: 30px 50px;
+}
+/************user***************/
