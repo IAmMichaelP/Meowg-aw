@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>
+
+	<body>
+	<!-------------header--------------->
+	<%- include('partials/banner.ejs') %>
+
+		<!---gallery banner---->
+		<div class="galleryBanner reveal">
+
+			<div class="searchBar">
+				<input type="search" placeholder="Search...">
+    			<button type="submit"><i class="fas fa-search"></i></button>
+    		</div>
+
+		</div>
+
+		<div class="categoryButtons reveal">
+			<button onclick="showStrayData('all')" id="allBtn">All</button>
+	    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
+	    	<button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
+  		</div>
+
+  		<div id="descModal" class="strayModal reveal">
+  			<div class="descContainer">
+    			<span class="close" onclick="closePopup('descModal')" style="color:#a96357">&times;</span>
+    			<div id="desc">
+      			<!---content in js---->
+    			</div>
+  			</div>
+		</div>
+
+		<div class="galleryBody reveal">
+
+			<!-- embedding data from backend so that it can be parsed by the front-end -->
+			<div id="straysData" data-strays='<%- JSON.stringify(strays) %>'></div>
+			<% console.log(strays) %>
+
+			<div class="strayContainer reveal">
+				<!---content in js---->
+			</div>
+
+		</div>
+
+		<!-------------footer--------------->
+		<%- include('partials/footer.ejs') %>
+
+
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/galleryscript.js"></script>
+
+	</body>
+
+</html>

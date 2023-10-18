@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+
+    
+
+    <div class="create-stray content">
+        <form action="/create" method="POST">
+            <label for="imgSrc">ImgSrc:</label>
+            <input type="text" id="imgSrc" name="imgSrc" required>
+            <label for="name">name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="age">age:</label>
+            <input type="number" name="age" required>
+            <label for="breed">breed:</label>
+            <input type="text" name="breed" required>
+            <label for="gender">gender:</label>
+            <input type="text" name="gender" required>
+            <label for="animal">animal:</label>
+            <input type="text" name="animal" required>
+            <label for="surrenderDate">surrenderDate:</label>
+            <input type="date" name="surrenderDate" required>
+            <label for="status">status:</label>
+            <input type="text" name="status" required>
+            <label for="story">story:</label>
+            <input type="text" name="story" required>
+            
+            <button>Submit</button>
+        </form>
+
+        
+
+    </div>
+</body>
+</html>

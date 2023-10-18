@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>	
+
+	<body>
+	<!-------------header--------------->
+	<%- include('partials/banner.ejs') %>
+
+
+		<div class="scroll-down">
+		    <a href="#footer" id="scroll-link">
+		      <i class="ri-arrow-down-line"></i>
+		    </a>
+		 </div>
+
+	<!-------------content-------------->
+
+	<div class="about">
+		<section class="abt-banner">
+			<div class="abt-banner-content">
+				<h1>About Us</h1>
+				<h3>Our Story</h3>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusce est.
+				Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem.</p>
+			</div>
+
+			<div class="abt-banner-content">
+				<img src="pics/icon2.png">
+			</div>
+		</section>
+
+	    <div class="abt-content">
+	        
+		    <div class="misvis">
+		        <div class="button-container">
+					<button class="misvis-btn active" onclick="showContent('mission')">Mission</button>
+					<button class="misvis-btn" onclick="showContent('vision')">Vision</button>
+					<button class="misvis-btn" onclick="showContent('members')">Team Members</button>
+		        </div>
+
+		        <div class="content-container">
+		            <div id="missionContent" style="display: none;">
+		                <h2>Mission</h2>
+		                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusce est.
+						Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem.
+						In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+						Fusce aliquet pede non pede. Suspendisse dapibus lorem pellentesque magna. Integer nulla. Donec blandit feugiat ligula. Donec hendrerit, felis et imperdiet euismod, purus ipsum pretium metus, in lacinia nulla nisl eget sapien.
+						Donec ut est in lectus consequat consequat. Etiam eget dui. Aliquam erat volutpat. Sed at lorem in nunc porta tristique. Proin nec augue.</p>
+		            </div>
+
+		            <div id="visionContent" style="display: none;">
+		                <h2>Vision</h2>
+		                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna. Nunc viverra imperdiet enim. Fusce est.
+						Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci. Aenean nec lorem.
+						</p>
+		            </div>
+
+		            <div id="membersContent" style="display: none;">
+		                <h2>Team Members</h2>
+		                <p>This is our Team Members.</p>
+		            </div>
+		        </div>
+		    </div>
+	    </div>
+	<div>
+
+	<!-------------footer--------------->
+
+		<%- include('partials/footer.ejs') %>
+
+
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
