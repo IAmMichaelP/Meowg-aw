@@ -1,0 +1,98 @@
+<html lang="en" dir="ltr">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MeowgAw</title> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<!---------------favicon----------------->
+		<link rel="shortcut icon" type="image/png" href="pics/icon.png">
+		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+		<link rel= "stylesheet" href="css/style.css">
+		<link rel= "stylesheet" href="css/userstyle.css">
+	</head>
+
+	<body>
+
+		<!-------------header--------------->
+		<header id="header" class="header">
+			<a href="index.html" class="logo"><img src="pics/logo.png" id="logopic"></a>
+
+			<div class="admin-searchBar">
+				<input type="search" placeholder="Search...">
+    			<button type="submit"><i class="fas fa-search"></i></button>
+    		</div>
+
+ 
+			<div class="user-account">
+				 <img src="pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
+				 <p class="username" onclick="openPopup()">Username</p>
+			</div>
+
+			<div class="bx bx-menu" id="menu-icon">
+			</div>
+
+		</header>
+
+		<!------------dropdown when profile is clicked-------------->
+		<div id="profile-modal" class="profile-popup">
+		    <div class="profile-dropdown">
+		        <button class="profile" onclick="">Profile</button>
+		        <button class="post-stray">Submit a Stray</button>
+		        <button class="logout-button" onclick="logout()">Log Out</button>
+		    </div>
+		</div>
+
+		<!------------body---------------->
+		<div class="container">
+
+			<div class="buttons-container">
+				<button class="active" data-content="users">Users</button>
+        		<button data-content="strays">Strays</button>
+				<button data-content="submissions">Submissions</button>
+				<button data-content="donations">Donations</button>
+				<button data-content="blogs">Blogs</button>
+				<button data-content="faqs">FAQs</button>
+				<button data-content="messages">Messages</button>
+			</div>
+
+			<div class="content-container" id="content-container">
+		        <div id="content-users" class="content active">
+		            Content for Users
+		        </div>
+
+		        <div id="content-strays" class="content">
+		        	Content for Strays
+		        </div>
+		        
+		        <div id="content-submissions" class="content">
+		            Content for submissions
+		        </div>
+
+		        <div id="content-donations" class="content">
+		            Content for donations
+		        </div>
+
+		        <div id="content-blogs" class="content">
+		            Content for blogs
+		        </div>
+
+		        <div id="content-faqs" class="content">
+		            Content for faqs
+		        </div>
+
+		        <div id="content-messages" class="content">
+		            Content for messages
+		        </div>
+		    </div>
+		</div>
+
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/userscript.js"></script>
+
+	</body>
+</html>

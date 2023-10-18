@@ -39,6 +39,10 @@ app.get('/gallery', (req, res) =>{
         });
 })
 
+app.get('/about', (req, res) =>{
+    res.render('about');
+})
+
 app.post('/create', (req, res) =>{
     const stray = new Stray(req.body);
     stray.save()
@@ -49,10 +53,11 @@ app.post('/create', (req, res) =>{
             console.log(err);
         });
 })
-app.get('/about', (req, res) =>{
-    res.render('about');
-})
 
 app.get('/create', (req, res) =>{
     res.render('create');
+});
+
+app.get('/admin', (req, res) =>{
+    res.render('admin-dashboard');
 });
