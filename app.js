@@ -9,7 +9,7 @@ const app = express();
 // connect to mongo database
 const dbURI = 'mongodb+srv://Miki:06422Meowgawdatabase@meowgaw.o1wmqdk.mongodb.net/';
 mongoose.connect(dbURI)
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(3000 || process.env.PORT))
     .catch((err) => console.log(err)); 
 
 // register view engine
