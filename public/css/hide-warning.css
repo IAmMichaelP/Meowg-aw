@@ -1,0 +1,8 @@
+.hide-warning{
+    display: none !important;
+}
+.warning{
+    color: red;
+    opacity: 0.8;
+    font-size: small;
+}

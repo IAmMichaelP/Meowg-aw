@@ -100,20 +100,7 @@
 
 
 		<!--------------scripts-------------->
-		<script>
-		const password = document.querySelector('input[name="password"]').value;
-		const repassword = document.querySelector('input[name="repassword"]').value;
-			if (password === repassword) {
-				console.log("yes");
-			} else {
-				console.log("no");
-				// Optionally, you can alert the user or show a message
-				alert("Passwords do not match!");
-			}
-		</script>
-		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="js/sliderscript.js"></script>
-		<script src="js/script.js"></script>
+		<%- include('partials/scripts.ejs') %>
 
 	</body>
 

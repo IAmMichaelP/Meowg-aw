@@ -31,10 +31,17 @@
                     <label for="email">Email Address</label><br>
                     <input type="email" id="email" name="email" required><br>
                     <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password" required><br>
+                    <input type="password" id="password" name="password" onkeyup="
+                    handleOnKeyUp('password', event);
+                    " required><br>
                     <label for="repassword">Re-enter Password</label><br>
-                    <input type="password" id="repassword" name="repassword" required><br>
+                    <input type="password" id="repassword" name="repassword" onkeyup="
+                    handleOnKeyUp('repassword', event);
+                    " required><br>
+
+                    
                 </div>
+                <p class="warning hide-warning">Password and repassword do not match!</p>
 
                 <button type="submit" class="submit">Sign Up</button>
                 <p class="reminder">By clicking "Sign Up", I understand and agree to the MeowgAw's collective 
