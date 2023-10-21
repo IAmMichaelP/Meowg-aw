@@ -85,7 +85,7 @@ app.post('/create', upload.single('input-file'), (req, res) =>{
     // This is using multer to save images but since I can't code multer to save it to specific dog or cat folder
     // What i did was to save it to pics folder then moving it if it's cat or dog folder
 
-    console.log("----------------------------5")
+    console.log("----------------------------6")
     let folderPath = 'public/pics';
     let files = fsExtra.readdirSync(folderPath);
     let numberOfFiles = files.length;
@@ -99,6 +99,8 @@ app.post('/create', upload.single('input-file'), (req, res) =>{
     files = fsExtra.readdirSync(folderPath);
     numberOfFiles = files.length;
     console.log(numberOfFiles);
+    console.log(oldName);
+    console.log(lastFile);
     
     const newName = oldName.replace(String(lastFile), String(numberOfFiles + 1));
     console.log(newName);
