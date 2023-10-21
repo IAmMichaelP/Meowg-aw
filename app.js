@@ -49,8 +49,15 @@ app.get('/create', (req, res) =>{
     res.render('create', { title: 'CREATE' });
 });
 
-app.get('/admin', (req, res) =>{
-    res.render('admin-dashboard', { title: 'ADMIN' });
+app.get('/admin/:id', (req, res) =>{
+    const id = req.params.id;
+    User.findById(id).
+        then((result) =>{
+            res.render('admin-dashboard', { title: 'ADMIN', user: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 app.post('/create', (req, res) =>{
@@ -73,7 +80,7 @@ app.post('/signup', async (req, res) => {
         const user = new User({ username: req.body.username, email: req.body.email, password: hashedPassword });
         user.save()
             .then((result) => {
-                res.redirect('/admin')
+                res.redirect('/admin/' + user._id)
             })
             .catch((err) => {
                 res.status(500).send()
@@ -95,7 +102,7 @@ app.post('/signin', async (req, res) => {
             return; // If no match, redirect and exit the function
         }
         if (await bcrypt.compare(req.body.password, match[0].password)) {
-            res.redirect('/admin');
+            res.redirect('/admin/' + match[0]._id)
         } else {
             res.status(400).redirect('/');
         }

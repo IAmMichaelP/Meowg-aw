@@ -8,18 +8,18 @@
 		<title>MeowgAw</title> 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 		<!---------------favicon----------------->
-		<link rel="shortcut icon" type="image/png" href="pics/icon.png">
+		<link rel="shortcut icon" type="image/png" href="/pics/icon.png">
 		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-		<link rel= "stylesheet" href="css/style.css">
-		<link rel= "stylesheet" href="css/userstyle.css">
+		<link rel= "stylesheet" href="/css/style.css">
+		<link rel= "stylesheet" href="/css/userstyle.css">
 	</head>
 
 	<body>
 
 		<!-------------header--------------->
 		<header id="header" class="header">
-			<a href="/" class="logo"><img src="pics/logo.png" id="logopic"></a>
+			<a href="/" class="logo"><img src="/pics/logo.png" id="logopic"></a>
 
 			<div class="admin-searchBar">
 				<input type="search" placeholder="Search...">
@@ -28,8 +28,8 @@
 
  
 			<div class="user-account">
-				 <img src="pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
-				 <p class="username" onclick="openPopup()">Username</p>
+				 <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
+				 <p class="username" onclick="openPopup()"><%= user.username %></p>
 			</div>
 
 			<div class="bx bx-menu" id="menu-icon">
@@ -40,7 +40,7 @@
 		<!------------dropdown when profile is clicked-------------->
 		<div id="profile-modal" class="profile-popup">
 		    <div class="profile-dropdown">
-		        <button class="profile" onclick="">Profile</button>
+		        <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
 		        <button class="post-stray" onclick="location.href='/create'">Submit a Stray</button>
 		        <button class="logout-button" onclick="location.href='/'">Log Out</button>
 		    </div>
@@ -92,9 +92,9 @@
 
 		<!--------------scripts-------------->
 		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="js/sliderscript.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/userscript.js"></script>
+		<script src="/js/sliderscript.js"></script>
+		<script src="/js/script.js"></script>
+		<script src="/js/userscript.js"></script>
 
 	</body>
 </html>
