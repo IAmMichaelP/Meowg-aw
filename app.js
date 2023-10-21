@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Stray = require('./models/stray');
 const User = require('./models/user');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+
+const path = require('path');
+const fsExtra = require('fs-extra');
 
 // express app
 const app = express();
@@ -15,6 +19,23 @@ mongoose.connect(dbURI)
 
 // register view engine
 app.set('view engine', 'ejs');
+
+// defining storage 
+let folderPath = 'public/pics';
+let files = fsExtra.readdirSync(folderPath);
+let numberOfFiles = files.length;
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, folderPath);
+    },
+    filename: (req, file, cb) => {
+        // const name = String(numberOfFiles + 1) + path.extname(file.originalname);
+        // req.body.imgSrc = req.body.imgSrc.replace('public/', '');
+        // req.body.imgSrc += '/' + name;
+        cb(null, String(numberOfFiles + 1) + path.extname(file.originalname));
+    }
+});
+const upload = multer({storage: storage});
 
 // middleware and static files
 app.use(express.static('public'));
@@ -60,15 +81,50 @@ app.get('/admin/:id', (req, res) =>{
         });
 });
 
-app.post('/create', (req, res) =>{
-    const stray = new Stray(req.body);
-    stray.save()
-        .then((result) => {
-            res.redirect('/gallery')
+app.post('/create', upload.single('input-file'), (req, res) =>{
+    // This is using multer to save images but since I can't code multer to save it to specific dog or cat folder
+    // What i did was to save it to pics folder then moving it if it's cat or dog folder
+
+    console.log("----------------------------5")
+    let folderPath = 'public/pics';
+    let files = fsExtra.readdirSync(folderPath);
+    let numberOfFiles = files.length;
+    const lastFile = numberOfFiles;
+    const regex = new RegExp(`^${lastFile}\.`);
+    const oldName = files.find(item => regex.test(item));
+    let destinationFolder = req.body.animal === "cat" ? 'cat' : 'dog';
+    console.log(destinationFolder);
+    console.log(req.body);
+    folderPath = `public/pics/${destinationFolder}`;
+    files = fsExtra.readdirSync(folderPath);
+    numberOfFiles = files.length;
+    console.log(numberOfFiles);
+    
+    const newName = oldName.replace(String(lastFile), String(numberOfFiles + 1));
+    console.log(newName);
+    const sourcePath = path.join('public', 'pics', oldName);
+    let destinationPath = path.join('public', 'pics', destinationFolder, newName);
+
+    fsExtra.move(sourcePath, destinationPath)
+        .then(() => {
+            destinationPath = destinationPath.replace('public\\', '');
+            console.log(destinationPath);
+            req.body.imgSrc = destinationPath;
+            console.log(req.body);
+            const stray = new Stray(req.body);
+            stray.save()
+                .then((result) => {
+                    res.redirect('/gallery')
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         })
-        .catch((err) => {
-            console.log(err);
+        .catch(error => {
+            console.error('Error renaming the file:', error);
         });
+    
+    
 })
 
 

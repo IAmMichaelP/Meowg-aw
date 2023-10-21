@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('partials/head.ejs') %>
+    <style>
+        /* input{
+            display: none;
+        } */
+    </style>
 <body>
 
     
 
     <div class="create-stray content">
-        <form action="/create" method="POST">
-            <label for="imgSrc">ImgSrc:</label>
-            <input type="text" id="imgSrc" name="imgSrc" required>
+        <form action="/create" method="POST" enctype="multipart/form-data">
+            <label for="input-file">Upload Image</label>
+            <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" name="input-file">
+            <!-- <label for="imgSrc">ImgSrc:</label>
+            <input type="text" id="imgSrc" name="imgSrc" required> -->
             <label for="name">name:</label>
             <input type="text" id="name" name="name" required>
             <label for="age">age:</label>
