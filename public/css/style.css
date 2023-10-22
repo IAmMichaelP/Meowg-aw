@@ -487,6 +487,7 @@ section{
 	height: auto;
 	background-size: contain;
 	background-position: center;
+	background-attachment: fixed;
 	position: relative;
 }
 
@@ -684,7 +685,7 @@ footer{
 }
 
 .galleryBanner .searchBar{
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 	z-index: 999;
 	margin: 0 auto;
 	border-radius: 10px;
@@ -710,6 +711,7 @@ footer{
     color: #fff;
 	border: 2px solid transparent;
 	transform: all ease 0.5s;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .galleryBanner button:hover{
@@ -720,6 +722,10 @@ footer{
 .galleryBody{
 	z-index: 10005;
 	background: var(--pink);
+	background-image: url('../pics/bg/3.jpg');
+	background-size: contain;
+	background-position: center;
+	background-attachment: fixed;
 }
 
 .strayContainer {
@@ -727,6 +733,16 @@ footer{
  	display: flex;
  	flex-wrap: wrap;
  	justify-content: center;
+}
+
+.strayContainer::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background: linear-gradient(rgba(255, 220, 209, 0.60), rgba(241, 197, 183, 0.60), rgba(169, 99, 87, 0.60));
 }
 
 .strayBox {
@@ -738,6 +754,8 @@ footer{
  	width: 310px;
  	margin: 20px;
  	overflow: hidden; 
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+	border: 2px solid transparent;
 }
 
 .strayBox:hover{
@@ -882,6 +900,7 @@ footer{
     justify-content: space-around;
     left: 50%;
     transform: translateX(-50%);
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .categoryButtons button{
