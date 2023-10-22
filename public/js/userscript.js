@@ -18,16 +18,17 @@ function closePopup(popupId) {
 
 // ADMIN-DASHBOARD
 const buttons = document.querySelectorAll('.buttons-container button');
-const contentDivs = document.querySelectorAll('.content');
+const contentDivs = document.querySelectorAll('.contentStray');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const contentToShow = button.getAttribute('data-content');
 
         buttons.forEach(btn => btn.classList.remove('active'));
-        contentDivs.forEach(content => content.classList.remove('active'));
+        contentDivs.forEach(contentStray => contentStray.classList.remove('active'));
 
         button.classList.add('active');
         document.getElementById(`content-${contentToShow}`).classList.add('active');
     });
 });
+

@@ -153,15 +153,37 @@ header{
     background-color: #fff;
 }
 
-.content.active {
+.contentStray.active {
     display: block;
 }
 
-.content {
+.contentStray {
     display: none;
 }
 
 .content-container{
 	padding: 30px 50px;
 }
+
+.add-stray{
+	font-weight: bold;
+	background-color: var(--darkpink);
+	color: white;
+	border: 1px solid transparent;
+	padding: 15px 50px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+	border-radius: 20px;
+	display: flex;
+	margin: 0 auto;
+}
+
+.add-stray:hover{
+	color: var(--darkpink);
+	background-color: white;
+	border: 1px solid var(--darkpink);
+}
+
 /************user***************/
+
+/************create***************/
