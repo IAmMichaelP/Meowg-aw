@@ -4,6 +4,7 @@ const Stray = require('./models/stray');
 const User = require('./models/user');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
+const url = require('url');
 
 const path = require('path');
 const fsExtra = require('fs-extra');
@@ -42,9 +43,12 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
     Stray.find()
         .then((result) => {
-            res.render('index', { title: 'HOME', strays: result });
+            const statusCode = queryString ? 302 : 200;
+            res.render('index', { title: 'HOME', strays: result, statusCode: statusCode });
         })
         .catch((err) => {
             console.log(err);
@@ -52,10 +56,12 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/gallery', (req, res) =>{
-    
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
     Stray.find()
         .then((result) => {
-            res.render('gallery', { title: 'GALLERY', strays: result });
+            const statusCode = queryString ? 302 : 200;
+            res.render('gallery', { title: 'GALLERY', strays: result, statusCode: statusCode });
         })
         .catch((err) => {
             console.log(err);
@@ -63,7 +69,9 @@ app.get('/gallery', (req, res) =>{
 })
 
 app.get('/about', (req, res) =>{
-    res.render('about', { title: 'ABOUT' });
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    res.render('about', { title: 'ABOUT', statusCode: statusCode });
 })
 
 app.get('/create', (req, res) =>{
@@ -150,19 +158,22 @@ app.post('/signup', async (req, res) => {
 
 app.post('/signin', async (req, res) => {
     const email = { email: req.body.email };
+    const reference = req.get('Referrer');
+    const url = new URL(reference);
+    const redirection = url.pathname;
 
     try {
         const match = await User.find(email)
         .then(result => {return result} );
 
         if (match.length == 0) {
-            res.status(400).redirect('/');
+            res.status(400).redirect(redirection+'?redirect=true');
             return; // If no match, redirect and exit the function
         }
         if (await bcrypt.compare(req.body.password, match[0].password)) {
             res.redirect('/admin/' + match[0]._id)
         } else {
-            res.status(400).redirect('/');
+            res.status(400).redirect(redirection+'?redirect=true');
         }
     } catch (err) {
         res.status(500).send();

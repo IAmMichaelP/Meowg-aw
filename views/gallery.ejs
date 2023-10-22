@@ -55,6 +55,11 @@
 		<script src="js/script.js"></script>
 		<script src="js/galleryscript.js"></script>
 		<script src="js/hide-warning.js"></script>
+		<% if (statusCode > 200 && statusCode < 500) { %>
+			<script>
+				openPopup('login-popup')
+			</script>
+		<% } %>
 
 	</body>
 
