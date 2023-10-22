@@ -190,6 +190,9 @@ header{
 	background-color: transparent;
 	border: none;
 	border-bottom: white solid 1px;
+	padding-left: 30px;
+	color: white;
+	font-weight: bold;
 }
 
 .popup-content form input:focus{
@@ -478,14 +481,29 @@ section{
 
 .slider-container{
 	text-align: center;
-	background: var(--pink);
+	background-image: url('../pics/bg/3.jpg');
 	padding: 55px;
 	width: 100%;
 	height: auto;
+	background-size: contain;
+	background-position: center;
+	position: relative;
+}
+
+.slider-container::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  	background: linear-gradient(rgba(255, 220, 209, 0.60), rgba(241, 197, 183, 0.60), rgba(169, 99, 87, 0.60));
 }
 
 .slide-btn{
 	margin-top: 20px;
+	position: relative;
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
 }
 
 .slide-btn:hover{
@@ -495,6 +513,7 @@ section{
 
 .slider-container h2{
 	color: white;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .slider{
@@ -566,6 +585,7 @@ section{
   	width: 310px;
   	display: inline-block;
   	vertical-align: top;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
   	transition: all 0.55s ease;
 }
 
@@ -578,6 +598,7 @@ section{
  	width: 100%;
  	height: 100%;
  	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
 }
 
 .carousel .card:hover{
@@ -591,8 +612,8 @@ section{
 .carousel .card img{
 	border-radius: 25px;
 	object-fit: contain;
-	width: 100%;
-	height: 100%;
+	height: 310px;
+	width: 310px;
 }
 
 .carousel .card h3 {
@@ -676,8 +697,8 @@ footer{
 	border-radius: 10px 0 0 10px;
 }
 
-input[type="search"]:focus {
-    outline: none;
+.galleryBanner input[type="search"]:focus {
+    outline: 1px solid var(--darkpink);
 }
 
 .galleryBanner button {
@@ -687,6 +708,8 @@ input[type="search"]:focus {
     border-radius: 0 10px 10px 0;
     cursor: pointer;
     color: #fff;
+	border: 2px solid transparent;
+	transform: all ease 0.5s;
 }
 
 .galleryBanner button:hover{
@@ -715,6 +738,10 @@ input[type="search"]:focus {
  	width: 310px;
  	margin: 20px;
  	overflow: hidden; 
+}
+
+.strayBox:hover{
+	border: 2px solid white;
 }
 
 .strayBox img {
