@@ -4,6 +4,7 @@ const Stray = require('./models/stray');
 const User = require('./models/user');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
+const url = require('url');
 
 const path = require('path');
 const fsExtra = require('fs-extra');
@@ -29,9 +30,6 @@ const storage = multer.diskStorage({
         cb(null, folderPath);
     },
     filename: (req, file, cb) => {
-        // const name = String(numberOfFiles + 1) + path.extname(file.originalname);
-        // req.body.imgSrc = req.body.imgSrc.replace('public/', '');
-        // req.body.imgSrc += '/' + name;
         cb(null, String(numberOfFiles + 1) + path.extname(file.originalname));
     }
 });
@@ -42,9 +40,12 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
     Stray.find()
         .then((result) => {
-            res.render('index', { title: 'HOME', strays: result });
+            const statusCode = queryString ? 302 : 200;
+            res.render('index', { title: 'HOME', strays: result, statusCode: statusCode });
         })
         .catch((err) => {
             console.log(err);
@@ -52,10 +53,12 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/gallery', (req, res) =>{
-    
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
     Stray.find()
         .then((result) => {
-            res.render('gallery', { title: 'GALLERY', strays: result });
+            const statusCode = queryString ? 302 : 200;
+            res.render('gallery', { title: 'GALLERY', strays: result, statusCode: statusCode });
         })
         .catch((err) => {
             console.log(err);
@@ -63,7 +66,10 @@ app.get('/gallery', (req, res) =>{
 })
 
 app.get('/about', (req, res) =>{
-    res.render('about', { title: 'ABOUT' });
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('about', { title: 'ABOUT', statusCode: statusCode });
 })
 
 app.get('/create', (req, res) =>{
@@ -84,8 +90,6 @@ app.get('/admin/:id', (req, res) =>{
 app.post('/create', upload.single('input-file'), (req, res) =>{
     // This is using multer to save images but since I can't code multer to save it to specific dog or cat folder
     // What i did was to save it to pics folder then moving it if it's cat or dog folder
-
-    console.log("----------------------------6")
     let folderPath = 'public/pics';
     let files = fsExtra.readdirSync(folderPath);
     let numberOfFiles = files.length;
@@ -93,26 +97,18 @@ app.post('/create', upload.single('input-file'), (req, res) =>{
     const regex = new RegExp(`^${lastFile}\.`);
     const oldName = files.find(item => regex.test(item));
     let destinationFolder = req.body.animal === "cat" ? 'cat' : 'dog';
-    console.log(destinationFolder);
-    console.log(req.body);
     folderPath = `public/pics/${destinationFolder}`;
     files = fsExtra.readdirSync(folderPath);
     numberOfFiles = files.length;
-    console.log(numberOfFiles);
-    console.log(oldName);
-    console.log(lastFile);
     
     const newName = oldName.replace(String(lastFile), String(numberOfFiles + 1));
-    console.log(newName);
     const sourcePath = path.join('public', 'pics', oldName);
     let destinationPath = path.join('public', 'pics', destinationFolder, newName);
 
     fsExtra.move(sourcePath, destinationPath)
         .then(() => {
             destinationPath = destinationPath.replace('public\\', '');
-            console.log(destinationPath);
             req.body.imgSrc = destinationPath;
-            console.log(req.body);
             const stray = new Stray(req.body);
             stray.save()
                 .then((result) => {
@@ -150,19 +146,22 @@ app.post('/signup', async (req, res) => {
 
 app.post('/signin', async (req, res) => {
     const email = { email: req.body.email };
+    const reference = req.get('Referrer');
+    const url = new URL(reference);
+    const redirection = url.pathname;
 
     try {
         const match = await User.find(email)
         .then(result => {return result} );
 
         if (match.length == 0) {
-            res.status(400).redirect('/');
+            res.status(400).redirect(redirection+'?redirect=true');
             return; // If no match, redirect and exit the function
         }
         if (await bcrypt.compare(req.body.password, match[0].password)) {
             res.redirect('/admin/' + match[0]._id)
         } else {
-            res.status(400).redirect('/');
+            res.status(400).redirect(redirection+'?redirect=true');
         }
     } catch (err) {
         res.status(500).send();
