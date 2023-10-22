@@ -190,6 +190,9 @@ header{
 	background-color: transparent;
 	border: none;
 	border-bottom: white solid 1px;
+	padding-left: 30px;
+	color: white;
+	font-weight: bold;
 }
 
 .popup-content form input:focus{
@@ -478,14 +481,30 @@ section{
 
 .slider-container{
 	text-align: center;
-	background: var(--pink);
+	background-image: url('../pics/bg/3.jpg');
 	padding: 55px;
 	width: 100%;
 	height: auto;
+	background-size: contain;
+	background-position: center;
+	background-attachment: fixed;
+	position: relative;
+}
+
+.slider-container::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  	background: linear-gradient(rgba(255, 220, 209, 0.60), rgba(241, 197, 183, 0.60), rgba(169, 99, 87, 0.60));
 }
 
 .slide-btn{
 	margin-top: 20px;
+	position: relative;
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
 }
 
 .slide-btn:hover{
@@ -495,6 +514,7 @@ section{
 
 .slider-container h2{
 	color: white;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .slider{
@@ -566,6 +586,7 @@ section{
   	width: 310px;
   	display: inline-block;
   	vertical-align: top;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
   	transition: all 0.55s ease;
 }
 
@@ -578,6 +599,7 @@ section{
  	width: 100%;
  	height: 100%;
  	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
 }
 
 .carousel .card:hover{
@@ -591,8 +613,8 @@ section{
 .carousel .card img{
 	border-radius: 25px;
 	object-fit: contain;
-	width: 100%;
-	height: 100%;
+	height: 310px;
+	width: 310px;
 }
 
 .carousel .card h3 {
@@ -663,7 +685,7 @@ footer{
 }
 
 .galleryBanner .searchBar{
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 	z-index: 999;
 	margin: 0 auto;
 	border-radius: 10px;
@@ -676,8 +698,8 @@ footer{
 	border-radius: 10px 0 0 10px;
 }
 
-input[type="search"]:focus {
-    outline: none;
+.galleryBanner input[type="search"]:focus {
+    outline: 1px solid var(--darkpink);
 }
 
 .galleryBanner button {
@@ -687,6 +709,9 @@ input[type="search"]:focus {
     border-radius: 0 10px 10px 0;
     cursor: pointer;
     color: #fff;
+	border: 2px solid transparent;
+	transform: all ease 0.5s;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .galleryBanner button:hover{
@@ -697,6 +722,10 @@ input[type="search"]:focus {
 .galleryBody{
 	z-index: 10005;
 	background: var(--pink);
+	background-image: url('../pics/bg/3.jpg');
+	background-size: contain;
+	background-position: center;
+	background-attachment: fixed;
 }
 
 .strayContainer {
@@ -704,6 +733,16 @@ input[type="search"]:focus {
  	display: flex;
  	flex-wrap: wrap;
  	justify-content: center;
+}
+
+.strayContainer::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background: linear-gradient(rgba(252, 219, 210, 0.6), rgba(241, 197, 183, 0.60), rgba(153, 88, 77, 0.6));
 }
 
 .strayBox {
@@ -715,6 +754,27 @@ input[type="search"]:focus {
  	width: 310px;
  	margin: 20px;
  	overflow: hidden; 
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+	border: 2px solid transparent;
+}
+
+.strayBox i{
+	position: absolute;
+	color: var(--darkpink);
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 50%;
+	left: 80%;
+	top: 15px;
+	transition: all ease 0.3;
+}
+
+.strayBox i:hover{
+	background-color: white;
+}
+
+.strayBox:hover{
+	border: 2px solid white;
 }
 
 .strayBox img {
@@ -855,6 +915,7 @@ input[type="search"]:focus {
     justify-content: space-around;
     left: 50%;
     transform: translateX(-50%);
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .categoryButtons button{
@@ -867,6 +928,7 @@ input[type="search"]:focus {
 	border-radius: 10px;
 	border: 2px solid var(--darkpink);
 	transition: all 0.50s ease;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .categoryButtons button:hover{

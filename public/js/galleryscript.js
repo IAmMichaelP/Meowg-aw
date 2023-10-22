@@ -89,7 +89,6 @@ function displayDescModal(stray) {
   };
 }
 
-// Update this line to call the updated function
 function displayStrayData() {
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
@@ -106,9 +105,13 @@ function displayStrayData() {
     const p = document.createElement('p');
     p.textContent = stray.name;
 
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
+
     // Handle click event to display modal
     strayBox.addEventListener('click', () => displayDescModal(stray));
 
+    strayBox.appendChild(heartIcon);
     strayBox.appendChild(img);
     strayBox.appendChild(p);
     container.appendChild(strayBox);
