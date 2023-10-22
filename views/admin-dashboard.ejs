@@ -41,7 +41,6 @@
 		<div id="profile-modal" class="profile-popup">
 		    <div class="profile-dropdown">
 		        <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
-		        <button class="post-stray" onclick="location.href='/create'">Submit a Stray</button>
 		        <button class="logout-button" onclick="location.href='/'">Log Out</button>
 		    </div>
 		</div>
@@ -60,31 +59,31 @@
 			</div>
 
 			<div class="content-container" id="content-container">
-		        <div id="content-users" class="content active">
+		        <div id="content-users" class="contentStray active">
 		            Content for Users
 		        </div>
 
-		        <div id="content-strays" class="content">
-		        	Content for Strays
+		        <div id="content-strays" class="contentStray">
+		        	<button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
 		        </div>
 		        
-		        <div id="content-submissions" class="content">
+		        <div id="content-submissions" class="contentStray">
 		            Content for submissions
 		        </div>
 
-		        <div id="content-donations" class="content">
+		        <div id="content-donations" class="contentStray">
 		            Content for donations
 		        </div>
 
-		        <div id="content-blogs" class="content">
+		        <div id="content-blogs" class="contentStray">
 		            Content for blogs
 		        </div>
 
-		        <div id="content-faqs" class="content">
+		        <div id="content-faqs" class="contentStray">
 		            Content for faqs
 		        </div>
 
-		        <div id="content-messages" class="content">
+		        <div id="content-messages" class="contentStray">
 		            Content for messages
 		        </div>
 		    </div>
