@@ -71,6 +71,7 @@ app.get('/gallery', (req, res) =>{
 app.get('/about', (req, res) =>{
     const parsedUrl = url.parse(req.originalUrl);
     const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
     res.render('about', { title: 'ABOUT', statusCode: statusCode });
 })
 
