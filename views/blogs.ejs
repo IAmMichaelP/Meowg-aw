@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>
+
+	<body>
+	<!-------------header--------------->
+	<%- include('partials/banner.ejs') %>
+
+		<!-------------content-------------->
+        <div class="blogs-reveal">
+            <div class="blogs-content">
+                <h1>Furparent Guide 101</h1>
+                <h3>New or experienced, our guide is here to help you become the best furparent.</h3>
+            </div>
+            <div class="chapter1">
+                <div class="vid1">
+                    <iframe width="270" height="150" src="https://www.youtube.com/embed/uYlWoeL8rP8?si=bC4DMIRiB4c4R6JD"></iframe>
+                </div>
+                <h3>Chapter 1: Choosing the Right Fur Baby</h3>
+            </div>
+            <div class="chapter2">
+                <div class="vid2">
+                    <iframe width="270" height="150" src="https://www.youtube.com/embed/ukxcwSZYUGY?si=JSqhdBkgPilzKoYX"></iframe>
+                </div>
+                <h3>Chapter 2: Preparing your Home</h3>
+            </div>
+            <div class="chapter3">
+                <div class="vid3">
+                    <iframe width="270" height="150" src="https://www.youtube.com/embed/ycaPHaHAjes?si=fsyjH6x-oaCcboHH"></iframe>
+                </div>
+                <h3>Chapter 3: Grooming and Hygiene</h3>
+            </div>
+            <div class="chapter4">
+                <div class="vid4">
+                    <iframe width="270" height="150" src="https://www.youtube.com/embed/LFJitHhfV9I?si=dZ-OUeyQ9g6WckB_"></iframe>
+                </div>
+                <h3>Chapter 4: Love and Affection</h3>
+            </div>
+            <div class="chapter0">
+                <div class="vid0">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YayqoREztgw?si=LoxOdILl7HwshUGx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <h3>Chapter 0: Pet Adoption Process</h3>
+            </div>
+        </div>
+
+		<!-------------footer--------------->
+		<%- include('partials/footer.ejs') %>
+
+
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/galleryscript.js"></script>
+		<script src="js/hide-warning.js"></script>
+		<% if (statusCode > 200 && statusCode < 500) { %>
+			<script>
+				openPopup('login-popup')
+			</script>
+		<% } %>
+
+	</body>
+
+</html>

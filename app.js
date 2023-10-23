@@ -168,6 +168,13 @@ app.post('/signin', async (req, res) => {
     }
 })
 
+app.get('/blogs', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('blogs', { title: 'BLOGS', statusCode: statusCode });
+})
+
 app.use((req, res) => {
         res.render('404');
 })
