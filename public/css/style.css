@@ -1355,7 +1355,7 @@ footer{
     color: white;
 }
 
-.active, .faq-list:hover {
+.faqs-active, .faq-list:hover {
     opacity: 0.5;
 }
 
@@ -1367,7 +1367,7 @@ footer{
     margin-left: 5px;   
 }
 
-.active:after {
+.faqs-active:after {
     content: "\2303";   
 }
 
