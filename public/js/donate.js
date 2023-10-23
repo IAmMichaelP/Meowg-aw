@@ -95,5 +95,5 @@ window.onload = function() {
 
 function confirmDonation() {
     alert("Thank you for your donation!");
-    window.location.href = "donate.html";
+    window.location.href = "/donate";
 }
