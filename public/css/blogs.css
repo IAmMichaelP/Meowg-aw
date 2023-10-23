@@ -1,31 +1,40 @@
 /***************blogs*********************/
 
 .blogs-reveal{
-    height: 100%;
+    height: auto;
 	padding-top: 55px;
 	width: 100%;
 	min-height: 100vh;
-	background: linear-gradient(245.59deg, #ffdcd1 0%, #f1c5b7 28.53%, #a96357 75.52%);
+	background-image: url(blog_back.png);
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
 	align-items: center;
 	gap: 2rem;
-	color: white;
 }
-.blogs-content h1{ 
-	color:rgba(85, 111, 100, 1);
-	width:842px;
-	height:62px;
+.blogs-reveal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 220, 209, 0.75), rgba(241, 197, 183, 0.75), rgba(169, 99, 87, 0.75));
+}
+.furparent {
+	width:600px;
+	height:90px;
 	position:absolute;
-	margin-left: 400px;
+	margin-left: 340px;
 	margin-top:38px;
-	font-size: 60px;
-	letter-spacing:0;
 }
 .blogs-content h3{ 
-	color:rgba(255, 255, 255, 1);
+	color: black;
 	width:842px;
 	height:62px;
 	position:absolute;
-	margin-left:280px;
+	margin-left:215px;
 	margin-top:130px;
 	text-align:center;
 	font-size:14px;
@@ -33,7 +42,7 @@
 }
 .vid0 {
 	position:absolute;
-	margin-left:420px;
+	margin-left:405px;
 	margin-top:190px;
 }
 .vid0:hover{
@@ -41,10 +50,10 @@
 	filter: brightness(1.2);
 }
 .chapter0 h3{
-	color:rgba(255, 255, 255, 1);
+	color: black;
 	position:absolute;
-	margin-left:535px;
-	margin-top:525px;
+	margin-left:465px;
+	margin-top:510px;
 	font-size:20px;
 	letter-spacing:0;
 }
@@ -58,7 +67,7 @@
 	filter: brightness(1.2);
 }
 .chapter1 h3{
-    color:rgba(255, 255, 255, 1);
+    color: black;
 	position:absolute;
 	margin-left:78px;
 	margin-top:320px;
@@ -75,7 +84,7 @@
 	filter: brightness(1.2);
 }
 .chapter2 h3{
-    color:rgba(255, 255, 255, 1);
+    color: black;
 	position:absolute;
 	margin-left:90px;
 	margin-top:530px;
@@ -84,7 +93,7 @@
 }
 .vid3{
 	position:absolute;
-	margin-left: 1070px;
+	margin-left: 940px;
 	margin-top:160px;
 }
 .vid3:hover{
@@ -92,16 +101,16 @@
 	filter: brightness(1.2);
 }
 .chapter3 h3{
-    color:rgba(255, 255, 255, 1);
+    color: black;
 	position:absolute;
-	margin-left: 1100px;
+	margin-left: 975px;
 	margin-top:320px;
 	font-size:12px;
 	letter-spacing:0;
 }
 .vid4 {
 	position:absolute;
-	margin-left: 1070px;
+	margin-left: 940px;
 	margin-top:370px;
 }
 .vid4:hover{
@@ -109,10 +118,96 @@
 	filter: brightness(1.2);
 }
 .chapter4 h3{
-    color:rgba(255, 255, 255, 1);
+    color: black;
 	position:absolute;
-	margin-left: 1110px;
+	margin-left: 980px;
 	margin-top:530px;
 	font-size:12px;
 	letter-spacing:0;
+}
+.read-this-next h1{
+	color:#455a51;
+	position: relative;
+	margin-left: 60px;
+	margin-top: 650px;
+	font-size:40px;
+	letter-spacing:0;
+}
+.article1 {
+	margin-top: 20px;
+	display: flex;
+	position: relative;
+}
+.art1 {
+	margin-left: 60px;
+	margin-bottom: 50px;
+	margin-right: 50px;
+}
+.art1-title {
+	color: black;
+	font-size:40px;
+	letter-spacing:0;
+	font-weight: bold;
+}
+.art1-title:hover{
+	color: white;
+	font-size: 45px;
+}
+.art1-desc {
+	font-size: 20px;
+	color: black;
+	margin-top: 20px;
+	text-align: justify;
+}
+.article2 {
+	margin-top: 20px;
+	display: flex;
+	position: relative;
+}
+.art2 {
+	margin-left: 60px;
+	margin-bottom: 50px;
+	margin-right: 50px;
+}
+.art2-title {
+	color: black;
+	font-size:40px;
+	letter-spacing:0;
+	font-weight: bold;
+}
+.art2-title:hover{
+	color: white;
+	font-size: 45px;
+}
+.art2-desc {
+	font-size: 20px;
+	color: black;
+	margin-top: 20px;
+	text-align: justify;
+}
+.article3 {
+	margin-top: 20px;
+	display: flex;
+	position: relative;
+}
+.art3 {
+	margin-left: 60px;
+	margin-bottom: 80px;
+	margin-right: 50px;
+}
+.art3-title {
+	color: black;
+	font-size:40px;
+	letter-spacing:0;
+	font-weight: bold;
+}
+.art3-title:hover{
+	color: white;
+	font-size: 45px;
+}
+.art3-desc {
+	font-size: 20px;
+	color: black;
+	margin-top: 20px;
+	text-align: justify;
 }
