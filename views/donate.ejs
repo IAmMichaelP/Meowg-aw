@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>
+
+	<body>
+	<!-------------web banner/header--------------->
+		<%- include('partials/banner.ejs') %>
+
+		<!-------------Donation--------------->
+		<div class="donate">
+			<div class="wrapper1">
+				<div class="donate-text">
+					<h1>Donate Now</h1>
+					<p class="intro">MeowgAw is not only a pet-adoption site, but a non-profit organization dedicated to the well-being of stray animals at UP Visayas. Our mission is to contribute positively to the lives of abandoned, abused, injured, and neglected animals in the locality. However, this is only possible with people like you, who share our love for animals.</p>
+					<div class="wrapper">
+						<div class="container">
+							<span class="num" data-val="2000">0000</span>
+							<span class="text">Rescued Animals</span>
+						</div>
+						<div class="container">
+            				<span class="num" data-val="120000">000000</span>
+            				<span class="text">Weekly Expenses</span>
+        				</div>
+    				</div>
+    				<p class="outro">Every contribution matters, no matter how big or small. Your donations go directly toward the care and well-being of our rescued furry friends. There's nothing more rewarding than seeing these animals smile and sleep soundly after a good meal, knowing that you've played a part in their journey to a better life.</p>
+				</div>
+				<div class="donation-form">
+					<h2>Advocates for Strays</h2>
+					<p class="subtitle">Join us in being an Advocate for Strays and help us give these animals a second chance at a happy and healthy life.</p>
+					<form id="msform">
+	  				<!-- progressbar -->
+	  					<ul id="progress-list">
+							<li class="progress-item current-item">
+								<span class="progress-label">Amount</span>
+							</li>
+							<li class="progress-item">
+								<span class="progress-label">My Info</span>
+							</li>
+							<li class="progress-item">
+								<span class="progress-label">Payment</span>
+							</li>
+							<li class="progress-item">
+								<span class="progress-label">Confirm</span>
+							</li>
+						</ul>
+					</form>
+					<form>
+						<h3>ONE-TIME</h3>
+						<div class="value">
+							<button class="money-btn" id="money-btn" onclick=" showContent('1000'); return false;">₱1000</button>
+							<button class="money-btn" id="money-btn" onclick="showContent('750'); return false;">₱750</button>
+							<button class="money-btn" id="money-btn" onclick="showContent('500'); return false;">₱500</button>
+							<button id="otherAmountButton">Other Amount</button>
+						</div>
+						<div class="TextContainer">
+							<div id="text1000" style="display: none;">
+								<p> <i class="fa-solid fa-paw" style="color: #ffffff;"></i> Can help provide essential care for rescued animals <i class="fa-solid fa-paw" style="color: #ffffff;"></i></p>
+							</div>
+							<div id="text750" style="display: none;">
+								<p> <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i> Can help cover medical expenses for our furry friends <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i></p>
+							</div>
+							<div id="text500" style="display: none;">
+								<p> <i class="fa-solid fa-house" style="color: #ffffff;"></i> Can help provide food and shelter for homeless pets <i class="fa-solid fa-house" style="color: #ffffff;"></i></p>
+							</div>
+							<div id="inputFieldContainer" class="input-field" style="display: none;">
+        						<input type="text" id="inputField" placeholder="Amount in Peso">
+    						</div>
+						</div>
+						<h4>We Accept:</h4>
+						<div class="accept-img"><img src="pics/group3.png" height="20px"/></div>
+						<a href="/donate-myinfo" id="DonateButton" onclick="proceedToMyInfo()">DONATE</a>
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+        
+
+		<!-------------footer--------------->
+		<%- include('partials/footer.ejs') %>
+	
+		<!--------------scripts-------------->
+		<%- include('partials/scripts.ejs') %>
+	</body>
+</html>
