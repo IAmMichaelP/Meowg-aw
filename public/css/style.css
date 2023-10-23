@@ -946,7 +946,6 @@ footer{
     width: 11px; 
 }
 /***************about us*******************/
-
 .abt-banner{
 	height: 100%;
 	padding-top: 55px;
@@ -971,10 +970,13 @@ footer{
 }
 
 .abt-content {
-	padding: 120px 10% 70px 10%;
-	height: 90vh;
-    display: flex;
-    justify-content: space-between;
+	padding: 70px 100px;
+	min-height: 100vh;
+}
+
+.abt-content-wrapper{
+	display: flex;
+	margin: 0 auto;
 }
 
 .misvis {
@@ -1002,6 +1004,10 @@ footer{
     transition: all 0.55s ease;
 }
 
+.misvis-btn:focus{
+	outline: none;
+}
+
 .misvis-btn:hover{
     font-size: 35px;
     font-weight: 600;
@@ -1022,18 +1028,64 @@ footer{
 }
 
 .content-container h2{
-	color: var(--darkgreen);
+	color: #566f64;
     font-size: 30px;
     font-weight: 600;	
 }
 
 .content-container p{
 	line-height: 1.5;
-	color: var(--darkgreen);
+	color: #566f64;
 	font-size: 14px;
 	padding: 20px 0;
 }
 
+/**Team members**/
+.membersContent{
+	padding: 20px 0;
+}
+
+.members-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+.member{
+	text-align: center;
+	margin: 15px;
+	width: 215px;
+	min-width: 200px;
+	height: auto;
+	padding: 15px;
+}
+
+.member img{
+	display: flex;
+	margin: 0 auto;
+	height: 175px;
+	width: 175px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.member p{
+	padding: 10px 0 0 0;
+}
+
+.member .socials-icon{
+	padding-top: 10px;
+}
+
+.member .socials-icon i{
+	margin: 0 5px;
+	color: var(--darkgreen);
+}
+
+.member .socials-icon i:hover{
+	color: var(--darkpink);
+}
 
 /***************flexibility*******************/
 
