@@ -4,6 +4,7 @@
 <script src="js/hide-warning.js"></script>
 <% if (statusCode > 200 && statusCode < 500) { %>
     <script>
-        openPopup('login-popup')
+        openPopup('login-popup');
+        signinError();
     </script>
 <% } %>
