@@ -39,7 +39,7 @@ function displayDescModal(stray) {
           <p>Name: ${stray.name}</p>
           <p>Gender: ${stray.gender}</p>
           <p>Breed: ${stray.breed}</p>
-          <p>Age: ${stray.age}</p><br>
+          <p>Status: ${stray.status}</p><br>
         </div>
       </div>
 

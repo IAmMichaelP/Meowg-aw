@@ -76,21 +76,22 @@
                     <label for="username">Username</label><br>
                     <div class="input-container">
                         <i class='icon bx bx-user'></i>
-                        <input type="text" id="username" name="username" required><br>
+                        <input type="text" class="usernameSi" id="username" name="username" required><br>
                     </div>
 
                     <label for="email">Email Address</label><br>
                     <div class="input-container">
                         <i class='icon bx bx-envelope'></i>
-                        <input type="email" id="email" name="email" required><br>
+                        <input type="email" class="emailSi" id="email" name="email" required><br>
                     </div>
 
                     <label for="password">Password</label><br>
                     <div class="input-container">
                         <i class='icon bx bx-lock-alt'></i>
-                        <input type="password" id="password" name="password" required><br>
+                        <input type="password" class="passwordSi" id="password" name="password" required><br>
                     </div>
                 </div>
+                <p class="warning signin-warning hide-warning">Password and email do not match!</p>
 
                 <button type="submit" class="submit">Sign In</button>
                 <a href="#" class="forgot">Forgot Password?</a>
