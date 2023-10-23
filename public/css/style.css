@@ -8,6 +8,7 @@
     --pink: #f1c5b7;
     --lightpink: #ffdcd1;
     --darkgreen: #566f64;
+	--darkergreen: #3e534a;
     --green: #6d897a;
     --lightgreen: #a6d0ac;
 }
@@ -1322,5 +1323,61 @@ footer{
 	margin-top:530px;
 	font-size:12px;
 	letter-spacing:0;
+}
+
+/**faqs**/
+.faq{
+    margin-top: 70px;
+    background: linear-gradient(245.59deg, #ffdcd1 0%, #f1c5b7 28.53%, #a96357 75.52%);
+    padding: 80px 170px;
+}
+
+.faq-list {
+    background-color:transparent;
+    cursor: pointer;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    transition: 0.4s;
+    color: white;
+}
+
+.FAQs h1{
+    font-size: 50px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.FAQs hr{
+    margin: 10px 0;
+    outline: none;
+    color: white;
+}
+
+.active, .faq-list:hover {
+    opacity: 0.5;
+}
+
+.faq-list:after {
+    content: '\2304';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;   
+}
+
+.active:after {
+    content: "\2303";   
+}
+
+.panel {
+    font-size: 15px;
+    padding: 0 18px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    color: white;
 }
 

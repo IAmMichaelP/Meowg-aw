@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>	
+
+	<body>
+	    <!-------------header--------------->
+	    <%- include('partials/banner.ejs') %>
+
+        <!-------------body--------------->
+        <div class="faq">
+
+			<div class="FAQs">
+				<h1>FAQs</h1>
+
+				<h3 class="faq-list">Lorem ipsum dolor sit amet. Ut quia distinctio quo suscipit tempora?</h3>
+			    <div class="panel">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    </div>
+
+			    <hr>
+
+			    <h3 class="faq-list">Sit minima voluptatem non autem libero est eius dolores est aperiam?</h3>
+			    <div class="panel">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    </div>
+
+			    <hr>
+
+			    <h3 class="faq-list">Et incidunt dolor et sunt eius sed natus maiores?</h3>
+			    <div class="panel">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    </div>
+
+			    <hr>
+				
+				<h3 class="faq-list">Lorem ipsum dolor sit amet?</h3>
+			    <div class="panel">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    </div>
+			    <hr>
+
+			    <h3 class="faq-list">Lorem ipsum dolor sit amet. Ut quia distinctio quo suscipit tempora?</h3>
+			    <div class="panel">
+			        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			    </div>
+			    <hr>
+    		</div>
+    		</div>	
+		</div>
+
+    	<!-------------footer--------------->
+
+		<%- include('partials/footer.ejs') %>
+
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/galleryscript.js"></script>
+        <script src="js/faqscript.js"></script>
+		<script src="js/hide-warning.js"></script>
+		<% if (statusCode > 200 && statusCode < 500) { %>
+			<script>
+				openPopup('login-popup')
+			</script>
+		<% } %>
+	</body>
+</html>
