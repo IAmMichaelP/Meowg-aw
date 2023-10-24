@@ -39,6 +39,12 @@ const upload = multer({storage: storage});
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+app.post('/adopt', (req, res) =>{
+    console.log("ADOPTINGGGG");
+    console.log(req.body);
+    res.send("adopted");
+})
+
 app.get('/', (req, res) =>{
     const parsedUrl = url.parse(req.originalUrl);
     const queryString = parsedUrl.search || '';
@@ -180,13 +186,6 @@ app.get('/faqs', (req, res) =>{
     const queryString = parsedUrl.search || '';
     const statusCode = queryString ? 302 : 200;
     res.render('faqs', { title: 'FAQs', statusCode: statusCode });
-})
-
-app.get('/donate', (req, res) =>{
-    const parsedUrl = url.parse(req.originalUrl);
-    const queryString = parsedUrl.search || '';
-    const statusCode = queryString ? 302 : 200;
-    res.render('donate', { title: 'DONATE', statusCode: statusCode });
 })
 
 app.use((req, res) => {
