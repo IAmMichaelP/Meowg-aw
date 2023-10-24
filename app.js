@@ -195,6 +195,27 @@ app.get('/donate', (req, res) =>{
     res.render('donate', { title: 'DONATE', statusCode: statusCode });
 })
 
+app.get('/donate-myinfo', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('donate', { title: 'DONATE', statusCode: statusCode });
+})
+
+app.get('/donate-payment', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('donate', { title: 'DONATE', statusCode: statusCode });
+})
+
+app.get('/donate-confirm', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('donate', { title: 'DONATE', statusCode: statusCode });
+})
+
 app.use((req, res) => {
         res.render('404');
 })
