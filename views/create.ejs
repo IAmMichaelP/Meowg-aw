@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head.ejs') %>
-    <style>
-        /* input{
-            display: none;
-        } */
-    </style>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MeowgAw</title> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<!---------------favicon----------------->
+		<link rel="shortcut icon" type="image/png" href="/pics/icon.png">
+		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+		<link rel= "stylesheet" href="/css/style.css">
+		<link rel= "stylesheet" href="/css/userstyle.css">
+	</head>
 <body>
     
     <header id="header" class="header">
@@ -26,35 +32,36 @@
     
     <div class="create-wrapper">
         <div class="create-content">
-            <!--<div class="create-stray content">-->
             <h2>Surrender/sumbit a stray</h2>
-            <div class="create-stray">
-                <form action="/create" method="POST" enctype="multipart/form-data">
-                    <label for="name">name:</label>
-                    <input type="text" id="name" name="name" required>
+            <!--<div class="create-stray content">-->
+            <div class="create-stray content">
+                <form action="/create" method="POST">
+                    <label for="name">name:</label><br>
+                    <input type="text" id="name" name="name" required><br>
                     <label for="input-file">Upload Image</label>
                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" name="input-file"><br>
-                    <!-- <label for="imgSrc">ImgSrc:</label>
-                    <input type="text" id="imgSrc" name="imgSrc" required> -->
-                    <label for="age">age:</label>
-                    <input type="number" name="age" required>
-                    <label for="breed">breed:</label>
-                    <input type="text" name="breed" required>
-                    <label for="gender">gender:</label>
-                    <input type="text" name="gender" required>
-                    <label for="animal">animal:</label>
-                    <input type="text" name="animal" required>
-                    <label for="surrenderDate">surrenderDate:</label>
-                    <input type="date" name="surrenderDate" required>
-                    <label for="status">status:</label>
-                    <input type="text" name="status" required>
-                    <label for="story">story:</label>
-                    <input type="text" name="story" required>
+                    <label for="age">age:</label><br>
+                    <input type="number" name="age" required><br>
+                    <label for="breed">breed:</label><br>
+                    <input type="text" name="breed" required><br>
+                    <label for="gender">gender:</label><br>
+                    <input type="text" name="gender" required><br>
+                    <label for="animal">animal:</label><br>
+                    <input type="text" name="animal" required><br>
+                    <label for="surrenderDate">surrenderDate:</label><br>
+                    <input type="date" name="surrenderDate" required><br>
+                    <label for="status">status:</label><br>
+                    <input type="text" name="status" required><br>
+                    <label for="story">story:</label><br>
+                    <input type="text" name="story" required><br>
                     
-                    <button>Submit</button>
-                </form>
+                    <button class="submitStray">Submit</button>
+                </form>        
             </div>
-        </div>
+        <div>
     </div>
+
+    <!--------------scripts-------------->
+	<%- include('partials/scripts.ejs') %>
 </body>
 </html>
