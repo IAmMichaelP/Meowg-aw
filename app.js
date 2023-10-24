@@ -188,6 +188,13 @@ app.get('/faqs', (req, res) =>{
     res.render('faqs', { title: 'FAQs', statusCode: statusCode });
 })
 
+app.get('/donate', (req, res) =>{
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('donate', { title: 'DONATE', statusCode: statusCode });
+})
+
 app.use((req, res) => {
         res.render('404');
 })
