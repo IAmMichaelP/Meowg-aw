@@ -51,23 +51,24 @@ function displayDescModal(stray) {
       <h3>Interested in adopting ${stray.name}?</h3>
 
       <form action="/adopt" method="POST">
+        <input type="hidden" name="strayId" value="${stray._id}">
         <label for="name">Full Name</label>
-        <input type="text" id="name" name="fullname">
+        <input type="text" id="name" name="fullname" required>
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
         <label for="reason">Reason for Adoption</label>
-        <input type="text" id="reason" name="reason">
+        <input type="text" id="reason" name="reason" required>
 
         <label for="interviewModes">Preferred Interview Mode:</label>
           <div id="interviewModes">
-            <input type="radio" id="f2f" name="interviewMode" value="face-to-face">
+            <input type="radio" id="f2f" name="interviewMode" value="face-to-face" required>
             <label for="f2f">Face-to-Face</label><br>
-            <input type="radio" id="zoom" name="interviewMode" value="zoom">
+            <input type="radio" id="zoom" name="interviewMode" value="zoom" required>
             <label for="zoom">Zoom</label>
           </div>
 
         <label for="schedule">Preferred Interview Schedule:</label>
-        <input type="date" id="schedule" name="interviewSchedule">
+        <input type="date" id="schedule" name="interviewSchedule" required>
         <button class="adoptButton" type="submit">Adopt ${stray.name}</button>
       </form>
     </div>

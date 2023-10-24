@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const adoptSchema = new Schema({
     fullname: {
         type: String,
         required: true
@@ -29,8 +29,12 @@ const userSchema = new Schema({
         type: String,
         required: true
 
+    },
+    strayId: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Adopt = mongoose.model('Adopt', adoptSchema);
+module.exports = Adopt;
