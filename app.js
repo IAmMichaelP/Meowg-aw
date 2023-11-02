@@ -5,6 +5,7 @@ const User = require('./models/user');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const url = require('url');
+const Adopt = require('./models/adopt');
 
 const path = require('path');
 const fsExtra = require('fs-extra');
@@ -40,9 +41,25 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/adopt', (req, res) =>{
-    console.log("ADOPTINGGGG");
-    console.log(req.body);
-    res.send("adopted");
+    const adopt = new Adopt(req.body);
+    Stray.findById(adopt.strayId)
+        .then(result => {
+            result.status = "evaluation for adoption ongoing";
+            console.log("1");
+            const stray = new Stray(result);
+            adopt.strayName = stray.name;
+            console.log("2");
+            stray.save()
+                .then(() => {
+                    console.log("3")
+                    return adopt.save()
+                })
+                .then(() => {
+                    console.log("4");
+                    res.redirect("/gallery");
+                })
+        })
+        .catch(err => {console.error(err);});
 })
 
 app.get('/', (req, res) =>{
@@ -133,7 +150,6 @@ app.post('/create', upload.single('input-file'), (req, res) =>{
 
 
 app.post('/signup', async (req, res) => {
-    console.log('signing up...');
     try{
         
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
