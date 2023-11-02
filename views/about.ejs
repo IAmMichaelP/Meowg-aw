@@ -18,21 +18,23 @@
 	<!-------------content-------------->
 	<div class="about reveal">
 		<section class="abt-banner">
-			<div class="abt-banner-content">
-				<h1>About Us</h1>
-				<h3>Our Story</h3>
-				<p>Founded in 2023, MeowgAw began as a shared dream among a group of passionate students who believed that every pet deserves a loving home. 
-                    Witnessing the challenges faced by numerous pets in need and recognizing the compassionate individuals within our campus community, 
-                    our website emerged to bridge this gap.
+			<div class="abt-banner-container">
+				<div class="abt-banner-content">
+					<h1>About Us</h1>
+					<h3>Our Story</h3>
+					<p>Founded in 2023, MeowgAw began as a shared dream among a group of passionate students who believed that every pet deserves a loving home. 
+	                    Witnessing the challenges faced by numerous pets in need and recognizing the compassionate individuals within our campus community, 
+	                    our website emerged to bridge this gap.
 
-					In the heart of our university, we were deeply moved by the plight of these animals, often abandoned and struggling to survive.
-					
-					Today, our pet adoption website stands as a testament to what can be achieved when people come together with a common purpose. 
-					Stray dogs and cats now have a better chance at a brighter future, and the lives of countless families have been enriched by their four-legged companions.</p>
-			</div>
+						In the heart of our university, we were deeply moved by the plight of these animals, often abandoned and struggling to survive.
+						
+						Today, our pet adoption website stands as a testament to what can be achieved when people come together with a common purpose. 
+						Stray dogs and cats now have a better chance at a brighter future, and the lives of countless families have been enriched by their four-legged companions.</p>
+				</div>
 
-			<div class="abt-banner-content">
-				<img src="pics/icon2.png">
+				<div class="abt-banner-content">
+					<img src="pics/icon2.png">
+				</div>
 			</div>
 		</section>
 
@@ -42,9 +44,9 @@
 	        
 			    <div class="misvis">
 			        <div class="button-container">
-						<button class="misvis-btn active" onclick="showContent('mission')">Mission</button>
+						<button class="misvis-btn toggled" onclick="showContent('mission')">Mission</button>
 						<button class="misvis-btn" onclick="showContent('vision')">Vision</button>
-						<button class="misvis-btn" onclick="showContent('members')">Team Members</button>
+						<button class="misvis-btn" onclick="showContent('members')">Developers</button>
 			        </div>
 
 			        <div class="content-container">
@@ -66,8 +68,8 @@
 			            </div>
 
 			            <div id="membersContent" style="display: none;">
-			                <h2>Team Members</h2>
-			                <p>This is our Team Members.</p>
+			                <h2>Developers</h2>
+			                <p>The team behind MeowgAw.</p>
 
 			                <div class="members-wrapper">
 								<div class="member">
@@ -135,6 +137,8 @@
 
 
 		<!--------------scripts-------------->
-		<%- include('partials/scripts.ejs') %>
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
 	</body>
 </html>
