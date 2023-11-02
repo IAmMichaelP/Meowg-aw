@@ -2,66 +2,128 @@
 
 <html lang="en" dir="ltr">
 
-	<%- include('partials/head.ejs') %>
+    <%- include('partials/head.ejs') %> 
 
-	<body>
-	<!-------------header--------------->
-	<%- include('partials/banner.ejs') %>
+    <body>
+        <!-------------header--------------->
+        <%- include('partials/banner.ejs') %>
 
-		<!-------------content-------------->
-        <div class="blogs-reveal">
-            <div class="blogs-content">
-                <h1>Furparent Guide 101</h1>
-                <h3>New or experienced, our guide is here to help you become the best furparent.</h3>
-            </div>
-            <div class="chapter1">
-                <div class="vid1">
-                    <iframe width="270" height="150" src="https://www.youtube.com/embed/uYlWoeL8rP8?si=bC4DMIRiB4c4R6JD"></iframe>
+        <!-------------content-------------->
+        
+        <div class="blog-content">
+
+            <div class="blog-container">
+
+                <div class="blog-title">
+                    <img class="furparent" src="pics/blogs/fur.png">
+                    <h3>New or experienced, our guide is here to help you become the best furparent.</h3>
                 </div>
-                <h3>Chapter 1: Choosing the Right Fur Baby</h3>
-            </div>
-            <div class="chapter2">
-                <div class="vid2">
-                    <iframe width="270" height="150" src="https://www.youtube.com/embed/ukxcwSZYUGY?si=JSqhdBkgPilzKoYX"></iframe>
+
+                <div class="blog-vidsection">
+
+                    <div class="blog-vid section1">
+
+                        <div class="vid-container">
+                            <div class="vid">
+                                <iframe class="vid-content" width="270px" src="https://www.youtube.com/embed/uYlWoeL8rP8?si=bC4DMIRiB4c4R6JD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <h3>Chapter 1: Choosing the Right Fur Baby</h3>
+                        </div>
+
+                        <div class="vid-container">
+                            <div class="vid">
+                                <iframe class="vid-content" width="270px" src="https://www.youtube.com/embed/ukxcwSZYUGY?si=JSqhdBkgPilzKoYX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <h3>Chapter 2: Preparing your Home</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="blog-vid section2">
+                        <div class="vid-container">
+                            <div class="vid">
+                                <iframe class="vid-content" width="490px" height="330px" src="https://www.youtube.com/embed/YayqoREztgw?si=LoxOdILl7HwshUGx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <h3>Chapter 0: Pet Adoption Process</h3>
+                        </div>
+                    </div>
+
+                    <div class="blog-vid section3">
+                        <div class="vid-container">
+                        <div class="vid">
+                                <iframe class="vid-content" width="270px" src="https://www.youtube.com/embed/ycaPHaHAjes?si=fsyjH6x-oaCcboHH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <h3>Chapter 3: Grooming and Hygiene</h3>
+                        </div>
+
+                        <div class="vid-container">
+                            <div class="vid">
+                                <iframe class="vid-content" width="270px" src="https://www.youtube.com/embed/LFJitHhfV9I?si=dZ-OUeyQ9g6WckB_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <h3>Chapter 4: Love and Affection</h3>
+                        </div>
+                    </div>
                 </div>
-                <h3>Chapter 2: Preparing your Home</h3>
             </div>
-            <div class="chapter3">
-                <div class="vid3">
-                    <iframe width="270" height="150" src="https://www.youtube.com/embed/ycaPHaHAjes?si=fsyjH6x-oaCcboHH"></iframe>
+
+            <div class="article-section">
+
+                <div class="read-this-next">
+                    <h1>READ THESE ARTICLES</h1>
                 </div>
-                <h3>Chapter 3: Grooming and Hygiene</h3>
-            </div>
-            <div class="chapter4">
-                <div class="vid4">
-                    <iframe width="270" height="150" src="https://www.youtube.com/embed/LFJitHhfV9I?si=dZ-OUeyQ9g6WckB_"></iframe>
+
+                <div class="article">
+                    <div>
+                        <a href="https://www.bestfriendspetcare.com/news-tips/pet-adoption-everything-you-need-to-know"> <img class="article-image" src="pics/blogs/article1.jpg"></a>
+                    </div>
+                    
+                    <div class="article-text">
+                        <a class="article-title" href="https://www.bestfriendspetcare.com/news-tips/pet-adoption-everything-you-need-to-know">Adopting Pets</a>
+                        <br>
+                        <small>by <a class="blog-username" href="#">User1</a></small>
+                        <br>
+                        <br>
+
+                        <a class="article-description" href="https://www.bestfriendspetcare.com/news-tips/pet-adoption-everything-you-need-to-know">Learn about the various adoption options, from shelters and rescues to breed-specific organizations. Whether you're a first-time pet owner or a seasoned pro, this article offers valuable insights to ensure a smooth and rewarding adoption experience.</a>
+                    </div>
                 </div>
-                <h3>Chapter 4: Love and Affection</h3>
-            </div>
-            <div class="chapter0">
-                <div class="vid0">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YayqoREztgw?si=LoxOdILl7HwshUGx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                <div class="article">
+                    <div>
+                        <a href="https://www.nationalgeographic.com/animals/mammals/facts/domestic-dog"> <img class="article-image" src="pics/blogs/article2.jpg"> </a>
+                    </div>
+                    <div class="article-text">
+                        <a class="article-title" href="https://www.nationalgeographic.com/animals/mammals/facts/domestic-dog">All About Dogs</a>
+                        <br>
+                        <small>by <a class="blog-username" href="#">User1</a></small>
+                        <br>
+                        <br>
+                        <a class="article-description" href="https://www.nationalgeographic.com/animals/mammals/facts/domestic-dog">Get insights into dog behavior, training tips, and health considerations to ensure your four-legged friend leads a happy and healthy life. Whether you're a seasoned dog owner or simply a dog enthusiast, this article offers a delightful exploration of our canine friends, reminding us why they truly are "man's best friend."</a>
+                    </div>
                 </div>
-                <h3>Chapter 0: Pet Adoption Process</h3>
+
+                <div class="article">
+                    <div>
+                        <a href="https://www.companionanimalpsychology.com/p/all-about-cats.html"> <img class="article-image" src="pics/blogs/article3.jpg"> </a>
+                    </div>
+                    <div class="article-text">
+                        <a class="article-title"href="https://www.companionanimalpsychology.com/p/all-about-cats.html">All About Cats</a>
+                        <br>
+                        <small>by <a class="blog-username" href="#">User1</a></small>
+                        <br>
+                        <br>
+                        <a class="article-description" href="https://www.companionanimalpsychology.com/p/all-about-cats.html">Gain insights into cat behavior, care, and health considerations to ensure your feline friend enjoys a happy and thriving life. Whether you're a devoted cat owner or simply curious about these graceful creatures, this article provides a delightful journey into the world of cats, celebrating their status as one of the most beloved and beguiling companions in the animal kingdom.</a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-		<!-------------footer--------------->
-		<%- include('partials/footer.ejs') %>
+        <!-------------footer--------------->
+        <%- include('partials/footer.ejs') %>
 
 
-		<!--------------scripts-------------->
-		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="js/sliderscript.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/galleryscript.js"></script>
-		<script src="js/hide-warning.js"></script>
-		<% if (statusCode > 200 && statusCode < 500) { %>
-			<script>
-				openPopup('login-popup')
-			</script>
-		<% } %>
-
-	</body>
-
+        <!--------------scripts-------------->
+        <%- include('partials/scripts.ejs') %>
+    </body>
 </html>
