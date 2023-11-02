@@ -18,34 +18,7 @@
 	<body>
 
 		<!-------------header--------------->
-		<header id="header" class="header">
-			<a href="/" class="logo"><img src="/pics/logo.png" id="logopic"></a>
-
-			<ul class="navlist">
-           		<li><a href="/">Home</a></li>
-            	<li><a href="/gallery">Gallery</a></li>
-            	<li><a href="/about">About Us</a></li>
-            	<li><a href="/blogs">Blogs</a></li>
-    		</ul>
-
- 
-			<div class="user-account">
-				 <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
-				 <p class="username" onclick="openPopup()"><%= user.username %></p>
-			</div>
-
-			<div class="bx bx-menu" id="menu-icon">
-			</div>
-
-		</header>
-
-		<!------------dropdown when profile is clicked-------------->
-		<div id="profile-modal" class="profile-popup">
-		    <div class="profile-dropdown">
-		        <button class="profile" onclick="location.href='/user-profile'">Profile</button>
-		        <button class="logout-button" onclick="location.href='/'">Log Out</button>
-		    </div>
-		</div>
+		<%- include('./partials/logged/banner.ejs') %>
 
 		<!------------body---------------->
 		<div class="container">

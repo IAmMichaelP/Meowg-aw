@@ -123,7 +123,19 @@
         <%- include('partials/footer.ejs') %>
 
 
-        <!--------------scripts-------------->
-        <%- include('partials/scripts.ejs') %>
-    </body>
+		<!--------------scripts-------------->
+		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="js/sliderscript.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/galleryscript.js"></script>
+		<script src="js/hide-warning.js"></script>
+        <script src="/js/userscript.js"></script>
+		<% if (statusCode > 200 && statusCode < 500) { %>
+			<script>
+				openPopup('login-popup')
+			</script>
+		<% } %>
+
+	</body>
+
 </html>
