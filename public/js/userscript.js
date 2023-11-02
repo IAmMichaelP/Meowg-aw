@@ -2,16 +2,17 @@
 window.addEventListener('click', function(event) {
     var modal = document.getElementById('profile-modal');
     if (event.target == modal) {
-        closePopup('profile-modal');
+        closePop('profile-modal');
     }
 });
 
-function openPopup() {
+
+function openPop() {
     var modal = document.getElementById('profile-modal');
     modal.style.display = 'block';
 }
 
-function closePopup(popupId) {
+function closePop(popupId) {
     var popup = document.getElementById(popupId);
     popup.style.display = 'none';
 }

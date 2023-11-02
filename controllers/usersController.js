@@ -1,5 +1,13 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const maxAge = 1 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, 'kmjs holdings secret payload', {
+        expiresIn: maxAge
+    });
+}
 
 module.exports.signup_post = async (req, res) => {
     try{
@@ -7,7 +15,9 @@ module.exports.signup_post = async (req, res) => {
         const user = new User({ username: req.body.username, email: req.body.email, password: hashedPassword });
         user.save()
             .then((result) => {
-                res.redirect('/admin/' + user._id)
+                const token = createToken(user._id);
+                res.cookie('jwt', token, { maxAge: maxAge * 1000 })
+                    .redirect('/admin/' + user._id)
             })
             .catch((err) => {
                 res.status(500).send()
@@ -32,7 +42,9 @@ module.exports.signin_post = async (req, res) => {
             return; // If no match, redirect and exit the function
         }
         if (await bcrypt.compare(req.body.password, match[0].password)) {
-            res.redirect('/admin/' + match[0]._id)
+            const token = createToken(match[0]._id);
+            res.cookie('jwt', token, { maxAge: maxAge * 1000 })
+                .redirect('/admin/' + match[0]._id)
         } else {
             res.status(400).redirect(redirection+'?redirect=true');
         }
@@ -51,3 +63,8 @@ module.exports.user_get = (req, res) => {
             console.log(err);
         });
 };
+
+module.exports.logout_get = (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 })
+        .redirect('/');
+}

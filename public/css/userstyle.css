@@ -117,7 +117,7 @@ header{
 .admin-searchBar{
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	z-index: 999;
-	height: ;
+	height: auto;
 	margin: 0 auto;
 	border-radius: 10px;
 	outline: none;

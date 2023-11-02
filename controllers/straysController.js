@@ -2,6 +2,7 @@ const Stray = require('../models/stray');
 const Adopt = require('../models/adopt');
 const path = require('path');
 const fsExtra = require('fs-extra');
+const url = require('url');
 
 module.exports.adopt_post = (req, res) => {
     const adopt = new Adopt(req.body);
@@ -26,7 +27,10 @@ module.exports.adopt_post = (req, res) => {
 };
 
 module.exports.upload_get = (req, res) => {
-    res.render('create', { title: 'CREATE' });
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('create', { title: 'CREATE', statusCode: statusCode });
 };
 
 module.exports.upload_post = (req, res) => {

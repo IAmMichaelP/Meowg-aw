@@ -3,6 +3,7 @@ const { Router } = require('express');
 const straysController = require('../controllers/straysController');
 const path = require('path');
 const fsExtra = require('fs-extra');
+const { requireAuth } = require('../middlewares/authMiddleware');
 
 // defining storage 
 let folderPath = 'public/pics';
@@ -21,7 +22,7 @@ const upload = multer({storage: storage});
 const router = Router();
 
 router.post('/adopt', straysController.adopt_post);
-router.get('/create', straysController.upload_get);
+router.get('/create', requireAuth, straysController.upload_get);
 router.post('/create', upload.single('input-file'), straysController.upload_post);
 
 module.exports = router;
