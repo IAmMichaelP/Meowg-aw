@@ -32,5 +32,5 @@ app.use(donateRoutes);
 app.use(straysRoutes);
 
 app.use((req, res) => {
-        res.render('404');
+    res.render('404');
 })

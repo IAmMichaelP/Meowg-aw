@@ -119,47 +119,6 @@ function displayStrayData() {
   });
 }
 
-// for filtering strays
-function showStrayData(category) {
-
-    // keep buttons active when clicked
-    document.getElementById('allBtn').classList.remove('active');
-    document.getElementById('catBtn').classList.remove('active');
-    document.getElementById('dogBtn').classList.remove('active');
-    document.getElementById('otherBtn').classList.remove('active');
-    
-    document.getElementById(category + 'Btn').classList.add('active');
-
-    const container = document.querySelector('.strayContainer');
-    const storedStrayData = retrieveStrayData();
-
-    // clear content
-    container.innerHTML = '';
-
-    // filter the stray data based on the category
-    const filteredStrayData = category === 'all' ? storedStrayData : storedStrayData.filter(stray => stray.animal === category);
-
-    // display the filtered stray data
-    filteredStrayData.forEach((stray, index) => {
-        const strayBox = document.createElement('div');
-        strayBox.classList.add('strayBox');
-        strayBox.setAttribute('data-index', index + 1);
-        strayBox.setAttribute('data-name', stray.name);
-
-        const img = document.createElement('img');
-        img.src = stray.imgSrc;
-
-        const p = document.createElement('p');
-        p.textContent = stray.name;
-
-        strayBox.addEventListener('click', () => displayDescModal(stray));
-
-        strayBox.appendChild(img);
-        strayBox.appendChild(p);
-        container.appendChild(strayBox);
-    });
-}
-
 // Call functions to store, retrieve, and display stray data
 // storeStrayData();
 displayStrayData();
@@ -197,11 +156,15 @@ function showStrayData(category) {
       const p = document.createElement('p');
       p.textContent = stray.name;
 
+      const heartIcon = document.createElement('i');
+      heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
+
       strayBox.addEventListener('click', () => displayDescModal(stray));
 
       strayBox.appendChild(img);
       strayBox.appendChild(p);
       container.appendChild(strayBox);
+      strayBox.appendChild(heartIcon);
   });
 }
 

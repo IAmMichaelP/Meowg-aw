@@ -22,22 +22,19 @@ sr.reveal('.infosection h2', {delay: 200, origin:'top'});
 sr.reveal('.infosection', {delay: 500, origin:'left'});
 sr.reveal('.slider-container h2', {delay: 100, origin:'top'});
 sr.reveal('.wrapper', {delay: 70, origin:'left'});
-sr.reveal('.reveal', {
-    interval: 130, 
-    origin: 'top' 
-});
+sr.reveal('.reveal', {interval: 130, origin: 'top'});
 
 // ABOUT PAGE
 function showContent(section) {
     const buttons = document.querySelectorAll('.misvis-btn');
 
-    // Remove 'active' class from all buttons
+    // Remove 'toggled' class from all buttons
     buttons.forEach(button => {
-        button.classList.remove('active');
+        button.classList.remove('toggled');
     });
 
-    // Add 'active' class to the clicked button
-    event.currentTarget.classList.add('active');
+    // Add 'toggled' class to the clicked button
+    event.currentTarget.classList.add('toggled');
 
     document.getElementById('missionContent').style.display = 'none';
     document.getElementById('visionContent').style.display = 'none';
@@ -45,8 +42,8 @@ function showContent(section) {
 
     if (section === 'mission') {
         document.getElementById('missionContent').style.display = 'block';
-        document.querySelector('.misvis-btn.active').classList.remove('active');
-        event.currentTarget.classList.add('active');
+        document.querySelector('.misvis-btn.toggled').classList.remove('toggled');
+        event.currentTarget.classList.add('toggled');
     } else if (section === 'vision') {
         document.getElementById('visionContent').style.display = 'block';
     } else if (section === 'members') {
@@ -56,7 +53,7 @@ function showContent(section) {
 
 // Initially show the "Mission" content and activate the button
 document.getElementById('missionContent').style.display = 'block';
-document.querySelector('.misvis-btn[onclick="showContent(\'mission\')"]').classList.add('active');
+document.querySelector('.misvis-btn[onclick="showContent(\'mission\')"]').classList.add('toggled');
 
 // POP UPS
 // Show and hide popups
