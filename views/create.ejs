@@ -1,35 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>MeowgAw</title> 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-		<!---------------favicon----------------->
-		<link rel="shortcut icon" type="image/png" href="/pics/icon.png">
-		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-		<link rel= "stylesheet" href="/css/style.css">
-		<link rel= "stylesheet" href="/css/userstyle.css">
-	</head>
-<body>
-    
-    <header id="header" class="header">
-        <a href="index.html" class="logo"><img src="pics/logo.png" id="logopic"></a>
 
-        <div class="admin-searchBar">
-            <input type="search" placeholder="Search...">
-            <button type="submit"><i class="fas fa-search"></i></button>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MeowgAw</title> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <!---------------favicon----------------->
+        <link rel="shortcut icon" type="image/png" href="/pics/icon.png">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel= "stylesheet" href="/css/style.css">
+        <link rel= "stylesheet" href="/css/userstyle.css">
+    </head>
+
+    <body>
+
+        <!-------------header--------------->
+        <header id="header" class="header">
+            <a href="/" class="logo"><img src="/pics/logo.png" id="logopic"></a>
+
+            <ul class="navlist">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+            </ul>
+
+ 
+            <div class="user-account">
+                 <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
+                 <p class="username" onclick="openPopup()"><%= user.username %></p>
+            </div>
+
+            <div class="bx bx-menu" id="menu-icon">
+            </div>
+
+        </header>
+
+        <!------------dropdown when profile is clicked-------------->
+        <div id="profile-modal" class="profile-popup">
+            <div class="profile-dropdown">
+                <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
+                <button class="logout-button" onclick="location.href='/'">Log Out</button>
+            </div>
         </div>
 
-
-        <div class="user-account">
-             <img src="pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPopup()">
-             <p class="username" onclick="openPopup()">Username</p>
-        </div>
-
-    </header>
-    
     <div class="create-wrapper">
         <div class="create-content">
             <h2>Surrender/sumbit a stray</h2>

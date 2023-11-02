@@ -164,6 +164,7 @@ function showStrayData(category) {
       strayBox.appendChild(img);
       strayBox.appendChild(p);
       container.appendChild(strayBox);
+      strayBox.appendChild(heartIcon);
   });
 }
 

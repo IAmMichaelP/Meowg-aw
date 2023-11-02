@@ -96,7 +96,10 @@ app.get('/about', (req, res) =>{
 })
 
 app.get('/create', (req, res) =>{
-    res.render('create', { title: 'CREATE' });
+    const parsedUrl = url.parse(req.originalUrl);
+    const queryString = parsedUrl.search || '';
+    const statusCode = queryString ? 302 : 200;
+    res.render('create', { title: 'CREATE', statusCode: statusCode });
 });
 
 app.get('/admin/:id', (req, res) =>{
@@ -144,14 +147,11 @@ app.post('/create', upload.single('input-file'), (req, res) =>{
         .catch(error => {
             console.error('Error renaming the file:', error);
         });
-    
-    
 })
 
 
 app.post('/signup', async (req, res) => {
     try{
-        
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = new User({ username: req.body.username, email: req.body.email, password: hashedPassword });
         user.save()
@@ -233,5 +233,5 @@ app.get('/donate-confirm', (req, res) =>{
 })
 
 app.use((req, res) => {
-        res.render('404');
+    res.render('404');
 })

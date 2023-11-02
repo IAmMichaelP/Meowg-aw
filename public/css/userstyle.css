@@ -105,6 +105,7 @@ header{
 	margin: 5px 0;
 	color: white;
 	text-transform: uppercase;
+	font-size: 16px;
 	font-weight: bold;
 	transition: all 0.5s ease;
 }
@@ -175,7 +176,7 @@ header{
 	transition: all 0.3s ease;
 	border-radius: 20px;
 	display: flex;
-	margin: 0 auto;
+	margin: 15px auto;
 }
 
 .add-stray:hover{
@@ -184,6 +185,46 @@ header{
 	border: 1px solid var(--darkpink);
 }
 
+/***user content***/
+
+.dash-container{
+	padding: 10px;
+	border: 3px solid #a96357;
+	border-radius: 20px;
+	margin: 0 25px;
+	display: flex;
+}
+
+.dash-image{
+	padding-right: 30px;
+}
+
+.dash-image img{
+	width: 130px;
+	height: 130px;
+	object-fit: cover;
+}
+
+.dash-info{
+	width: 680px;
+}
+
+.dash-info p{
+	line-height: 0;
+}
+
+.crud-btns button{
+	font-size: 15px;
+	font-weight: bold;
+	background-color: transparent;
+	border: none;
+	margin: 0 5px;
+	transition: all ease 0.5s;
+}
+
+.crud-btns button:hover{
+	color: var(--green);
+}
 /************user***************/
 .user-img img{
 	border: 3px solid var(--darkpink);
