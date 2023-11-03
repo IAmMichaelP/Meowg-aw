@@ -71,7 +71,7 @@ header{
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 1000;
+	z-index: 1005;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -316,6 +316,7 @@ header{
 	background-attachment: fixed;
 	background-size: cover;
     align-items: center;
+    position: relative;
 }
 
 .menu::before {
@@ -946,31 +947,32 @@ footer{
 	background: linear-gradient(245.59deg, #ffdcd1 0%, #f1c5b7 28.53%, #a96357 75.52%);
 	display: flex;
 	color: white;
-	margin-top: 75px;
+	margin-top: 70px;
 	height: 100%;
 }
 
 .abt-banner-container{
 	display: flex;
+	overflow: hidden;
 }
 
 .abt-banner-content{
-	flex: 1;
 	padding: 60px 30px 60px 100px;
 	height: 100%;
-	width: 55%;
+	width: 50%;
 }
 
 .abt-banner-image{
 	flex: 1;
-	width: 45%;
+	overflow: hidden;
+	width: 50%;
 	height: 100%;
 	background: white;
 	background-image: url('../pics/bg/1.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	transform: skew(-6deg);
+	transform: skew(-5deg);
 }
 
 .abt-banner-content h1{
@@ -1033,20 +1035,20 @@ footer{
     border-bottom: 4px solid black;
 }
 
-.content-container {
+.abt-content-container {
 	text-align: justify;
 	position: relative;
     flex-grow: 1;
     width: 800px;
 }
 
-.content-container h2{
+.abt-content-container h2{
 	color: var(--darkergreen);
     font-size: 33px;
     font-weight: 600;	
 }
 
-.content-container p{
+.abt-content-container p{
 	line-height: 1.5;
 	color: var(--darkergreen);
 	font-size: 15px;

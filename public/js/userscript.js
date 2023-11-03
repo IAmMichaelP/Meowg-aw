@@ -1,16 +1,32 @@
 // script for admin-dashboard and user profile
+// Initialize arrow state
+let arrowState = "down";
+
+function toggleArrow() {
+    const arrowElement = document.getElementById('dropdown-arrow');
+
+    if (arrowState === "down") {
+        arrowElement.classList.add('fa-rotate-180'); // Add the fa-rotate-180 class for an upward arrow
+        arrowState = "up";
+    } else {
+        arrowElement.classList.remove('fa-rotate-180'); // Remove the fa-rotate-180 class for a downward arrow
+        arrowState = "down";
+    }
+}
+
+function toggleModal() {
+    var modal = document.getElementById('profile-modal');
+    modal.style.display = 'block';
+    toggleArrow(); 
+}
+
 window.addEventListener('click', function(event) {
     var modal = document.getElementById('profile-modal');
     if (event.target == modal) {
         closePop('profile-modal');
+        toggleArrow();
     }
 });
-
-
-function openPop() {
-    var modal = document.getElementById('profile-modal');
-    modal.style.display = 'block';
-}
 
 function closePop(popupId) {
     var popup = document.getElementById(popupId);
@@ -25,11 +41,13 @@ buttons.forEach(button => {
     button.addEventListener('click', () => {
         const contentToShow = button.getAttribute('data-content');
 
-        buttons.forEach(btn => btn.classList.remove('active'));
-        contentDivs.forEach(contentStray => contentStray.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('show'));
+        contentDivs.forEach(contentStray => contentStray.classList.remove('show'));
 
-        button.classList.add('active');
-        document.getElementById(`content-${contentToShow}`).classList.add('active');
+        button.classList.add('show');
+        document.getElementById(`content-${contentToShow}`).classList.add('show');
     });
 });
 
+
+//ARROW BESIDE USERNAME
