@@ -902,13 +902,13 @@ footer{
 
 .categoryButtons {
 	z-index: 999;
-    	position: absolute;
-    	top: 350px;
-    	width: 40vw;
-    	display: flex;
-    	justify-content: space-around;
-    	left: 50%;
-    	transform: translateX(-50%);
+    position: absolute;
+    top: 350px;
+    width: 40vw;
+    display: flex;
+    justify-content: space-around;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .categoryButtons button{
@@ -943,8 +943,8 @@ footer{
 /***************about us*******************/
 
 .abt-banner{
-	background-color: red;
-	background: linear-gradient(245.59deg, #ffdcd1 0%, #f1c5b7 28.53%, #a96357 75.52%);
+	background: rgb(166,208,172);
+	background: linear-gradient(180deg, rgba(166,208,172,1) 9%, rgba(109,137,122,1) 43%, rgba(86,111,100,1) 77%, rgba(62,83,74,1) 100%);
 	display: flex;
 	color: white;
 	margin-top: 70px;
@@ -963,16 +963,25 @@ footer{
 }
 
 .abt-banner-image{
-	flex: 1;
-	overflow: hidden;
+	position: relative;
 	width: 50%;
 	height: 100%;
 	background: white;
-	background-image: url('../pics/bg/1.jpg');
+	background-image: url('../pics/bg/4.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	transform: skew(-5deg);
+}
+
+.abt-banner-image::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background: rgb(169,99,87);
+	background: linear-gradient(320deg, rgba(169,99,87,0.7) 0%, rgba(195,148,215,0.7) 40%, rgba(241,197,183,0.5) 70%, rgba(86,111,100,0.6) 95%);
 }
 
 .abt-banner-content h1{
@@ -1104,44 +1113,109 @@ footer{
 }
 
 /**contact us**/
+
 .contact-us{
+	background-image: url('../pics/bg/3.jpg');
 	padding: 30px 100px;
-	background-color: var(--pink);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	position: relative;
+	background-size: cover;
+	z-index: 1;
+}
+
+.contact-us::before{
+	position: absolute;
+	content: "";
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background: linear-gradient(rgba(209, 139, 119, 0.60), rgba(186, 109, 94, 0.60), rgba(136, 68, 55, 0.60));
 }
 
 .contact-us .contact-title{
-	font-size: 45px;
+	font-size: 55px;
+	text-transform: uppercase;
 	font-weight: bold;
-	color: var(--darkergreen);
+	color: #fff;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .contact-us h1{
-	padding-top: 15px;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	color: #fff;
+	padding: 15px 0;
+}
+
+.contact-us p{
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	color: #fff;
+}
+
+.contact-us-wrapper{
+	display: flex;
 }
 
 .contact-send-message{
-	margin-bottom: 40px;
+	flex:1;
+	margin: 0 40px 40px 0;
 }
 
-.embed-map{
-	margin-top: 10px;
-	width: 100%;
-	height: 350px;
+.contact-icons{
+	margin: 35px 0;
+}
+
+.contact-icons i{
+	padding: 4px;
+	margin: 5px;
+	border-radius: 50%;
+	font-size: 28px;
+	color: var(--green);
+	background-color: white;
+	transition: all ease 0.5s;
+}
+
+.contact-icons i:hover{
+	background-color: var(--green);
+	color: white;
+}
+
+.contact-form-container{
+	flex: 1;
+	margin-left: 40px;
 }
 
 .contact-form input{
-	width: 300px;
+	height: 35px;
+	border: 1px solid black;
+	border-radius: 10px;
+	opacity: 0.7;
+	width: 450px;
+	padding: 0 15px;
+	font-size: 15px;
+}
+
+.contact-form textarea{
+	font-size: 15px;
+	padding: 10px 15px;
+	border: 1px solid black;
+	border-radius: 10px;
+	opacity: 0.7;
+	width: 450px;
 }
 
 .contact-form{
 	margin-top: 10px;
 }
 
-.contact-form label{
-	text-transform: uppercase;
-	margin-top: 10px;
-	font-weight: bold;
-	font-size: 14px;
+.embed-map{
+	margin: 10px 0 0 0;
+	width: 100%;
+	height: 380px;
 }
 
 /***********************carousel****************/
@@ -1563,7 +1637,7 @@ span.text {
 .blog-container{
 	padding-top: 40px;
     height: 100%; 
-    background-image: url('../pics/bg/1.jpg');
+    background-image: url('../pics/bg/5.png');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -1579,7 +1653,7 @@ span.text {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(255, 220, 209, 0.75), rgba(241, 197, 183, 0.75), rgba(169, 99, 87, 0.75));
+    background: linear-gradient(rgba(255, 220, 209, 0.6), rgba(241, 197, 183, 0.6), rgba(169, 99, 87, 0.6));
 }
 
 
