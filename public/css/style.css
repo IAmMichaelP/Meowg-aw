@@ -967,7 +967,7 @@ footer{
 	width: 50%;
 	height: 100%;
 	background: white;
-	background-image: url('../pics/bg/1.jpg');
+	background-image: url('../pics/bg/4.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1637,7 +1637,7 @@ span.text {
 .blog-container{
 	padding-top: 40px;
     height: 100%; 
-    background-image: url('../pics/bg/1.jpg');
+    background-image: url('../pics/bg/5.png');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
