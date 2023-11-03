@@ -9,14 +9,10 @@
     --lightgreen: #a6d0ac;
 }
 
-header{
-	position: static;
-}
-
 .user-account{
 	cursor: pointer;
 	display: flex;
-	margin-right: 60px;
+	margin-right: 20px;
 	justify-content: center;
 	align-items: center;
 }
@@ -27,7 +23,7 @@ header{
 	padding: 0 0 0 15px;
 }
 
-.user-account .username:hover{
+.user-account .username:hover, .dropdown-arrow:hover{
 	color: var(--darkpink);
 }
 
@@ -83,15 +79,20 @@ header{
 	background-color: var(--darkgreen);
 }
 
+#dropdown-arrow {
+	align-content: center;
+	margin-left: 5px; 
+	transition: all ease 0.5s;
+}
 /************admin-dashboard***************/
 .container{
 	width: 100%;
+	margin-top: 75px;
 	display: flex;
 }
 
 .buttons-container{
 	padding: 30px 0;
-	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--darkgreen);
@@ -149,20 +150,22 @@ header{
     background-color: #fff;
 }
 
-.buttons-container button.active {
+.buttons-container button.show {
     color: var(--darkgreen);
     background-color: #fff;
 }
 
-.contentStray.active {
+.contentStray.show {
     display: block;
 }
 
 .contentStray {
+	width: 100%;
     display: none;
 }
 
 .content-container{
+	width: 100%;
 	padding: 30px 50px;
 }
 
@@ -206,11 +209,7 @@ header{
 }
 
 .dash-info{
-	width: 680px;
-}
-
-.dash-info p{
-	line-height: 0;
+	width: 600px;
 }
 
 .crud-btns button{
@@ -218,13 +217,14 @@ header{
 	font-weight: bold;
 	background-color: transparent;
 	border: none;
-	margin: 0 5px;
+	margin: 0 10px;
 	transition: all ease 0.5s;
 }
 
 .crud-btns button:hover{
 	color: var(--green);
 }
+
 /************user***************/
 .user-img img{
 	border: 3px solid var(--darkpink);

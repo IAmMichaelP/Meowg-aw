@@ -1,15 +1,19 @@
 <header id="header" class="header">
     <a href="/" class="logo"><img src="/pics/logo.png" id="logopic"></a>
 
-    <div class="admin-searchBar">
-        <input type="search" placeholder="Search...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </div>
-
+    <ul class="navlist">
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery">Gallery</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+    </ul>
 
     <div class="user-account">
-         <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPop()">
-         <p class="username" onclick="openPop()"><%= user.username %></p>
+        <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="toggleModal()">
+        <p class="username" onclick="toggleModal();" id="username">
+            <%= user.username %>
+            <i class="fa-solid fa-caret-down" id="dropdown-arrow"></i>
+        </p>
     </div>
 
     <div class="bx bx-menu" id="menu-icon">
