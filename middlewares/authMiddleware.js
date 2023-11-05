@@ -7,19 +7,25 @@ const app = express();
 app.use(cookieParser());
 
 const requireAuth = (req, res, next) => {
+    console.log("1");
     const token = req.cookies.jwt;
 
     // check json web token if it exists & validate it
     if (token) {
         jwt.verify(token, 'kmjs holdings secret payload', (err, decodedToken) => {
             if (err){
+                res.locals.allow = false;
                 console.log(err.message);
             } else {
+                res.locals.allow = true;
                 next();
             }
         });  
     } else {
-        res.redirect('/');
+        console.log("2");
+        res.locals.allow = false;
+        console.log(res.locals);
+        next();
     }
 }
 
