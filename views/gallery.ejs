@@ -61,6 +61,12 @@
 				openPopup('login-popup')
 			</script>
 		<% } %>
+		<script>let allow;</script>
+		<% if (allow) { %>
+			<script> allow = true; </script>
+		<% } else { %>
+			<script> allow = false; </script>
+		<% } %>
 
 	</body>
 

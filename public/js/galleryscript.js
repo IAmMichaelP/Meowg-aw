@@ -21,12 +21,14 @@ function retrieveStrayData() {
 }
 
 function displayDescModal(stray) {
+  console.log("inner desc");
   const modal = document.getElementById('descModal');
   const modalContent = document.getElementById('desc');
+  
+  const submitButton = `<button class="adoptButton" type='submit'>Adopt ${stray.name}</button>`
 
-
-  // modal content
-  modalContent.innerHTML = `
+  let strayContent =
+  `
     <div class="details-container">
       <h3>Meet ${stray.name}</h3>
 
@@ -45,8 +47,12 @@ function displayDescModal(stray) {
 
       <h4>About ${stray.name}</h4>
       <p>${stray.story}</p>
-    </div>
+    </div>`;
 
+  // checks the display when a user is logged in
+  if (allow) {
+    strayContent = strayContent +
+    `
     <div class="adoptionForm">
       <h3>Interested in adopting ${stray.name}?</h3>
 
@@ -54,8 +60,8 @@ function displayDescModal(stray) {
         <input type="hidden" name="strayId" value="${stray._id}">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="fullname" required>
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
+        <input type="hidden" name="email" value="<%= user.email %>">
+        
         <label for="reason">Reason for Adoption</label>
         <input type="text" id="reason" name="reason" required>
 
@@ -69,10 +75,24 @@ function displayDescModal(stray) {
 
         <label for="schedule">Preferred Interview Schedule:</label>
         <input type="date" id="schedule" name="interviewSchedule" required>
-        <button class="adoptButton" type="submit">Adopt ${stray.name}</button>
+        <button class="adoptButton">Adopt ${stray.name}</button>
       </form>
     </div>
     `;
+    // modal content
+    modalContent.innerHTML = strayContent;
+  } else {
+    // modal content
+    modalContent.innerHTML = '<form>' + strayContent + submitButton + '</form>';
+    // handles the adoption when adopt button is clicked
+    const adoptButton = document.querySelector('.adoptButton');
+    adoptButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      modal.style.display = 'none';
+      openPopup('login-popup');
+    });
+  }
+  
 
   modal.style.display = 'block';
 
@@ -91,6 +111,7 @@ function displayDescModal(stray) {
 }
 
 function displayStrayData() {
+  console.log("working...");
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
 
@@ -110,6 +131,7 @@ function displayStrayData() {
     heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
 
     // Handle click event to display modal
+    console.log("handler working");
     strayBox.addEventListener('click', () => displayDescModal(stray));
 
     strayBox.appendChild(heartIcon);
@@ -120,7 +142,6 @@ function displayStrayData() {
 }
 
 // Call functions to store, retrieve, and display stray data
-// storeStrayData();
 displayStrayData();
 
 // for filtering strays

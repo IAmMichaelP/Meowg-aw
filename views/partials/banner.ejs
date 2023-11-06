@@ -1,5 +1,5 @@
 <header id="header" class="header">
-    <a href="/" class="logo"><img src="pics/logo.png" id="logopic"></a>
+    <a href="/" class="logo"><img src="/pics/logo.png" id="logopic"></a>
 
     <ul class="navlist">
             <li><a href="/">Home</a></li>
@@ -11,14 +11,21 @@
     <ul class="sign">
         <% if (user) { %>
             <div class="user-account">
-                <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="openPop()">
-                <p class="username" onclick="openPop()"><%= user.username %></p>
-                <!------------dropdown when profile is clicked-------------->
-                <div id="profile-modal" class="profile-popup">
-                    <div class="profile-dropdown">
-                        <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
-                        <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
-                    </div>
+                <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="toggleModal()">
+                <p class="username" onclick="toggleModal();" id="username">
+                    <%= user.username %>
+                    <i class="fa-solid fa-caret-down" id="dropdown-arrow"></i>
+                </p>
+            </div>
+        
+            <div class="bx bx-menu" id="menu-icon">
+            </div>
+        
+            <!------------dropdown when profile is clicked-------------->
+            <div id="profile-modal" class="profile-popup">
+                <div class="profile-dropdown">
+                    <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
+                    <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
                 </div>
             </div>
         <% } else { %>
