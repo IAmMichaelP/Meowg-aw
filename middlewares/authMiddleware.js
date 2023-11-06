@@ -7,7 +7,6 @@ const app = express();
 app.use(cookieParser());
 
 const requireAuth = (req, res, next) => {
-    console.log("1");
     const token = req.cookies.jwt;
 
     // check json web token if it exists & validate it
@@ -22,9 +21,7 @@ const requireAuth = (req, res, next) => {
             }
         });  
     } else {
-        console.log("2");
         res.locals.allow = false;
-        console.log(res.locals);
         next();
     }
 }

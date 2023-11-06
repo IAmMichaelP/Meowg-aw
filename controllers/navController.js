@@ -15,7 +15,6 @@ module.exports.home_get = (req, res) => {
 };
 
 module.exports.gallery_get = (req, res) => {
-    console.log("not working");
     const parsedUrl = url.parse(req.originalUrl);
     const queryString = parsedUrl.search || '';
     Stray.find()

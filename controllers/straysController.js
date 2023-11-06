@@ -9,17 +9,13 @@ module.exports.adopt_post = (req, res) => {
     Stray.findById(adopt.strayId)
         .then(result => {
             result.status = "evaluation for adoption ongoing";
-            console.log("1");
             const stray = new Stray(result);
             adopt.strayName = stray.name;
-            console.log("2");
             stray.save()
                 .then(() => {
-                    console.log("3")
                     return adopt.save()
                 })
                 .then(() => {
-                    console.log("4");
                     res.redirect("/gallery");
                 })
         })

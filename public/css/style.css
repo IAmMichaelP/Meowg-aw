@@ -1488,7 +1488,7 @@ span.text {
 }
 #progress-list li.approved:before,
 #progress-list li.current-item:before,
-#progressbar li.approved:after, {
+#progressbar li.approved:after {
     background: #27ae60;
     color: white;
 }
