@@ -1771,3 +1771,6 @@ span.text {
 	color: var(--darkgreen);
 }
 
+.adoption-ongoing {
+	color: red;
+}

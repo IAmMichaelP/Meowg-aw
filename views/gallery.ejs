@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="categoryButtons reveal">
-			<button onclick="showStrayData('all')" id="allBtn">All</button>
+			<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>
 	    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
 	    	<button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
 	    	<button onclick="showStrayData('other')" id="otherBtn">Other</button>
@@ -36,8 +36,7 @@
 
 		<div class="galleryBody">
 
-			<!-- embedding data from backend so that it can be parsed by the front-end -->
-			<div id="straysData" data-strays='<%- JSON.stringify(strays) %>'></div>
+			
 
 			<div class="strayContainer reveal">
 				<!---content in js---->
@@ -53,9 +52,12 @@
 		<script src="https://unpkg.com/scrollreveal"></script>
 		<script src="js/sliderscript.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/galleryscript.js"></script>
+		
 		<script src="js/hide-warning.js"></script>
 		<script src="/js/userscript.js"></script>
+		
+		<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
+		<script src="js/galleryscript.js"></script>
 		<% if (statusCode > 200 && statusCode < 500) { %>
 			<script>
 				openPopup('login-popup')

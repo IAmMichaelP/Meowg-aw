@@ -9,6 +9,7 @@
     </ul>
     
     <ul class="sign">
+        <% user = JSON.parse(user) %>
         <% if (user) { %>
             <div class="user-account">
                 <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="toggleModal()">

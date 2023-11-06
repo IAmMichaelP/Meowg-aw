@@ -1,23 +1,7 @@
-// // sample stray data
-// const strayData = [
-//   { imgSrc: 'pics/cat/1.jpg', name: 'Cool Cat', type: 'cat', gender:'female', story:"Insert short story of description."},
-//   { imgSrc: 'pics/cat/2.jpg', name: 'Cute Cat', type: 'cat', gender:'female', story:"Insert short story of description."},
-//   { imgSrc: 'pics/dog/1.jpg', name: 'Cute Dog', type: 'dog', gender:'male', story:"Insert short story of description."},
-//   // can add more stray here
-// ];
 
-// // function to store stray data in localStorage
-// function storeStrayData() {
-//   localStorage.setItem('strayData', JSON.stringify(strayData));
-// }
-
-// function to retrieve stray data from localStorage
 function retrieveStrayData() {
-  const straysDataElement = document.getElementById('straysData');  
-  const straysDataString = straysDataElement.getAttribute('data-strays');
-  console.log('retrieved');
-  console.log(straysDataString);
-  return straysDataString ? JSON.parse(straysDataString) : [];
+  parsedStrayData = JSON.parse(strays);
+  return parsedStrayData ? parsedStrayData : [];
 }
 
 function displayDescModal(stray) {
@@ -41,16 +25,18 @@ function displayDescModal(stray) {
           <p>Name: ${stray.name}</p>
           <p>Gender: ${stray.gender}</p>
           <p>Breed: ${stray.breed}</p>
-          <p>Status: ${stray.status}</p><br>
+          <p id='adoptionStatus'>Status: ${stray.status}</p><br>
         </div>
       </div>
 
       <h4>About ${stray.name}</h4>
       <p>${stray.story}</p>
     </div>`;
-
+  const adoptionStatus = document.getElementById('adoptionStatus');
   // checks the display when a user is logged in
   if (allow) {
+    if(stray.status != 'evaluation for adoption ongoing') {
+    const parsedUser = JSON.parse(user);
     strayContent = strayContent +
     `
     <div class="adoptionForm">
@@ -60,7 +46,7 @@ function displayDescModal(stray) {
         <input type="hidden" name="strayId" value="${stray._id}">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="fullname" required>
-        <input type="hidden" name="email" value="<%= user.email %>">
+        <input type="hidden" name="email" value="${parsedUser.email}">
         
         <label for="reason">Reason for Adoption</label>
         <input type="text" id="reason" name="reason" required>
@@ -79,10 +65,15 @@ function displayDescModal(stray) {
       </form>
     </div>
     `;
-    // modal content
-    modalContent.innerHTML = strayContent;
+      // modal content
+      modalContent.innerHTML = strayContent;
+      } else {
+        // modal content
+        modalContent.innerHTML = strayContent;
+        adoptionStatus.classList.add('adoption-ongoing')}
   } else {
     // modal content
+    if(stray.status != 'evaluation for adoption ongoing') {
     modalContent.innerHTML = '<form>' + strayContent + submitButton + '</form>';
     // handles the adoption when adopt button is clicked
     const adoptButton = document.querySelector('.adoptButton');
@@ -90,7 +81,11 @@ function displayDescModal(stray) {
       e.preventDefault();
       modal.style.display = 'none';
       openPopup('login-popup');
-    });
+    });} else {
+      // modal content
+      modalContent.innerHTML = strayContent
+      adoptionStatus.classList.add('adoption-ongoing')
+    }
   }
   
 
@@ -114,6 +109,7 @@ function displayStrayData() {
   console.log("working...");
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
+
 
   storedStrayData.forEach((stray, index) => {
     const strayBox = document.createElement('div');
@@ -145,7 +141,8 @@ function displayStrayData() {
 displayStrayData();
 
 // for filtering strays
-function showStrayData(category) {
+function showStrayData(category, strays) {
+  console.log(strays);
 
   // keep buttons active when clicked
   document.getElementById('allBtn').classList.remove('active');

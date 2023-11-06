@@ -20,6 +20,7 @@ module.exports.gallery_get = (req, res) => {
     Stray.find()
         .then((result) => {
             const statusCode = queryString ? 302 : 200;
+            result = JSON.stringify(result);
             res.render('gallery', { title: 'GALLERY', strays: result, statusCode: statusCode });
         })
         .catch((err) => {
