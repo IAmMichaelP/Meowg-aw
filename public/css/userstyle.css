@@ -226,30 +226,155 @@
 }
 
 /************user***************/
-.user-img img{
-	border: 3px solid var(--darkpink);
-	position: absolute;
-	top: 170px;
-	left: 80px;
-	height: 210px;
-	width: 210px;
+.profile-wrapper{
+	padding: 20px 100px;
+	display: flex;
+	margin-top: 85px;
+	background: rgb(169,99,87);
+	background: linear-gradient(320deg, rgba(169,99,87,1) 0%, rgba(195,148,215,1) 30%, rgba(241,197,183,1) 51%, rgba(255,220,209,0.5) 65%, rgba(166,208,172,0.5) 85%);
+}
+
+.user-profile-banner{
+	padding: 20px 10px;
+	width: 300px;
+}
+
+
+.user-option-btns{
+	display: flex;
+	flex-direction: column;
+	margin: 15px 0;
+}
+
+.user-option-btns button{
+	flex: 1;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.3);
+	border: 2px solid #a96357;
+	margin: 5px 0;
+	width: 100%;
+	transition: all ease 0.3s;
+}
+
+.user-option-btns button:hover{
+	border: 2px solid #fff;
+	background-color: var(--darkpink);
+	color: white;
+}
+
+.user-option-btns button i{
+	margin-left: 8px;
+}
+
+.user-profile-pic{
+	height: 270px;
+	width: 270px;
 	border-radius: 50%;
-	object-fit: cover;
+	border: 4px solid #fff;
 }
 
-.banner-user-details{
+.user-profile-content{
+	padding: 20px;
+	margin-left: 20px;
+	flex: 1;
 }
 
-.profile-banner{
-	background-color: var(--lightgreen);
-	height: 200px;
+.user-content-wrapper{
+	overflow-y: auto;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	padding: 20px 30px;
+	height: 100%;
 }
 
-.user-activity{
-	height: 100vh;
-	background-color: white;
+.user-activity-btns{
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ccc;
 }
 
+.user-activity-btns button{
+	background-color: transparent;
+	border: none;
+	border-bottom: 3px solid transparent;
+	margin: 10px 20px;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 700;
+	transition: all ease 0.5s;
+}
+
+.post-blog{
+	border-bottom: 1px solid #ccc;
+}
+
+.post-blog input{
+	width: 100%;
+	margin-top: 10px;
+	font-size: 14px;
+	padding: 5px 15px;
+	border-radius: 10px;
+	outline: none;
+	border: 1px solid #ccc;
+}
+
+.post-blog textarea{
+	border: 1px solid #ccc;
+	height: 170px;
+	width: 100%;
+	margin: 10px 0;
+	font-size: 14px;
+	padding: 5px 15px;
+	border-radius: 10px;
+	outline: none;
+}
+
+.post-blog button{
+	border: 1px solid transparent;
+	padding: 5px 30px;
+	border-radius: 20px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	background-color: var(--darkgreen);
+	color: #fff;
+	transition: all ease 0.5s;
+}
+
+.post-blog button:hover{
+	color: var(--darkgreen);
+	border: 1px solid #566f64;
+	background-color: transparent;
+}
+
+.posted-blogs{
+	margin-top: 20px;
+}
+
+.user-activity-btns button:hover{
+	color: var(--darkergreen);
+	border-bottom: 3px solid #566f64;
+}
+
+.profile-submission-content button{
+	border: 1px solid transparent;
+	padding: 5px 30px;
+	border-radius: 20px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	background-color: var(--darkgreen);
+	color: #fff;
+	transition: all ease 0.5s;
+}
+
+.profile-submission-content button:hover{
+	color: var(--darkgreen);
+	border: 1px solid #566f64;
+	background-color: transparent;
+}
 /************create***************/
 .create-wrapper{
     height: 100%;

@@ -50,4 +50,19 @@ buttons.forEach(button => {
 });
 
 
-//ARROW BESIDE USERNAME
+// script for user-profile
+function showContent(section) {
+    const buttons = document.querySelectorAll('.user-profile-btns');
+    
+    document.getElementById('profile-blog-content').style.display = 'none';
+    document.getElementById('profile-submission-content').style.display = 'none';
+    document.getElementById('profile-favorites-content').style.display = 'none';
+
+    if (section === 'blogs') {
+        document.getElementById('profile-blog-content').style.display = 'block';
+    } else if (section === 'submissions') {
+        document.getElementById('profile-submission-content').style.display = 'block';
+    } else if (section === 'favorites') {
+        document.getElementById('profile-favorites-content').style.display = 'block';
+    }
+}
