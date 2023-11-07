@@ -70,5 +70,12 @@ module.exports.logout_get = (req, res) => {
 }
 
 module.exports.profile_get = (req, res) => {
-    res.render('user-profile');
+    const username = req.params.username;
+    User.findOne(username).
+        then((result) =>{
+            res.render('admin-dashboard');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
