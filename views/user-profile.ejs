@@ -18,7 +18,7 @@
     <body>
 
         <!-------------header--------------->
-		<%- include('partials/logged/banner.ejs') %>
+		<%- include('partials/banner.ejs') %>
 
         <!------------dropdown when profile is clicked-------------->
         <div id="profile-modal" class="profile-popup">
@@ -33,12 +33,13 @@
 		<div class="profile-wrapper">
 
 			<div class="user-profile-banner">
-				<img class="user-profile-pic" src="pics/stray1.jpg">
+				<img class="user-profile-pic" src="/pics/stray1.jpg">
 
 				<div class="user-profile-details">
+					<% user = JSON.parse(user); %>
 					<h1>Name</h1>
-					<h2>Username</h2>
-					<p>Email: user@gmail.com</p>
+					<h2><%= user.username %></h2>
+					<p>Email: <%= user.email %></p>
 					<p>Address: nowhere street</p>
 				</div>
 
