@@ -2,9 +2,6 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-console.log("user controller");
-
-
 // handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
@@ -49,7 +46,7 @@ const createToken = (id) => {
 module.exports.signup_post = async (req, res) => {
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const user = new User({ username: req.body.username, email: req.body.email, password: hashedPassword });
+        const user = new User({ role: req.body.role, username: req.body.username, email: req.body.email, password: hashedPassword });
         user.save()
             .then((result) => {
                 const token = createToken(user._id);
@@ -64,9 +61,7 @@ module.exports.signup_post = async (req, res) => {
     }
 };
 
-console.log("above signing");
 module.exports.signin_post = async (req, res) => {
-    console.log('inside');
     const { email, password } = req.body;
 
     try {

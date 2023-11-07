@@ -20,14 +20,6 @@
         <!-------------header--------------->
 		<%- include('partials/banner.ejs') %>
 
-        <!------------dropdown when profile is clicked-------------->
-        <div id="profile-modal" class="profile-popup">
-            <div class="profile-dropdown">
-                <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
-                <button class="logout-button" onclick="location.href='/'">Log Out</button>
-            </div>
-        </div>
-
 		<!------------user profile contents-------------->
 
 		<div class="profile-wrapper">
@@ -87,9 +79,6 @@
 		<%- include('partials/footer.ejs') %>
 
 		<!--------------scripts-------------->
-		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="js/sliderscript.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/userscript.js"></script>
+		<%- include('./partials/scripts.ejs') %>
 	</body>
 <html>

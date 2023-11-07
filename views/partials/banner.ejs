@@ -26,6 +26,8 @@
             <div id="profile-modal" class="profile-popup">
                 <div class="profile-dropdown">
                     <button class="profile" onclick="location.href='/profile/<%= user.username %>'">Profile</button>
+                    <!-- should check if the user is an admin -->
+                    <% if (user.role == 'admin') { %> <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Dashboard</button> <% } %>
                     <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
                 </div>
             </div>
@@ -48,6 +50,7 @@
                 <h3>Sign Up to MeowgAw</h3>
 
                 <div class="inputs">
+                    <input type="hidden" name="role" value="user">
                     <label for="username">Username</label><br>
                     <div class="input-container">
                         <i class='icon bx bx-user'></i>
