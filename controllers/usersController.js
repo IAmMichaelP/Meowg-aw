@@ -69,13 +69,13 @@ module.exports.logout_get = (req, res) => {
         .redirect('/');
 }
 
-module.exports.profile_get = (req, res) => {
-    const username = req.params.username;
-    User.findOne(username).
-        then((result) =>{
-            res.render('user-profile');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-};
+// module.exports.profile_get = (req, res) => {
+//     const username = req.params.username;
+//     User.findOne(username).
+//         then((result) =>{
+//             res.render('user-profile');
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// };
