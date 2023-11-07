@@ -25,7 +25,7 @@
             <!------------dropdown when profile is clicked-------------->
             <div id="profile-modal" class="profile-popup">
                 <div class="profile-dropdown">
-                    <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Profile</button>
+                    <button class="profile" onclick="location.href='/profile/<%= user.username %>'">Profile</button>
                     <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
                 </div>
             </div>
