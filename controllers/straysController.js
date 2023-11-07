@@ -25,8 +25,7 @@ module.exports.adopt_post = (req, res) => {
 module.exports.upload_get = (req, res) => {
     const parsedUrl = url.parse(req.originalUrl);
     const queryString = parsedUrl.search || '';
-    const statusCode = queryString ? 302 : 200;
-    res.render('create', { title: 'CREATE', statusCode: statusCode });
+    res.render('create', { title: 'CREATE' });
 };
 
 module.exports.upload_post = (req, res) => {

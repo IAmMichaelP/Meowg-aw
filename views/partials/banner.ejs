@@ -91,7 +91,7 @@
     <div id="login-popup" class="popup">
         <div class="popup-content" id="popup-content">
             <span class="close" onclick="closePopup('login-popup')">&times;</span>
-            <form action="/signin" method="POST">
+            <form id="login-form" action="/signin" method="POST">
                 <img src="pics/icon.png">
                 <h3>Sign into MeowgAw</h3>
 
@@ -107,14 +107,17 @@
                         <i class='icon bx bx-envelope'></i>
                         <input type="email" class="emailSi" id="email" name="email" required><br>
                     </div>
+                    <div class="email error" id="warning"></div>
 
                     <label for="password">Password</label><br>
                     <div class="input-container">
                         <i class='icon bx bx-lock-alt'></i>
                         <input type="password" class="passwordSi" id="password" name="password" required><br>
                     </div>
+                    <div class="password error" id="warning"></div>
                 </div>
                 <p class="warning signin-warning hide-warning">Password and email do not match!</p>
+                
 
                 <button type="submit" class="submit">Sign In</button>
                 <a href="#" class="forgot">Forgot Password?</a>

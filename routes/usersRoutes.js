@@ -3,6 +3,7 @@ const { Router } = require('express');
 const { requireAuth } = require('../middlewares/authMiddleware');
 
 const router = Router();
+console.log('inside router');
 
 router.post('/signup', usersController.signup_post);
 router.post('/signin', usersController.signin_post);

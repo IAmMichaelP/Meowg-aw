@@ -1,8 +1,13 @@
 .hide-warning{
     display: none !important;
 }
-.warning{
+.warning, #warning {
     color: red;
     opacity: 0.8;
     font-size: small;
+}
+
+#warning {
+    width: 100%;
+    text-align: center;
 }
