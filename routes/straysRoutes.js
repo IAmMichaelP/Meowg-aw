@@ -5,21 +5,23 @@ const path = require('path');
 const fsExtra = require('fs-extra');
 const { requireAuth } = require('../middlewares/authMiddleware');
 
-// defining storage 
+const router = Router();
+
+// this is defining the folderpath where to receive the path
 let folderPath = 'public/pics';
 let files = fsExtra.readdirSync(folderPath);
 let numberOfFiles = files.length;
+// defining the storage where the images are uploaded by the users
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, folderPath);
+      cb(null, folderPath);
     },
     filename: (req, file, cb) => {
-        cb(null, String(numberOfFiles + 1) + path.extname(file.originalname));
+      cb(null, String(numberOfFiles + 1) + path.extname(file.originalname));
     }
 });
-const upload = multer({storage: storage});
 
-const router = Router();
+const upload = multer({ storage });
 
 router.post('/adopt', straysController.adopt_post);
 router.get('/create', requireAuth, straysController.upload_get);

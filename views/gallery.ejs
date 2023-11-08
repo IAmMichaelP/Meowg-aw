@@ -17,7 +17,6 @@
     		</div>
 
 		</div>
-
 		<div class="categoryButtons reveal">
 			<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>
 	    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
@@ -56,6 +55,7 @@
 		<script src="js/hide-warning.js"></script>
 		<script src="/js/userscript.js"></script>
 		
+		<!-- top script is importing the data from the server to the client side -->
 		<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
 		<script src="js/galleryscript.js"></script>
 		<script>let allow;</script>

@@ -22,7 +22,8 @@
             <h2>Surrender/sumbit a stray</h2>
             <!--<div class="create-stray content">-->
             <div class="create-stray content">
-                <form action="/create" method="POST">
+                <!-- enctype assures the server that he is about to receive data and file so do not remove -->
+                <form action="/create" method="POST" enctype="multipart/form-data">
                     <label for="name">name:</label><br>
                     <input type="text" id="name" name="name" required><br>
                     <label for="input-file">Upload Image</label>
