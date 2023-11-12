@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Strays = require('../models/stray');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -99,9 +100,13 @@ module.exports.signin_post = async (req, res) => {
 
 module.exports.user_get = (req, res) => {
     const id = req.params.id;
+    
     User.findById(id).
-        then((result) =>{
-            res.render('admin-dashboard', { title: 'ADMIN', user: result });
+        then( async (result) =>{
+            let strays = await Strays.find();
+            strays = strays.filter(stray => stray.status == "evaluation for adoption ongoing");
+            strays = JSON.stringify(strays);
+            res.render('admin-dashboard', { title: 'ADMIN', user: result, strays: strays });
         })
         .catch((err) => {
             console.log(err);

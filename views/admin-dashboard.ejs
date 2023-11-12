@@ -60,26 +60,35 @@
 
 		        <!--strays-->
 		        <div id="content-strays" class="contentStray">
-		        	<div class="dash-container">
+					<% strays = JSON.parse(strays); console.log(strays);%>
+					<% if (strays.length > 0) {%>
+						<% strays.forEach(stray => { %>
 
-		        		<div class="dash-image">
-		        			<img src="pics/stray1.jpg">
-		        		</div>
+							<div class="dash-container">
 
-		        		<div class="dash-info">
-		        			<p>Name: </p>
-		        			<p>Age: </p>
-		        			<p>Color: </p>
-		        			<p>Breed: </p>
-		        			<p>Status: </p>
-		        		</div>
+								<div class="dash-image">
+									<img src="<%= stray.imgSrc %>">
+								</div>
+		
+								<div class="dash-info">
+									<p>Name: <%= stray.name %></p>
+									<p>Age: <%= stray.age %></p>
+									<p>Gender: <%= stray.gender %></p>
+									<p>Breed: <%= stray.breed %></p>
+									<p>Status: <%= stray.status %></p>
+								</div>
+		
+								<div class="crud-btns">
+									<button>Edit</button>
+									<button>Delete</button>
+								</div>
+		
+							</div>
 
-		        		<div class="crud-btns">
-		        			<button>Edit</button>
-		        			<button>Delete</button>
-		        		</div>
-
-		        	</div>
+						<% }) %>
+					<% } else { %>
+						<p>There are no strays to display</p>
+						<% } %>
 
 		        </div>
 
