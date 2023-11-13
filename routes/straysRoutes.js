@@ -25,6 +25,6 @@ const upload = multer({ storage });
 
 router.post('/adopt', straysController.adopt_post);
 router.get('/create', requireAuth, straysController.upload_get);
-router.post('/create', upload.single('input-file'), straysController.upload_post);
+router.post('/create', upload.single('img'), straysController.upload_post);
 
 module.exports = router;

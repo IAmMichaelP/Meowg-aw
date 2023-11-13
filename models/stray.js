@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const straySchema = new Schema({
+    imgData: {
+        type: String,
+        required: true
+    },
     imgSrc: {
         type: String,
         required: true

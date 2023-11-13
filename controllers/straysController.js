@@ -56,14 +56,31 @@ module.exports.upload_post = (req, res) => {
             // redefining the destination folder so it won't include the public folder
             destinationPath = `pics/${destinationFolder}/${newName}`;
             req.body.imgSrc = destinationPath;
-            const stray = new Stray(req.body);
-            stray.save()
-                .then((result) => {
-                    res.redirect('/gallery')
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            destinationFile = `public/pics/${destinationFolder}/${newName}`;
+            fsExtra.readFile(destinationFile, (err, data) => {
+                if (err) {
+                  console.error(err);
+                  return res.status(500).send('Error reading the file');
+                }
+                console.log("working");
+                // Convert the file content to a Base64 string
+                const imageData = data.toString('base64');
+               
+              
+                // Now you can use the imageData as needed, e.g., save it to the database
+                // or send it to the client
+                req.body.imgData = imageData;
+                const stray = new Stray(req.body);
+                stray.save()
+                    .then((result) => {
+                        res.redirect('/gallery')
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                
+              });
+            
         })
         .catch(error => {
             console.error('Error renaming the file:', error);
