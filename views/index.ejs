@@ -78,7 +78,7 @@
 							<% strays.slice(0, 10).forEach(stray => { %>
 
 								<div class="card">
-									<img src=<%= stray.imgSrc %>>
+									<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
 									<h3><%= stray.name %></h3>
 								</div>
 

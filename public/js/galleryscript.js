@@ -5,7 +5,7 @@ function retrieveStrayData() {
 }
 
 function displayDescModal(stray) {
-  console.log("inner desc");
+  var parsedImg = stray.imgData.toString('base64');
   const modal = document.getElementById('descModal');
   const modalContent = document.getElementById('desc');
   
@@ -18,7 +18,8 @@ function displayDescModal(stray) {
 
       <div class="details">
         <div class="image">
-          <img src="${stray.imgSrc}" alt="${stray.name}">
+          <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}">
+          
         </div>
 
         <div class="description">
@@ -118,7 +119,8 @@ function displayStrayData() {
     strayBox.setAttribute('data-name', stray.name);
 
     const img = document.createElement('img');
-    img.src = stray.imgSrc;
+    var parsedImg = stray.imgData.toString('base64');
+    img.src =  `data:image/png;base64,${parsedImg}`;
 
     const p = document.createElement('p');
     p.textContent = stray.name;
@@ -169,7 +171,8 @@ function showStrayData(category, strays) {
       strayBox.setAttribute('data-name', stray.name);
 
       const img = document.createElement('img');
-      img.src = stray.imgSrc;
+      var parsedImg = stray.imgData.toString('base64');
+      img.src =  `data:image/png;base64,${parsedImg}`;
 
       const p = document.createElement('p');
       p.textContent = stray.name;

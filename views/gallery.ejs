@@ -34,16 +34,6 @@
 	  	</div>
 
 		<div class="galleryBody">
-			<% strays = JSON.parse(strays); %>
-			<% strays.forEach(stray => { if(stray.imgData != null ){ %>
-
-				<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="Image">
-
-			<% }}) %>
-			<% strays = JSON.stringify(strays) %>
-			
-
-			
 
 			<div class="strayContainer reveal">
 				<!---content in js---->
