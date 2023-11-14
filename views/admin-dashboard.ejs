@@ -67,7 +67,7 @@
 							<div class="dash-container">
 
 								<div class="dash-image">
-									<img src="<%= stray.imgSrc %>">
+									<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
 								</div>
 		
 								<div class="dash-info">
