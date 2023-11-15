@@ -21,8 +21,7 @@ const requireAuth = (req, res, next) => {
             }
         });  
     } else {
-        res.locals.allow = false;
-        next();
+        res.redirect('/');
     }
 }
 

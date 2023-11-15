@@ -56,12 +56,7 @@
 		<!-- top script is importing the data from the server to the client side -->
 		<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
 		<script src="js/galleryscript.js"></script>
-		<script>let allow;</script>
-		<% if (allow) { %>
-			<script> allow = true; </script>
-		<% } else { %>
-			<script> allow = false; </script>
-		<% } %>
+		
 
 	</body>
 

@@ -47,5 +47,10 @@ const straySchema = new Schema({
     }
 }, { timestamps: true });
 
+straySchema.statics.findApprovedStrays = async function() {
+    const strays = await this.find({ status: { $ne: "pending" } });
+    return strays;
+}
+
 const Stray = mongoose.model('Stray', straySchema);
 module.exports = Stray;
