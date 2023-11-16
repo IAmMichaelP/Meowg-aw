@@ -13,7 +13,7 @@ const app = express();
 // connect to mongo database
 const dbURI = 'mongodb+srv://Miki:06422Meowgawdatabase@meowgaw.o1wmqdk.mongodb.net/';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(3000 || process.env.PORT))
+    .then((result) => app.listen(process.env.PORT || 3000))
     .catch((err) => console.log(err)); 
 
 // register view engine
