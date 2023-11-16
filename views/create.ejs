@@ -38,8 +38,16 @@
                     <input type="text" name="animal" required><br>
                     <label for="surrenderDate">surrenderDate:</label><br>
                     <input type="date" name="surrenderDate" required><br>
-                    <label for="status">status:</label><br>
-                    <input type="text" name="status" required><br>
+
+                    <% user = JSON.parse(user) %>
+                    <input type="hidden" name="uploader" value="<%= user._id %>" required><br>
+
+                    <% if (user.role == 'admin') { %>
+                        <input type="hidden" name="status" value="available for adoption" required><br>
+                    <% } else { %>
+                        <input type="hidden" name="status" value="pending" required><br>
+                    <% } %>
+
                     <label for="story">story:</label><br>
                     <textarea type="text" name="story" required></textarea><br>
                     

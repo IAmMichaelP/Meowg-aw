@@ -6,8 +6,8 @@ const router = Router();
 
 router.post('/signup', usersController.signup_post);
 router.post('/signin', usersController.signin_post);
-router.get('/admin/:id', requireAuth, usersController.user_get);
+router.get('/admin/:id', requireAuth, usersController.admin_get);
 router.get('/logout', usersController.logout_get);
-router.get('/profile/:username', requireAuth, usersController.profile_get);
+router.get('/profile/:id', requireAuth, usersController.profile_get);
 
 module.exports = router;

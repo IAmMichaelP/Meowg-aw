@@ -31,7 +31,8 @@ const adoptSchema = new Schema({
 
     },
     strayId: {
-        type: String,
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "stray",
         required: true
     }
 }, { timestamps: true });

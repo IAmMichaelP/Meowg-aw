@@ -87,33 +87,76 @@
 
 						<% }) %>
 					<% } else { %>
-						<p>There are no strays to display</p>
+						There are no strays to display
 						<% } %>
 
 		        </div>
 
 		        <!--strays-submissions-->
 		        <div id="content-submissions" class="contentStray">
-		        	<div class="dash-container">
-		        		<div class="dash-image">
-		        			<img src="pics/stray1.jpg">
-		        		</div>
+					<h3>APPROVED</h3>
+						
+						<% if (approvedStrays.length > 0) {%>
+							<% approvedStrays.forEach(stray => { %>
 
-		        		<div class="dash-info">
-		        			<p>Submitted by: </p>
-		        			<p>Name: </p>
-		        			<p>Age: </p>
-		        			<p>Color: </p>
-		        			<p>Breed: </p>
-		        			<p>Status: </p>
-		        		</div>
+								<div class="dash-container">
 
-		        		<div class="crud-btns">
-		        			<button>Approve</button>
-		        			<button>Delete</button>
-		        		</div>
+									<div class="dash-image">
+										<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+									</div>
+			
+									<div class="dash-info">
+										<p>Submitted by: <%=  %></p>
+										<p>Name: <%= stray.name %></p>
+										<p>Age: <%= stray.age %></p>
+										<p>Gender: <%= stray.gender %></p>
+										<p>Breed: <%= stray.breed %></p>
+										<p>Status: <%= stray.status %></p>
+									</div>
+			
+									<div class="crud-btns">
+										<button>View</button>
+										<button>Delete</button>
+									</div>
 
-		        	</div>
+								</div>
+							<% }) %>
+						<% } else { %>
+							There are no strays to display
+						<% } %>
+
+					<h3>PENDING</h3>
+		        	
+						<% if (pendingStrays.length > 0) {%>
+							<% pendingStrays.forEach(stray => { %>
+
+								<div class="dash-container">
+
+									<div class="dash-image">
+										<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+									</div>
+			
+									<div class="dash-info">
+										<p>Submitted by: <%= stray.uploader.username %></p>
+										<p>Name: <%= stray.name %></p>
+										<p>Age: <%= stray.age %></p>
+										<p>Gender: <%= stray.gender %></p>
+										<p>Breed: <%= stray.breed %></p>
+										<p>Status: <%= stray.status %></p>
+									</div>
+			
+									<div class="crud-btns">
+										<button>Approve</button>
+										<button>Delete</button>
+									</div>
+
+								</div>
+							<% }) %>
+						<% } else { %>
+							There are no strays to display
+						<% } %>
+
+		        	
 
 					<button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
 		        </div>

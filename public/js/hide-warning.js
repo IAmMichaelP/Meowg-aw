@@ -63,8 +63,6 @@ const passwordError = document.querySelector('.password.error');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    console.log("insideeee form submit");
-
     // reset errors
     emailError.textContent = '';
     passwordError.textContent = '';
@@ -83,14 +81,12 @@ form.addEventListener('submit', async (e) => {
             headers: {'Content-Type': 'application/json'}
         });
         const data = await res.json();
-        console.log(typeof(res));
-        console.log(res);
         if (data.errors) {
             emailError.textContent = data.errors.email;
             passwordError.textContent = data.errors.password;
         }
         if (data.user) {
-            location.assign('/');
+            location.assign('/profile/' + data.user);
         }
 
     }

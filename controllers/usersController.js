@@ -49,7 +49,7 @@ module.exports.signup_post = async (req, res) => {
             .then((result) => {
                 const token = createToken(user._id);
                 res.cookie('jwt', token, { maxAge: maxAge * 1000 })
-                    .redirect('/admin/' + user._id)
+                    .redirect('/profile/' + user._id)
             })
             .catch((err) => {
                 res.status(500).send()
@@ -72,33 +72,9 @@ module.exports.signin_post = async (req, res) => {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
-    // const email = { email: req.body.email };
-    // const reference = req.get('Referrer');
-    // const url = new URL(reference);
-    // const redirection = url.pathname;
-
-    // try {
-    //     const match = await User.find(email)
-    //     .then(result => {return result} );
-
-    //     if (match.length == 0) {
-    //         res.status(400).redirect(redirection+'?redirect=true');
-    //         return; // If no match, redirect and exit the function
-    //     }
-    //     if (await bcrypt.compare(req.body.password, match[0].password)) {
-    //         const token = createToken(match[0]._id);
-    //         res.cookie('jwt', token, { maxAge: maxAge * 1000 })
-    //             .redirect('/admin/' + match[0]._id)
-    //     } else {
-    //         res.status(400).redirect(redirection+'?redirect=true');
-    //     }
-    // } catch (err) {
-    //     const errors = handleErrors(err);
-    //     res.status(400).json({ errors });
-    // }
 };
 
-module.exports.user_get = (req, res) => {
+module.exports.admin_get = (req, res) => {
     const id = req.params.id;
     
     User.findById(id).
@@ -106,7 +82,9 @@ module.exports.user_get = (req, res) => {
             let strays = await Strays.find();
             strays = strays.filter(stray => stray.status == "evaluation for adoption ongoing");
             strays = JSON.stringify(strays);
-            res.render('admin-dashboard', { title: 'ADMIN', user: result, strays: strays });
+            const pendingStrays = await Strays.findPendingStrays();
+            const approvedStrays = await Strays.findApprovedStrays();
+            res.render('admin-dashboard', { title: 'ADMIN', user: result, strays: strays, pendingStrays: pendingStrays, approvedStrays: approvedStrays });
         })
         .catch((err) => {
             console.log(err);
@@ -118,6 +96,13 @@ module.exports.logout_get = (req, res) => {
         .redirect('/');
 }
 
-module.exports.profile_get = (req, res) => {
-    res.render('user-profile');
+module.exports.profile_get = async (req, res) => {
+    try{
+        const id = req.params.id;
+        const uploadedStrays = await Strays.findUploadedStrays(id);
+        res.render('user-profile', { uploadedStrays });
+    } catch {
+        console.log("error");
+    }
+    
 };

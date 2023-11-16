@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const User = require('./user');
 
 const straySchema = new Schema({
     imgData: {
@@ -44,11 +45,30 @@ const straySchema = new Schema({
     story: {
         type: String,
         required: true
+    },
+    uploader: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User",
+        required: true
+    },
+    validator: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User",
     }
 }, { timestamps: true });
 
 straySchema.statics.findApprovedStrays = async function() {
     const strays = await this.find({ status: { $ne: "pending" } });
+    return strays;
+}
+
+straySchema.statics.findUploadedStrays = async function(userId) {
+    const strays = await this.where("uploader").equals(`${userId}`);
+    return strays;
+}
+
+straySchema.statics.findPendingStrays = async function() {
+    const strays = await this.where("status").equals("pending").populate("uploader");
     return strays;
 }
 

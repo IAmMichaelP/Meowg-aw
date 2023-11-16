@@ -64,8 +64,36 @@
 					</div>
 
 					<div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
-						<h3>You have no submissions yet.</h3>
-						<button>Submit a stray.</button>
+						<div id="content-strays" class="contentStray"></div>
+							<% if (uploadedStrays.length == 0) { %>
+							<h3>You have no submissions yet.</h3>
+							<% } else { %>
+								<% uploadedStrays.forEach( stray => { %>
+									<div class="dash-container">
+
+										<div class="dash-image">
+											<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+										</div>
+				
+										<div class="dash-info">
+											<p>Name: <%= stray.name %></p>
+											<p>Age: <%= stray.age %></p>
+											<p>Gender: <%= stray.gender %></p>
+											<p>Breed: <%= stray.breed %></p>
+											<p>Status: <%= stray.status %></p>
+										</div>
+				
+										<div class="crud-btns">
+											<button>Edit</button>
+											<button>Delete</button>
+										</div>
+				
+									</div>
+								<% }); %>
+							<% } %>
+							<button onclick="location.href='/create'">Submit a stray.</button>
+						</div>
+
 					</div>
 
 					<div class="profile-favorites-content user-act" id="profile-favorites-content" style="display: none;">
