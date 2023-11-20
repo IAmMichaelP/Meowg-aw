@@ -83,7 +83,9 @@ module.exports.signup_post = async (req, res) => {
 };
 
 module.exports.signin_post = async (req, res) => {
-    const { email, password, faveColor, birthplace } = req.body;
+    let { email, password, faveColor, birthplace } = req.body;
+    faveColor = req.body.faveColor === '' ? undefined : req.body.faveColor;
+    birthplace = req.body.birthplace === '' ? undefined : req.body.birthplace;
     console.log("in");
     console.log(req.body);
     console.log(req.body.faveColor);

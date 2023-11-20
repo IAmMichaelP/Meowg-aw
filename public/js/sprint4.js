@@ -1,4 +1,4 @@
-console.log("Starting")
+
 const users = JSON.parse(user);
-console.log(users);
-document.body.style.backgroundColor = users.faveColor;
+
+document.body.style.backgroundColor = users.faveColor || 'rgba(166,208,172)';
