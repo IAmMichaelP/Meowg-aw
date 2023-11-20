@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<%- include('partials/head.ejs') %>	
+
+	<body>
+	<!-------------header--------------->
+	<%- include('partials/banner.ejs') %>
+
+
+		<div class="scroll-down">
+		    <a href="#footer" id="scroll-link">
+		      <i class="ri-arrow-down-line"></i>
+		    </a>
+		 </div>
+
+	<!-------------content-------------->
+	<div class="about reveal">
+		<section class="abt-banner">
+			<div class="abt-banner-container">
+				<div class="abt-banner-content">
+					<h1>About Us</h1>
+					<h3>Our Story</h3>
+					<p>Founded in 2023, MeowgAw began as a shared dream among a group of passionate students who believed that every pet deserves a loving home. 
+	                    Witnessing the challenges faced by numerous pets in need and recognizing the compassionate individuals within our campus community, 
+	                    our website emerged to bridge this gap.
+
+						In the heart of our university, we were deeply moved by the plight of these animals, often abandoned and struggling to survive.
+						
+						Today, our pet adoption website stands as a testament to what can be achieved when people come together with a common purpose. 
+						Stray dogs and cats now have a better chance at a brighter future, and the lives of countless families have been enriched by their four-legged companions.</p>
+				</div>
+
+				<div class="abt-banner-image">
+				</div>
+			</div>
+		</section>
+
+	    <div class="abt-content reveal">
+
+	    	<div class="abt-content-wrapper">
+	        
+			    <div class="misvis">
+			        <div class="button-container">
+						<button class="misvis-btn toggled" onclick="showContent('mission')">Mission</button>
+						<button class="misvis-btn" onclick="showContent('vision')">Vision</button>
+						<button class="misvis-btn" onclick="showContent('members')">Developers</button>
+			        </div>
+
+			        <div class="abt-content-container">
+			            <div id="missionContent" style="display: none;">
+			                <h2>Mission</h2>
+			                <p>To improve the lives of stray dogs and cats in our community by providing a comprehensive 
+								and compassionate pet adoption platform within our university, 
+								connecting these animals with loving, responsible owners, 
+								and fostering a culture of empathy and responsible pet ownership.</p>
+			            </div>
+
+			            <div id="visionContent" style="display: none;">
+			                <h2>Vision</h2>
+			                <p>We envision a future where every stray dog and cat within our university's vicinity finds a safe and loving forever home. 
+								Our pet adoption website will be the go-to platform for connecting prospective pet owners with these animals in need, 
+								ultimately reducing the stray population and promoting responsible pet ownership. We aim to create a more compassionate 
+								and animal-friendly society where every pet finds a loving family, and no pet is left behind.
+							</p>
+			            </div>
+
+			            <div id="membersContent" style="display: none;">
+			                <h2>Developers</h2>
+			                <p>The team behind MeowgAw.</p>
+
+			                <div class="members-wrapper">
+								<div class="member">
+									<img src="pics/members/manejo.jpg">
+									<p>Kzlyr Shaira Manejo</p>
+									<p>Contact: </p>
+									<div class="socials-icon">
+										<i class="fa-brands fa-square-facebook fa-lg" href="#"></i>
+										<i class="fa-solid fa-envelope fa-lg" href="#"></i>
+										<i class="fa-brands fa-github fa-lg" href="#"></i>
+									</div>
+									<p>Favorite Food: </p>
+									<div class="aboutusFavefood1">
+										<img src="aboutusFavefood1.png" alt="Jolly Spaghetti">
+							`		</div>
+								</div>
+		                        <div class="member">
+									<img src="pics/members/pelegrino.jpg">
+									<p>Michael Patrick Pelegrino</p>
+									<p>Contact: </p>
+									<div class="socials-icon">
+										<i class="fa-brands fa-square-facebook fa-lg" href="#"></i>
+										<i class="fa-solid fa-envelope fa-lg" href="#"></i>
+										<i class="fa-brands fa-github fa-lg" href="#"></i>
+									</div>
+									<p>Favorite Food: </p>
+									<div class="aboutusFavefood2">
+										<img src="aboutusFavefood2.png" alt="Buttered Shrimp">
+							`		</div>
+								</div>
+		                        <div class="member">
+									<img src="pics/members/tiu.jpg">
+									<p>Justin Luis Tiu</p>
+									<p>Contact: </p>
+									<div class="socials-icon">
+										<i class="fa-brands fa-square-facebook fa-lg" href="#"></i>
+										<i class="fa-solid fa-envelope fa-lg" href="#"></i>
+										<i class="fa-brands fa-github fa-lg" href="#"></i>
+									</div>
+									<p>Favorite Food: </p>
+									<div class="aboutusFavefood3">
+										<img src="aboutusFavefood3.png" alt="Fried Chicken">
+							`		</div>
+								</div>
+								<div class="teamMember4 member">
+									<img src="pics/members/tuando.jpg">
+									<p>Sharah Michelle Tuando</p>
+									<p>Contact: </p>
+									<div class="socials-icon">
+										<i class="fa-brands fa-square-facebook fa-lg" href="#"></i>
+										<i class="fa-solid fa-envelope fa-lg" href="#"></i>
+										<i class="fa-brands fa-github fa-lg" href="#"></i>
+									</div>
+									<p>Favorite Food: </p>
+									<div class="aboutusFavefood4">
+										<img src="aboutusFavefood4.png" alt="Shawarma Wrap">
+							`		</div>
+								</div>
+								<div class="member">
+									<img src="pics/members/vito.jpg">
+									<p>Ma. Christina Kane Vito</p>
+									<p>Contact: </p>
+									<div class="socials-icon">
+										<i class="fa-brands fa-square-facebook fa-lg" href="#"></i>
+										<i class="fa-solid fa-envelope fa-lg" href="#"></i>
+										<i class="fa-brands fa-github fa-lg" href="#"></i>
+									</div>
+									<p>Favorite Food: </p>
+									<div class="aboutusFavefood5">
+										<img src="aboutusFavefood5.png" alt="Carbonara">
+							`		</div>
+								</div>
+							</div>
+							<p>These talented developers have brought our vision to life, using their technical expertise to build an intuitive and user-friendly platform that connects pets in need with loving homes. 
+								They have not only created a space for these animals to find new beginnings but also crafted an efficient and secure online environment for prospective pet owners</p>
+			            </div>
+			        </div>
+			    </div>
+			 </div>
+	    </div>
+
+	    <div class="contact-us reveal">
+	    	<h1 class="contact-title">Contact Us</h1>
+
+	    	<div class="contact-us-wrapper">
+
+			    	<div class="contact-send-message">
+					    <h1>Send Us a Message</h1>
+					    <p>Have a question or need to get in touch? Fill out the form.</p>
+					    <p>Or reach us on our social media accounts.</p>
+
+					    <div class="contact-icons">
+							<a href="#"><i class="ri-instagram-fill"></i></a>
+							<a href="#"><i class="ri-youtube-fill"></i></a>
+							<a href="#"><i class="ri-facebook-circle-fill"></i></a>
+							<a href="#"><i class="ri-mail-fill"></i></a>
+						</div>
+					</div>
+
+					<div class="contact-form-container">
+					    <form class="contact-form" method="post">
+					        <input type="text" id="name" placeholder="Name..." name="name" required>
+					        <br>
+					        <br>
+					        <input type="email" id="email" placeholder="Email Address..." name="email" required>
+					        <br>
+					        <br>
+					        <textarea id="message" name="message" placeholder="Your Message..." rows="5" cols="45" required></textarea>
+					        <br>
+					        <br>
+					        <button class="button2" type="submit">Send Message</button>
+					    </form>
+					</div>
+				</div>
+
+	    	<div class="about-map">
+	    		<h1>Our location</h1>
+	    		<p>Visit us in our headquarters.</p>
+	    		<iframe class="embed-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250956.40928945362!2d121.967157125!3d10.64204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33ae5b8761c629f5%3A0x8b0a8c7844cc30cd!2sUniversity%20of%20the%20Philippines%20Visayas!5e0!3m2!1sen!2sph!4v1698933055009!5m2!1sen!2sph" allowfullscreen="" 
+	    		loading="lazy" 
+	    		referrerpolicy="no-referrer-when-downgrade"></iframe>
+	    	</div>
+	    </div>
+	<div>
+	<!-------------footer--------------->
+
+		<%- include('partials/footer.ejs') %>
+
+
+		<!--------------scripts-------------->
+		<%- include('partials/scripts.ejs') %>
+	</body>
+</html>
