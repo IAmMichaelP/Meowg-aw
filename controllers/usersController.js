@@ -6,11 +6,21 @@ const jwt = require('jsonwebtoken');
 // handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
-    let errors = { email: '', password: '' };
+    let errors = { email: '', password: '', faveColor: '', birthplace: '' };
 
     // incorrect email
     if (err.message === 'incorrect email') {
         errors.email = 'That email is not registered';
+    }
+
+    // incorrect faveColor
+    if (err.message === 'incorrect favorite color') {
+        errors.faveColor = 'That favorite color is incorrect';
+    }
+
+    // incorrect birthplace
+    if (err.message === 'incorrect birthplace') {
+        errors.birthplace = 'That birthplace is incorrect';
     }
 
     // incorrect password
@@ -42,16 +52,29 @@ const createToken = (id) => {
 }
 
 module.exports.signup_post = async (req, res) => {
+    console.log(req.body);
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const user = new User({ role: req.body.role, username: req.body.username, email: req.body.email, password: hashedPassword });
+        const user = new User({ 
+            role: req.body.role, 
+            username: req.body.username, 
+            email: req.body.email, 
+            password: hashedPassword, 
+            faveColor: req.body.faveColor, 
+            birthplace: req.body.birthplace
+        });
+        console.log(user);
+        console.log("Created");
         user.save()
             .then((result) => {
+                console.log("inside the result object");
+                console.log(result);
                 const token = createToken(user._id);
                 res.cookie('jwt', token, { maxAge: maxAge * 1000 })
                     .redirect('/profile/' + user._id)
             })
             .catch((err) => {
+                console.log(err.message);
                 res.status(500).send()
             });
     } catch {
@@ -60,10 +83,14 @@ module.exports.signup_post = async (req, res) => {
 };
 
 module.exports.signin_post = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, faveColor, birthplace } = req.body;
+    console.log("in");
+    console.log(req.body);
+    console.log(req.body.faveColor);
+    console.log("out");
 
     try {
-        const user = await User.login(email, password);
+        const user = await User.login(email, password, faveColor, birthplace);
         const token = createToken(user._id);
         res.cookie('jwt', token, { maxAge: maxAge * 1000 });
         res.status(200).json({ user: user._id });

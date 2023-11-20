@@ -59,6 +59,8 @@ function warningToggle(status, popup) {
 const form = document.querySelector('#login-form');
 const emailError = document.querySelector('.email.error');
 const passwordError = document.querySelector('.password.error');
+const faveColorError = document.querySelector('.faveColor.error');
+const birthplaceError = document.querySelector('.birthplace.error');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -66,24 +68,30 @@ form.addEventListener('submit', async (e) => {
     // reset errors
     emailError.textContent = '';
     passwordError.textContent = '';
+    faveColorError.textContent = '';
+    birthplaceError.textContent = '';
 
     // get values
     const username = form.username.value;
     const email = form.email.value;
     const password = form.password.value;
+    const faveColor = form.faveColor.value;
+    const birthplace = form.birthplace.value;
 
     console.log(username, email, password);
 
     try {
         const res = await fetch('/signin', { 
             method: 'POST', 
-            body: JSON.stringify({ username, email, password }),
+            body: JSON.stringify({ username, email, password, faveColor, birthplace }),
             headers: {'Content-Type': 'application/json'}
         });
         const data = await res.json();
         if (data.errors) {
             emailError.textContent = data.errors.email;
             passwordError.textContent = data.errors.password;
+            faveColorError.textContent = data.errors.faveColor;
+            birthplaceError.textContent = data.errors.birthplace;
         }
         if (data.user) {
             location.assign('/profile/' + data.user);
