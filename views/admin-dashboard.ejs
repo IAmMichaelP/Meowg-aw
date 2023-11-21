@@ -204,8 +204,14 @@
 		        	</div>
 		        </div>
 		    </div>
+
+		    
 		</div>
 
+		<div class="user-birthplace">
+					<% user = JSON.parse(user); %>
+					<h1>Welcome back from: <%= user.birthplace %></h1>
+		</div>
 		<!--------------scripts-------------->
 		<script src="https://unpkg.com/scrollreveal"></script>
 		<script src="/js/sliderscript.js"></script>
