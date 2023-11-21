@@ -150,8 +150,8 @@ function showStrayData(category, strays) {
   document.getElementById('allBtn').classList.remove('active');
   document.getElementById('catBtn').classList.remove('active');
   document.getElementById('dogBtn').classList.remove('active');
-  document.getElementById('snakeBtn').classList.remove('active');
   document.getElementById('fishBtn').classList.remove('active');
+  document.getElementById('snakeBtn').classList.remove('active');
   document.getElementById('otherBtn').classList.remove('active');
   
   document.getElementById(category + 'Btn').classList.add('active');
