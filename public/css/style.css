@@ -24,15 +24,15 @@
 }
 
 /*client request*/
-.aboutusFavefood1,
-.aboutusFavefood2,
-.aboutusFavefood3,
-.aboutusFavefood4,
-.aboutusFavefood5 {
-   	display: flex;
+.aboutusFavefood1 img,
+.aboutusFavefood2 img,
+.aboutusFavefood3 img,
+.aboutusFavefood4 img,
+.aboutusFavefood5 img{
+	display: flex;
 	margin: 15px auto;
-	height: 90px;
-	width: 90px;
+	height: 70px;
+	width: 70px;
 	object-fit: cover;
 }
 
