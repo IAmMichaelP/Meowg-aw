@@ -23,6 +23,19 @@
 	scroll-behavior: smooth;
 }
 
+/*client request*/
+.aboutusFavefood1 img,
+.aboutusFavefood2 img,
+.aboutusFavefood3 img,
+.aboutusFavefood4 img,
+.aboutusFavefood5 img{
+	display: flex;
+	margin: 15px auto;
+	height: 70px;
+	width: 70px;
+	object-fit: cover;
+}
+
 /***************custom button*********************/
 
 .button1{
@@ -170,7 +183,7 @@ header{
 }
 
 .popup-content form{
-	padding: 40px;
+	padding: 15px 40px;
 	color: white;
 	text-align: center;
 }
@@ -948,7 +961,7 @@ footer{
 	display: flex;
 	color: white;
 	margin-top: 70px;
-	height: 100%;
+	height: 100vh;
 }
 
 .abt-banner-container{
@@ -957,7 +970,7 @@ footer{
 }
 
 .abt-banner-content{
-	padding: 60px 30px 60px 100px;
+	padding: 80px 30px 60px 100px;
 	height: 100%;
 	width: 50%;
 }
