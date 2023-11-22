@@ -1,12 +1,13 @@
+console.log("Read from start");
 /********menu icon toggle*********/
 let menu= document.querySelector("#menu-icon");
 let navlist = document.querySelector('.navlist');
-
+console.log("4");
 menu.onclick = () =>{
     menu.classList.toggle('bx-x');
     navlist.classList.toggle('open');
 }
-
+console.log("5");
 /********transition*********/
 const sr= ScrollReveal ({
     distance: '65px',
@@ -22,7 +23,7 @@ sr.reveal('.infosection h2', {delay: 200, origin:'top'});
 sr.reveal('.infosection', {delay: 500, origin:'left'});
 sr.reveal('.slider-container h2', {delay: 100, origin:'top'});
 sr.reveal('.wrapper', {delay: 70, origin:'left'});
-sr.reveal('.reveal', {interval: 130, origin: 'top'});
+// sr.reveal('.reveal', {interval: 130, origin: 'top'});
 
 // ABOUT PAGE
 function showContent(section) {
@@ -65,6 +66,12 @@ function openPopup(popupId) {
         popup.querySelector('.popup-content').style.opacity = '1';
         popup.querySelector('.popup-content').style.transform = 'translateY(0)';
     }, 0);
+               
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            closePopup(popupId);
+        }
+    };
 }
 
 // switching pop-up
@@ -101,24 +108,6 @@ function closePopup(popupId) {
     }, 500);
 }
 
-// when clicked outside of modal
-function clickOutside(event) {
-    var popupContents = document.querySelectorAll('.popup-content');
-    for (var i = 0; i < popupContents.length; i++) {
-        if (event.target == popupContents[i]) {
-            return; 
-        }
-    }
-    var popups = document.querySelectorAll('.popup');
-    for (var i = 0; i < popups.length; i++) {
-        if (popups[i].classList.contains('show')) {
-            closePopup(popups[i].id);
-            break;
-        }
-    }
-}
-
-document.addEventListener('click', clickOutside);
 
 // HEART REACT FOR GALLERY PAGE
 // heart

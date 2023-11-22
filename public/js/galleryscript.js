@@ -35,7 +35,7 @@ function displayDescModal(stray) {
     </div>`;
   const adoptionStatus = document.getElementById('adoptionStatus');
   // checks the display when a user is logged in
-  if (allow) {
+  if (user) {
     if(stray.status != 'evaluation for adoption ongoing') {
     const parsedUser = JSON.parse(user);
     strayContent = strayContent +
