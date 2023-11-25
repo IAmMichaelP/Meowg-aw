@@ -29,14 +29,14 @@
 
 				<div class="user-profile-details">
 					<% user = JSON.parse(user); %>
-					<h1>Name</h1>
+					<h1><%= user.name %></h1>
 					<h2><%= user.username %></h2>
 					<p>Email: <%= user.email %></p>
 					<p>Address: nowhere street</p>
 				</div>
 
 				<div class="user-option-btns">
-					<button>Edit profile<i class="fa-solid fa-user"></i></button>
+					<button onclick="openPopup('edit-profile-popup')">Edit profile<i class="fa-solid fa-user"></i></button>
 					<button>Delete Account<i class="fa-solid fa-trash"></i></button>
 				</div>
 			</div>
@@ -99,6 +99,42 @@
 					<div class="profile-favorites-content user-act" id="profile-favorites-content" style="display: none;">
 						<h1>User favorite content here.</h1>
 					</div>
+
+					<div id="edit-profile-popup" class="popup">
+						<div class="popup-content" id="popup-content">
+						<span class="close" onclick="closePopup('edit-profile-popup')">&times;</span>
+						<form id="edit-profile-form" action="/profile/edit-profile/<%= user._id %>" method="PUT" enctype="multipart/form-data">
+							<div class="inputs">
+								<h3>Edit Profile</h3>
+								<label for="img">Upload Image</label>
+                    			<input type="file" accept="image/jpeg, image/png, image/jpg" id="img" name="img"><br>	
+								<label for="username">Username</label><br>
+								<div class="input-container">
+									<i class='icon bx bx-user'></i>
+									<input type="text" class="usernameSi" id="username" name="username" value="<%= user.username %>" required><br>
+								</div>
+			
+								<label for="email">Email Address</label><br>
+								<div class="input-container">
+									<i class='icon bx bx-envelope'></i>
+									<input type="email" class="emailSi" id="email" name="email" value="<%= user.email %>" required><br>
+								</div>
+								<div class="email error" id="warning"></div>
+			
+								<label for="password">Password</label><br>
+								<div class="input-container">
+									<i class='icon bx bx-lock-alt'></i>
+									<input type="password" class="passwordSi" id="password" name="password" required><br>
+								</div>
+								<div class="password error" id="warning"></div>
+							</div>
+							<p class="warning signin-warning hide-warning">Password and email do not match!</p>
+							
+			
+							<button type="submit" class="submit">Sign In</button>
+						</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -111,5 +147,6 @@
 		<script src="/js/sliderscript.js"></script>
 		<script src="/js/script.js"></script>
 		<script src="/js/userscript.js"></script>
+		<script src="/js/hide-warning.js"></script>
 	</body>
 <html>

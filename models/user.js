@@ -19,6 +19,13 @@ const userSchema = new Schema({
         type: String,
         required: true
 
+    }, 
+    profilePicture: {
+        type: String,
+    }, 
+    name: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
@@ -34,6 +41,18 @@ userSchema.statics.login = async function(email, password) {
     }
     throw Error('incorrect email');
 };
+
+userSchema.statics.uploadPic = async function(id, picture) {
+    const user = await this.findById(id);
+    if(user) {
+        try {
+            user.profilePicture = picture;
+        } catch (e) {
+            throw Error('picture upload failed');
+        }
+    }
+    throw Error('user not found');
+}
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

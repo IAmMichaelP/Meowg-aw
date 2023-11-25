@@ -1,7 +1,8 @@
 const User = require('../models/user');
-const Strays = require('../models/stray');
+const Stray = require('../models/stray');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fsExtra = require('fs-extra');
 
 // handle errors
 const handleErrors = (err) => {
@@ -44,7 +45,14 @@ const createToken = (id) => {
 module.exports.signup_post = async (req, res) => {
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const user = new User({ role: req.body.role, username: req.body.username, email: req.body.email, password: hashedPassword });
+        const user = new User({ 
+            role: req.body.role, 
+            username: req.body.username, 
+            name: req.body.username, 
+            email: req.body.email, 
+            password: hashedPassword 
+        });
+        console.log(user);
         user.save()
             .then((result) => {
                 const token = createToken(user._id);
@@ -79,12 +87,17 @@ module.exports.admin_get = (req, res) => {
     
     User.findById(id).
         then( async (result) =>{
-            let strays = await Strays.find();
+            let strays = await Stray.find();
             strays = strays.filter(stray => stray.status == "evaluation for adoption ongoing");
             strays = JSON.stringify(strays);
-            const pendingStrays = await Strays.findPendingStrays();
-            const approvedStrays = await Strays.findApprovedStrays();
-            res.render('admin-dashboard', { title: 'ADMIN', user: result, strays: strays, pendingStrays: pendingStrays, approvedStrays: approvedStrays });
+            const pendingStrays = await Stray.findPendingStrays();
+            const approvedStrays = await Stray.findApprovedStrays();
+            res.render('admin-dashboard', { 
+                title: 'ADMIN', 
+                user: result, 
+                strays: strays, 
+                pendingStrays: pendingStrays, 
+                approvedStrays: approvedStrays });
         })
         .catch((err) => {
             console.log(err);
@@ -99,10 +112,40 @@ module.exports.logout_get = (req, res) => {
 module.exports.profile_get = async (req, res) => {
     try{
         const id = req.params.id;
-        const uploadedStrays = await Strays.findUploadedStrays(id);
+        const uploadedStrays = await Stray.findUploadedStrays(id);
         res.render('user-profile', { uploadedStrays });
     } catch {
         console.log("error");
     }
     
+};
+
+module.exports.edit_profile = (req, res) => {
+    
+    try{
+        const id = req.params.id;
+
+        const folderPath = 'public/pics';
+        // readdirSync is a synchronous function that returns an array of files in that specific folder
+        const files = fsExtra.readdirSync(folderPath);
+        const numberOfFiles = files.length;
+        // lastFile points to the last file in the folder
+        const lastFile = numberOfFiles;
+        const regex = new RegExp(`^${lastFile}\.`);
+        // we are trying to save the filename of the last file
+        const filename = files.find(item => regex.test(item));
+
+        fsExtra.readFile(destinationFile, async (err, data) => {
+            if (err) {
+              console.error(err);
+              return res.status(500).send('Error reading the file');
+            }
+            console.log("working");
+            // Convert the file content to a Base64 string
+            const imageData = data.toString('base64');
+            await User.uploadPic(id, imageData);
+        })
+    } catch {
+        console.log("error");
+    }
 };
