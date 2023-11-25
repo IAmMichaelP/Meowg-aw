@@ -30,7 +30,6 @@ module.exports.upload_get = (req, res) => {
 
 // controller to be called when a post request is done on /create url
 module.exports.upload_post = (req, res) => {
-    console.log(req.body);
     // This is using multer to save images but since I can't code multer to save it to specific dog or cat folder
     // What i did was to save it to pics folder then moving it if it's cat or dog folder
     let folderPath = 'public/pics';

@@ -56,6 +56,7 @@ function warningToggle(status, popup) {
     }
 }
 
+// login form authentication method
 const form = document.querySelector('#login-form');
 const emailError = document.querySelector('.email.error');
 const passwordError = document.querySelector('.password.error');
@@ -81,6 +82,60 @@ form.addEventListener('submit', async (e) => {
             headers: {'Content-Type': 'application/json'}
         });
         const data = await res.json();
+        if (data.errors) {
+            emailError.textContent = data.errors.email;
+            passwordError.textContent = data.errors.password;
+        }
+        if (data.user) {
+            location.assign('/profile/' + data.user);
+        }
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+// edit profile form authentication method
+const editform = document.querySelector('#edit-profile-form');
+
+editform.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // reset errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    // get values
+    const img = editform.img;
+    const username = editform.username.value;
+    const email = editform.email.value;
+    const password = editform.password.value;
+
+    console.log(img);
+
+    const formData = new FormData(editform);
+    // formData.append('img', img.files[0], "workingwev");
+    // formData.append('username', username);
+    // formData.append('email', email);
+    // formData.append('password', password);
+
+    const URLencoded = new URLSearchParams(formData).toString();
+
+    console.log(URLencoded);
+
+    console.log(formData);
+    console.log(formData.username);
+    console.log(username, email, password);
+    console.log(img.files[0]);
+
+    try {
+        const res = await fetch('/profile/edit-profile', { 
+            method: "PUT", 
+            body: formData,
+        });
+        const data = await res.json();
+        console.log(`data: ${data}`);
         if (data.errors) {
             emailError.textContent = data.errors.email;
             passwordError.textContent = data.errors.password;

@@ -21,11 +21,10 @@ const userSchema = new Schema({
 
     }, 
     profilePicture: {
-        type: String,
+        type: String
     }, 
     name: {
-        type: String,
-        required: true
+        type: String
     }
 }, { timestamps: true });
 
@@ -42,16 +41,36 @@ userSchema.statics.login = async function(email, password) {
     throw Error('incorrect email');
 };
 
-userSchema.statics.uploadPic = async function(id, picture) {
-    const user = await this.findById(id);
+userSchema.statics.uploadPic = async function(user, picture) {
+    
     if(user) {
         try {
-            user.profilePicture = picture;
+            if(user.profilePicture) {
+                await User.findByIdAndUpdate(user._id, { $set: { profilePicture: picture } });
+            } else {
+                user.profilePicture = picture;
+            }
+            await user.save();
+            return "successfully uploaded";
         } catch (e) {
             throw Error('picture upload failed');
         }
     }
     throw Error('user not found');
+}
+
+userSchema.statics.defaultProfilePic = async function() {
+    const destinationFile = `public/pics/stray1.jpg`;
+    fsExtra.readFile(destinationFile, (err, data) => {
+        if (err) {
+            console.error(err);
+            throw Error('default profile picture upload failed');
+        }
+          
+        // Convert the file content to a Base64 string
+        const imageData = data.toString('base64');
+        return imageData;
+    })
 }
 
 const User = mongoose.model('User', userSchema);

@@ -120,32 +120,20 @@ module.exports.profile_get = async (req, res) => {
     
 };
 
-module.exports.edit_profile = (req, res) => {
+module.exports.edit_profile_put = async (req, res) => {
+    const imageData = req.files.img.data.toString('base64');
     
+    const { email, password } = req.body;
     try{
-        const id = req.params.id;
-
-        const folderPath = 'public/pics';
-        // readdirSync is a synchronous function that returns an array of files in that specific folder
-        const files = fsExtra.readdirSync(folderPath);
-        const numberOfFiles = files.length;
-        // lastFile points to the last file in the folder
-        const lastFile = numberOfFiles;
-        const regex = new RegExp(`^${lastFile}\.`);
-        // we are trying to save the filename of the last file
-        const filename = files.find(item => regex.test(item));
-
-        fsExtra.readFile(destinationFile, async (err, data) => {
-            if (err) {
-              console.error(err);
-              return res.status(500).send('Error reading the file');
+        const user = await User.login(email, password);
+        if (user) {
+            const upload = await User.uploadPic(user, imageData);
+            if(upload == "successfully uploaded") {
+                res.status(200).json({ user: user._id });
             }
-            console.log("working");
-            // Convert the file content to a Base64 string
-            const imageData = data.toString('base64');
-            await User.uploadPic(id, imageData);
-        })
-    } catch {
-        console.log("error");
+        }
+    } catch(err) {
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 };
