@@ -6,7 +6,6 @@ const fsExtra = require('fs-extra');
 
 // handle errors
 const handleErrors = (err) => {
-    console.log(err.message, err.code);
     let errors = { email: '', password: '', imageData: '' };
 
     // no img data found
@@ -126,10 +125,6 @@ module.exports.profile_get = async (req, res) => {
 };
 
 module.exports.edit_profile_put = async (req, res) => {
-    console.log(req.files);
-    
-    
-    
     const { email, password } = req.body;
     try{
         if (!req.files){
