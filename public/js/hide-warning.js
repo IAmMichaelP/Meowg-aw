@@ -98,6 +98,7 @@ form.addEventListener('submit', async (e) => {
 
 // edit profile form authentication method
 const editform = document.querySelector('#edit-profile-form');
+const imageDataError = document.querySelector('.imageData.error');
 
 editform.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -105,6 +106,7 @@ editform.addEventListener('submit', async (e) => {
     // reset errors
     emailError.textContent = '';
     passwordError.textContent = '';
+    imageDataError.textContent = '';
 
     // get values
     const img = editform.img;
@@ -135,10 +137,11 @@ editform.addEventListener('submit', async (e) => {
             body: formData,
         });
         const data = await res.json();
-        console.log(`data: ${data}`);
+        
         if (data.errors) {
             emailError.textContent = data.errors.email;
             passwordError.textContent = data.errors.password;
+            imageDataError.textContent = data.errors.imageData;
         }
         if (data.user) {
             location.assign('/profile/' + data.user);

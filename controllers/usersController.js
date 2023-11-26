@@ -7,7 +7,12 @@ const fsExtra = require('fs-extra');
 // handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
-    let errors = { email: '', password: '' };
+    let errors = { email: '', password: '', imageData: '' };
+
+    // no img data found
+    if (err.message === 'No image data provided') {
+        errors.imageData = 'Image data not found';
+    }
 
     // incorrect email
     if (err.message === 'incorrect email') {
@@ -121,10 +126,19 @@ module.exports.profile_get = async (req, res) => {
 };
 
 module.exports.edit_profile_put = async (req, res) => {
-    const imageData = req.files.img.data.toString('base64');
+    console.log(req.files);
+    
+    
     
     const { email, password } = req.body;
     try{
+        if (!req.files){
+            throw new Error('No image data provided');
+        } else {
+            
+            const imageData = req.files.img.data.toString('base64');
+        }
+
         const user = await User.login(email, password);
         if (user) {
             const upload = await User.uploadPic(user, imageData);
