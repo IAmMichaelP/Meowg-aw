@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const { isEmail } = require('validator');
+
 
 const userSchema = new Schema({
     username: {
@@ -13,6 +15,9 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
+        unique: true,
+        lowercase: true,
+        validate: [isEmail, 'Please enter a valid email'],
         required: true
     },
     password: {
@@ -72,6 +77,8 @@ userSchema.statics.defaultProfilePic = async function() {
         return imageData;
     })
 }
+
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

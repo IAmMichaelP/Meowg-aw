@@ -32,8 +32,8 @@
                 </div>
             </div>
         <% } else { %>
-            <li><button class="user_auth" onclick="openPopup('signin-popup')">Sign Up</button></li>
-            <li><button class="modal user_auth" onclick="openPopup('login-popup')">Sign In</button></li>
+            <li><button class="user_auth" onclick="openPopup('signin-popup'); listenForm('#signup-form')">Sign Up</button></li>
+            <li><button class="modal user_auth" onclick="openPopup('login-popup'); listenForm('#login-form')">Sign In</button></li>
         <% } %>
     </ul>
 
@@ -45,7 +45,7 @@
         <div class="popup-content" id="popup-content">
             <span class="close" onclick="closePopup('signin-popup')">&times;</span>
 
-            <form action="/signup" method="POST">
+            <form id="signup-form">
                 <img src="pics/icon.png">
                 <h3>Sign Up to MeowgAw</h3>
 
@@ -62,6 +62,7 @@
                         <i class='icon bx bx-envelope'></i>
                         <input type="email" id="email" name="email" required><br>
                     </div>
+                    <div class="email error" id="warning"></div>
 
                     <label for="password">Password</label><br>
                     <div class="input-container">
@@ -70,6 +71,7 @@
                         handleOnKeyUp('password', event);
                         " required><br>
                     </div>
+                    <div class="password error" id="warning"></div>
 
                     <label for="repassword">Re-enter Password</label><br>
                     <div class="input-container">
@@ -118,6 +120,7 @@
                         <input type="password" class="passwordSi" id="password" name="password" required><br>
                     </div>
                     <div class="password error" id="warning"></div>
+
                 </div>
                 <p class="warning signin-warning hide-warning">Password and email do not match!</p>
                 

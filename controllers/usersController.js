@@ -6,6 +6,7 @@ const fsExtra = require('fs-extra');
 
 // handle errors
 const handleErrors = (err) => {
+    console.log(err.message, err.code);
     let errors = { email: '', password: '', imageData: '' };
 
     // no img data found
@@ -30,7 +31,7 @@ const handleErrors = (err) => {
     }
 
     // validation errors
-    if (err.message.includes('user validation failed')) {
+    if (err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
         errors[properties.path] = properties.message;
         });
@@ -59,15 +60,23 @@ module.exports.signup_post = async (req, res) => {
         console.log(user);
         user.save()
             .then((result) => {
+                console.log("insideeee");
                 const token = createToken(user._id);
-                res.cookie('jwt', token, { maxAge: maxAge * 1000 })
-                    .redirect('/profile/' + user._id)
+                res.cookie('jwt', token, { maxAge: maxAge * 1000 });
+                res.status(200).json({ user: user._id });
             })
             .catch((err) => {
-                res.status(500).send()
+                // Handle mongoose validation errors
+                console.log("unable to save")
+                // console.log(err);
+                // const errors = Object.keys(err.errors).map((key) => err.errors[key].message);
+                const errors = handleErrors(err);
+                console.log(errors);
+                res.status(400).json({ errors });
             });
     } catch {
-        res.status(500).send()
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 };
 

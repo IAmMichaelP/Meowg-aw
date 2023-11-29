@@ -56,99 +56,122 @@ function warningToggle(status, popup) {
     }
 }
 
-// login form authentication method
-const form = document.querySelector('#login-form');
 const emailError = document.querySelector('.email.error');
 const passwordError = document.querySelector('.password.error');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+listenForm = (formId) => {
+    const form = document.querySelector(formId);
+    
+    console.log(form);
+    console.log(formId);
 
-    // reset errors
-    emailError.textContent = '';
-    passwordError.textContent = '';
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    // get values
-    const username = form.username.value;
-    const email = form.email.value;
-    const password = form.password.value;
+        // reset errors
+        emailError.textContent = '';
+        passwordError.textContent = '';
 
-    console.log(username, email, password);
+        // get values
+        const username = form.username.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
-    try {
-        const res = await fetch('/signin', { 
-            method: 'POST', 
-            body: JSON.stringify({ username, email, password }),
-            headers: {'Content-Type': 'application/json'}
-        });
-        const data = await res.json();
-        if (data.errors) {
-            emailError.textContent = data.errors.email;
-            passwordError.textContent = data.errors.password;
+        console.log(username, email, password);
+
+        try {
+            if (formId == "#signup-form") {
+                const role = form.role.value;
+                console.log(role);
+                const res = await fetch('/signup', { 
+                    method: 'POST', 
+                    body: JSON.stringify({ username, email, password, role }),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                
+                const data = await res.json();
+                console.log(data);
+                if (data.errors) {
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/profile/' + data.user);
+                }
+            } else {
+                const res = await fetch('/signin', { 
+                method: 'POST', 
+                body: JSON.stringify({ username, email, password }),
+                headers: {'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                if (data.errors) {
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/profile/' + data.user);
+                }
+            }
+                
         }
-        if (data.user) {
-            location.assign('/profile/' + data.user);
+        catch (err) {
+            console.log(err);
         }
+    });
+}
 
-    }
-    catch (err) {
-        console.log(err);
-    }
-});
+listenEditProfile = () => {
+    // edit profile form authentication method
+    const editform = document.querySelector('#edit-profile-form');
+    const imageDataError = document.querySelector('.imageData.error');
 
-// edit profile form authentication method
-const editform = document.querySelector('#edit-profile-form');
-const imageDataError = document.querySelector('.imageData.error');
+    editform.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-editform.addEventListener('submit', async (e) => {
-    e.preventDefault();
+        // reset errors
+        emailError.textContent = '';
+        passwordError.textContent = '';
+        imageDataError.textContent = '';
 
-    // reset errors
-    emailError.textContent = '';
-    passwordError.textContent = '';
-    imageDataError.textContent = '';
+        // get values
+        const img = editform.img;
+        const username = editform.username.value;
+        const email = editform.email.value;
+        const password = editform.password.value;
 
-    // get values
-    const img = editform.img;
-    const username = editform.username.value;
-    const email = editform.email.value;
-    const password = editform.password.value;
+        console.log(img);
 
-    console.log(img);
+        const formData = new FormData(editform);
 
-    const formData = new FormData(editform);
-    // formData.append('img', img.files[0], "workingwev");
-    // formData.append('username', username);
-    // formData.append('email', email);
-    // formData.append('password', password);
+        const URLencoded = new URLSearchParams(formData).toString();
 
-    const URLencoded = new URLSearchParams(formData).toString();
+        console.log(URLencoded);
 
-    console.log(URLencoded);
+        console.log(formData);
+        console.log(formData.username);
+        console.log(username, email, password);
+        console.log(img.files[0]);
 
-    console.log(formData);
-    console.log(formData.username);
-    console.log(username, email, password);
-    console.log(img.files[0]);
+        try {
+            const res = await fetch('/profile/edit-profile', { 
+                method: "PUT", 
+                body: formData,
+            });
+            const data = await res.json();
+            
+            if (data.errors) {
+                emailError.textContent = data.errors.email;
+                passwordError.textContent = data.errors.password;
+                imageDataError.textContent = data.errors.imageData;
+            }
+            if (data.user) {
+                location.assign('/profile/' + data.user);
+            }
 
-    try {
-        const res = await fetch('/profile/edit-profile', { 
-            method: "PUT", 
-            body: formData,
-        });
-        const data = await res.json();
-        
-        if (data.errors) {
-            emailError.textContent = data.errors.email;
-            passwordError.textContent = data.errors.password;
-            imageDataError.textContent = data.errors.imageData;
         }
-        if (data.user) {
-            location.assign('/profile/' + data.user);
+        catch (err) {
+            console.log(err);
         }
-
-    }
-    catch (err) {
-        console.log(err);
-    }
-});
+    });
+};
