@@ -57,19 +57,16 @@ module.exports.signup_post = async (req, res) => {
             email: req.body.email, 
             password: hashedPassword 
         });
-        console.log(user);
+
         user.save()
             .then((result) => {
-                console.log("insideeee");
+    
                 const token = createToken(user._id);
                 res.cookie('jwt', token, { maxAge: maxAge * 1000 });
                 res.status(200).json({ user: user._id });
             })
             .catch((err) => {
                 // Handle mongoose validation errors
-                console.log("unable to save")
-                // console.log(err);
-                // const errors = Object.keys(err.errors).map((key) => err.errors[key].message);
                 const errors = handleErrors(err);
                 console.log(errors);
                 res.status(400).json({ errors });
