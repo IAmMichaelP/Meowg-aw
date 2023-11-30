@@ -56,11 +56,10 @@ function warningToggle(status, popup) {
     }
 }
 
-const emailError = document.querySelector('.email.error');
-const passwordError = document.querySelector('.password.error');
-
 listenForm = (formId) => {
     const form = document.querySelector(formId);
+    const emailError = document.querySelector('.email.error');
+    const passwordError = document.querySelector('.password.error');
     
     console.log(form);
     console.log(formId);
@@ -124,11 +123,14 @@ listenForm = (formId) => {
 listenEditProfile = () => {
     // edit profile form authentication method
     const editform = document.querySelector('#edit-profile-form');
-    const imageDataError = document.querySelector('.imageData.error');
+    const imageDataError = document.querySelector('#image-data-error');
+    const emailError = document.querySelector('#email-error');
+    const passwordError = document.querySelector('#password-error');
+    console.log(imageDataError, emailError, passwordError);
 
     editform.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        
         // reset errors
         emailError.textContent = '';
         passwordError.textContent = '';
@@ -146,24 +148,19 @@ listenEditProfile = () => {
 
         const URLencoded = new URLSearchParams(formData).toString();
 
-        console.log(URLencoded);
-
-        console.log(formData);
-        console.log(formData.username);
-        console.log(username, email, password);
-        console.log(img.files[0]);
-
         try {
             const res = await fetch('/profile/edit-profile', { 
                 method: "PUT", 
                 body: formData,
             });
             const data = await res.json();
+            console.log(data);
             
             if (data.errors) {
                 emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password;
                 imageDataError.textContent = data.errors.imageData;
+                console.log(imageDataError, emailError, passwordError);
             }
             if (data.user) {
                 location.assign('/profile/' + data.user);

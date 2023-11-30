@@ -31,7 +31,7 @@ const handleErrors = (err) => {
     }
 
     // validation errors
-    if (err.message.includes('User validation failed')) {
+    if (err.message.includes('User validation failed') || err.message.includes('Validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
         errors[properties.path] = properties.message;
         });
@@ -131,24 +131,25 @@ module.exports.profile_get = async (req, res) => {
 };
 
 module.exports.edit_profile_put = async (req, res) => {
-    const { email, password } = req.body;
     try{
         if (!req.files){
             throw new Error('No image data provided');
         } else {
-            
             const imageData = req.files.img.data.toString('base64');
-        }
-
-        const user = await User.login(email, password);
-        if (user) {
-            const upload = await User.uploadPic(user, imageData);
-            if(upload == "successfully uploaded") {
-                res.status(200).json({ user: user._id });
+            const { email } = await User.findById(req.body.id);
+            const user = await User.login(email, req.body.password);
+            if (user) {
+                const upload = await User.uploadPic(user, imageData);
+                if(upload == "successfully uploaded") {
+                    await User.editProfile(req.body);
+                    res.status(200).json({ user: user._id });
+                }
             }
         }
+        
     } catch(err) {
         const errors = handleErrors(err);
+        console.log(errors);
         res.status(400).json({ errors });
     }
 };

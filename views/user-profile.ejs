@@ -36,7 +36,11 @@
 					<h1><%= user.name %></h1>
 					<h2><%= user.username %></h2>
 					<p>Email: <%= user.email %></p>
-					<p>Address: nowhere street</p>
+					<% if (user.address) { %> 
+						<p>Address:<%= user.address %> </p>
+					<% } else { %> 
+						<p>Address: Nowhere street</p>
+					<% } %>
 				</div>
 
 				<div class="user-option-btns">
@@ -111,13 +115,29 @@
 							<div class="inputs">
 
 								<h3>Edit Profile</h3>
+
+								<input type="hidden" name="id" value="<%= user._id %>">
+
 								<label for="img">Upload new profile picture</label>
                     			<input type="file" accept="image/*" id="img" name="img"><br>	
-								<div class="imageData error" id="warning"></div>
+								<div class="warning" id="image-data-error"></div>
+
 								<label for="username">Username</label><br>
 								<div class="input-container">
 									<i class='icon bx bx-user'></i>
 									<input type="text" class="usernameSi" id="username" name="username" value="<%= user.username %>" required><br>
+								</div>
+
+								<label for="name">Name</label><br>
+								<div class="input-container">
+									<i class='icon bx bx-user'></i>
+									<input type="text" id="name" name="name" value="<%= user.name %>" required><br>
+								</div>
+
+								<label for="address">Address</label><br>
+								<div class="input-container">
+									<i class='icon bx bx-user'></i>
+									<input type="text" id="address" name="address" value="<%= user.address %>" required><br>
 								</div>
 			
 								<label for="email">Email Address</label><br>
@@ -125,14 +145,14 @@
 									<i class='icon bx bx-envelope'></i>
 									<input type="email" class="emailSi" id="email" name="email" value="<%= user.email %>" required><br>
 								</div>
-								<div class="email error" id="warning"></div>
+								<div class="warning" id="email-error"></div>
 			
 								<label for="password">Password</label><br>
 								<div class="input-container">
 									<i class='icon bx bx-lock-alt'></i>
 									<input type="password" class="passwordSi" id="password" name="password" required><br>
 								</div>
-								<div class="password error" id="warning"></div>
+								<div class="warning" id="password-error"></div>
 
 							</div>
 							<p class="warning signin-warning hide-warning">Password and email do not match!</p>

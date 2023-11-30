@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const { isEmail } = require('validator');
 
-
 const userSchema = new Schema({
     username: {
         type: String,
@@ -30,6 +29,9 @@ const userSchema = new Schema({
     }, 
     name: {
         type: String
+    },
+    address: {
+        type: String
     }
 }, { timestamps: true });
 
@@ -54,8 +56,9 @@ userSchema.statics.uploadPic = async function(user, picture) {
                 await User.findByIdAndUpdate(user._id, { $set: { profilePicture: picture } });
             } else {
                 user.profilePicture = picture;
+                await user.save();
             }
-            await user.save();
+            
             return "successfully uploaded";
         } catch (e) {
             throw Error('picture upload failed');
@@ -76,7 +79,28 @@ userSchema.statics.defaultProfilePic = async function() {
         const imageData = data.toString('base64');
         return imageData;
     })
-}
+};
+
+userSchema.statics.editProfile = function (userData) {
+    console.log("read in edit profile")
+    console.log(userData);
+
+        return this.findByIdAndUpdate(userData.id, { 
+                $set: { 
+                    name: userData.name,
+                    email: userData.email,
+                    address: userData.address,
+                    email: userData.email
+                }
+            }, { runValidators: true, new: true })
+            .then((updateData) => console.log(updateData))
+            .catch((error) => {
+                console.log("NOT WORKING");
+                console.log(error);
+                throw error
+            })
+
+};
 
 
 
