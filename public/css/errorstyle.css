@@ -1,0 +1,104 @@
+/***************fonts*********************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --darkpink: #a96357;
+    --pink: #f1c5b7;
+    --lightpink: #ffdcd1;
+    --darkgreen: #566f64;
+	--darkergreen: #3e534a;
+    --green: #6d897a;
+    --lightgreen: #a6d0ac;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.error-wrap-container{
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  	justify-content: center;
+}
+
+.client-error-wrap{
+	position: absolute;
+	top: 20%;
+	display: flex;
+	align-self: center;
+	flex-direction: column;	
+	height: 60%;
+}
+
+.client-error-img{
+	width: 750px;
+	align-self: center;
+}
+
+.error-btn, .server-error-btn{
+	align-self: center;
+	width: 170px;
+	background: var(--darkgreen);
+	color: white;
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	outline: none;
+	border-radius: 30px;
+	font-size: 13px;
+	transition: all ease 0.5s;
+}
+
+.error-btn:hover, .server-error-btn:hover{
+	color: var(--darkgreen);
+	background-color: white;
+	border: 1px solid #566f64;
+	transform: translateX(5px);
+}
+
+.client-error-text{
+	margin: 20px;
+	width: 450px;
+	align-self: center;
+	text-align: center;
+}
+
+.client-error-text p{
+	font-size: 13px;
+}
+
+.server-error-img{
+	align-self: center;
+	width: 280px;
+	height: 280px;
+}
+
+.server-error-wrap{
+	position: absolute;
+	top: 20%;
+	height: 60%;
+	width: 750px;
+	display: flex;
+}
+
+.server-error-text{
+	align-self: center;
+	margin: 20px 30px;
+	text-align: center;
+}
+
+.server-error-text h2{
+	color: var(--darkpink);
+}
+
+.server-error-text p{
+	font-size: 13px;
+	margin: 10px 0px;
+}
+
+.server-error-btn{
+	display: flex;
+	margin: 0px auto;
+}
