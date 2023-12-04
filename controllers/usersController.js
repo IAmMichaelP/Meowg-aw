@@ -139,17 +139,14 @@ module.exports.edit_profile_put = async (req, res) => {
             const { email } = await User.findById(req.body.id);
             const user = await User.login(email, req.body.password);
             if (user) {
-                const upload = await User.uploadPic(user, imageData);
-                if(upload == "successfully uploaded") {
-                    await User.editProfile(req.body);
-                    res.status(200).json({ user: user._id });
-                }
+                await User.uploadPic(user, imageData);
+                await User.editProfile(req.body);
+                res.status(200).json({ user: user._id });
             }
         }
         
     } catch(err) {
         const errors = handleErrors(err);
-        console.log(errors);
         res.status(400).json({ errors });
     }
 };

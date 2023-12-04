@@ -58,28 +58,12 @@ userSchema.statics.uploadPic = async function(user, picture) {
                 user.profilePicture = picture;
                 await user.save();
             }
-            
-            return "successfully uploaded";
         } catch (e) {
             throw Error('picture upload failed');
         }
     }
     throw Error('user not found');
 }
-
-userSchema.statics.defaultProfilePic = async function() {
-    const destinationFile = `public/pics/stray1.jpg`;
-    fsExtra.readFile(destinationFile, (err, data) => {
-        if (err) {
-            console.error(err);
-            throw Error('default profile picture upload failed');
-        }
-          
-        // Convert the file content to a Base64 string
-        const imageData = data.toString('base64');
-        return imageData;
-    })
-};
 
 userSchema.statics.editProfile = function (userData) {
     console.log("read in edit profile")
