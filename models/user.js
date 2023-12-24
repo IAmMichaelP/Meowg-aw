@@ -65,25 +65,18 @@ userSchema.statics.uploadPic = async function(user, picture) {
     throw Error('user not found');
 }
 
-userSchema.statics.editProfile = function (userData) {
-    console.log("read in edit profile")
-    console.log(userData);
+userSchema.statics.editProfile = async function (userData) {
 
-        return this.findByIdAndUpdate(userData.id, { 
-                $set: { 
-                    name: userData.name,
-                    email: userData.email,
-                    address: userData.address,
-                    email: userData.email
-                }
-            }, { runValidators: true, new: true })
-            .then((updateData) => console.log(updateData))
-            .catch((error) => {
-                console.log("NOT WORKING");
-                console.log(error);
-                throw error
-            })
-
+    const update = await this.findByIdAndUpdate(userData.id, { 
+        $set: { 
+            profilePicture: userData.img,
+            name: userData.name,
+            email: userData.email,
+            address: userData.address,
+            email: userData.email
+        }
+    }, { runValidators: true, new: true })
+    return update;
 };
 
 

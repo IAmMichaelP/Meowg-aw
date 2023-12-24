@@ -2,7 +2,6 @@ const User = require('../models/user');
 const Stray = require('../models/stray');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const fsExtra = require('fs-extra');
 
 // handle errors
 const handleErrors = (err) => {
@@ -132,21 +131,37 @@ module.exports.profile_get = async (req, res) => {
 
 module.exports.edit_profile_put = async (req, res) => {
     try{
-        if (!req.files){
-            throw new Error('No image data provided');
-        } else {
-            const imageData = req.files.img.data.toString('base64');
-            const { email } = await User.findById(req.body.id);
-            const user = await User.login(email, req.body.password);
-            if (user) {
-                await User.uploadPic(user, imageData);
-                await User.editProfile(req.body);
-                res.status(200).json({ user: user._id });
-            }
+        // defines image data into base64 string before saving into database
+        let imageData = req.body.image;
+        if (req.files){
+           imageData = req.files.img.data.toString('base64');
         }
+        // ensures that the image data is preserved so if the user gave no img, then the default img data will remain unchanged
+        req.body.img = imageData;
+
+        // matches if the user provided its right password
+        const { password } = await User.findById(req.body.id);
+        const auth = await bcrypt.compare(req.body.password, password);
+
+        if (auth) {
+            // updating the data based from the given data of the user
+            const user = await User.editProfile(req.body);
+            res.status(200).json({ user: user._id });
+        } else {
+            throw Error('incorrect password');
+        }
+        // const user = await User.login(email, req.body.password);
+        // if (user) {
+        //     await User.uploadPic(user, imageData);
+        //     await User.editProfile(req.body);
+        //     res.status(200).json({ user: user._id });
+        // }
+            
+        
         
     } catch(err) {
         const errors = handleErrors(err);
+        console.log(err);
         res.status(400).json({ errors });
     }
 };
