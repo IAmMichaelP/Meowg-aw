@@ -33,7 +33,9 @@ function displayDescModal(stray) {
       <h4>About ${stray.name}</h4>
       <p>${stray.story}</p>
     </div>`;
+
   const adoptionStatus = document.getElementById('adoptionStatus');
+
   // checks the display when a user is logged in
   if (user) {
     if(stray.status != 'evaluation for adoption ongoing') {
@@ -111,7 +113,6 @@ function displayStrayData() {
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
 
-
   storedStrayData.forEach((stray, index) => {
     const strayBox = document.createElement('div');
     strayBox.classList.add('strayBox');
@@ -178,7 +179,7 @@ function showStrayData(category, strays) {
       p.textContent = stray.name;
 
       const heartIcon = document.createElement('i');
-      heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
+      heartIcon.classList.add('heartIcon', 'fa-regular', 'fa-heart', 'fa-lg');
 
       strayBox.addEventListener('click', () => displayDescModal(stray));
 
@@ -186,10 +187,35 @@ function showStrayData(category, strays) {
       strayBox.appendChild(p);
       container.appendChild(strayBox);
       strayBox.appendChild(heartIcon);
+
+      // Add event listener to heartIcon
+  const heartIcons = document.querySelectorAll('.fa-heart');
+  heartIcons.forEach((heartIcon) => {
+    heartIcon.addEventListener('click', (event) => {
+      const strayBox = event.target.parentElement;
+      const isLiked = strayBox.classList.contains('favorite');
+
+      if (isLiked) {
+        strayBox.classList.remove('favorite');
+        heartIcon.classList.remove('fa-solid');
+        heartIcon.classList.add('fa-regular');
+      } else {
+        strayBox.classList.add('favorite');
+        heartIcon.classList.remove('fa-regular');
+        heartIcon.classList.add('fa-solid');
+      }
+    });
+  });
   });
 }
 
 function closeDesc(popupId) {
   var popup = document.getElementById(popupId);
       popup.style.display = "none";
+}
+
+// HEART REACT FOR GALLERY PAGE
+// heart
+function toggleHeart(element) {
+  element.classList.toggle('favorite');
 }
