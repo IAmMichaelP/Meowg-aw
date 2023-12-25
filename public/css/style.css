@@ -10,6 +10,7 @@
     --darkgreen: #566f64;
 	--darkergreen: #3e534a;
     --green: #6d897a;
+
     --lightgreen: #a6d0ac;
 }
 
@@ -660,7 +661,6 @@ footer{
 }
 
 /***************gallery*******************/
-
 .galleryBanner {
 	margin-top:70px;
     display: flex;
@@ -756,20 +756,31 @@ footer{
 	border: 2px solid transparent;
 }
 
+/*heart icon*/
 .strayBox i{
 	position: absolute;
 	color: var(--darkpink);
 	padding: 10px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
 	left: 80%;
 	top: 15px;
-	transition: all ease 0.3;
+	transition: all ease 0.5s;
 	z-index: 2;
+	border: 1px solid white;
 }
 
 .strayBox i:hover{
 	background-color: white;
+	color: red;
+	transform: translateY(-3px);
+	border: 1px solid red;
+}
+
+/* Heart icon when it's filled */
+.fa-heart.filled {
+	color: red; 
+	border: 1px solid red;
 }
 
 .strayBox:hover{
