@@ -33,7 +33,9 @@ function displayDescModal(stray) {
       <h4>About ${stray.name}</h4>
       <p>${stray.story}</p>
     </div>`;
+
   const adoptionStatus = document.getElementById('adoptionStatus');
+
   // checks the display when a user is logged in
   if (user) {
     if(stray.status != 'evaluation for adoption ongoing') {
@@ -111,7 +113,6 @@ function displayStrayData() {
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
 
-
   storedStrayData.forEach((stray, index) => {
     const strayBox = document.createElement('div');
     strayBox.classList.add('strayBox');
@@ -126,15 +127,38 @@ function displayStrayData() {
     p.textContent = stray.name;
 
     const heartIcon = document.createElement('i');
-    heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
+    heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg'); // Initially regular heart
+
+    // Handle click event to change heart icon color
+    heartIcon.addEventListener('click', (event) => {
+      heartIcon.classList.toggle('filled');
+      event.stopPropagation(); // stop click event propagation
+    });
+
+    // Handle click event to toggle heart icon style and filled class
+    heartIcon.addEventListener('click', (event) => {
+      const isLiked = strayBox.classList.contains('filled');
+
+      if (isLiked) {
+        strayBox.classList.remove('filled');
+        heartIcon.classList.remove('fa-solid');
+        heartIcon.classList.add('fa-regular');
+      } else {
+        strayBox.classList.add('filled');
+        heartIcon.classList.remove('fa-regular');
+        heartIcon.classList.add('fa-solid');
+      }
+
+      event.stopPropagation(); // Stop click event propagation
+    });
 
     // Handle click event to display modal
     console.log("handler working");
     strayBox.addEventListener('click', () => displayDescModal(stray));
 
-    strayBox.appendChild(heartIcon);
     strayBox.appendChild(img);
     strayBox.appendChild(p);
+    strayBox.appendChild(heartIcon);
     container.appendChild(strayBox);
   });
 }
@@ -180,12 +204,37 @@ function showStrayData(category, strays) {
       const heartIcon = document.createElement('i');
       heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg');
 
+      // sandle click event to change heart icon color
+      heartIcon.addEventListener('click', (event) => {
+        heartIcon.classList.toggle('filled');
+        event.stopPropagation(); // stop click event propagation
+      });
+
+      // Handle click event to display modal
+      console.log("handler working");
       strayBox.addEventListener('click', () => displayDescModal(stray));
 
       strayBox.appendChild(img);
       strayBox.appendChild(p);
       container.appendChild(strayBox);
       strayBox.appendChild(heartIcon);
+
+      // Handle click event to toggle heart icon style and filled class
+      heartIcon.addEventListener('click', (event) => {
+        const isLiked = strayBox.classList.contains('filled');
+
+        if (isLiked) {
+          strayBox.classList.remove('filled');
+          heartIcon.classList.remove('fa-solid');
+          heartIcon.classList.add('fa-regular');
+        } else {
+          strayBox.classList.add('filled');
+          heartIcon.classList.remove('fa-regular');
+          heartIcon.classList.add('fa-solid');
+        }
+
+        event.stopPropagation(); // Stop click event propagation
+      });
   });
 }
 

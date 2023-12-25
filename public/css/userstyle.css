@@ -92,10 +92,12 @@
 }
 
 .buttons-container{
+	position: fixed;
 	padding: 30px 0;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--darkgreen);
+	height: 100%;
 }
 
 .buttons-container button{
@@ -165,6 +167,7 @@
 }
 
 .content-container{
+	margin-left: 240px;
 	width: 100%;
 	padding: 30px 50px;
 }
@@ -194,7 +197,7 @@
 	padding: 10px;
 	border: 3px solid #a96357;
 	border-radius: 20px;
-	margin: 0 25px;
+	margin-bottom: 15px;
 	display: flex;
 }
 
@@ -209,7 +212,7 @@
 }
 
 .dash-info{
-	width: 600px;
+	width: 100%;
 }
 
 .crud-btns button{
@@ -219,6 +222,7 @@
 	border: none;
 	margin: 0 10px;
 	transition: all ease 0.5s;
+	width: 110px;
 }
 
 .crud-btns button:hover{

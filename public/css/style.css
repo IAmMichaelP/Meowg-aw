@@ -10,6 +10,7 @@
     --darkgreen: #566f64;
 	--darkergreen: #3e534a;
     --green: #6d897a;
+
     --lightgreen: #a6d0ac;
 }
 
@@ -99,6 +100,10 @@ header{
 	display: flex;
 }
 
+.navlist{
+	margin-right: 40px;
+}
+
 .navlist a{
 	color: white;
 	margin-left: 60px;
@@ -113,7 +118,7 @@ header{
 }
 
 .sign{
-	padding-right: 50px;
+	padding-right: 0;
 }
 
 .user_auth{
@@ -656,7 +661,6 @@ footer{
 }
 
 /***************gallery*******************/
-
 .galleryBanner {
 	margin-top:70px;
     display: flex;
@@ -752,23 +756,39 @@ footer{
 	border: 2px solid transparent;
 }
 
+/*heart icon*/
 .strayBox i{
 	position: absolute;
 	color: var(--darkpink);
 	padding: 10px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
 	left: 80%;
 	top: 15px;
-	transition: all ease 0.3;
+	transition: all ease 0.5s;
+	z-index: 2;
+	border: 1px solid white;
 }
 
 .strayBox i:hover{
 	background-color: white;
+	color: red;
+	transform: translateY(-3px);
+	border: 1px solid red;
+}
+
+/* Heart icon when it's filled */
+.fa-heart.filled {
+	color: red; 
+	border: 1px solid red;
 }
 
 .strayBox:hover{
 	border: 2px solid white;
+}
+
+.strayBox .favortite{
+	background-color: black;
 }
 
 .strayBox img {
@@ -947,8 +967,8 @@ footer{
 	background: linear-gradient(180deg, rgba(166,208,172,1) 9%, rgba(109,137,122,1) 43%, rgba(86,111,100,1) 77%, rgba(62,83,74,1) 100%);
 	display: flex;
 	color: white;
-	margin-top: 70px;
-	height: 100%;
+	margin-top: 85px;
+	height: 100vh;
 }
 
 .abt-banner-container{
@@ -1304,332 +1324,6 @@ footer{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     color: white;
-}
-
-/******************donate page****************/
-
-.donate {
-    padding: 150px 20px 20px 20px;
-    height: 100%;
-    background-image: url('../pics/bg/1.jpg');
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    position: relative;
-}
-
-.donate-text { 
-    z-index: 2;
-    padding: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    color: white;
-    width: 100%;
-}
-
-.donate .wrapper1 {
-	z-index: 1001;
-	display: flex;
-	justify-content: space-between;
-}
-
-.donation-form {
-    z-index: 2; 
-    padding: 20px;
-    background: linear-gradient(rgba(209, 139, 119, 0.75), rgba(186, 109, 94, 0.75), rgba(136, 68, 55, 0.75));
-    border: 2px solid white;
-    border-radius: 10px;
-}
-
-.donate::before {
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(255, 220, 209, 0.75), rgba(241, 197, 183, 0.75), rgba(169, 99, 87, 0.75));
-    position: absolute;
-}
-
-.donate-text h1 {
-    font-size: 60px;
-    margin-top: 0 auto;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.donate-text .intro {
-    font-size: 16px;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.donate-text .outro {
-    font-size: 16px;
-    color: white;
-    margin-top: 20px;
-}
-
-
-.donate-text .wrapper {
-	display: flex;
-	justify-content: space-between;
-	place-content: center;
-	gap: 30px;
-}
-
-.donate-text .container {
-	width: 30vmin;
-	height: 20vmin;
-	border: 1px solid white;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	padding: 1em 0;
-	position: relative;
-	font-size: 16px;
-	border-radius: 0.5em;
-	border-bottom: 10px solid white;
-}
-
-span.num {
-	color: white;
-	display: grid;
-	place-items: center;
-	font-weight: 600;
-	font-size: 3em;
-}
-
-span.text {
-	color: white;
-	font-size: 1em;
-	text-align: center;
-	pad: 0.7em 0;
-	font-weight: 400;
-	line-height: 0;
-}
-
-.donation-form h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-}
-
-.donation-form h4 {
-	font-size: 12px;
-	color: white;
-	text-align: center;
-	margin-top: 10px;
-}
-
-.donation-form .subtitle {
-	text-align: center;
-    font-size: 16px;
-    color: white;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-}
-
-#msform {
-	width: 80%;
-	margin: 0 auto;
-	position: relative;
-	padding: 0;
-}
-
-#progress-list {
-	text-align: center;
-	margin-bottom: 20px;
-	overflow: hidden;
-	padding: 0;
-	counter-reset: step;
-	display: flex;
-	justify-content: center;
-}
-
-#progress-list li {
-	list-style-type: none;
-	text-transform: uppercase;
-	font-size: 11px;
-  	color: white;
-	width: 20%;
-	float: left;
-	position: relative;
-}
-
-#progress-list li:before {
-	content: counter(step);
-	counter-increment: step;
-	width: 22px;
-	line-height: 22px;
-	display: block;
-	font-size: 10px;
-	color: #333;
-	background: lightgrey;
-	border-radius: 50%;
-	margin: 0 auto 12px auto;
-  	border: 1px solid white;
-}
-
-/*progressbar connectors*/
-#progress-list li:after {
-	content: '';
-	width: 100%;
-  	border-bottom: 1px dashed lightgrey;
-	position: absolute;
-	left: -50%;
-	top: 14px;
-	z-index: -1;
-}
-#progress-list li:first-child:after {
-	/*connector not needed before the first step*/
-	content: none; 
-}
-#progress-list li.approved:before,
-#progress-list li.current-item:before,
-#progressbar li.approved:after {
-    background: #27ae60;
-    color: white;
-}
-
-#progress-list li.approved:before {
-    content: "\2713"; /* Checkmark symbol */
-    font-size: 14px;
-    background: #566f64;
-    color: white;
-    border: 2px solid white;
-    border-radius: 50%;
-    width: 22px;
-    line-height: 22px;
-    display: block;
-    text-align: center;
-    margin: 0 auto 5px;
-}
-
-#progress-list li.approved:after,
-#progress-list li.current-item:after {
-    border-bottom: 2px solid white;
-}
-
-#progress-list li.current-item:before {
-    background: #566f64;
-    color: white;
-}
-
-.donation-form h3 {
-    font-size: 30px;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.donation-form .accept-img {
-	text-align: center;
-	margin-top: 10px;
-}
-
-.donation-form .value {
-    text-align: center; 
-}
-
-.donation-form .value button {
-    background-color: #566f64;
-    color: white;
-    font-size: 20px;
-    border: none;
-    padding: 10px 30px;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    margin-bottom: 20px;
-}
-
-.donation-form #otherAmountButton {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.donation-form .value button:hover {
-    background-color: white;
-    color: #566f64; 
-}
-
-.donation-form .value button.clicked {
-    background-color: transparent;
-    border: 1px solid white; 
-    color: white; 
-}
-
-.money-btn.active {
-    background-color: transparent;
-    border: 1px solid white; 
-    color: white; 
-}
-
-.donation-form #DonateButton {
-	cursor: pointer;
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-    background-color: #566f64;
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 5px 145px;
-    border-radius: 10px;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    width: 40%;
-}
-
-.donation-form #DonateButton:hover {
-    background-color: white; 
-    color: #566f64; 
-}
-
-.donation-form .TextContainer {
-	color: white;
-	text-align: center;
-	margin-top: 10px;
-	border: 1px solid white;
-	border-radius: 10px;
-}
-
-.donation-form #DonateButton:active {
-    background-color: transparent; 
-    color: white; 
-    border: 1px solid white;
-}
-
-.input-field {
-    text-align: center;
-}
-
-.input-field input::placeholder {
-    color: white;
-    opacity: 50%; 
-    font-size: 16px;
-    text-align: center;
-}
-
-.input-field input {
-    border: none; 
-    background: transparent;
-    width: 100%;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 28px;
 }
 
 /***************blogs*********************/

@@ -6,82 +6,202 @@
 
 	<body>
 	<!-------------web banner/header--------------->
-		<%- include('partials/banner.ejs') %>
+	<%- include('partials/banner.ejs') %>
 
-		<!-------------Donation--------------->
-		<div class="donate">
-			<div class="wrapper1">
-				<div class="donate-text">
-					<h1>Donate Now</h1>
-					<p class="intro">MeowgAw is not only a pet-adoption site, but a non-profit organization dedicated to the well-being of stray animals at UP Visayas. Our mission is to contribute positively to the lives of abandoned, abused, injured, and neglected animals in the locality. However, this is only possible with people like you, who share our love for animals.</p>
-					<div class="wrapper">
-						<div class="container">
-							<span class="num" data-val="2000">0000</span>
-							<span class="text">Rescued Animals</span>
-						</div>
-						<div class="container">
-            				<span class="num" data-val="120000">000000</span>
-            				<span class="text">Weekly Expenses</span>
-        				</div>
-    				</div>
-    				<p class="outro">Every contribution matters, no matter how big or small. Your donations go directly toward the care and well-being of our rescued furry friends. There's nothing more rewarding than seeing these animals smile and sleep soundly after a good meal, knowing that you've played a part in their journey to a better life.</p>
-				</div>
-				<div class="donation-form">
-					<h2>Advocates for Strays</h2>
-					<p class="subtitle">Join us in being an Advocate for Strays and help us give these animals a second chance at a happy and healthy life.</p>
-					<form id="msform">
-	  				<!-- progressbar -->
-	  					<ul id="progress-list">
-							<li class="progress-item current-item">
-								<span class="progress-label">Amount</span>
-							</li>
-							<li class="progress-item">
-								<span class="progress-label">My Info</span>
-							</li>
-							<li class="progress-item">
-								<span class="progress-label">Payment</span>
-							</li>
-							<li class="progress-item">
-								<span class="progress-label">Confirm</span>
-							</li>
-						</ul>
-					</form>
-					<form>
-						<h3>ONE-TIME</h3>
-						<div class="value">
-							<button class="money-btn" id="money-btn" onclick=" showContent('1000'); return false;">₱1000</button>
-							<button class="money-btn" id="money-btn" onclick="showContent('750'); return false;">₱750</button>
-							<button class="money-btn" id="money-btn" onclick="showContent('500'); return false;">₱500</button>
-							<button id="otherAmountButton">Other Amount</button>
-						</div>
-						<div class="TextContainer">
-							<div id="text1000" style="display: none;">
-								<p> <i class="fa-solid fa-paw" style="color: #ffffff;"></i> Can help provide essential care for rescued animals <i class="fa-solid fa-paw" style="color: #ffffff;"></i></p>
-							</div>
-							<div id="text750" style="display: none;">
-								<p> <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i> Can help cover medical expenses for our furry friends <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i></p>
-							</div>
-							<div id="text500" style="display: none;">
-								<p> <i class="fa-solid fa-house" style="color: #ffffff;"></i> Can help provide food and shelter for homeless pets <i class="fa-solid fa-house" style="color: #ffffff;"></i></p>
-							</div>
-							<div id="inputFieldContainer" class="input-field" style="display: none;">
-        						<input type="text" id="inputField" placeholder="Amount in Peso">
-    						</div>
-						</div>
+	<div class="donate-content">
+
+		<div class="donate-outside">
+			<div class="donate-wrapper donate-numbers">
+				<h1>Donate Now</h1>
+				<p class="intro">MeowgAw is not only a pet-adoption site, but a non-profit organization dedicated to the well-being of stray animals at UP Visayas. Our mission is to contribute positively to the lives of abandoned, abused, injured, and neglected animals in the locality. However, this is only possible with people like you, who share our love for animals.</p>
+						
+				<div class="wrapper-numbers">
+					<div class="container-numbers">
+						<span class="num" data-val="2000">0000</span>
+						<span class="text">Rescued Animals</span>
+					</div>
+							
+					<div class="container-numbers">
+	            		<span class="num" data-val="120000">000000</span>
+	            		<span class="text">Weekly Expenses</span>
+	        		</div>
+	    		</div>
+
+	    		<p class="outro">Every contribution matters, no matter how big or small. Your donations go directly toward the care and well-being of our rescued furry friends. There's nothing more rewarding than seeing these animals smile and sleep soundly after a good meal, knowing that you've played a part in their journey to a better life.</p>
+			</div>
+
+			<div class="donate-wrapper donation-form">
+				<h2>Advocates for Strays</h2>
+				<p class="subtitle">Join us in being an Advocate for Strays and help us give these animals a second chance at a happy and healthy life.</p>
+				<form id="msform">
+
+	  			<!-- progressbar -->
+	  				<ul id="progress-list">
+						<li class="progress-item current-item">
+							<span class="progress-label">Amount</span>
+						</li>
+
+						<li class="progress-item">
+							<span class="progress-label">My Info</span>
+						</li>
+
+						<li class="progress-item">
+							<span class="progress-label">Payment</span>
+						</li>
+
+						<li class="progress-item">
+							<span class="progress-label">Confirm</span>
+						</li>
+					</ul>
+				</form>
+
+				<form id="donationForm">
+
+					<div id="donate1" class="form-section">
+					    <h3>ONE-TIME</h3>
+					    <div class="value">
+					        <button class="money-btn" id="button1000">₱1000</button>
+					        <button class="money-btn" id="button750">₱750</button>
+					        <button class="money-btn" id="button500">₱500</button>
+					        <button id="otherAmountButton">Other Amount</button>
+					    </div>
+
+					    <div class="TextContainer">
+					        <div id="text1000" style="display: none;">
+					            <p><i class="fa-solid fa-paw" style="color: #ffffff;"></i> Can help provide essential care for rescued animals <i class="fa-solid fa-paw" style="color: #ffffff;"></i></p>
+					        </div>
+
+					        <div id="text750" style="display: none;">
+					            <p><i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i> Can help cover medical expenses for our furry friends <i class="fa-solid fa-notes-medical" style="color: #ffffff;"></i></p>
+					        </div>
+
+					        <div id="text500" style="display: none;">
+					            <p><i class="fa-solid fa-house" style="color: #ffffff;"></i> Can help provide food and shelter for homeless pets <i class="fa-solid fa-house" style="color: #ffffff;"></i></p>
+					        </div>
+
+					        <div id="inputFieldContainer" class="input-field" style="display: none;">
+					            <input type="text" id="inputField" placeholder="Amount in Peso">
+					        </div>
+					    </div>
+							
 						<h4>We Accept:</h4>
 						<div class="accept-img"><img src="pics/group3.png" height="20px"/></div>
-						<a href="/donate-myinfo" id="DonateButton" onclick="proceedToMyInfo()">DONATE</a>
-					</form>
-				</div>
-				</div>
+						<a id="DonateButton" class="form-button">DONATE</a>
+					</div>
+
+					<div id="donate2" class="form-section">
+
+						<a class="back">&lt; Back to Amount</a>
+				        <h3 class="heading">My Information</h3>
+
+				        <div class="form-group1">
+				            <input type="text" id="first_name" placeholder="First Name*" required>
+				            <input type="text" id="last_name" placeholder="Last Name*" required>
+				        </div>
+
+				        <div class="form-group2">
+				            <input type="email" id="email" placeholder="Email Address*" required>
+				            <input type="tel" id="phone_number" placeholder="Phone Number*" required>
+				        </div>
+
+				        <input type="date" id="birth_date" placeholder="Birth Date">
+				        <h3 class="heading">My Address</h3>
+
+				        <div class="form-group3">
+				            <input type="text" id="house_no" placeholder="House No./Unit/Street/Barangay">
+				            <input type="text" id="city" placeholder="City/Town">
+				        </div>
+
+				        <div class="form-group4">
+				            <input type="text" id="province" placeholder="Province">
+				            <input type="text" id="zip_code" maxlength="10" pattern="[0-9]{4,}" title="Please enter a valid zip code" placeholder="Zip Code">
+				            <select id="country" required>
+				                <option value="" disabled selected>Select Country*</option>
+				            </select>
+
+				        </div>
+
+				        <a id="myinfoButton" class="form-button">CONTINUE</a>
+					</div>
+
+					<div id="donate3" class="form-section"> 
+
+						<a class="back">< Back to My Info</a> 
+				        <div id="Credit Card" class="tabcontent">
+				            <label for="paymentMethod">Payment Method</label>
+				            <select id="paymentMethod">
+				                <option value="none" selected disabled>Select Payment Method</option>
+				                <option value="card">Credit / Debit Card</option>
+				                <option value="ewallet">E-Wallets</option>
+				            </select>
+
+				            <div id="cardForm" class="hide">
+				                <div class="p-group">
+				                    <label for="cardNumber">Card Number:</label>
+				                    <input type="text" name="card" class="c-number" placeholder="Enter Card Number" maxlength="19" required>
+				                </div>
+				                                    
+				                <div class="p-group">
+				                    <label for="expiryDate">Expiry Date:</label>
+				                    <input type="month" name="month" placeholder="Month" required>
+				                </div>
+				                                    
+				                <div class="p-group">
+				                    <label for="cvv">CVV:</label>
+				                    <input type="text" name="cvv" class="cvv" maxlength="3" required>
+				                </div>
+				            </div>
+
+				            <div id="ewalletForm" class="hide">
+				                <div class="p-group">
+				                    <label for="phoneNumber">Phone Number:</label>
+				                    <input type="text" id="phoneNumber" required>
+				                </div>
+				            </div>
+				        </div>
+				        <a id="paymentButton" class="form-button">CONTINUE</a>
+					</div>
+
+					<div id="donate4" class="form-section">
+
+						<a class="back">< Back to Payment</a> 
+						<div class="confirm">
+    						<div class="receipt">
+    							<h2>Payment Confirmation</h2>
+
+      							<div class="receipt-row">
+        							<span class="receipt-label">Amount:</span>
+        							<span class="receipt-value">₱1000</span>
+      							</div>
+      							
+      							<div class="receipt-row">
+        							<span class="receipt-label">Date:</span>
+        							<span class="receipt-value">October 23, 2023</span>
+     							</div>
+      							
+      							<div class="receipt-row">
+        							<span class="receipt-label">Receipt No:</span>
+        							<span class="receipt-value">123456</span>
+      							</div>
+    						</div>
+    					</div>
+
+    					<a id="confirmButton" class="form-button">CONFIRM</a>
+					</div>
+
+					<div id="donate5" class="form-section">
+						<p class="thankyouMsg">Thank you for donating!</p>
+						<button id="doneButton" class="form-button">Done</button> 
+					</div>
+				</form>
 			</div>
 		</div>
-        
-
-		<!-------------footer--------------->
-		<%- include('partials/footer.ejs') %>
+	</div>
+    
+	<!-------------footer--------------->
+	<%- include('partials/footer.ejs') %>
 	
-		<!--------------scripts-------------->
-		<%- include('partials/scripts.ejs') %>
-	</body>
+	<!--------------scripts-------------->
+	<script src="js/donate.js"></script>
+	<%- include('partials/scripts.ejs') %>
 </html>

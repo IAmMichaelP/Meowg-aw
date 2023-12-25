@@ -2,20 +2,7 @@
 
 <html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeowgAw | <%= title %></title> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!---------------favicon----------------->
-    <link rel="shortcut icon" type="image/png" href="pics/icon.png">
-    <link rel= "stylesheet" href="css/style.css">
-	<link rel= "stylesheet" href="css/donate-myinfo.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel= "stylesheet" href="css/hide-warning.css">
-</head>
+<%- include('partials/head.ejs') %>
 
 	<body>
 	<!-------------web banner/header--------------->
@@ -341,6 +328,7 @@
 		<%- include('partials/footer.ejs') %>
 	
 		<!--------------scripts-------------->
+        <script src="js/donate.js"></script>
 		<%- include('partials/scripts.ejs') %>
 	</body>
 </html>
