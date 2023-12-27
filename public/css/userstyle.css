@@ -380,6 +380,29 @@
 	background-color: transparent;
 }
 /************create***************/
+.slider-labels-create {
+	width: 300px;
+  	display: flex;
+ 	justify-content: space-between;
+}
+
+.slider-labels-create span {
+ 	font-size: 11px;
+}
+
+.createBack{
+	font-size: 16px;
+	color: var(--green);
+	font-weight: bold;
+	margin: 10px 0;
+	text-decoration: underline;
+	transition: all ease 0.3s;
+}
+
+.createBack:hover{
+	color: var(--darkergreen);
+}
+
 .create-wrapper{
     height: 100%;
     width: 100%;
@@ -424,10 +447,14 @@
 	text-transform: uppercase;
 }
 
-.create-stray input{
-	width: 350px;
-	height: 30px;
+.create-stray input[type="text"], .create-stray input[type="number"], .create-stray input[type="range"]{
+	width: 300px;
 }
+
+.create-stray input[type="radio"]{
+	margin-left: 20px;
+}
+
 
 .create-stray textarea{
 	width: 350px;
