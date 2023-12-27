@@ -1,5 +1,4 @@
 const carousel = document.querySelector(".carousel");
-const cards = carousel.querySelectorAll(".card");
 const arrowIcons = document.querySelectorAll(".wrapper i");
 
 let isDragStart = false,

@@ -23,7 +23,30 @@ const straySchema = new Schema({
     breed: {
         type: String,
         required: true
-
+    },
+    color: {
+        type: String, 
+        required: true
+    },
+    size: {
+        type: Number, 
+        required: true
+    },
+    temperament: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 10
+    },
+    spayedNeutered: {
+        type: String, 
+        enum: ['Yes', 'No'],
+        required: true 
+    },
+    vaccinated: {
+        type: String, 
+        enum: ['Yes', 'No'],
+        required: true 
     },
     gender:{
         type: String,

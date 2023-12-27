@@ -1,4 +1,3 @@
-
 function retrieveStrayData() {
   parsedStrayData = JSON.parse(strays);
   return parsedStrayData ? parsedStrayData : [];
@@ -14,19 +13,37 @@ function displayDescModal(stray) {
   let strayContent =
   `
     <div class="details-container">
-      <h3>Meet ${stray.name}</h3>
+      <h2>Meet ${stray.name}</h2>
+      <h3 id="adoptionStatus" class="strayStatus availAdopt">${stray.status}</h3>
 
       <div class="details">
         <div class="image">
           <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}">
-          
         </div>
 
         <div class="description">
-          <p>Name: ${stray.name}</p>
-          <p>Gender: ${stray.gender}</p>
-          <p>Breed: ${stray.breed}</p>
-          <p id='adoptionStatus'>Status: ${stray.status}</p><br>
+          <p class="strayDetails"><b>Name:</b> ${stray.name}</p>
+          <p class="strayDetails"><b>Gender:</b> ${stray.gender}</p>
+          <p class="strayDetails"><b>Breed:</b> ${stray.breed}</p>
+          <p class="strayDetails"><b>Age:</b> ${stray.age}</p>
+          <p class="strayDetails"><b>Color:</b> ${stray.color}</p>
+          <p class="strayDetails"><b>Size:</b> ${stray.size} kg</p>
+          <div class="strayDetails">
+            <label for="temperamentSlider"><b>Temperament:</b></label><br>
+
+              <div class="custom-slider">
+                <input type="range" id="temperamentSlider" name="temperament" min="1" max="10" value="${stray.temperament}" />
+              </div>
+
+              <div class="slider-labels">
+                <span>Chill</span>
+                <span>Hyper</span>
+              </div>
+
+          </div>
+          <p class="strayDetails"><b>Spayed/Neutered:</b> ${stray.spayedNeutered}</p>
+          <p class="strayDetails"><b>Vaccinated:</b> ${stray.vaccinated}</p>
+          <p class="strayDetails"><b>Surrender Date:</b> ${stray.surrenderDate}</p><br>
         </div>
       </div>
 
@@ -242,3 +259,15 @@ function closeDesc(popupId) {
   var popup = document.getElementById(popupId);
       popup.style.display = "none";
 }
+
+// disabling the slider functionality for temparament display
+const slider = document.getElementById('temperamentSlider');
+const preventSliderDrag = (event) => {
+  event.preventDefault();
+};
+// disable slider functionality
+slider.disabled = true;
+// prevent default drag behavior on the thumb
+slider.addEventListener('mousedown', preventSliderDrag);
+slider.addEventListener('touchstart', preventSliderDrag);
+

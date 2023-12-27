@@ -19,6 +19,7 @@
     
     <div class="create-wrapper">
         <div class="create-content">
+            <p class="createBack" href="#" onclick="window.history.back(); return false;">&lt;Back</p>
             <h2>Surrender/sumbit a stray</h2>
             <!--<div class="create-stray content">-->
             <div class="create-stray content">
@@ -28,14 +29,50 @@
                     <input type="text" id="name" name="name" required><br>
                     <label for="img">Upload Image</label>
                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="img" name="img" required><br>
-                    <label for="age">age:</label><br>
+                    <label for="age">Age:</label><br>
                     <input type="number" name="age" required><br>
-                    <label for="breed">breed:</label><br>
+                    <label for="breed">Breed:</label><br>
                     <input type="text" name="breed" required><br>
-                    <label for="gender">gender:</label><br>
+                    <label for="gender">Gender:</label><br>
                     <input type="text" name="gender" required><br>
-                    <label for="animal">animal:</label><br>
-                    <input type="text" name="animal" required><br>
+
+                    <!---ADDED INPUT FIELDS-->
+                    <label for="size">Size(kg):</label><br>
+                    <input type="number" name="size" required><br>
+                    <label for="color">Color:</label><br>
+                    <input type="text" name="color" required><br>
+
+                    <!--Vaxxx-->
+                    <label for="vaccinated">Vaccinated:</label><br>
+                    <input type="radio" class="vaccinated" id="yesVax" value="Yes" name="vaccinated" required>
+                    <label for="yes">Yes</label>
+                    <input type="radio" class="vaccinated" id="noVax" value="No" name="vaccinated" required>
+                    <label for="no">No</label><br>
+
+                    <label for="termperament">Temperament:</label><br>
+                    <input type="range" name="temperament" min="1" max="100" required>
+                    <div class="slider-labels-create">
+                        <span>Chill</span>
+                        <span>Hyper</span>
+                    </div>
+
+                    <!--spayed/neutred-->
+                    <label for="spayedNeutered">Spayed/Neutered:</label><br>
+                    <input type="radio" class="spayedNeutered" id="yesSpayed" value="Yes" name="spayedNeutered">
+                    <label for="yesSpayed">Yes</label>
+                    <input type="radio" class="spayedNeutered" id="noSpayed" value="No" name="spayedNeutered">
+                    <label for="noSpayed">No</label><br>
+
+                    <!--Species-->
+                    <label for="animal">Species:</label><br>
+                    <input type="radio" class="animal" id="dog" value="dog" name="animal">
+                    <label for="dog">Dog</label>
+                    <input type="radio" class="animal" id="cat" value="cat" name="animal">
+                    <label for="cat">Cat</label>
+                    <input type="radio" class="animal" id="other" value="other" name="animal">
+                    <label for="other">Other</label><br>
+
+
                     <label for="surrenderDate">surrenderDate:</label><br>
                     <input type="date" name="surrenderDate" required><br>
 
@@ -43,12 +80,12 @@
                     <input type="hidden" name="uploader" value="<%= user._id %>" required><br>
 
                     <% if (user.role == 'admin') { %>
-                        <input type="hidden" name="status" value="available for adoption" required><br>
+                        <input type="hidden" name="status" id="statusInput" value="available for adoption" required><br>
                     <% } else { %>
-                        <input type="hidden" name="status" value="pending" required><br>
+                        <input type="hidden" name="status" id="statusInput" value="pending" required><br>
                     <% } %>
 
-                    <label for="story">story:</label><br>
+                    <label for="story">Story:</label><br>
                     <textarea type="text" name="story" required></textarea><br>
                     
                     <button class="submitStray">Submit</button>

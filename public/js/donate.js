@@ -177,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('doneButton').addEventListener('click', function() {
-    // Reload the current page
     window.location.reload();
   });
 });
