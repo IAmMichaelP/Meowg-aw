@@ -38,10 +38,11 @@ module.exports.faqs_get = (req, res) => {
 
 module.exports.message_post = (req, res) => {
     const message = new Message({
-        body: req.body.body,
+        
         senderEmail: req.body.senderEmail,
         senderName: req.body.senderName,
-        receiver: "Admin"
+        receiver: "Admin",
+        body: req.body.body
     });
 
     message.save()

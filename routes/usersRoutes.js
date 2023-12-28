@@ -30,5 +30,6 @@ router.get('/admin/:id', requireAuth, usersController.admin_get);
 router.get('/logout', usersController.logout_get);
 router.get('/profile/:id', requireAuth, usersController.profile_get);
 router.put('/profile/edit-profile', fileUpload('img'), usersController.edit_profile_put);
+router.post('/profile/blog', usersController.blog_post);
 
 module.exports = router;

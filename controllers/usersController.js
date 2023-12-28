@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Stray = require('../models/stray');
+const Blog = require('../models/blog');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -101,12 +102,15 @@ module.exports.admin_get = (req, res) => {
             strays = JSON.stringify(strays);
             const pendingStrays = await Stray.findPendingStrays();
             const approvedStrays = await Stray.findApprovedStrays();
+            const pendingBlogs = await Blogs.findPendingBlogs();
             res.render('admin-dashboard', { 
                 title: 'ADMIN', 
                 user: result, 
                 strays: strays, 
                 pendingStrays: pendingStrays, 
-                approvedStrays: approvedStrays });
+                approvedStrays: approvedStrays,
+                pendingBlogs: pendingBlogs
+             });
         })
         .catch((err) => {
             console.log(err);
@@ -122,7 +126,8 @@ module.exports.profile_get = async (req, res) => {
     try{
         const id = req.params.id;
         const uploadedStrays = await Stray.findUploadedStrays(id);
-        res.render('user-profile', { uploadedStrays });
+        const userBlogs = await Blog.findUserBlogs(id);
+        res.render('user-profile', { uploadedStrays, userBlogs });
     } catch {
         console.log("error");
     }
@@ -164,4 +169,23 @@ module.exports.edit_profile_put = async (req, res) => {
         console.log(err);
         res.status(400).json({ errors });
     }
+};
+
+module.exports.blog_post = (req, res) => {
+    const blog = new Blog({
+        uploader: req.body.uploader,
+        title: req.body.title,
+        status: "pending",
+        body: req.body.body
+    });
+
+    blog.save()
+        .then((result) => {
+            console.log(result);
+            res.status(200).json({ user: blog.uploader });
+        })
+        .catch ((error) => {
+            console.log(error);
+            res.render('500');
+        });
 };

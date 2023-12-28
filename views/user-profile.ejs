@@ -59,15 +59,25 @@
 					</div>
 
 					<div class="profile-blog-content user-act" id="profile-blog-content">
-						<div class="post-blog">
+						<form class="post-blog">
 							<h3>Share something with the community...</h3>
-							<input placeholder="Title..." type="text"><br>
-							<textarea placeholder="Content..."></textarea><br>
+							<input placeholder="Title..." type="text" name="title"><br>
+							<textarea placeholder="Content..." name="body"></textarea><br>
+							<input type="hidden" name="uploader" value="<%= user._id %>">
 							<button>Post</button>
-						</div>
+						</form>
 
 						<div class="posted-blogs">
-							<h3>You have no posts yet.</h3>
+							<% if (userBlogs.length == 0) { %>
+								<h3>You have no posts yet.</h3>
+							<% } else { %>
+								<% userBlogs.forEach( blog => { %>
+									<h5><%= blog.title %></h5><br>
+									<p><%= blog.body %></p><br>
+									<h6>Status: <%= blog.status || 'pending' %></h6>
+									<br><hr><br>
+								<% }); %>
+							<% } %>
 						</div>
 					</div>
 
@@ -171,6 +181,7 @@
 
 		<!--------------scripts-------------->
 		<script>const userId = `<%- user._id %>`</script>
+		<script src="/js/blog-fetch.js"></script>
 		<script src="https://unpkg.com/scrollreveal"></script>
 		<script src="/js/sliderscript.js"></script>
 		<script src="/js/script.js"></script>
