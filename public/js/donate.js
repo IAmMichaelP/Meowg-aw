@@ -25,6 +25,8 @@ valueDisplays.forEach((valueDisplay) => {
 // Get references to the buttons
 const buttons = document.querySelectorAll('.money-btn');
 const otherAmountButton = document.getElementById('otherAmountButton');
+// tracks the donation amount
+let donationAmount;
 
 // Add click event listeners to the buttons
 buttons.forEach(button => {
@@ -37,6 +39,10 @@ buttons.forEach(button => {
 
     // Add the "clicked" class to the clicked button
     button.classList.add('clicked');
+    const amount = button.innerHTML.substring(1);
+    donationAmount = amount;
+    // dynamically changes the value of the donation amount field
+    document.getElementById('donation-amount').innerText = '₱' + donationAmount;
   });
 });
 
@@ -57,6 +63,18 @@ document.getElementById("otherAmountButton").addEventListener("click", function(
   document.getElementById('text750').style.display = 'none';
   document.getElementById('text500').style.display = 'none';
 });
+
+// tracks the donation amount for 'other-amount' field
+document.getElementById("inputField").addEventListener("keyup", function(event) {
+    const currentKeys = document.querySelector('#inputField');
+    let currentKeysUp = '';
+    currentKeysUp = currentKeysUp ? currentKeysUp + currentKeys : currentKeys;
+    donationAmount = currentKeysUp.value;
+    // dynamically changes the value of the donation amount field
+    document.getElementById('donation-amount').innerText = '₱' + donationAmount;
+});
+
+
 
 // Add event listeners for predefined amount buttons
 document.getElementById("button1000").addEventListener("click", function(event) {
@@ -164,10 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const backButtons = document.querySelectorAll('.back');
       backButtons.forEach(button => {
         button.addEventListener('click', function() {
-            if (currentSection === 'donate2') {
+            // if (currentSection === 'donate2') {
+            //     showSection('donate1');
+            // } else 
+            if (currentSection === 'donate3') {
                 showSection('donate1');
-            } else if (currentSection === 'donate3') {
-                showSection('donate2');
             } else if (currentSection === 'donate4') {
                 showSection('donate3');
             } else if (currentSection === 'donate5') {
@@ -186,4 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function confirmDonation() {
     alert("Thank you for your donation!");
     window.location.href = "/donate";
+}
+
+listenForm = () => {
+  const form = document.querySelector('#donationForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+  });
 }
