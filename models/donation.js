@@ -16,8 +16,8 @@ const supplyDetailsSchema = new Schema({
 // Create a discriminator for monetary donation details
 const monetaryDetailsSchema = new Schema({
     paymentType: String, // 'cash' or 'bank'
-    accountId: String,
-    transactionId: String
+    accountNumber: String,
+    // transactionId: String
 });
 
 // Create the main donation schema

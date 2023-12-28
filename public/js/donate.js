@@ -107,38 +107,38 @@ document.getElementById("button500").addEventListener("click", function(event) {
   document.getElementById('inputFieldContainer').style.display = 'none';
 });
 
-window.onload = function() {
-      fetch('https://restcountries.eu/rest/v2/all')
-        .then(response => response.json())
-        .then(data => {
-          const countrySelect = document.getElementById('country');
-          data.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country.name;
-            option.text = country.name;
-            countrySelect.add(option);
-        });
-    });
-};
+// window.onload = function() {
+//       fetch('https://restcountries.eu/rest/v2/all')
+//         .then(response => response.json())
+//         .then(data => {
+//           const countrySelect = document.getElementById('country');
+//           data.forEach(country => {
+//             const option = document.createElement('option');
+//             option.value = country.name;
+//             option.text = country.name;
+//             countrySelect.add(option);
+//         });
+//     });
+// };
 
-document.getElementById("DonateButton").addEventListener("click", async function() {
-    const selectCountry = document.getElementById('country');
+// document.getElementById("DonateButton").addEventListener("click", async function() {
+//     const selectCountry = document.getElementById('country');
 
-    try {
-        const response = await fetch('https://restcountries.com/v2/all');
-        const data = await response.json();
+//     try {
+//         const response = await fetch('https://restcountries.com/v2/all');
+//         const data = await response.json();
 
-        // Populate select input with countries fetched from the API
-        data.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country.name;
-            option.textContent = country.name;
-            selectCountry.appendChild(option);
-        });
-    } catch (error) {
-        console.error('Error fetching countries:', error);
-    }
-});
+//         // Populate select input with countries fetched from the API
+//         data.forEach(country => {
+//             const option = document.createElement('option');
+//             option.value = country.name;
+//             option.textContent = country.name;
+//             selectCountry.appendChild(option);
+//         });
+//     } catch (error) {
+//         console.error('Error fetching countries:', error);
+//     }
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
   let currentSection = 'donate1'; // Keep track of the current section
@@ -207,9 +207,41 @@ function confirmDonation() {
     window.location.href = "/donate";
 }
 
-listenForm = () => {
+listenDonation = () => {
   const form = document.querySelector('#donationForm');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const donor = form.id.value;
+    // const donationType = // do this in the backend and say this is a monetary donation
+    const amount = donationAmount;
+    const paymentType = form.paymentMethod.value;
+    const accountNumber = form.accountNumber.value;
+    // const transactionId = // provided by the bank
+    const phoneNumber = form.phoneNumber.value;
+
+    try {
+      const res = await fetch('/donate', { 
+          method: "POST", 
+          body: JSON.stringify({ donor, amount, paymentType, accountNumber, phoneNumber }),
+          headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+      
+      // if (data.errors) {
+      //     emailError.textContent = data.errors.email;
+      //     passwordError.textContent = data.errors.password;
+      //     imageDataError.textContent = data.errors.imageData;
+      //     console.log(imageDataError, emailError, passwordError);
+      // }
+      if (data.user) {
+          location.assign('/donation');
+      }
+
+    }
+    catch (err) {
+      location.assign('/500');
+    }
+
   });
 }

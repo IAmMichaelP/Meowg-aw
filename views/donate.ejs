@@ -58,6 +58,12 @@
 				<form id="donationForm">
 
 					<div id="donate1" class="form-section">
+						<% if (user) { %>
+							<input type="hidden" name="id" value="<%= user._id %>"></div>
+						<% } else { %>
+							<input type="hidden" name="id" value="anonymous"></div>
+						<% } %>
+						
 					    <h3>ONE-TIME</h3>
 					    <div class="value">
 					        <button class="money-btn" id="button1000">₱1000</button>
@@ -129,7 +135,7 @@
 						<a class="back">&lt; Back to Amount</a> 
 				        <div id="Credit Card" class="tabcontent">
 				            <label for="paymentMethod">Payment Method</label>
-				            <select id="paymentMethod">
+				            <select id="paymentMethod" name="paymentMethod">
 				                <option value="none" selected disabled>Select Payment Method</option>
 				                <option value="card">Credit / Debit Card</option>
 				                <option value="ewallet">E-Wallets</option>
@@ -137,25 +143,25 @@
 
 				            <div id="cardForm" class="hide">
 				                <div class="p-group">
-				                    <label for="cardNumber">Card Number:</label>
-				                    <input type="text" name="card" class="c-number" placeholder="Enter Card Number" maxlength="19" required>
+				                    <label for="accountNumber">Account Number:</label>
+				                    <input type="text" name="accountNumber" class="c-number" placeholder="Enter Account Number" maxlength="10" required>
 				                </div>
 				                                    
 				                <div class="p-group">
-				                    <label for="expiryDate">Expiry Date:</label>
-				                    <input type="month" name="month" placeholder="Month" required>
+				                    <label for="accountName">Account Name:</label>
+				                    <input type="text" name="accountName" class="c-number" placeholder="Enter Account Name" required>
 				                </div>
 				                                    
-				                <div class="p-group">
+				                <!-- <div class="p-group">
 				                    <label for="cvv">CVV:</label>
 				                    <input type="text" name="cvv" class="cvv" maxlength="3" required>
-				                </div>
+				                </div> -->
 				            </div>
 
 				            <div id="ewalletForm" class="hide">
 				                <div class="p-group">
 				                    <label for="phoneNumber">Phone Number:</label>
-				                    <input type="text" id="phoneNumber" required>
+				                    <input type="text" id="phoneNumber" name="phoneNumber" required>
 				                </div>
 				            </div>
 				        </div>
@@ -186,12 +192,12 @@
     						</div>
     					</div>
 
-    					<a id="confirmButton" class="form-button">CONFIRM</a>
+    					<button id="confirmButton" class="form-button" onclick="listenDonation()">CONFIRM</button>
 					</div>
 
 					<div id="donate5" class="form-section">
 						<p class="thankyouMsg">Thank you for donating!</p>
-						<button id="doneButton" class="form-button">Done</button> 
+						<a id="doneButton" class="form-button">Done</a> 
 					</div>
 				</form>
 			</div>

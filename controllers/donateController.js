@@ -54,3 +54,7 @@ module.exports.inventory_post = (req, res) => {
         });
         
 };
+
+module.exports.donate_post = (req, res) => {
+    console.log(req.body);
+};
