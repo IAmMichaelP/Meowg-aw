@@ -145,12 +145,12 @@ document.addEventListener('DOMContentLoaded', function() {
   showSection('donate1');
 
   document.getElementById('DonateButton').addEventListener('click', function() {
-    showSection('donate2');
-  });
-
-  document.getElementById('myinfoButton').addEventListener('click', function() {
     showSection('donate3');
   });
+
+  // document.getElementById('myinfoButton').addEventListener('click', function() {
+  //   showSection('donate3');
+  // });
 
   document.getElementById('paymentButton').addEventListener('click', function() {
     showSection('donate4');

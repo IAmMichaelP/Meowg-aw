@@ -17,12 +17,12 @@
 						
 				<div class="wrapper-numbers">
 					<div class="container-numbers">
-						<span class="num" data-val="2000">0000</span>
+						<span class="num" data-val="<%= inventory.rescuedAnimals %>">0000</span>
 						<span class="text">Rescued Animals</span>
 					</div>
 							
 					<div class="container-numbers">
-	            		<span class="num" data-val="120000">000000</span>
+	            		<span class="num" data-val="<%= inventory.weeklyExpenses %>">000000</span>
 	            		<span class="text">Weekly Expenses</span>
 	        		</div>
 	    		</div>
@@ -41,9 +41,9 @@
 							<span class="progress-label">Amount</span>
 						</li>
 
-						<li class="progress-item">
+						<!-- <li class="progress-item">
 							<span class="progress-label">My Info</span>
-						</li>
+						</li> -->
 
 						<li class="progress-item">
 							<span class="progress-label">Payment</span>
@@ -89,7 +89,7 @@
 						<a id="DonateButton" class="form-button">DONATE</a>
 					</div>
 
-					<div id="donate2" class="form-section">
+					<!-- <div id="donate2" class="form-section">
 
 						<a class="back">&lt; Back to Amount</a>
 				        <h3 class="heading">My Information</h3>
@@ -122,11 +122,11 @@
 				        </div>
 
 				        <a id="myinfoButton" class="form-button">CONTINUE</a>
-					</div>
+					</div> -->
 
 					<div id="donate3" class="form-section"> 
 
-						<a class="back">< Back to My Info</a> 
+						<a class="back">&lt; Back to My Info</a> 
 				        <div id="Credit Card" class="tabcontent">
 				            <label for="paymentMethod">Payment Method</label>
 				            <select id="paymentMethod">
@@ -164,7 +164,7 @@
 
 					<div id="donate4" class="form-section">
 
-						<a class="back">< Back to Payment</a> 
+						<a class="back">&lt; Back to Payment</a> 
 						<div class="confirm">
     						<div class="receipt">
     							<h2>Payment Confirmation</h2>
