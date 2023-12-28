@@ -56,13 +56,12 @@
 				</form>
 
 				<form id="donationForm">
-
+					<% if (user) { %>
+						<input type="hidden" name="donor" value="<%= user._id %>">
+					<% } else { %>
+						<input type="hidden" name="donor" value="anonymous">
+					<% } %>
 					<div id="donate1" class="form-section">
-						<% if (user) { %>
-							<input type="hidden" name="id" value="<%= user._id %>"></div>
-						<% } else { %>
-							<input type="hidden" name="id" value="anonymous"></div>
-						<% } %>
 						
 					    <h3>ONE-TIME</h3>
 					    <div class="value">
@@ -169,7 +168,7 @@
 					</div>
 
 					<div id="donate4" class="form-section">
-
+						
 						<a class="back">&lt; Back to Payment</a> 
 						<div class="confirm">
     						<div class="receipt">

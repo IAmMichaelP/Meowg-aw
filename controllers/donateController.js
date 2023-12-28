@@ -1,5 +1,6 @@
 const url = require('url');
 const Inventory = require('../models/inventory');
+const Donation = require('../models/donation');
 const { resolveSoa } = require('dns');
 
 module.exports.donate_get = async (req, res) => {
@@ -50,11 +51,36 @@ module.exports.inventory_post = (req, res) => {
         })
         .catch(error => {
             console.error(error);
-            res.render('505');
+            res.render('500');
         });
         
 };
 
 module.exports.donate_post = (req, res) => {
-    console.log(req.body);
+    console.log(req.body)
+    const donation = new Donation({
+        donor: req.body.donor,
+        donation: {
+            // type: "monetary",
+            amount: req.body.amount,
+            paymentType: req.body.paymentType,
+            accountNumber: req.body.accountNumber,
+            accountName: req.body.accountName,
+        },
+        phoneNumber: req.body.phoneNumber
+    });
+
+    donation.save()
+        .then(async result => {
+            console.log(result);
+            const inventory = await Inventory.find().sort({_id: -1}).limit(1)
+            await Inventory.findByIdAndUpdate(inventory[0]._id, 
+                { $inc: { amount: req.body.amount } },
+                { new: true });
+            res.status(200).json({ donation: donation._id });
+        })
+        .catch(error => {
+            console.error(error);
+            res.render('500');
+        });
 };

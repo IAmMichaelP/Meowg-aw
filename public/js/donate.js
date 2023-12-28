@@ -211,18 +211,20 @@ listenDonation = () => {
   const form = document.querySelector('#donationForm');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const donor = form.id.value;
+    const donor = form.donor.value;
     // const donationType = // do this in the backend and say this is a monetary donation
     const amount = donationAmount;
     const paymentType = form.paymentMethod.value;
     const accountNumber = form.accountNumber.value;
+    const accountName = form.accountName.value;
     // const transactionId = // provided by the bank
     const phoneNumber = form.phoneNumber.value;
+    console.log(donor);
 
     try {
       const res = await fetch('/donate', { 
           method: "POST", 
-          body: JSON.stringify({ donor, amount, paymentType, accountNumber, phoneNumber }),
+          body: JSON.stringify({ donor, amount, paymentType, accountNumber, accountName, phoneNumber }),
           headers: {'Content-Type': 'application/json'}
       });
       const data = await res.json();
@@ -234,8 +236,10 @@ listenDonation = () => {
       //     imageDataError.textContent = data.errors.imageData;
       //     console.log(imageDataError, emailError, passwordError);
       // }
-      if (data.user) {
-          location.assign('/donation');
+      if (data.donation) {
+        location.assign('/donate');
+      } else {
+        location.assign('/500');
       }
 
     }
