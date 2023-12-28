@@ -8,5 +8,6 @@ router.get('/gallery', navController.gallery_get);
 router.get('/about', navController.about_get);
 router.get('/blogs', navController.blogs_get);
 router.get('/faqs', navController.faqs_get);
+router.post('/about/message', navController.message_post);
 
 module.exports = router;

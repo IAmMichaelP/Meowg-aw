@@ -149,15 +149,28 @@
 
 					<div class="contact-form-container">
 					    <form class="contact-form" method="post">
-					        <input type="text" id="name" placeholder="Name..." name="name" required>
-					        <br>
-					        <br>
-					        <input type="email" id="email" placeholder="Email Address..." name="email" required>
-					        <br>
-					        <br>
-					        <textarea id="message" name="message" placeholder="Your Message..." rows="5" cols="45" required></textarea>
-					        <br>
-					        <br>
+							<% if (user) { %> 
+								<input type="text" id="name" placeholder="Name..." name="name" value="<%= user.name %>" required>
+								<br>
+								<br>
+								<input type="email" id="email" placeholder="Email Address..." name="email" value="<%= user.email %>" required>
+								<br>
+								<br>
+								<textarea id="message" name="message" placeholder="Your Message..." rows="5" cols="45" required></textarea>
+								<br>
+								<br>
+							<% } else { %>
+								<input type="text" id="name" placeholder="Name..." name="name" required>
+								<br>
+								<br>
+								<input type="email" id="email" placeholder="Email Address..." name="email" required>
+								<br>
+								<br>
+								<textarea id="message" name="message" placeholder="Your Message..." rows="5" cols="45" required></textarea>
+								<br>
+								<br>
+							<% } %>
+					        
 					        <button class="button2" type="submit">Send Message</button>
 					    </form>
 					</div>
@@ -177,6 +190,7 @@
 
 
 	<!--------------scripts-------------->
+	<script src="/js/message-fetch.js"></script>
 	<%- include('partials/scripts.ejs') %>
 	</body>
 </html>
