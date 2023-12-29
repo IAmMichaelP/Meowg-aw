@@ -173,10 +173,16 @@ function displayStrayData() {
     console.log("handler working");
     strayBox.addEventListener('click', () => displayDescModal(stray));
 
-    strayBox.appendChild(img);
-    strayBox.appendChild(p);
-    strayBox.appendChild(heartIcon);
-    container.appendChild(strayBox);
+    if (user){
+      strayBox.appendChild(img);
+      strayBox.appendChild(p);
+      strayBox.appendChild(heartIcon);
+      container.appendChild(strayBox);
+    }else{
+      strayBox.appendChild(img);
+      strayBox.appendChild(p);
+      container.appendChild(strayBox);
+    }
   });
 }
 

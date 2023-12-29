@@ -772,15 +772,15 @@ footer{
 
 .strayBox i:hover{
 	background-color: white;
-	color: red;
+	color: var(--darkpink);
 	transform: translateY(-3px);
-	border: 1px solid red;
+	border: 1px solid #a96357;
 }
 
 /* Heart icon when it's filled */
 .fa-heart.filled {
-	color: red; 
-	border: 1px solid red;
+	color: var(--darkpink); 
+	border: 1px solid #a96357;
 }
 
 .strayBox:hover{
