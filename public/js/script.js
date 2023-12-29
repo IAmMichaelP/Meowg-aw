@@ -107,10 +107,3 @@ function closePopup(popupId) {
         popup.style.display = "none";
     }, 500);
 }
-
-
-// HEART REACT FOR GALLERY PAGE
-// heart
-function toggleHeart(element) {
-  element.classList.toggle('liked');
-}
