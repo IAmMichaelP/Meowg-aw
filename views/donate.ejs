@@ -37,7 +37,7 @@
 
 	  			<!-- progressbar -->
 	  				<ul id="progress-list">
-						<li class="progress-item current-item">
+						<li class="progress-item progress1 current-item">
 							<span class="progress-label">Amount</span>
 						</li>
 
@@ -45,11 +45,11 @@
 							<span class="progress-label">My Info</span>
 						</li> -->
 
-						<li class="progress-item">
+						<li class="progress-item progress2">
 							<span class="progress-label">Payment</span>
 						</li>
 
-						<li class="progress-item">
+						<li class="progress-item progress3">
 							<span class="progress-label">Confirm</span>
 						</li>
 					</ul>
@@ -130,24 +130,27 @@
 					</div> -->
 
 					<div id="donate3" class="form-section"> 
-
 						<a class="back">&lt; Back to Amount</a> 
-				        <div id="Credit Card" class="tabcontent">
-				            <label for="paymentMethod">Payment Method</label>
-				            <select id="paymentMethod" name="paymentMethod">
-				                <option value="none" selected disabled>Select Payment Method</option>
-				                <option value="card">Credit / Debit Card</option>
-				                <option value="ewallet">E-Wallets</option>
-				            </select>
+						<h2>Payment Method</h2>
+
+						<div class="donate3Form">
+				        	<div id="creditCard" class="tabcontent">
+					            <label for="paymentMethod">Payment Method</label><br>
+					            <select id="paymentMethod" name="paymentMethod">
+					                <option value="none" selected disabled>Select Payment Method</option>
+					                <option value="card">Credit / Debit Card</option>
+					                <option value="ewallet">E-Wallets</option>
+					            </select>
+				        	</div>
 
 				            <div id="cardForm" class="hide">
 				                <div class="p-group">
-				                    <label for="accountNumber">Account Number:</label>
+				                    <label for="accountNumber">Account Number:</label><br>
 				                    <input type="text" name="accountNumber" class="c-number" placeholder="Enter Account Number" maxlength="10" required>
 				                </div>
 				                                    
 				                <div class="p-group">
-				                    <label for="accountName">Account Name:</label>
+				                    <label for="accountName">Account Name:</label><br>
 				                    <input type="text" name="accountName" class="c-number" placeholder="Enter Account Name" required>
 				                </div>
 				                                    
@@ -159,11 +162,12 @@
 
 				            <div id="ewalletForm" class="hide">
 				                <div class="p-group">
-				                    <label for="phoneNumber">Phone Number:</label>
+				                    <label for="phoneNumber">Phone Number:</label><br>
 				                    <input type="text" id="phoneNumber" name="phoneNumber" required>
 				                </div>
 				            </div>
-				        </div>
+				         </div>
+
 				        <a id="paymentButton" class="form-button">CONTINUE</a>
 					</div>
 
@@ -171,10 +175,30 @@
 						
 						<a class="back">&lt; Back to Payment</a> 
 						<div class="confirm">
-    						<div class="receipt">
-    							<h2>Payment Confirmation</h2>
+							<h2>Payment Confirmation</h2>
 
-      							<div class="receipt-row">
+    						<div class="receipt">
+
+    							<div class="receiptUsername">
+	    							<p class="label">Receipt for: </p>
+	    							<p class="donationDeets">Anonymous</p>
+    							</div>
+
+    							<div class="donationInfo">
+    								<p class="label">Date: </p>
+    								<p class="donationDeets">October 23, 2023</p>
+    								<br>
+
+    								<p class="label">Payment Method: </p>
+    								<p class="donationDeets">Gcash</p>
+    								<br>
+
+    								<p class="label">Amount: </p>
+    								<p class="donationDeets">750 pesos</p>
+    							</div>
+
+    						</div>
+      							<!--<div class="receipt-row">
         							<span class="receipt-label">Amount:</span>
         							<span id="donation-amount" class="receipt-value"></span>
       							</div>
@@ -188,14 +212,15 @@
         							<span class="receipt-label">Receipt No:</span>
         							<span class="receipt-value">123456</span>
       							</div>
-    						</div>
+    						</div>-->
     					</div>
 
     					<button id="confirmButton" class="form-button" onclick="listenDonation()">CONFIRM</button>
 					</div>
 
 					<div id="donate5" class="form-section">
-						<p class="thankyouMsg">Thank you for donating!</p>
+						<h3 class="thankyouMsg">Thank you for donating!</h3>
+						<img src="pics/donateTY.png">
 						<a id="doneButton" class="form-button">Done</a> 
 					</div>
 				</form>

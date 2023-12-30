@@ -9,7 +9,7 @@
 	<%- include('partials/banner.ejs') %>
 
 		<!---gallery banner---->
-		<div class="galleryBanner reveal">
+		<div class="galleryBanner">
 
 			<div class="searchBar">
 				<input type="search" placeholder="Search...">
@@ -17,29 +17,32 @@
     		</div>
 
 		</div>
-		<div class="categoryButtons reveal">
-			<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>
-	    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
-	    	<button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
-	    	<button onclick="showStrayData('other')" id="otherBtn">Other</button>
-  		</div>
 
-  		<div id="descModal" class="strayModal reveal">
-			<div class="descContainer">
-			  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
-			  <div id="desc">
-				<!---content in js---->
-			  </div>
+			<div class="categoryButtons reveal">
+				<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>
+		    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
+		    	<button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
+		    	<button onclick="showStrayData('other')" id="otherBtn">Other</button>
+	  		</div>
+
+	  	<div class="galleryContent">
+	  		<div id="descModal" class="strayModal">
+				<div class="descContainer">
+				  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
+				  <div id="desc">
+					<!---content in js---->
+				  </div>
+				</div>
+		  	</div>
+
+			<div class="galleryBody">
+
+				<div class="strayContainer">
+					<!---content in js---->
+				</div>
 			</div>
-	  	</div>
-
-		<div class="galleryBody">
-
-			<div class="strayContainer reveal">
-				<!---content in js---->
-			</div>
-
 		</div>
+	</div>
 
 		<!-------------footer--------------->
 		<%- include('partials/footer.ejs') %>

@@ -23,7 +23,7 @@ sr.reveal('.infosection h2', {delay: 200, origin:'top'});
 sr.reveal('.infosection', {delay: 500, origin:'left'});
 sr.reveal('.slider-container h2', {delay: 100, origin:'top'});
 sr.reveal('.wrapper', {delay: 70, origin:'left'});
-//sr.reveal('.reveal', {interval: 130, origin: 'top'});
+sr.reveal('.reveal', {interval: 130, origin: 'top'});
 
 // ABOUT PAGE
 function showContent(section) {
@@ -108,9 +108,17 @@ function closePopup(popupId) {
     }, 500);
 }
 
+// go to specific section in about us for buttons in footer
+ function showContentFooter(contentId) {
+    // Hide all content sections
+    var contents = document.querySelectorAll('.abt-content-container > div');
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+    });
 
-// HEART REACT FOR GALLERY PAGE
-// heart
-function toggleHeart(element) {
-  element.classList.toggle('liked');
+    // Show the specific content section
+    var selectedContent = document.getElementById(contentId);
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+    }
 }

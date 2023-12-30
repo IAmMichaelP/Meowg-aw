@@ -164,6 +164,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('DonateButton').addEventListener('click', function() {
     showSection('donate3');
+
+    const progress2 = document.querySelectorAll('.progress2');
+    progress2.forEach(function(element) {
+        element.classList.add('current-item');
+    });
   });
 
   // document.getElementById('myinfoButton').addEventListener('click', function() {
@@ -172,6 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('paymentButton').addEventListener('click', function() {
     showSection('donate4');
+
+    const progress3 = document.querySelectorAll('.progress3');
+    progress3.forEach(function(element) {
+        element.classList.add('current-item');
+    });
   });
 
   document.getElementById('confirmButton').addEventListener('click', function() {
@@ -187,7 +197,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // } else 
             if (currentSection === 'donate3') {
                 showSection('donate1');
+                const progress2 = document.querySelectorAll('.progress2');
+                  progress2.forEach(function(element) {
+                      element.classList.remove('current-item');
+                });
             } else if (currentSection === 'donate4') {
+                const progress3 = document.querySelectorAll('.progress3');
+                  progress3.forEach(function(element) {
+                  element.classList.remove('current-item');
+                });
                 showSection('donate3');
             } else if (currentSection === 'donate5') {
                 showSection('donate4');
@@ -200,12 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-
-function confirmDonation() {
-    alert("Thank you for your donation!");
-    window.location.href = "/donate";
-}
 
 listenDonation = () => {
   const form = document.querySelector('#donationForm');
