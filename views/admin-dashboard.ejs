@@ -38,23 +38,37 @@
 			<div class="content-container" id="content-container">
 				<!--users-->
 		        <div id="content-users" class="contentStray show">
-		        	<div class="user-acct-details dash-container">
+		        	
+						<% if (users.length > 0) {%>
+							<% users.forEach(user => { %>
+								<div class="user-acct-details dash-container">
+								<div class="user-acct-image dash-image">
+									<% if (user.profilePicture) { %>
+										<img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.name %>">
+									<% } else { %>
+										<img src="/pics/stray1.jpg">
+									<% } %>
+								</div>
+		
+								<div class="user-acct-info dash-info">
+									<p>Name: <%= user.name %></p>
+									<p>Username: <%= user.username %></p>
+									<p>Email: <%= user.email %></p>
+									<p>Role: <%= user.role %></p>
+								</div>
+		
+								<div class="crud-btns">
+									<button onclick="">Edit</button>
+									<button>Block</button>
+								</div>
 
-		        		<div class="user-acct-image dash-image">
-		        			<img src="pics/stray1.jpg">
-		        		</div>
+								</div>
+							<% }) %>
+						<% } else { %>
+							There are no users to display
+						<% } %>
 
-		        		<div class="user-acct-info dash-info">
-		        			<p>Username</p>
-		        			<p>Email</p>
-		        		</div>
-
-		        		<div class="crud-btns">
-		        			<button>Edit</button>
-		        			<button>Delete</button>
-		        		</div>
-
-		        	</div>
+		        	
 		        </div>
 
 		        <!--strays-->
@@ -87,7 +101,7 @@
 						<% }) %>
 					<% } else { %>
 						There are no strays to display
-						<% } %>
+					<% } %>
 
 		        </div>
 
@@ -162,31 +176,67 @@
 
 		        <!--donation-->
 		        <div id="content-donations" class="contentStray">
-		        	<div class="dash-container">
-		            	Content for donations
-		        	</div>
+					<div class="dash-container">
+						<% if (currentInventory) {%>
+
+							<div class="dash-info">
+								<p>Current total money: <%= currentInventory.amount %></p>
+								<p>This week's expenses: <%= currentInventory.weeklyExpenses %></p>
+								<p>Current week: <%= currentInventory.week.start %> to <%= currentInventory.week.end %></p>
+								<p>Rescued animals: <%= currentInventory.rescuedAnimals %></p>
+							</div>
+	
+							<div class="crud-btns">
+								<button>Edit</button>
+								<button>Delete</button>
+							</div>
+							<!-- <div class="dash-container">
+
+								<div class="dash-image">
+									<img src="/pics/stray1.jpg">
+								</div>
+		
+								
+		
+							</div> -->
+						<% } else { %>
+							There is no inventory to display
+						<% } %>
+						</div>
+		        	
 		        </div>
 
 		        <!--blogs-->
 		        <div id="content-blogs" class="contentStray">
-		        	<div class="dash-container">
+					
+					<% if (pendingBlogs.length > 0) {%>
+						<% pendingBlogs.forEach(blog => { %>
+							<div class="dash-container">
 
-		            	<div class="dash-image">
-		        			<img src="pics/stray1.jpg">
-		        		</div>
+								<div class="dash-image">
+									<img src="/pics/stray1.jpg">
+								</div>
+		
+								<div class="dash-info">
+									<p>Posted by: <%= blog.uploader.name %></p>
+									<p>Title: <%= blog.title %></p>
+									<p>Content: <%= blog.body %></p>
+									<p>Status: <%= blog.status %></p>
+								</div>
+		
+								<div class="crud-btns">
+									<button>Approve</button>
+									<button>Delete</button>
+								</div>
+		
+							</div>
 
-		        		<div class="dash-info">
-		        			<p>Posted by: </p>
-		        			<p>Title: </p>
-		        			<p>Content: </p>
-		        		</div>
-
-		        		<div class="crud-btns">
-		        			<button>Approve</button>
-		        			<button>Delete</button>
-		        		</div>
-
-		        	</div>
+						<% }) %>
+					<% } else { %>
+						There are no blogs to display
+					<% } %>
+				
+		        	
 		        </div>
 
 		        <!--faqs-->
@@ -198,9 +248,32 @@
 
 		        <!--messages-->
 		        <div id="content-messages" class="contentStray">
-		        	<div class="dash-container">
-		            	Content for messages
-		        	</div>
+					
+					<% if (messages.length > 0) {%>
+						<% messages.forEach(message => { %>
+							<div class="dash-container">
+
+								<div class="dash-image">
+									<img src="/pics/stray1.jpg">
+								</div>
+		
+								<div class="dash-info">
+									<p>Sent by: <%= message.senderName %> | <%= message.senderEmail %></p>
+									<p>Content: <%= message.body %></p>
+								</div>
+		
+								<div class="crud-btns">
+									<button>Acknowledge</button>
+									<button>Delete</button>
+								</div>
+		
+							</div>
+
+						<% }) %>
+					<% } else { %>
+						There are no messages to display
+					<% } %>
+					
 		        </div>
 		    </div>
 		</div>

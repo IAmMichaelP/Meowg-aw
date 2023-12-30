@@ -27,7 +27,7 @@ const blogSchema = new Schema({
 }, { timestamps: true });
 
 blogSchema.statics.findPendingBlogs = async function() {
-    const blogs = await this.find({ status: { $eq: "pending" } });
+    const blogs = await this.find({ status: { $eq: "pending" } }).populate("uploader");
     return blogs;
 }
 
