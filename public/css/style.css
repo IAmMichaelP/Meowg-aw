@@ -660,10 +660,6 @@ footer{
 	min-width: 150px;
 }
 
-.column li button{
-	background-color: transparent;
-}
-
 /***************gallery*******************/
 .galleryBanner {
 	margin-top:70px;
@@ -676,12 +672,7 @@ footer{
     background-size: contain;
 }
 
-.galleryContent{
-	position: relative;
-	height: 100%;
-}
-
-.galleryContent::before {
+.galleryBanner::before {
     content: "";
     position: absolute;
     top: 0;
@@ -781,14 +772,14 @@ footer{
 
 .strayBox i:hover{
 	background-color: white;
-	color: var(--darkpink);
+	color: #a96357;
 	transform: translateY(-3px);
 	border: 1px solid #a96357;
 }
 
 /* Heart icon when it's filled */
 .fa-heart.filled {
-	color: var(--darkpink); 
+	color: red; 
 	border: 1px solid #a96357;
 }
 
@@ -1034,7 +1025,7 @@ footer{
 }
 
 .abt-banner-content{
-	padding: 60px 30px 60px 100px;
+	padding: 60px 40px 60px 100px;
 	height: 100%;
 	width: 50%;
 }
@@ -1071,8 +1062,13 @@ footer{
 }
 
 .abt-content {
-	padding: 70px 100px;
+	padding: 50px 100px 70px;
 	min-height: 100vh;
+}
+
+#misvisTitle{
+	font-size: 45px;
+	margin-bottom: 25px;
 }
 
 .abt-content-wrapper{
@@ -1089,8 +1085,8 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    margin-right: 35px; 
-    width: 280px;
+    margin-right: 50px; 
+    width: 310px;
 }
 
 .misvis-btn {
@@ -1125,13 +1121,17 @@ footer{
 	text-align: justify;
 	position: relative;
     flex-grow: 1;
-    width: 800px;
+    width: 100%;
 }
 
 .abt-content-container h2{
 	color: var(--darkergreen);
     font-size: 33px;
     font-weight: 600;	
+}
+
+.abt-content-container img{
+	width: 500px;
 }
 
 .abt-content-container p{
@@ -1155,7 +1155,7 @@ footer{
 
 .member{
 	text-align: center;
-	margin: 10px;
+	margin: 15px 20px;
 	width: 215px;
 	min-width: 225px;
 	height: auto;
@@ -1165,18 +1165,18 @@ footer{
 .member img{
 	display: flex;
 	margin: 0 auto;
-	height: 175px;
-	width: 175px;
+	height: 190px;
+	width: 190px;
 	object-fit: cover;
 	border-radius: 50%;
 }
 
 .member p{
-	padding: 10px 0 0 0;
+	padding: 15px 0 0 0;
 }
 
 .member .socials-icon{
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 .member .socials-icon i{

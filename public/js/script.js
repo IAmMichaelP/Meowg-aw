@@ -107,3 +107,18 @@ function closePopup(popupId) {
         popup.style.display = "none";
     }, 500);
 }
+
+// go to specific section in about us for buttons in footer
+ function showContentFooter(contentId) {
+    // Hide all content sections
+    var contents = document.querySelectorAll('.abt-content-container > div');
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+    });
+
+    // Show the specific content section
+    var selectedContent = document.getElementById(contentId);
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+    }
+}
