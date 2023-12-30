@@ -22,6 +22,14 @@
 		<!-------------header--------------->
 		<%- include('partials/banner.ejs') %>
 
+		<div id="descModal" class="strayModal">
+			<div class="descContainer">
+			  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
+			  <div id="desc">
+				<!---content in js---->
+			  </div>
+			</div>
+		  </div>
 		<!------------body---------------->
 		<div class="container">
 
@@ -34,6 +42,7 @@
 				<button data-content="faqs">FAQs</button>
 				<button data-content="messages">Messages</button>
 			</div>
+			
 
 			<div class="content-container" id="content-container">
 				<!--users-->
@@ -42,27 +51,33 @@
 						<% if (users.length > 0) {%>
 							<% users.forEach(user => { %>
 								<div class="user-acct-details dash-container">
-								<div class="user-acct-image dash-image">
-									<% if (user.profilePicture) { %>
-										<img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.name %>">
-									<% } else { %>
-										<img src="/pics/stray1.jpg">
-									<% } %>
-								</div>
-		
-								<div class="user-acct-info dash-info">
-									<p>Name: <%= user.name %></p>
-									<p>Username: <%= user.username %></p>
-									<p>Email: <%= user.email %></p>
-									<p>Role: <%= user.role %></p>
-								</div>
-		
-								<div class="crud-btns">
-									<button onclick="">Edit</button>
-									<button>Block</button>
+									<div class="user-acct-image dash-image">
+										
+										<% if (user.profilePicture) { %>
+											<img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.name %>">
+											
+										<% } else { %>
+											<img src="/pics/stray1.jpg">
+											
+										<% } %>
+									</div>
+			
+									<div class="user-acct-info dash-info">
+										<p>Name: <%= user.name %></p>
+										<p>Username: <%= user.username %></p>
+										<p>Email: <%= user.email %></p>
+										<p>Role: <%= user.role %></p>
+									</div>
+			
+									<div class="crud-btns">
+										<button onclick="
+											showUser('<%= user.profilePicture %>', '<%= user.name %>', '<%= user.username %>', '<%= user.email %>', '<%= user.role %>')">Edit</button>
+										<button>Block</button>
+									</div>
 								</div>
 
-								</div>
+								
+
 							<% }) %>
 						<% } else { %>
 							There are no users to display
@@ -280,6 +295,7 @@
 
 		<!--------------scripts-------------->
 		<script src="https://unpkg.com/scrollreveal"></script>
+		<script src="/js/admin-modal.js"></script>
 		<script src="/js/sliderscript.js"></script>
 		<script src="/js/script.js"></script>
 		<script src="/js/userscript.js"></script>
