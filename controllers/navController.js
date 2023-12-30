@@ -55,3 +55,7 @@ module.exports.message_post = (req, res) => {
             res.render('500');
         });
 };
+
+module.exports.internal_server_error_get = (req, res) => {
+    res.render('500');
+};

@@ -139,7 +139,7 @@ module.exports.profile_get = async (req, res) => {
         const userBlogs = await Blog.findUserBlogs(id);
         res.render('user-profile', { uploadedStrays, userBlogs });
     } catch {
-        console.log("error");
+        res.render('500');
     }
     
 };
@@ -199,3 +199,31 @@ module.exports.blog_post = (req, res) => {
             res.render('500');
         });
 };
+
+module.exports.user_role_put = async (req, res) => {
+    console.log(req.body);
+    try {
+        const user = await User.findByIdAndUpdate(
+          req.body.id,
+          { $set: { role: req.body.role } }, // Set the new role here
+          { new: true } // Return the updated document
+        )
+        if (user) {
+            console.log("Updated");
+            console.log(user.role);
+            res.status(200).json({ user: user._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+};
+
+module.exports.user_delete = async (req, res) => {
+    console.log("deleting user")
+    User.findByIdAndDelete(req.body.id)
+        .then(() => {
+            console.log("deleted user")
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+}
