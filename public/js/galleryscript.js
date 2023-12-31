@@ -32,7 +32,7 @@ function displayDescModal(stray) {
             <label for="temperamentSlider"><b>Temperament:</b></label><br>
 
               <div class="custom-slider">
-                <input type="range" id="temperamentSlider" name="temperament" min="1" max="10" value="${stray.temperament}" />
+                <input type="range" id="temperamentSlider" name="temperament" min="1" max="100" value="${stray.temperament}" />
               </div>
 
               <div class="slider-labels">
@@ -107,7 +107,6 @@ function displayDescModal(stray) {
       adoptionStatus.classList.add('adoption-ongoing')
     }
   }
-  
 
   modal.style.display = 'block';
 
@@ -147,7 +146,7 @@ function displayStrayData() {
     heartIcon.classList.add('fa-regular', 'fa-heart', 'fa-lg'); // Initially regular heart
 
     // Handle click event to change heart icon color
-    heartIcon.addEventListener('click', (event) => {
+    heartIcon.addEventListener('click',(event) => {
       heartIcon.classList.toggle('filled');
       event.stopPropagation(); // stop click event propagation
     });
@@ -237,27 +236,33 @@ function showStrayData(category, strays) {
       console.log("handler working");
       strayBox.addEventListener('click', () => displayDescModal(stray));
 
-      strayBox.appendChild(img);
-      strayBox.appendChild(p);
-      container.appendChild(strayBox);
-      strayBox.appendChild(heartIcon);
+      if (user){
+        strayBox.appendChild(img);
+        strayBox.appendChild(p);
+        strayBox.appendChild(heartIcon);
+        container.appendChild(strayBox);
+      }else{
+        strayBox.appendChild(img);
+        strayBox.appendChild(p);
+        container.appendChild(strayBox);
+      }
 
       // Handle click event to toggle heart icon style and filled class
       heartIcon.addEventListener('click', (event) => {
-        const isLiked = strayBox.classList.contains('filled');
+      const isLiked = strayBox.classList.contains('filled');
 
-        if (isLiked) {
-          strayBox.classList.remove('filled');
-          heartIcon.classList.remove('fa-solid');
-          heartIcon.classList.add('fa-regular');
-        } else {
-          strayBox.classList.add('filled');
-          heartIcon.classList.remove('fa-regular');
-          heartIcon.classList.add('fa-solid');
-        }
+      if (isLiked) {
+        strayBox.classList.remove('filled');
+        heartIcon.classList.remove('fa-solid');
+        heartIcon.classList.add('fa-regular');
+      } else {
+        strayBox.classList.add('filled');
+        heartIcon.classList.remove('fa-regular');
+        heartIcon.classList.add('fa-solid');
+      }
 
-        event.stopPropagation(); // Stop click event propagation
-      });
+      event.stopPropagation(); // Stop click event propagation
+    });
   });
 }
 
