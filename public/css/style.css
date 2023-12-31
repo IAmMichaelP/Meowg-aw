@@ -672,7 +672,11 @@ footer{
     background-size: contain;
 }
 
-.galleryBanner::before {
+.galleryContent{
+	position: relative;
+}
+
+.galleryContent::before {
     content: "";
     position: absolute;
     top: 0;
@@ -779,7 +783,8 @@ footer{
 
 /* Heart icon when it's filled */
 .fa-heart.filled {
-	color: red; 
+	background-color: white;
+	color: #a96357; 
 	border: 1px solid #a96357;
 }
 

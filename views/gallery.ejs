@@ -16,14 +16,15 @@
     			<button type="submit"><i class="fas fa-search"></i></button>
     		</div>
 
-		</div>
-
 			<div class="categoryButtons reveal">
-				<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>
-		    	<button onclick="showStrayData('cat')" id="catBtn">Cats</button>
-		    	<button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
-		    	<button onclick="showStrayData('other')" id="otherBtn">Other</button>
-	  		</div>
+				<button onclick="showStrayData('all')" id="allBtn">All</button>
+				<!--<button onclick="showStrayData('all', '<%= strays %>')" id="allBtn">All</button>-->
+			    <button onclick="showStrayData('cat')" id="catBtn">Cats</button>
+			    <button onclick="showStrayData('dog')" id="dogBtn">Dogs</button>
+			    <button onclick="showStrayData('other')" id="otherBtn">Other</button>
+		  	</div>
+
+	  	</div>
 
 	  	<div class="galleryContent">
 	  		<div id="descModal" class="strayModal">
@@ -36,12 +37,12 @@
 		  	</div>
 
 			<div class="galleryBody">
-
 				<div class="strayContainer">
 					<!---content in js---->
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 		<!-------------footer--------------->
