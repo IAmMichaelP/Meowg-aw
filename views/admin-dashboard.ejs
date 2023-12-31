@@ -22,6 +22,7 @@
 		<!-------------header--------------->
 		<%- include('partials/banner.ejs') %>
 
+		<!-- modal for every object (user,stray,etc) in the dashboard -->
 		<div id="descModal" class="strayModal">
 			<div class="descContainer">
 			  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
@@ -29,7 +30,14 @@
 				<!---content in js---->
 			  </div>
 			</div>
-		  </div>
+		</div>
+		<!-- user popup update after role is updated -->
+		<div id="result-popup" class="popup">
+			<div class="popup-content" id="popup-content">
+				<span class="close" onclick="closePopup('result-popup')">&times;</span>
+				<h1 id="result">USER ROLE UPDATED</h1>
+			</div>
+		</div>
 		<!------------body---------------->
 		<div class="container">
 
@@ -71,8 +79,13 @@
 			
 									<div class="crud-btns">
 										<button onclick="
-											showUser('<%= user.profilePicture %>', '<%= user.name %>', '<%= user.username %>', '<%= user.email %>', '<%= user.role %>')">Edit</button>
-										<button>Block</button>
+											showUser('<%= user.profilePicture %>', 
+											'<%= user.name %>', 
+											'<%= user.username %>', 
+											'<%= user.email %>', 
+											'<%= user.role %>');
+											editRole('<%= user._id %>')">Edit</button>
+										<button onclick="userDelete('<%= user._id %>')">Block</button>
 									</div>
 								</div>
 
@@ -107,7 +120,7 @@
 								</div>
 		
 								<div class="crud-btns">
-									<button>Edit</button>
+									<button>Approve</button>
 									<button>Delete</button>
 								</div>
 		
@@ -141,9 +154,9 @@
 										<p>Breed: <%= stray.breed %></p>
 										<p>Status: <%= stray.status %></p>
 									</div>
-			
 									<div class="crud-btns">
-										<button>View</button>
+										<button onclick="
+											showStray('<%= JSON.stringify(stray) %>')">View</button>
 										<button>Delete</button>
 									</div>
 
@@ -174,7 +187,8 @@
 									</div>
 			
 									<div class="crud-btns">
-										<button>Approve</button>
+										<button onclick="
+											showStray('<%= JSON.stringify(stray) %>')">Approve</button>
 										<button>Delete</button>
 									</div>
 
@@ -184,8 +198,8 @@
 							There are no strays to display
 						<% } %>
 
-		        	
 
+					<!-- create stray. redirected to /create page -->
 					<button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
 		        </div>
 
@@ -205,15 +219,6 @@
 								<button>Edit</button>
 								<button>Delete</button>
 							</div>
-							<!-- <div class="dash-container">
-
-								<div class="dash-image">
-									<img src="/pics/stray1.jpg">
-								</div>
-		
-								
-		
-							</div> -->
 						<% } else { %>
 							There is no inventory to display
 						<% } %>

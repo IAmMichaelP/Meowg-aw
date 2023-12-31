@@ -2,19 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
-    // title: {
-    //     type: String,
-    // },
-    // sender:{
-    //     type: mongoose.SchemaTypes.ObjectId,
-    //     ref: "User",
-    //     required: true
-    // },
-    // receiver:{
-    //     type: mongoose.SchemaTypes.ObjectId,
-    //     ref: "User",
-    //     required: true
-    // },
     senderEmail: {
         type: String,
         required: true
