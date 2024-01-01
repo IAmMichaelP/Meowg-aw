@@ -38,6 +38,17 @@
 				<h1 id="result">USER ROLE UPDATED</h1>
 			</div>
 		</div>
+		<!--  -->
+		<div id="result-popup" class="popup">
+			<div class="popup-content" id="popup-content">
+				<span class="close" onclick="closePopup('result-popup')">&times;</span>
+				<form action="" class="faqCreate" id="faqCreate">
+					<input type="hidden" name="uploader" value="<%= user._id %>">
+					<input type="text" name="question">
+					<input type="text" name="answer">
+				</form>
+			</div>
+		</div>
 		<!------------body---------------->
 		<div class="container">
 
