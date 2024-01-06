@@ -85,3 +85,44 @@ module.exports.upload_post = (req, res) => {
             console.error('Error renaming the file:', error);
         });
 };
+
+module.exports.adopt_approve_put = async (req, res) => {
+    try {
+        const stray = await Stray.findByIdAndUpdate(
+          req.body.id,
+          { $set: { status: "adopted" } }, // Set the new status here
+          { new: true } // Return the updated document
+        )
+        if (stray) {
+            console.log("Updated");
+            res.status(200).json({ stray: stray._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+};
+
+module.exports.stray_approve_put = async (req, res) => {
+    try {
+        const stray = await Stray.findByIdAndUpdate(
+          req.body.id,
+          { $set: { status: "available for adoption" } }, // Set the new status here
+          { new: true } // Return the updated document
+        )
+        if (stray) {
+            console.log("Updated");
+            res.status(200).json({ stray: stray._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+};
+
+module.exports.stray_delete = (req, res) => {
+    Stray.findByIdAndDelete(req.body.id)
+        .then(() => {
+            console.log("deleted stray")
+            res.status(200).json({ stray: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+};

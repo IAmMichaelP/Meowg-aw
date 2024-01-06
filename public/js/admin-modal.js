@@ -3,6 +3,26 @@ function closeDesc(popupId) {
         popup.style.display = "none";
 }
 
+const addFaqs = () => {
+    console.log("addFaqs");
+    const modal = document.getElementById('descModal');
+
+    modal.style.display = 'block';
+
+    // Close the modal when the "x" is clicked
+    const closeModal = document.querySelector('.close');
+    closeModal.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = 'none';
+        }
+    };
+};
+
 const showUser = (Img, name, username, email, role) => {
     parsedImg = Img.toString('base64');
  
@@ -179,6 +199,87 @@ const userDelete = async (id) => {
             const modal = document.getElementById('descModal');
             modal.style.display = 'none';
             document.getElementById('result').innerHTML = "USER SUCCESSFULLY BLOCKED ACCESS";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+}
+
+const approveAdoption = async (id) => {
+    console.log("adopting stray option");
+    try {
+        const res = await fetch('/admin/stray/approve-adoption', { 
+            method: "PUT", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "STRAY ADOPTION APPROVED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+}
+
+const approveStray = async (id) => {
+    console.log("adopting stray option");
+    try {
+        const res = await fetch('/admin/stray/approve-stray', { 
+            method: "PUT", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "STRAY NOW OFFICIALLY AVAILABLE FOR ADOPTION";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+}
+
+const strayDelete = async (id) => {
+    console.log("Deleting user")
+    try {
+        const res = await fetch('/admin/stray/delete', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.stray) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "STRAY SUCCESSFULLY DELETED FROM DATABASE";
             openPopup('result-popup');
             location.reload();
         } else {

@@ -14,8 +14,22 @@ const faqSchema = new Schema({
     answer:{
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
+
+faqSchema.statics.findPendingFaqs = async function() {
+    const faqs = await this.find({ status: { $eq: "pending" } }).populate("uploader");
+    return faqs;
+}
+
+faqSchema.statics.findApprovedFaqs = async function() {
+    const faqs = await this.find({ status: { $eq: "approved" } }).populate("uploader");
+    return faqs;
+}
 
 const Faq = mongoose.model('Faq', faqSchema);
 module.exports = Faq;

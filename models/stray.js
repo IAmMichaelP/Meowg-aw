@@ -36,7 +36,7 @@ const straySchema = new Schema({
         type: Number,
         required: true,
         min: 1,
-        max: 10
+        max: 100
     },
     spayedNeutered: {
         type: String, 

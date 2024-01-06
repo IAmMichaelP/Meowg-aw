@@ -3,6 +3,7 @@ const Stray = require('../models/stray');
 const Blog = require('../models/blog');
 const Message = require('../models/message');
 const Inventory = require('../models/inventory');
+const Faqs = require('../models/faq');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -109,6 +110,7 @@ module.exports.admin_get = (req, res) => {
             let currentInventory = await Inventory.find().sort({_id: -1}).limit(1);
             currentInventory = currentInventory[0];
             const users = await User.find();
+            const faqs = await Faqs.findApprovedFaqs();
 
             res.render('admin-dashboard', { 
                 title: 'ADMIN', 
@@ -119,7 +121,8 @@ module.exports.admin_get = (req, res) => {
                 pendingBlogs: pendingBlogs,
                 messages: messages,
                 currentInventory: currentInventory,
-                users: users
+                users: users,
+                faqs: faqs
              });
         })
         .catch((err) => {
@@ -227,3 +230,4 @@ module.exports.user_delete = async (req, res) => {
         })
         .catch (err => res.redirect('/500'))
 }
+

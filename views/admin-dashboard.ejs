@@ -38,14 +38,18 @@
 				<h1 id="result">USER ROLE UPDATED</h1>
 			</div>
 		</div>
-		<!--  -->
-		<div id="result-popup" class="popup">
+		<!-- create an faq -->
+		<div id="add-faqs-popup" class="popup">
 			<div class="popup-content" id="popup-content">
 				<span class="close" onclick="closePopup('result-popup')">&times;</span>
+				<h3>Add FAQ piece</h3>
 				<form action="" class="faqCreate" id="faqCreate">
 					<input type="hidden" name="uploader" value="<%= user._id %>">
-					<input type="text" name="question">
-					<input type="text" name="answer">
+					<label for="question">Question</label><br>
+					<input type="text" name="question" placeholder="Question..." required>
+					<label for="answer">Answer</label><br>
+					<input type="text" name="answer" placeholder="Answer..." required>
+					<button type="submit" class="submit">Add</button>
 				</form>
 			</div>
 		</div>
@@ -111,7 +115,7 @@
 		        </div>
 
 		        <!--strays-->
-		        <div id="content-strays" class="contentStray">
+		        <div id="content-submissions" class="contentStray">
 					<% strays = JSON.parse(strays)%>
 					<% if (strays.length > 0) {%>
 						<% strays.forEach(stray => { %>
@@ -131,7 +135,7 @@
 								</div>
 		
 								<div class="crud-btns">
-									<button>Approve</button>
+									<button onclick="approveAdoption('<%= stray._id %>');">Approve</button>
 									<button>Delete</button>
 								</div>
 		
@@ -145,7 +149,7 @@
 		        </div>
 
 		        <!--strays-submissions-->
-		        <div id="content-submissions" class="contentStray">
+		        <div id="content-strays" class="contentStray">
 					<h3>APPROVED</h3>
 						
 						<% if (approvedStrays.length > 0) {%>
@@ -168,7 +172,7 @@
 									<div class="crud-btns">
 										<button onclick="
 											showStray('<%= JSON.stringify(stray) %>')">View</button>
-										<button>Delete</button>
+										<button onclick="strayDelete('<%= stray._id %>');">Delete</button>
 									</div>
 
 								</div>
@@ -198,9 +202,8 @@
 									</div>
 			
 									<div class="crud-btns">
-										<button onclick="
-											showStray('<%= JSON.stringify(stray) %>')">Approve</button>
-										<button>Delete</button>
+										<button onclick="approveStray('<%= stray._id %>');">Approve</button>
+										<button onclick="strayDelete('<%= stray._id %>');">Delete</button>
 									</div>
 
 								</div>
@@ -272,9 +275,32 @@
 
 		        <!--faqs-->
 		        <div id="content-faqs" class="contentStray">
-		        	<div class="dash-container">
-		            	Content for faqs
-		        	</div>
+						
+						<% if (faqs.length > 0) {%>
+							<% faqs.forEach(faqs => { %>
+
+								<div class="dash-container">
+			
+									<div class="dash-info">
+										<p>Question: <%= faqs.question %></p>
+										<h4>Answer: <%= faqs.answer %></h4>
+										<h5>Uploaded by: <%= faqs.uploader %></h5><br><br>
+										<h6>status: <%= faqs.status %></h6>
+									</div>
+			
+									<div class="crud-btns">
+										<button>View</button>
+										<button>Delete</button>
+									</div>
+			
+								</div>
+							<% }) %>
+						<% } else { %>
+							There are no approved faqs to display
+						<% } %>
+
+					<!-- create stray. redirected to /create page -->
+					<button class="add-stray" onclick="openPopup('add-faqs-popup');">Add an faqs</button>
 		        </div>
 
 		        <!--messages-->
