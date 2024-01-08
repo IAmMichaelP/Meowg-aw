@@ -72,9 +72,9 @@
 								<h3>You have no posts yet.</h3>
 							<% } else { %>
 								<% userBlogs.forEach( blog => { %>
-									<h5><%= blog.title %></h5><br>
+									<h3><%= blog.title %></h3><br>
 									<p><%= blog.body %></p><br>
-									<h6>Status: <%= blog.status || 'pending' %></h6>
+									<small>Status: <%= blog.status || 'pending' %></small>
 									<br><hr><br>
 								<% }); %>
 							<% } %>
