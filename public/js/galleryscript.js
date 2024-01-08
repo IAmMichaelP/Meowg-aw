@@ -23,7 +23,7 @@ function displayDescModal(stray) {
 
         <div class="description">
           <p class="strayDetails"><b>Name:</b> ${stray.name}</p>
-          <p class="strayDetails"><b>Gender:</b> ${stray.gender}</p>
+          <p class="strayDetails"><b>Sex:</b> ${stray.gender}</p>
           <p class="strayDetails"><b>Breed:</b> ${stray.breed}</p>
           <p class="strayDetails"><b>Age:</b> ${stray.age}</p>
           <p class="strayDetails"><b>Color:</b> ${stray.color}</p>
@@ -188,17 +188,29 @@ function displayStrayData() {
 // Call functions to store, retrieve, and display stray data
 displayStrayData();
 
+// showdropdown for category buttons
+function showDropdown(dropdownId) {
+    const dropdown = document.getElementById(dropdownId);
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (let i = 0; i < dropdowns.length; i++) {
+        if (dropdowns[i] !== dropdown) {
+            dropdowns[i].style.display = 'none';
+        }
+    }
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+}
+
 // for filtering strays
-function showStrayData(category, strays) {
+function showStrayData(category, color, sex) {
   console.log(strays);
 
   // keep buttons active when clicked
-  document.getElementById('allBtn').classList.remove('active');
-  document.getElementById('catBtn').classList.remove('active');
-  document.getElementById('dogBtn').classList.remove('active');
-  document.getElementById('otherBtn').classList.remove('active');
+  //document.getElementById('allBtn').classList.remove('active');
+  //document.getElementById('catBtn').classList.remove('active');
+  //document.getElementById('dogBtn').classList.remove('active');
+  //document.getElementById('otherBtn').classList.remove('active');
   
-  document.getElementById(category + 'Btn').classList.add('active');
+  //document.getElementById(category + 'Btn').classList.add('active');
 
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
@@ -206,8 +218,12 @@ function showStrayData(category, strays) {
   // clear content
   container.innerHTML = '';
 
-  // filter the stray data based on the category
-  const filteredStrayData = category === 'all' ? storedStrayData : storedStrayData.filter(stray => stray.animal === category);
+  // filter the stray data based on the category, color, and sex
+  const filteredStrayData = storedStrayData.filter(stray => {
+    return (category === 'all' || stray.animal === category) &&
+           (color === 'all' || stray.color === color) &&
+           (sex === 'all' || stray.gender === sex);
+  });
 
   // display the filtered stray data
   filteredStrayData.forEach((stray, index) => {
@@ -264,6 +280,15 @@ function showStrayData(category, strays) {
       event.stopPropagation(); // Stop click event propagation
     });
   });
+}
+
+// filtering trigger
+function searchStrayData() {
+    const category = document.getElementById('categoryDropdown').value;
+    const color = document.getElementById('colorDropdown').value;
+    const sex = document.getElementById('sexDropdown').value;
+
+    showStrayData(category, color, sex);
 }
 
 function closeDesc(popupId) {

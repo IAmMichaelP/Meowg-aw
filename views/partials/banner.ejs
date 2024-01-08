@@ -13,7 +13,7 @@
         <% user = JSON.parse(user) %>
         <% if (user) { %>
             <div class="user-account">
-                <img src="/pics/stray1.jpg" alt="User Profile Picture" id="user-profile-pic" onclick="toggleModal()">
+                <img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
                 <p class="username" onclick="toggleModal();" id="username">
                     <%= user.username %>
                     <i class="fa-solid fa-caret-down" id="dropdown-arrow"></i>
