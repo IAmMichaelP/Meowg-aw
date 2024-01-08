@@ -15,10 +15,7 @@ const faqSchema = new Schema({
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        required: true
-    }
+    
 }, { timestamps: true });
 
 faqSchema.statics.findPendingFaqs = async function() {

@@ -107,8 +107,9 @@ module.exports.admin_get = (req, res) => {
             const approvedStrays = await Stray.findApprovedStrays();
             const pendingBlogs = await Blog.findPendingBlogs();
             const messages = await Message.find();
-            let currentInventory = await Inventory.find().sort({_id: -1}).limit(1);
-            currentInventory = currentInventory[0];
+            // let currentInventory = await Inventory.find().sort({_id: -1}).limit(1);
+            // currentInventory = currentInventory[0];
+            const inventory = await Inventory.find().sort({ 'week.start': -1 });
             const users = await User.find();
             const faqs = await Faqs.findApprovedFaqs();
 
@@ -120,7 +121,7 @@ module.exports.admin_get = (req, res) => {
                 approvedStrays: approvedStrays,
                 pendingBlogs: pendingBlogs,
                 messages: messages,
-                currentInventory: currentInventory,
+                inventory: inventory,
                 users: users,
                 faqs: faqs
              });
@@ -226,6 +227,30 @@ module.exports.user_delete = async (req, res) => {
     User.findByIdAndDelete(req.body.id)
         .then(() => {
             console.log("deleted user")
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+}
+
+module.exports.blog_put = async (req, res) => {
+    try {
+        const blog = await Blog.findByIdAndUpdate(
+        req.body.id,
+        { $set: { status: "approved" } }, // Set the new role here
+        { new: true } // Return the updated document
+        )
+        if (blog) {
+            res.status(200).json({ user: blog._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+    
+};
+
+module.exports.blog_delete = async (req, res) => {
+    Blog.findByIdAndDelete(req.body.id)
+        .then(() => {
             res.status(200).json({ user: req.body.id })
         })
         .catch (err => res.redirect('/500'))

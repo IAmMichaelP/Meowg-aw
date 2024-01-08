@@ -31,12 +31,9 @@ module.exports.confirmation_get = (req, res) => {
 
 module.exports.inventory_post = (req, res) => {
  
-    const inventoryItem = new Inventory({
+    const inventoryReport = new Inventory({
         amount: req.body.amount,
-        supplies: {
-            type: req.body.supply,
-            amount: req.body.supplyAmount
-        },
+        uploader: req.body.uploader,
         weeklyExpenses: req.body.weeklyExpenses,
         week: {
             start: req.body.weekStart,
@@ -45,9 +42,9 @@ module.exports.inventory_post = (req, res) => {
         rescuedAnimals: req.body.rescuedAnimals
     });
     
-    inventoryItem.save()
+    inventoryReport.save()
         .then(result => {
-            res.status(200).send(result);
+            res.status(200).json({ user: req.body.uploader });
         })
         .catch(error => {
             console.error(error);
@@ -55,6 +52,14 @@ module.exports.inventory_post = (req, res) => {
         });
         
 };
+
+module.exports.inventory_delete = async (req, res) => {
+    Inventory.findByIdAndDelete(req.body.id)
+        .then(() => {
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+}
 
 module.exports.donate_post = (req, res) => {
     console.log(req.body)

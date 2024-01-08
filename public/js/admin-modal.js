@@ -3,24 +3,240 @@ function closeDesc(popupId) {
         popup.style.display = "none";
 }
 
-const addFaqs = () => {
-    console.log("addFaqs");
-    const modal = document.getElementById('descModal');
-
-    modal.style.display = 'block';
-
-    // Close the modal when the "x" is clicked
-    const closeModal = document.querySelector('.close');
-    closeModal.onclick = function() {
-        modal.style.display = 'none';
-    };
-
-    // Close the modal when clicking outside of it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-        modal.style.display = 'none';
+const approveBlog = async (id) => {
+    try {
+        const res = await fetch('/admin/user/approve-blog', { 
+            method: "PUT", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "BLOG APPROVED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
         }
-    };
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const deleteBlog = async (id) => {
+    try {
+        const res = await fetch('/admin/user/delete-blog', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "BLOG DELETED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const acknowledgeMessage = async (id) => {
+    try {
+        const res = await fetch('/admin/user/acknowledge-message', { 
+            method: "PUT", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "MESSAGE ACKNOWLEDGED";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const deleteMessage = async (id) => {
+    try {
+        const res = await fetch('/admin/user/delete-message', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "MESSAGE DELETED";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const deleteInventory = async (id) => {
+    try {
+        const res = await fetch('/admin/delete-inventory', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "INVENTORY DELETED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const deleteFaqs = async (id) => {
+    try {
+        const res = await fetch('/admin/delete-faqs', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "FAQS COMPONENT DELETED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
+const addInventory = () => {
+    const inventoryForm = document.getElementById('inventoryCreate');
+
+    const uploader = inventoryForm.uploader.value;
+    const amount = inventoryForm.amount.value;
+    const weeklyExpenses = inventoryForm.weeklyExpenses.value;
+    const weekStart = inventoryForm.weekStart.value;
+    const weekEnd = inventoryForm.weekEnd.value;
+    const rescuedAnimals = inventoryForm.rescuedAnimals.value;
+
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch('/admin/donate/add-inventory', { 
+                method: "POST", 
+                body: JSON.stringify({ uploader, amount, weeklyExpenses, weekStart, weekEnd, rescuedAnimals }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await res.json();
+            
+            if (data.user) {
+
+                const modal = document.getElementById('descModal');
+                modal.style.display = 'none';
+                const resultPopup = document.getElementById('result-popup');
+                resultPopup.style.color = 'white';
+                switchPopup("add-inventory-popup", "result-popup");
+                location.reload();
+            } else {
+                location.assign('/500');
+            }
+    
+        }
+        catch (err) {
+            location.assign('/500');
+        }
+    });
+};
+
+const addFaqs = () => {
+    console.log("entering faqs");
+    const faqsForm = document.getElementById('faqCreate');
+
+    const uploader = faqsForm.uploader.value;
+    const question = faqsForm.question.value;
+    const answer = faqsForm.answer.value;
+
+    faqsForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log("read read");
+        console.log(answer);
+        console.log(question);
+        try {
+            const res = await fetch('/admin/nav/add-faqs', { 
+                method: "POST", 
+                body: JSON.stringify({ uploader, question, answer }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await res.json();
+            
+            if (data.user) {
+
+                const modal = document.getElementById('descModal');
+                modal.style.display = 'none';
+                const resultPopup = document.getElementById('result-popup');
+                resultPopup.style.color = 'white';
+                switchPopup("add-faqs-popup", "result-popup");
+                // location.reload();
+            } else {
+                // location.assign('/500');
+            }
+    
+        }
+        catch (err) {
+            location.assign('/500');
+        }
+    });
 };
 
 const showUser = (Img, name, username, email, role) => {
@@ -149,8 +365,7 @@ const showStray = (stray) => {
 
 const editRole = (id) => {
     const roleSelect = document.getElementById('role');
-    
-    console.log('editing role');
+
     const form = document.getElementById('userForm');
     let role = form.role.value;
     roleSelect.addEventListener('change', (e) => { role = e.target.value; });

@@ -41,14 +41,35 @@
 		<!-- create an faq -->
 		<div id="add-faqs-popup" class="popup">
 			<div class="popup-content" id="popup-content">
-				<span class="close" onclick="closePopup('result-popup')">&times;</span>
+				<span class="close" onclick="closePopup('add-faqs-popup')">&times;</span>
 				<h3>Add FAQ piece</h3>
 				<form action="" class="faqCreate" id="faqCreate">
-					<input type="hidden" name="uploader" value="<%= user._id %>">
+					<input type="hidden" name="uploader" id="uploader" value="<%= user._id %>">
 					<label for="question">Question</label><br>
-					<input type="text" name="question" placeholder="Question..." required>
+					<textarea name="question" id="question" rows="4" cols="50" required>
 					<label for="answer">Answer</label><br>
-					<input type="text" name="answer" placeholder="Answer..." required>
+					<textarea name="answer" id="answer" rows="4" cols="50" required>
+					<button type="submit" class="submit">Add</button>
+				</form>
+			</div>
+		</div>
+		<div id="add-inventory-popup" class="popup">
+			<div class="popup-content" id="popup-content">
+				<span class="close" onclick="closePopup('add-inventory-popup')">&times;</span>
+				<h3>Add Weekly Inventory</h3>
+				<form action="" class="inventoryCreate" id="faqCreate">
+					<input type="hidden" name="uploader" value="<%= user._id %>">
+					<label for="amount">Total money</label><br>
+					<input type="number" name="amount" value="<%= inventory[0].amount %>" required>
+					<label for="weeklyExpenses">This week's expenses</label><br>
+					<input type="number" name="weeklyExpenses" value="<%= inventory[0].weeklyExpenses %>" required>
+					<label for="weekStart">Start of the week</label><br>
+					<input type="date" name="weekStart" required>
+					<label for="weekEnd">End of the week</label><br>
+					<input type="date" name="weekEnd" required>
+					<label for="rescuedAnimals">This week's rescued animals</label><br>
+					<input type="number" name="rescuedAnimals" value="<%= inventory[0].rescuedAnimals %>" required>
+
 					<button type="submit" class="submit">Add</button>
 				</form>
 			</div>
@@ -150,6 +171,8 @@
 
 		        <!--strays-submissions-->
 		        <div id="content-strays" class="contentStray">
+					<!-- create stray. redirected to /create page -->
+					<button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
 					<h3>APPROVED</h3>
 						
 						<% if (approvedStrays.length > 0) {%>
@@ -213,30 +236,34 @@
 						<% } %>
 
 
-					<!-- create stray. redirected to /create page -->
-					<button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
+					
 		        </div>
 
 		        <!--donation-->
 		        <div id="content-donations" class="contentStray">
-					<div class="dash-container">
-						<% if (currentInventory) {%>
-
-							<div class="dash-info">
-								<p>Current total money: <%= currentInventory.amount %></p>
-								<p>This week's expenses: <%= currentInventory.weeklyExpenses %></p>
-								<p>Current week: <%= currentInventory.week.start %> to <%= currentInventory.week.end %></p>
-								<p>Rescued animals: <%= currentInventory.rescuedAnimals %></p>
+					<!-- create stray. redirected to /create page -->
+					<button class="add-stray" onclick="openPopup('add-inventory-popup');">Add a weekly donation report</button>
+					
+						<% if (inventory) {%>
+							<% inventory.forEach(inventory => { %>
+								<div class="dash-container">
+								<div class="dash-info">
+									<p>Current total money: <%= inventory.amount %></p>
+									<p>This week's expenses: <%= inventory.weeklyExpenses %></p>
+									<p>Current week: <%= inventory.week.start %> to <%= inventory.week.end %></p>
+									<p>Rescued animals: <%= inventory.rescuedAnimals %></p>
+								</div>
+		
+								<div class="crud-btns">
+									<button>Edit</button>
+									<button>Delete</button>
+								</div>
 							</div>
-	
-							<div class="crud-btns">
-								<button>Edit</button>
-								<button>Delete</button>
-							</div>
+							<% }); %>
 						<% } else { %>
 							There is no inventory to display
 						<% } %>
-						</div>
+						
 		        	
 		        </div>
 
@@ -259,15 +286,15 @@
 								</div>
 		
 								<div class="crud-btns">
-									<button>Approve</button>
-									<button>Delete</button>
+									<button onclick="approveBlog('<%= blog._id %>');">Approve</button>
+									<button onclick="deleteBlog('<%= blog._id %>');">Delete</button>
 								</div>
 		
 							</div>
 
 						<% }) %>
 					<% } else { %>
-						There are no blogs to display
+						There are no pending blogs to display
 					<% } %>
 				
 		        	
@@ -275,7 +302,11 @@
 
 		        <!--faqs-->
 		        <div id="content-faqs" class="contentStray">
-						
+				<!-- create stray. redirected to /create page -->
+				<button class="add-stray" onclick="
+				openPopup('add-faqs-popup');
+				addFaqs();
+				">Add an faqs</button>		
 						<% if (faqs.length > 0) {%>
 							<% faqs.forEach(faqs => { %>
 
@@ -289,8 +320,8 @@
 									</div>
 			
 									<div class="crud-btns">
-										<button>View</button>
-										<button>Delete</button>
+										<button>Edit</button>
+										<button onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
 									</div>
 			
 								</div>
@@ -299,8 +330,7 @@
 							There are no approved faqs to display
 						<% } %>
 
-					<!-- create stray. redirected to /create page -->
-					<button class="add-stray" onclick="openPopup('add-faqs-popup');">Add an faqs</button>
+					
 		        </div>
 
 		        <!--messages-->
@@ -316,12 +346,13 @@
 		
 								<div class="dash-info">
 									<p>Sent by: <%= message.senderName %> | <%= message.senderEmail %></p>
-									<p>Content: <%= message.body %></p>
+									<p>Content: <%= message.body %></p><br>
+									<h6>Status: <%= message.status %></h6>
 								</div>
 		
 								<div class="crud-btns">
-									<button>Acknowledge</button>
-									<button>Delete</button>
+									<button onclick="acknowledgeMessage('<%= message._id %>');">Acknowledge</button>
+									<button onclick="deleteMessage('<%= message._id %>');">Delete</button>
 								</div>
 		
 							</div>

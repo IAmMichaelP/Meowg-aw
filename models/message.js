@@ -17,6 +17,10 @@ const messageSchema = new Schema({
     body: {
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 

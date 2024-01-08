@@ -34,6 +34,10 @@ const inventorySchema = new Schema({
     },
     rescuedAnimals: {
         type: Number
+    },
+    uploader: {
+        type: mongoose.SchemaTypes.ObjectId,
+        required: true
     }
 }, { timestamps: true });
 

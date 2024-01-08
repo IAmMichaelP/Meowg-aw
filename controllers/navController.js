@@ -1,5 +1,6 @@
 const Stray = require('../models/stray');
 const Message = require('../models/message');
+const Faqs = require('../models/faq');
 const url = require('url');
 
 module.exports.home_get = (req, res) => {
@@ -55,6 +56,57 @@ module.exports.message_post = (req, res) => {
             res.render('500');
         });
 };
+
+module.exports.faqs_post = (req, res) => {
+    console.log(req.body);
+    const faqComponent = new Faqs ({
+        uploader: req.body.uploader,
+        question: req.body.question,
+        answer: req.body.answer
+    });
+    
+    faqComponent.save()
+        .then(result => {
+            res.status(200).json({ user: req.body.uploader });
+        })
+        .catch(error => {
+            console.error(error);
+            // res.render('500');
+        });
+        
+};
+
+module.exports.message_put = async (req, res) => {
+    try {
+        const message = await Message.findByIdAndUpdate(
+        req.body.id,
+        { $set: { status: "acknowledged" } }, // Set the new role here
+        { new: true } // Return the updated document
+        )
+        if (message) {
+            res.status(200).json({ user: message._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+    
+};
+
+module.exports.message_delete = async (req, res) => {
+    Message.findByIdAndDelete(req.body.id)
+        .then(() => {
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+}
+
+module.exports.faqs_delete = async (req, res) => {
+    Faqs.findByIdAndDelete(req.body.id)
+        .then(() => {
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+}
 
 module.exports.internal_server_error_get = (req, res) => {
     res.render('500');
