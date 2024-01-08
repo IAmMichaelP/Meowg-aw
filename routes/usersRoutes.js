@@ -33,5 +33,7 @@ router.put('/profile/edit-profile', fileUpload('img'), usersController.edit_prof
 router.post('/profile/blog', usersController.blog_post);
 router.put('/admin/user/edit-role', usersController.user_role_put);
 router.delete('/admin/user/delete', usersController.user_delete);
+router.delete('/admin/user/delete-blog', usersController.blog_delete);
+router.put('/admin/user/approve-blog', usersController.blog_put);
 
 module.exports = router;

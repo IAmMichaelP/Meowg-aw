@@ -24,7 +24,7 @@ faqSchema.statics.findPendingFaqs = async function() {
 }
 
 faqSchema.statics.findApprovedFaqs = async function() {
-    const faqs = await this.find({ status: { $eq: "approved" } }).populate("uploader");
+    const faqs = await this.find().populate("uploader");
     return faqs;
 }
 

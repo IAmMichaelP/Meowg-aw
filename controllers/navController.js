@@ -67,11 +67,12 @@ module.exports.faqs_post = (req, res) => {
     
     faqComponent.save()
         .then(result => {
+            console.log(result);
             res.status(200).json({ user: req.body.uploader });
         })
         .catch(error => {
             console.error(error);
-            // res.render('500');
+            res.render('500');
         });
         
 };

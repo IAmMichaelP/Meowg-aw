@@ -203,15 +203,14 @@ const addFaqs = () => {
     console.log("entering faqs");
     const faqsForm = document.getElementById('faqCreate');
 
-    const uploader = faqsForm.uploader.value;
-    const question = faqsForm.question.value;
-    const answer = faqsForm.answer.value;
+    
 
     faqsForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log("read read");
-        console.log(answer);
-        console.log(question);
+        const uploader = faqsForm.faqUploader.value;
+        const question = faqsForm.question.value;
+        const answer = faqsForm.answer.value;
+
         try {
             const res = await fetch('/admin/nav/add-faqs', { 
                 method: "POST", 
@@ -226,10 +225,10 @@ const addFaqs = () => {
                 modal.style.display = 'none';
                 const resultPopup = document.getElementById('result-popup');
                 resultPopup.style.color = 'white';
-                switchPopup("add-faqs-popup", "result-popup");
-                // location.reload();
-            } else {
-                // location.assign('/500');
+                document.getElementById('result').innerHTML = "FAQS COMPONENT ADDED SUCCESSFULLY";
+                closePopup('add-faqs-popup')
+                openPopup('result-popup');
+                location.reload();
             }
     
         }

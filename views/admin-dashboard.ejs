@@ -16,11 +16,11 @@
 	</head>
 
 	<body>
-		<% user = JSON.stringify(user) %>
-		<% console.log((user.JSON)) %>
+		
 
 		<!-------------header--------------->
 		<%- include('partials/banner.ejs') %>
+		<% user = JSON.parse(user) %>
 
 		<!-- modal for every object (user,stray,etc) in the dashboard -->
 		<div id="descModal" class="strayModal">
@@ -42,18 +42,19 @@
 		<div id="add-faqs-popup" class="popup">
 			<div class="popup-content" id="popup-content">
 				<span class="close" onclick="closePopup('add-faqs-popup')">&times;</span>
-				<h3>Add FAQ piece</h3>
-				<form action="" class="faqCreate" id="faqCreate">
-					<input type="hidden" name="uploader" id="uploader" value="<%= user._id %>">
+				<h3>Add a FAQs Component</h3>
+				<form class="faqCreate" id="faqCreate">
+
+					<input type="hidden" name="faqUploader" id="faqUploader" value="<%= admin._id %>">
 					<label for="question">Question</label><br>
-					<textarea name="question" id="question" rows="4" cols="50" required>
+					<input type="text" name="question" id="question" required>
 					<label for="answer">Answer</label><br>
-					<textarea name="answer" id="answer" rows="4" cols="50" required>
+					<input type="text" name="answer" id="answer" required>
 					<button type="submit" class="submit">Add</button>
 				</form>
 			</div>
 		</div>
-		<div id="add-inventory-popup" class="popup">
+		<!-- <div id="add-inventory-popup" class="popup">
 			<div class="popup-content" id="popup-content">
 				<span class="close" onclick="closePopup('add-inventory-popup')">&times;</span>
 				<h3>Add Weekly Inventory</h3>
@@ -73,7 +74,7 @@
 					<button type="submit" class="submit">Add</button>
 				</form>
 			</div>
-		</div>
+		</div> -->
 		<!------------body---------------->
 		<div class="container">
 
@@ -314,9 +315,9 @@
 			
 									<div class="dash-info">
 										<p>Question: <%= faqs.question %></p>
-										<h4>Answer: <%= faqs.answer %></h4>
-										<h5>Uploaded by: <%= faqs.uploader %></h5><br><br>
-										<h6>status: <%= faqs.status %></h6>
+										<h4>Answer: <%= faqs.answer %></h4><br>
+										<h5>Uploaded by: <%= faqs.uploader.username %></h5>
+										
 									</div>
 			
 									<div class="crud-btns">

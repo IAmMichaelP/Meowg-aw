@@ -36,5 +36,10 @@ blogSchema.statics.findUserBlogs = async function(user) {
     return blogs;
 }
 
+blogSchema.statics.findApprovedBlogs = async function() {
+    const blog = await this.find({ status: { $eq: "approved" } }).populate("uploader");
+    return blog;
+}
+
 const Blog = mongoose.model('Blog', blogSchema);
 module.exports = Blog;

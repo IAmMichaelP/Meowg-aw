@@ -115,7 +115,7 @@ module.exports.admin_get = (req, res) => {
 
             res.render('admin-dashboard', { 
                 title: 'ADMIN', 
-                user: result, 
+                admin: result, 
                 strays: strays, 
                 pendingStrays: pendingStrays, 
                 approvedStrays: approvedStrays,
