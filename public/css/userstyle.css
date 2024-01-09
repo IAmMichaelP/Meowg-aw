@@ -215,6 +215,10 @@
 	width: 100%;
 }
 
+.dash-info p{
+	font-size: 13px;
+}
+
 .crud-btns button{
 	font-size: 15px;
 	font-weight: bold;
@@ -291,7 +295,7 @@
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius: 10px;
 	padding: 20px 30px;
-	height: 480px;
+	height: 510px;
 }
 
 .user-act{
@@ -359,6 +363,17 @@
 
 .posted-blogs{
 	margin-top: 20px;
+}
+
+.userBlogBody{
+	font-size: 15px;
+	text-align: justify;
+}
+
+.userBlogStatus{
+	font-size: 13px;
+	font-weight: bold;
+	color: red;
 }
 
 .user-activity-btns button:hover{

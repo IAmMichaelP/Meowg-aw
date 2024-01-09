@@ -33,14 +33,22 @@
                     <input type="number" name="age" required><br>
                     <label for="breed">Breed:</label><br>
                     <input type="text" name="breed" required><br>
-                    <label for="gender">Gender:</label><br>
-                    <input type="text" name="gender" required><br>
 
                     <!---ADDED INPUT FIELDS-->
                     <label for="size">Size(kg):</label><br>
                     <input type="number" name="size" required><br>
                     <label for="color">Color:</label><br>
                     <input type="text" name="color" required><br>
+
+                    <!--sex-->
+                    <label for="gender">Sex:</label><br>
+                    <input type="radio" class="gender" id="male" value="male" name="gender" required>
+                    <label for="male">Male</label>
+                    <input type="radio" class="gender" id="female" value="female" name="gender" required>
+                    <label for="female">Female</label><br>
+
+                    <!--<label for="gender">Gender:</label><br>
+                    <input type="text" name="gender" required><br>-->
 
                     <!--Vaxxx-->
                     <label for="vaccinated">Vaccinated:</label><br>
@@ -50,7 +58,7 @@
                     <label for="no">No</label><br>
 
                     <label for="termperament">Temperament:</label><br>
-                    <input type="range" name="temperament" min="1" max="100" required>
+                    <input type="range" name="temperament" min="1" max="10" required>
                     <div class="slider-labels-create">
                         <span>Chill</span>
                         <span>Hyper</span>

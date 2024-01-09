@@ -72,9 +72,9 @@
 								<h3>You have no posts yet.</h3>
 							<% } else { %>
 								<% userBlogs.forEach( blog => { %>
-									<h5><%= blog.title %></h5><br>
-									<p><%= blog.body %></p><br>
-									<h6>Status: <%= blog.status || 'pending' %></h6>
+									<h3><%= blog.title %></h3>
+									<p class="userBlogBody"><%= blog.body %></p><br>
+									<p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
 									<br><hr><br>
 								<% }); %>
 							<% } %>
@@ -98,6 +98,7 @@
 											<p>Name: <%= stray.name %></p>
 											<p>Age: <%= stray.age %></p>
 											<p>Gender: <%= stray.gender %></p>
+											<p>Gender: <%= stray.color %></p>
 											<p>Breed: <%= stray.breed %></p>
 											<p>Status: <%= stray.status %></p>
 										</div>
