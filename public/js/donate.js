@@ -261,3 +261,35 @@ listenDonation = () => {
 
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const moneyButtons = document.querySelectorAll('.money-btn');
+    const otherAmountButton = document.getElementById('otherAmountButton');
+    const inputField = document.getElementById('inputField');
+    const donationAmountDisplay = document.getElementById('don-amount');
+
+    moneyButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const amount = this.value;
+            displayDonationAmount(amount);
+        });
+    });
+
+    // event listener for button click
+    otherAmountButton.addEventListener('click', function() {
+        const customAmount = inputField.value;
+        displayDonationAmount(customAmount);
+    });
+
+    // event listener for input field change
+    inputField.addEventListener('input', function() {
+        const customAmount = inputField.value;
+        displayDonationAmount(customAmount);
+    });
+
+    function displayDonationAmount(amount) {
+        donationAmountDisplay.textContent = `${amount} pesos`;
+    }
+});
+
+

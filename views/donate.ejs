@@ -65,9 +65,9 @@
 						
 					    <h3>ONE-TIME</h3>
 					    <div class="value">
-					        <button class="money-btn" id="button1000">₱1000</button>
-					        <button class="money-btn" id="button750">₱750</button>
-					        <button class="money-btn" id="button500">₱500</button>
+					        <button class="money-btn" id="button1000" value="1000">₱1000</button>
+					        <button class="money-btn" id="button750" value="750">₱750</button>
+					        <button class="money-btn" id="button500" value="500">₱500</button>
 					        <button id="otherAmountButton">Other Amount</button>
 					    </div>
 
@@ -94,41 +94,6 @@
 						<a id="DonateButton" class="form-button">DONATE</a>
 					</div>
 
-					<!-- <div id="donate2" class="form-section">
-
-						<a class="back">&lt; Back to Amount</a>
-				        <h3 class="heading">My Information</h3>
-
-				        <div class="form-group1">
-				            <input type="text" id="first_name" placeholder="First Name*" required>
-				            <input type="text" id="last_name" placeholder="Last Name*" required>
-				        </div>
-
-				        <div class="form-group2">
-				            <input type="email" id="email" placeholder="Email Address*" required>
-				            <input type="tel" id="phone_number" placeholder="Phone Number*" required>
-				        </div>
-
-				        <input type="date" id="birth_date" placeholder="Birth Date">
-				        <h3 class="heading">My Address</h3>
-
-				        <div class="form-group3">
-				            <input type="text" id="house_no" placeholder="House No./Unit/Street/Barangay">
-				            <input type="text" id="city" placeholder="City/Town">
-				        </div>
-
-				        <div class="form-group4">
-				            <input type="text" id="province" placeholder="Province">
-				            <input type="text" id="zip_code" maxlength="10" pattern="[0-9]{4,}" title="Please enter a valid zip code" placeholder="Zip Code">
-				            <select id="country" required>
-				                <option value="" disabled selected>Select Country*</option>
-				            </select>
-
-				        </div>
-
-				        <a id="myinfoButton" class="form-button">CONTINUE</a>
-					</div> -->
-
 					<div id="donate3" class="form-section"> 
 						<a class="back">&lt; Back to Amount</a> 
 						<h2>Payment Method</h2>
@@ -153,11 +118,7 @@
 				                    <label for="accountName">Account Name:</label><br>
 				                    <input type="text" name="accountName" class="c-number" placeholder="Enter Account Name" required>
 				                </div>
-				                                    
-				                <!-- <div class="p-group">
-				                    <label for="cvv">CVV:</label>
-				                    <input type="text" name="cvv" class="cvv" maxlength="3" required>
-				                </div> -->
+				                                   
 				            </div>
 
 				            <div id="ewalletForm" class="hide">
@@ -194,7 +155,7 @@
     								<br>
 
     								<p class="label">Amount: </p>
-    								<p class="donationDeets">750 pesos</p>
+    								<p class="donationDeets" id="don-amount">750 pesos</p>
     							</div>
 
     						</div>

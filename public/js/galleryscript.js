@@ -32,7 +32,7 @@ function displayDescModal(stray) {
             <label for="temperamentSlider"><b>Temperament:</b></label><br>
 
               <div class="custom-slider">
-                <input type="range" id="temperamentSlider" name="temperament" min="1" max="100" value="${stray.temperament}" />
+                <input type="range" id="temperamentSlider" name="temperament" min="1" max="10" value="${stray.temperament}" />
               </div>
 
               <div class="slider-labels">
