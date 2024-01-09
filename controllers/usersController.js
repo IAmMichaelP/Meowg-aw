@@ -228,6 +228,10 @@ module.exports.user_role_put = async (req, res) => {
 
 module.exports.user_delete = async (req, res) => {
     console.log("deleting user")
+    let uploadedStrays = await Stray.findUploadedStrays(req.body.id);
+    let userBlogs = await Blog.findUserBlogs(req.body.id);
+    userBlogs.forEach(async blog => await Blog.findByIdAndDelete(blog._id));
+    uploadedStrays.forEach(async stray => await Stray.findByIdAndDelete(stray._id));
     User.findByIdAndDelete(req.body.id)
         .then(() => {
             console.log("deleted user")
