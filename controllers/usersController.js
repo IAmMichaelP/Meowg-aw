@@ -3,6 +3,7 @@ const Stray = require('../models/stray');
 const Blog = require('../models/blog');
 const Message = require('../models/message');
 const Inventory = require('../models/inventory');
+const Donation = require('../models/donation');
 const Faqs = require('../models/faq');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -112,6 +113,8 @@ module.exports.admin_get = (req, res) => {
             const inventory = await Inventory.find().sort({ 'week.start': -1 });
             const users = await User.find();
             const faqs = await Faqs.findApprovedFaqs();
+            const donation = await Donation.find();
+            
 
             res.render('admin-dashboard', { 
                 title: 'ADMIN', 
@@ -123,7 +126,8 @@ module.exports.admin_get = (req, res) => {
                 messages: messages,
                 inventory: inventory,
                 users: users,
-                faqs: faqs
+                faqs: faqs,
+                donation: donation
              });
         })
         .catch((err) => {

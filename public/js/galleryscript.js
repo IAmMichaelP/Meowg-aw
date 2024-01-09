@@ -3,6 +3,35 @@ function retrieveStrayData() {
   return parsedStrayData ? parsedStrayData : [];
 }
 
+// const handleFavorites = () => {
+//   if (isLiked) {
+//     try {
+//       const res = await fetch('/admin/stray/add-favorite', { 
+//         method: "POST", 
+//         body: JSON.stringify({ stray._id }),
+//         headers: {'Content-Type': 'application/json'}
+//       });
+//       const data = await res.json();
+//       console.log(data);
+      
+//       if (data.user) {
+//           strayBox.classList.remove('filled');
+//           heartIcon.classList.remove('fa-solid');
+//           heartIcon.classList.add('fa-regular');
+//           location.reload();
+//       }
+
+//     } catch (error) {
+//         location.assign('/500');
+//     }
+    
+//   } else {
+//     strayBox.classList.add('filled');
+//     heartIcon.classList.remove('fa-regular');
+//     heartIcon.classList.add('fa-solid');
+//   }
+// };
+
 function displayDescModal(stray) {
   var parsedImg = stray.imgData.toString('base64');
   const modal = document.getElementById('descModal');
@@ -125,7 +154,7 @@ function displayDescModal(stray) {
 }
 
 function displayStrayData() {
-  console.log("working...");
+  
   const container = document.querySelector('.strayContainer');
   const storedStrayData = retrieveStrayData();
 

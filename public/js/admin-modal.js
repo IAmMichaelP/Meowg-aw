@@ -3,6 +3,138 @@ function closeDesc(popupId) {
         popup.style.display = "none";
 }
 
+const editFaqs = (faqs) => {
+    console.log("reading edit faqs");
+    faqs = JSON.parse(faqs);
+    const modal = document.getElementById('edit-faqs-popup');
+    const modalContent = document.querySelector('.edit-faqs-popup');
+    console.log(modal);
+
+    let faqsContent = `
+        <span class="close" onclick="closePopup('edit-faqs-popup')">&times;</span>
+        <h3>Edit an FAQs Component</h3>
+        <form class="faqEdit" id="faqEdit">
+
+            <input type="hidden" name="faqUploader" id="faqUploader" value="${faqs.uploader}">
+            <label for="question">Question</label><br>
+            <input type="text" name="question" id="question" value="${faqs.question}" required>
+            <label for="answer">Answer</label><br>
+            <input type="text" name="answer" id="answer" value="${faqs.answer}" required>
+            <button type="submit" class="submit">Edit</button>
+        </form>
+        `;
+    modalContent.innerHTML = faqsContent;
+    modal.style.display = 'block';
+    openPopup('edit-faqs-popup');
+
+
+};
+
+const faqChange = async (id) => {
+    console.log("entering faqs");
+    const faqsForm = document.getElementById('faqEdit');
+
+    faqsForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log("faqs reading");
+        const question = faqsForm.question.value;
+        const answer = faqsForm.answer.value;
+        console.log(question, answer);
+
+        try {
+            const res = await fetch('/admin/edit-faqs', { 
+                method: "PUT", 
+                body: JSON.stringify({ id, question, answer }),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await res.json();
+            
+            if (data.user) {
+                console.log(data);
+                const modal = document.getElementById('descModal');
+                modal.style.display = 'none';
+                const resultPopup = document.getElementById('result-popup');
+                resultPopup.style.color = 'white';
+                document.getElementById('result').innerHTML = "FAQS COMPONENT EDITED SUCCESSFULLY";
+                closePopup('edit-faqs-popup')
+                openPopup('result-popup');
+                location.reload();
+            }
+    
+        }
+        catch (err) {
+            location.assign('/500');
+        }
+    });
+};
+
+const viewDonation = (donation) => {
+    donation = JSON.parse(donation);
+ 
+    // const parsedImg = user.parsedImg; 
+    const modal = document.getElementById('descModal');
+    const modalContent = document.getElementById('desc');
+    let donateContent = `
+    <div class="details-container">
+      <h2>Donation Details</h2>
+
+      <div class="details">
+        
+
+        <div class="description">
+            <p class="strayDetails">Donor: ${donation.donor}</p>
+            <p class="strayDetails">Donation Amount: ${donation.donation.amount}</p>
+            <p class="strayDetails">Transaction Type: ${donation.donation.paymentType}</p>
+            <p class="strayDetails">Account Number: ${donation.donation.accountNumber}</p>
+            <p class="strayDetails">Account Name: ${donation.donation.accountNumber}</p>
+            <p class="strayDetails">Phone Number: ${donation.phoneNumber}</p>
+            <p class="strayDetails">Transaction Date: ${donation.createdAt}</p>
+        </div>
+      </div>
+    </div>`;
+    modalContent.innerHTML = donateContent;
+    modal.style.display = 'block';
+
+    // Close the modal when the "x" is clicked
+    const closeModal = document.querySelector('.close');
+    closeModal.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = 'none';
+        }
+    };
+}
+
+const deleteDonation = async (id) => {
+    try {
+        const res = await fetch('/admin/delete-donation', { 
+            method: "DELETE", 
+            body: JSON.stringify({ id }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const data = await res.json();
+        console.log(data);
+        
+        if (data.user) {
+            const modal = document.getElementById('descModal');
+            modal.style.display = 'none';
+            document.getElementById('result').innerHTML = "DONATION DELETED SUCCESSFULLY";
+            openPopup('result-popup');
+            location.reload();
+        } else {
+            location.assign('/500');
+        }
+
+    }
+    catch (err) {
+        location.assign('/500');
+    }
+};
+
 const approveBlog = async (id) => {
     try {
         const res = await fetch('/admin/user/approve-blog', { 

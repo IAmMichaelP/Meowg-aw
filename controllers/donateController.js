@@ -89,3 +89,11 @@ module.exports.donate_post = (req, res) => {
             res.render('500');
         });
 };
+
+module.exports.donate_delete = (req, res) => {
+    Donation.findByIdAndDelete(req.body.id)
+        .then(() => {
+            res.status(200).json({ user: req.body.id })
+        })
+        .catch (err => res.redirect('/500'))
+};

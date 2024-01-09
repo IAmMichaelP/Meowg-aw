@@ -112,3 +112,22 @@ module.exports.faqs_delete = async (req, res) => {
 module.exports.internal_server_error_get = (req, res) => {
     res.render('500');
 };
+
+module.exports.faqs_put = async (req, res) => {
+    
+    try {
+        const faqs = await Faqs.findByIdAndUpdate(
+        req.body.id,
+        { $set: { question: req.body.question, answer: req.body.answer } }, // Set the new role here
+        { new: true } // Return the updated document
+        )
+
+        if (faqs) {
+            
+            res.status(200).json({ user: faqs._id });
+        }
+    } catch (err) {
+        res.render('500');
+    }
+    
+};

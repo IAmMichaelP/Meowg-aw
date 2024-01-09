@@ -14,6 +14,7 @@ router.post('/admin/nav/add-faqs', navController.faqs_post);
 router.delete('/admin/delete-faqs', navController.faqs_delete);
 router.delete('/admin/user/delete-message', navController.message_delete);
 router.put('/admin/user/acknowledge-message', navController.message_put);
+router.put('/admin/edit-faqs', navController.faqs_put);
 
 
 module.exports = router;

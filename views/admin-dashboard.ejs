@@ -54,6 +54,11 @@
 				</form>
 			</div>
 		</div>
+		<div id="edit-faqs-popup" class="popup">
+			<div class="popup-content edit-faqs-popup" id="popup-content">
+				
+			</div>
+		</div>
 		<!-- <div id="add-inventory-popup" class="popup">
 			<div class="popup-content" id="popup-content">
 				<span class="close" onclick="closePopup('add-inventory-popup')">&times;</span>
@@ -242,28 +247,29 @@
 
 		        <!--donation-->
 		        <div id="content-donations" class="contentStray">
-					<!-- create stray. redirected to /create page -->
-					<button class="add-stray" onclick="openPopup('add-inventory-popup');">Add a weekly donation report</button>
-					
-						<% if (inventory) {%>
-							<% inventory.forEach(inventory => { %>
-								<div class="dash-container">
-								<div class="dash-info">
-									<p>Current total money: <%= inventory.amount %></p>
-									<p>This week's expenses: <%= inventory.weeklyExpenses %></p>
-									<p>Current week: <%= inventory.week.start %> to <%= inventory.week.end %></p>
-									<p>Rescued animals: <%= inventory.rescuedAnimals %></p>
-								</div>
-		
-								<div class="crud-btns">
-									<button>Edit</button>
-									<button>Delete</button>
-								</div>
+					<% if (donation) {%>
+
+						<% donation.forEach(donate => { %>
+							<div class="dash-container">
+							<div class="dash-info">
+								<p>Donor: <%= donate.donor %></p>
+								<p>Donation Amount: <%= donate.donation.amount %></p>
+								<p>Transaction Type: <%= donate.donation.paymentType %></p>
+								<p>Account Number: <%= donate.donation.accountNumber %></p>
+								<p>Account Name: <%= donate.donation.accountName %></p>
+								<p>Phone Number: <%= donate.phoneNumber %></p>
+								<p>Transaction Date: <%= donate.createdAt %></p>
 							</div>
-							<% }); %>
-						<% } else { %>
-							There is no inventory to display
-						<% } %>
+	
+							<div class="crud-btns">
+								<button onclick="viewDonation('<%= JSON.stringify(donate) %>')">View</button>
+								<button onclick="deleteDonation('<%= donate._id %>');">Delete</button>
+							</div>
+						</div>
+						<% }); %>
+					<% } else { %>
+						There is no donation report to display
+					<% } %>
 						
 		        	
 		        </div>
@@ -321,7 +327,9 @@
 									</div>
 			
 									<div class="crud-btns">
-										<button>Edit</button>
+										<button onclick="
+											editFaqs('<%= JSON.stringify(faqs) %>');
+											faqChange('<%= faqs._id %>');">Edit</button>
 										<button onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
 									</div>
 			
