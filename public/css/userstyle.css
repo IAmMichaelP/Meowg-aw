@@ -85,6 +85,13 @@
 	transition: all ease 0.5s;
 }
 /************admin-dashboard***************/
+#result{
+	font-size: 15px;
+	color: white;
+	padding: 30px 20px;
+	text-align: center;
+}
+
 .container{
 	width: 100%;
 	margin-top: 75px;
