@@ -68,7 +68,7 @@
 
       <div class="row pt-3 pb-3">
 
-        <div class="col-md-4 pt-5">
+        <div class="col-md-3 pt-5">
 
             <% if (user.profilePicture) { %>
               <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
@@ -89,7 +89,7 @@
 
         </div>
 
-        <div class="col-md-8 pt-5" style="background-color: ; overflow-y: auto;">
+        <div class="col-md-9 pt-5" style="background-color: ; overflow-y: auto;">
 
           <div class="userActivities m-3 h-7 p-4">
 
@@ -105,12 +105,14 @@
             <!-----blogs content------>
             <div class="profile-blog-content user-act" id="profile-blog-content">
               <form class="post-blog">
-                <h3>Share something with the community...</h3>
-                <input placeholder="Title..." type="text" name="title"><br>
-                <textarea placeholder="Content..." name="body"></textarea><br>
+                <h2>Share something with the community...</h2>
+                <input placeholder="Title..." type="text" name="title">
+                <textarea placeholder="Content..." name="body" rows="5"></textarea><br>
                 <input type="hidden" name="uploader" value="<%= user._id %>">
                 <button>Post</button>
               </form>
+
+              <br>
 
               <div class="posted-blogs">
                 <% if (userBlogs.length == 0) { %>
@@ -120,7 +122,7 @@
                     <h3><%= blog.title %></h3>
                     <p class="userBlogBody"><%= blog.body %></p><br>
                     <p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
-                    <br><hr><br>
+                    <hr><br>
                   <% }); %>
                 <% } %>
               </div>
@@ -130,28 +132,29 @@
             <div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
               <div id="content-strays" class="contentStray"></div>
               <div>
+              <div class="row">
                 <% if (uploadedStrays.length == 0) { %>
                   <h3>You have no submissions yet.</h3>
                 <% } else { %>
                   <% uploadedStrays.forEach( stray => { %>
-                    <div class="dash-container">
+                    <div class="dash-container col-md-3">
 
                       <div class="dash-image">
-                        <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+                        <img class="img-fluid card-img-top w-100" src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
                       </div>
         
                       <div class="dash-info">
-                        <p>Name: <%= stray.name %></p>
-                        <p>Age: <%= stray.age %></p>
-                        <p>Gender: <%= stray.gender %></p>
-                        <p>Gender: <%= stray.color %></p>
-                        <p>Breed: <%= stray.breed %></p>
-                        <p>Status: <%= stray.status %></p>
+                        <p><b>Name:</b> <%= stray.name %></p>
+                        <p><b>Age:</b> <%= stray.age %></p>
+                        <p><b>Gender:</b> <%= stray.gender %></p>
+                        <p><b>Color:</b> <%= stray.color %></p>
+                        <p><b>Breed:</b> <%= stray.breed %></p>
+                        <p><b>Status:</b> <%= stray.status %></p>
                       </div>
         
                       <div class="crud-btns">
-                        <button>Edit</button>
-                        <button>Delete</button>
+                        <button id="edit">Edit</button>
+                        <button id="delete">Delete</button>
                       </div>
         
                     </div>
@@ -159,8 +162,10 @@
                   <% } %>
           
                 </div>
+                <hr>
                 <button onclick="location.href='/create'">Submit a stray.</button>
               </div>
+            </div>
 
             <!--------cart content------------->
             <div class="profile-cart-content user-act" id="profile-cart-content" style="display: none;">

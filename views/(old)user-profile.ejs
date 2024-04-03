@@ -75,15 +75,15 @@
 									<h3><%= blog.title %></h3>
 									<p class="userBlogBody"><%= blog.body %></p><br>
 									<p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
-									<br><hr><br>
+									<br><hr>
 								<% }); %>
 							<% } %>
 						</div>
 					</div>
 
 					<div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
-						<div id="content-strays" class="contentStray"></div>
-						<div>
+						<div id="content-strays" class="row contentStray"></div>
+						<div class="col-md-2">
 							<% if (uploadedStrays.length == 0) { %>
 							<h3>You have no submissions yet.</h3>
 							<% } else { %>
