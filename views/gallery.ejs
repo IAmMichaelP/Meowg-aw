@@ -1,81 +1,116 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en" dir="ltr">
+<%- include('partials/head.ejs') %>
 
-	<%- include('partials/head.ejs') %>
+<body>
 
-	<body>
-	<!-------------header--------------->
-	<%- include('partials/banner.ejs') %>
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
 
-		<!---gallery banner---->
-		<div class="galleryBanner">
+  <!--gallery banner-->
+  <main id="main">
 
-			<div class="searchBar">
-				<input type="search" placeholder="Search...">
-    			<button type="submit"><i class="fas fa-search"></i></button>
-    		</div>
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs gallery-container mb-3">
+      <div class="container">
 
-			<div class="categoryButtons">
-			    <select class="categoryDropdown" id="categoryDropdown">
-			        <option value="all" selected>All</option>
-			        <option value="cat">Cat</option>
-			        <option value="dog">Dog</option>
-			        <option value="other">Other</option>
-			    </select>
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Gallery</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Gallery</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
 
-			    <select class="categoryDropdown" id="colorDropdown">
-			        <option value="all" selected>Color</option>
-			        <option value="Brown">Brown</option>
-			        <option value="Black">Black</option>
-			        <option value="Gray">Gray</option>
-			        <option value="Orange">Orange</option>
-			    </select>
+  <div class="container p-1">
 
-			    <select class="categoryDropdown" id="sexDropdown">
-			        <option value="all" selected>Sex</option>
-			        <option value="male">Male</option>
-			        <option value="female">Female</option>
-			    </select>
+    <div class="mb-4">
 
-			    <!-- Search button to trigger filtering based on the selected dropdowns -->
-			    <button onclick="searchStrayData()">Search</button>
-			</div>
-	  	</div>
+      <!---filter buttons--->
+      <div class="dropdown d-inline mb-2">
+        <h4 class="btn dropdown-toggle filterBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Type
+        </h4>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Cat</a></li>
+          <li><a class="dropdown-item" href="#">Dog</a></li>
+          <li><a class="dropdown-item" href="#">Reptile</a></li>
+          <li><a class="dropdown-item" href="#">Other</a></li>
+          </ul>
+      </div>
 
-	  	<div class="galleryContent">
-	  		<div id="descModal" class="strayModal">
-				<div class="descContainer">
-				  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
-				  <div id="desc">
-					<!---content in js---->
-				  </div>
-				</div>
-		  	</div>
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Sex
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Male</a></li>
+          <li><a class="dropdown-item" href="#">Female</a></li>
+        </ul>
+      </div>
 
-			<div class="galleryBody">
-				<div class="strayContainer">
-					<!---content in js---->
-				</div>
-			</div>
-		</div>
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Color
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">White</a></li>
+          <li><a class="dropdown-item" href="#">Black</a></li>
+          <li><a class="dropdown-item" href="#">Orange</a></li>
+          <li><a class="dropdown-item" href="#">Brown</a></li>
+          <li><a class="dropdown-item" href="#">Other</a></li>
+        </ul>
+      </div>
 
-	</div>
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Size
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
 
-		<!-------------footer--------------->
-		<%- include('partials/footer.ejs') %>
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Age Range
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#"><1 year old</a></li>
+          <li><a class="dropdown-item" href="#">1 - 2 years old</a></li>
+          <li><a class="dropdown-item" href="#">3-4 years old</a></li>
+          <li><a class="dropdown-item" href="#">>5 years old</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row galleryWrapper">
+
+    </div>
+
+  </div>
+  <!-- End -->
+
+  <!-------------footer--------------->
+  <%- include('partials/footer.ejs') %>
 
 
-		<!--------------scripts-------------->
-		<script src="js/userscript.js"></script>
-		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="js/sliderscript.js"></script>
-		<script src="js/script.js"></script>
-		<script src="js/hide-warning.js"></script>
-		
-		<!-- top script is importing the data from the server to the client side -->
-		<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
-		<script src="js/galleryscript.js"></script>
-		
-	</body>
+  <!--------------scripts-------------->
+  <!--<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>-->
+  <script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
+  <%- include('partials/scripts.ejs') %>
+
+
+</body>
+
 </html>

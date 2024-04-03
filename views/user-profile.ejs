@@ -1,193 +1,249 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MeowgAw</title> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-        <!---------------favicon----------------->
-        <link rel="shortcut icon" type="image/png" href="/pics/icon.png">
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-        <link rel= "stylesheet" href="/css/style.css">
-        <link rel= "stylesheet" href="/css/userstyle.css">
-		<link rel= "stylesheet" href="/css/hide-warning.css">
-    </head>
+  <title>MeowgAw | Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <body>
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        <!-------------header--------------->
-		<%- include('partials/banner.ejs') %>
+  <!--fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
-		<!------------user profile contents-------------->
-		<% user = JSON.parse(user); %>
-		<div class="profile-wrapper">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-			<div class="user-profile-banner">
-				<% if (user.profilePicture) { %>
-					<img class="user-profile-pic" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
-				<% } else { %>
-					<img class="user-profile-pic" src="/pics/stray1.jpg">
-				<% } %>
+  <!----addtional bootstrap---->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-				<div class="user-profile-details">
-					<h1><%= user.name %></h1>
-					<h2><%= user.username %></h2>
-					<p>Email: <%= user.email %></p>
-					<% if (user.address) { %> 
-						<p>Address: <%= user.address %> </p>
-					<% } else { %> 
-						<p>Address: Nowhere street</p>
-					<% } %>
-				</div>
+  <!-- Icons dependencies -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-				<div class="user-option-btns">
-					<button onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit profile<i class="fa-solid fa-user"></i></button>
-					<button>Delete Account<i class="fa-solid fa-trash"></i></button>
-				</div>
-			</div>
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-			<div class="user-profile-content">
-				<div class="user-content-wrapper">
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <!---gallery css--->
+  <link href="/assets/css/gallery.css" rel="stylesheet">
+  <!---about css--->
+  <link href="/assets/css/about.css" rel="stylesheet">
+  <!---donate css--->
+  <link href="/assets/css/donate.css" rel="stylesheet">
+  <!---blog css--->
+  <link href="/assets/css/blog.css" rel="stylesheet">
+  <!---profile/dashboard css--->
+  <link href="/assets/css/profile.css" rel="stylesheet">
 
-					<div class="user-activity-btns">
-						<button class="user-profile-btns" onclick="showContent('blogs')">Blogs</button>
-						<button class="user-profile-btns" onclick="showContent('submissions')">Submissions</button>
-						<button class="user-profile-btns" onclick="showContent('favorites')">Favorites</button>
-					</div>
+  <!-- =======================================================
+  * Edit with caution
+  * KM2JS
+  ======================================================== -->
+</head>
 
-					<div class="profile-blog-content user-act" id="profile-blog-content">
-						<form class="post-blog">
-							<h3>Share something with the community...</h3>
-							<input placeholder="Title..." type="text" name="title"><br>
-							<textarea placeholder="Content..." name="body"></textarea><br>
-							<input type="hidden" name="uploader" value="<%= user._id %>">
-							<button>Post</button>
-						</form>
+<body>
 
-						<div class="posted-blogs">
-							<% if (userBlogs.length == 0) { %>
-								<h3>You have no posts yet.</h3>
-							<% } else { %>
-								<% userBlogs.forEach( blog => { %>
-									<h3><%= blog.title %></h3>
-									<p class="userBlogBody"><%= blog.body %></p><br>
-									<p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
-									<br><hr><br>
-								<% }); %>
-							<% } %>
-						</div>
-					</div>
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
 
-					<div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
-						<div id="content-strays" class="contentStray"></div>
-						<div>
-							<% if (uploadedStrays.length == 0) { %>
-							<h3>You have no submissions yet.</h3>
-							<% } else { %>
-								<% uploadedStrays.forEach( stray => { %>
-									<div class="dash-container">
+  <% user = JSON.parse(user); %>
+  <div class="profileWrapper">
 
-										<div class="dash-image">
-											<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
-										</div>
-				
-										<div class="dash-info">
-											<p>Name: <%= stray.name %></p>
-											<p>Age: <%= stray.age %></p>
-											<p>Gender: <%= stray.gender %></p>
-											<p>Gender: <%= stray.color %></p>
-											<p>Breed: <%= stray.breed %></p>
-											<p>Status: <%= stray.status %></p>
-										</div>
-				
-										<div class="crud-btns">
-											<button>Edit</button>
-											<button>Delete</button>
-										</div>
-				
-									</div>
-								<% }); %>
-							<% } %>
-							<button onclick="location.href='/create'">Submit a stray.</button>
-						</div>
+    <div class="container mt-5">
 
-					</div>
+      <div class="row pt-3 pb-3">
 
-					<div class="profile-favorites-content user-act" id="profile-favorites-content" style="display: none;">
-						<h1>User favorite content here.</h1>
-					</div>
+        <div class="col-md-3 pt-5">
 
-					<div id="edit-profile-popup" class="popup">
-						<div class="popup-content" id="popup-content">
-						<span class="close" onclick="closePopup('edit-profile-popup')">&times;</span>
-						<form id="edit-profile-form" enctype="multipart/form-data">
-							<div class="inputs">
+            <% if (user.profilePicture) { %>
+              <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
+            <% } else { %>
+              <img class="user-profile-pic" src="/assets/img/favicon.img">
+            <% } %>
 
-								<h3>Edit Profile</h3>
+            <div class="userDetails text-center mt-3">
+              <h4 class="userName"><%= user.username %></h4>
+              <p class="name light"><%= user.name %></p>
+              <p class="email light"><%= user.email %></p>
+            </div>
 
-								<input type="hidden" name="id" value="<%= user._id %>">
+            <div class="profileButtons text-center mt-3">
+              <button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>
+              <button class="delete w-50">Delete Account</button>
+            </div>
 
-								<label for="img">Upload new profile picture</label>
-                    			<input type="file" accept="image/*" id="img" name="img"><br>	
-								<div class="warning" id="image-data-error"></div>
+        </div>
 
-								<label for="username">Username</label><br>
-								<div class="input-container">
-									<i class='icon bx bx-user'></i>
-									<input type="text" class="usernameSi" id="username" name="username" value="<%= user.username %>" required><br>
-								</div>
+        <div class="col-md-9 pt-5" style="background-color: ; overflow-y: auto;">
 
-								<label for="name">Name</label><br>
-								<div class="input-container">
-									<i class='icon bx bx-user'></i>
-									<input type="text" id="name" name="name" value="<%= user.name %>" required><br>
-								</div>
+          <div class="userActivities m-3 h-7 p-4">
 
-								<label for="address">Address</label><br>
-								<div class="input-container">
-									<i class='icon bx bx-user'></i>
-									<input type="text" id="address" name="address" value="<%= user.address %>"><br>
-								</div>
-			
-								<label for="email">Email Address</label><br>
-								<div class="input-container">
-									<i class='icon bx bx-envelope'></i>
-									<input type="email" class="emailSi" id="email" name="email" value="<%= user.email %>" required><br>
-								</div>
-								<div class="warning" id="email-error"></div>
-			
-								<label for="password">Password</label><br>
-								<div class="input-container">
-									<i class='icon bx bx-lock-alt'></i>
-									<input type="password" class="passwordSi" id="password" name="password" required><br>
-								</div>
-								<div class="warning" id="password-error"></div>
+            <!----buttons---->
+            <ul class="list-inline">
+              <li class="list-inline-item activitiesBtn" onclick="showContent('blogs')">Blog</li>
+              <li class="list-inline-item activitiesBtn" onclick="showContent('submissions')">Submission</li>
+              <li class="list-inline-item activitiesBtn" onclick="showContent('favorites')">Favorites</li>
+              <li class="list-inline-item activitiesBtn" onclick="showContent('cart')">Cart</li>
+              <hr>
+            </ul>
 
-							</div>
-							<p class="warning signin-warning hide-warning">Password and email do not match!</p>
-							
-			
-							<button type="submit" class="submit">SAVE</button>
-						</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            <!-----blogs content------>
+            <div class="profile-blog-content user-act" id="profile-blog-content">
+              <form class="post-blog">
+                <h2>Share something with the community...</h2>
+                <input placeholder="Title..." type="text" name="title">
+                <textarea placeholder="Content..." name="body" rows="5"></textarea><br>
+                <input type="hidden" name="uploader" value="<%= user._id %>">
+                <button>Post</button>
+              </form>
 
-		<!-------------footer--------------->
-		<%- include('partials/footer.ejs') %>
+              <br>
 
-		<!--------------scripts-------------->
-		<script>const userId = `<%- user._id %>`</script>
-		<script src="/js/blog-fetch.js"></script>
-		<script src="https://unpkg.com/scrollreveal"></script>
-		<script src="/js/sliderscript.js"></script>
-		<script src="/js/script.js"></script>
-		<script src="/js/userscript.js"></script>
-		<script src="/js/hide-warning.js"></script>
-	</body>
-<html>
+              <div class="posted-blogs">
+                <% if (userBlogs.length == 0) { %>
+                  <h3>You have no posts yet.</h3>
+                <% } else { %>
+                  <% userBlogs.forEach( blog => { %>
+                    <h3><%= blog.title %></h3>
+                    <p class="userBlogBody"><%= blog.body %></p><br>
+                    <p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
+                    <hr><br>
+                  <% }); %>
+                <% } %>
+              </div>
+            </div>
+
+            <!------stray submission contents---------->
+            <div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
+              <div id="content-strays" class="contentStray"></div>
+              <div>
+              <div class="row">
+                <% if (uploadedStrays.length == 0) { %>
+                  <h3>You have no submissions yet.</h3>
+                <% } else { %>
+                  <% uploadedStrays.forEach( stray => { %>
+                    <div class="dash-container col-md-3">
+
+                      <div class="dash-image">
+                        <img class="img-fluid card-img-top w-100" src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+                      </div>
+        
+                      <div class="dash-info">
+                        <p><b>Name:</b> <%= stray.name %></p>
+                        <p><b>Age:</b> <%= stray.age %></p>
+                        <p><b>Gender:</b> <%= stray.gender %></p>
+                        <p><b>Color:</b> <%= stray.color %></p>
+                        <p><b>Breed:</b> <%= stray.breed %></p>
+                        <p><b>Status:</b> <%= stray.status %></p>
+                      </div>
+        
+                      <div class="crud-btns">
+                        <button id="edit">Edit</button>
+                        <button id="delete">Delete</button>
+                      </div>
+        
+                    </div>
+                    <% }); %>
+                  <% } %>
+          
+                </div>
+                <hr>
+                <button onclick="location.href='/create'">Submit a stray.</button>
+              </div>
+            </div>
+
+            <!--------cart content------------->
+            <div class="profile-cart-content user-act" id="profile-cart-content" style="display: none;">
+              <h1>User cart content here.</h1>
+            </div>
+
+            <!--------favorites content---------->
+            <div class="profile-favorites-content user-act" id="profile-favorites-content" style="display: none;">
+              <h1>User favorites content here.</h1>
+            </div>
+          </div>
+
+          <!---------pop-up for editing profile details----
+          <div id="edit-profile-popup" class="popup">
+            <div class="popup-content" id="popup-content">
+            <span class="close" onclick="closePopup('edit-profile-popup')">&times;</span>
+            <form id="edit-profile-form" enctype="multipart/form-data">
+              <div class="inputs">
+
+                <h3>Edit Profile</h3>
+
+                <input type="hidden" name="id" value="<%= user._id %>">
+
+                <label for="img">Upload new profile picture</label>
+                          <input type="file" accept="image/*" id="img" name="img"><br>  
+                <div class="warning" id="image-data-error"></div>
+
+                <label for="username">Username</label><br>
+                <div class="input-container">
+                  <i class='icon bx bx-user'></i>
+                  <input type="text" class="usernameSi" id="username" name="username" value="<%= user.username %>" required><br>
+                </div>
+
+                <label for="name">Name</label><br>
+                <div class="input-container">
+                  <i class='icon bx bx-user'></i>
+                  <input type="text" id="name" name="name" value="<%= user.name %>" required><br>
+                </div>
+
+                <label for="address">Address</label><br>
+                <div class="input-container">
+                  <i class='icon bx bx-user'></i>
+                  <input type="text" id="address" name="address" value="<%= user.address %>"><br>
+                </div>
+      
+                <label for="email">Email Address</label><br>
+                <div class="input-container">
+                  <i class='icon bx bx-envelope'></i>
+                  <input type="email" class="emailSi" id="email" name="email" value="<%= user.email %>" required><br>
+                </div>
+                <div class="warning" id="email-error"></div>
+      
+                <label for="password">Password</label><br>
+                <div class="input-container">
+                  <i class='icon bx bx-lock-alt'></i>
+                  <input type="password" class="passwordSi" id="password" name="password" required><br>
+                </div>
+                <div class="warning" id="password-error"></div>
+
+              </div>
+              <p class="warning signin-warning hide-warning">Password and email do not match!</p>
+              
+      
+              <button type="submit" class="submit">SAVE</button>
+            </form>
+          </div>---->
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-------------footer--------------->
+  <%- include('partials/footer.ejs') %>
+
+
+  <!--------------scripts-------------->
+  <%- include('partials/scripts.ejs') %>
+</body>
+
+</html>
