@@ -1,107 +1,520 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="en" dir="ltr">
+<%- include('partials/head.ejs') %>
 
-	<%- include('partials/head.ejs') %>
+<body>
 
-	<body>
-	<!-------------web banner/header--------------->
-		<%- include('partials/banner.ejs') %>
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
 
-		<!-------------banner--------------->
-		<section class="menu">
-			<div class="menu-text">
-				<h5>K<sup>2</sup>MJS</h5>
-				<h4>Find Your Furry Soulmate</h4>
-				<h1>MeowgAw</h1>
-				<p>Welcome to MeowgAw! We're dedicated to finding loving FURever homes for our furry friends. Discover a variety of adorable and playful pets, from cuddly cats to energetic dogs, waiting to bring joy into your life. Let's create a world where every pet finds a loving home.</p>
-				<a href="/gallery"><button class="menu-btn button2 check">Check-out strays</button></a>
-				<a href="/donate"><button class="menu-btn button2">Donate</button></a>
-			</div>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+      <div class="row justify-content-between gy-5">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+          <h2 data-aos="fade-up">MeowgAw</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Welcome to MeowgAw! We're dedicated to finding loving FURever homes for our furry friends. Discover a variety of adorable and playful pets, from cuddly cats to energetic dogs, waiting to bring joy into your life. Let's create a world where every pet finds a loving home.</p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="gallery.html" class="btn-book-a-table">Check-out Strays</a>
+            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 text-center text-lg-start">
+          <img src="assets/img/img-1.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
 
-			<div class="menu-img">
-				<img src="pics/icon2.png">
-			</div>
-		</section>
+  <main id="main">
 
-		<!-------------icons-------------->
-		<div class="icons">
-			<a href="#"><i class="ri-instagram-fill"></i></a>
-			<a href="#"><i class="ri-youtube-fill"></i></a>
-			<a href="#"><i class="ri-facebook-circle-fill"></i></a>
-		</div>
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
 
-		<div class="scroll-down">
-		    <a href="#footer" id="scroll-link">
-		      <i class="ri-arrow-down-line"></i>
-		    </a>
-		 </div>
+        <div class="section-header">
+          <h2>About Us</h2>
+          <p>Learn More <span>About Us</span></p>
+        </div>
 
-		<!-------------adoption info----------->
-		<div class="infosection">
-			<h2>Planning to Adopt a Pet?</h2>
+        <div class="row gy-4">
+          <div class="col-lg-7 position-relative about-img" style="background-image: url(assets/img/about/2.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+            <div class="call-us position-absolute">
+              <h4>Save a Stray</h4>
+              <p>+1 5589 55488 55</p>
+            </div>
+          </div>
+          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              </ul>
+              <p>
+                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+              </p>
 
-			<div id="infos">
-				<div class="info-card">
-					<h4>Checklist for New Adopters</h4>
-					<img class="infoimg" src="pics/checklist.png">
-					<p>Make your adoption experience as smooth as possible.</p>
-					<button class="button1" onclick="location.href='/blogs'">Learn More</button>
-				</div>
+              <div class="position-relative mt-4">
+                <img src="assets/img/about/1.jpg" class="img-fluid" alt="">
+                <a href="https://www.youtube.com/watch?v=Z-VJXzde4Os" class="glightbox play-btn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-				<div class="info-card">
-					<h4>Furparent Guide 101</h4>
-					<img class="infoimg" src="pics/info.png">
-					<p>All you need to know on what to expect as a new pet owner.</p>
-					<button class="button1" onclick="location.href='/blogs'">Learn More</button>
-				</div>
+      </div>
+    </section><!-- End About Section -->
 
-				<div class="info-card">
-					<h4>FAQs About Pet Adoption</h4>
-					<img class="infoimg" src="pics/adoption.png">
-					<p>Get answers to all of your questions about pet adoption.</p>
-					<button class="button1" onclick="location.href='/blogs'">Learn More</button>
-				</div>
-			</div>
-		</div>
+      <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container" data-aos="fade-up">
 
-		<!------------slider-------------->
-		<div class="slider-container">
-			<h2>Strays Available for Adoption</h2>
-			<div class="slider">
+        <div class="row gy-4">
 
-				  <div class="wrapper">
-				    <i id="left" class="fa-solid fa-angle-left"></i>
-				    <div class="carousel">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-box">
+              <h3>Planning to Adopt?</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+              </p>
+            </div>
+          </div><!-- End Why Box -->
 
-						<% if (strays.length > 0) {%>
-							<% strays.slice(0, 10).forEach(stray => { %>
+          <div class="col-lg-8 d-flex align-items-center">
+            <div class="row gy-4">
 
-								<div class="card">
-									<img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
-									<h3><%= stray.name %></h3>
-								</div>
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-clipboard-data"></i>
+                  <h4>Checklist for new adopters</h4>
+                  <p>Make your adoption experience as smooth as possible.</p>
 
-							<% }) %>
-						<% } else { %>
-							<p>There are no strays to display</p>
-							<% } %>
+                  <div class="text-center">
+                    <a href="#" class="more-btn">Learn More</a>
+                  </div>
+                </div>
+              </div><!-- End Icon Box -->
 
-				    </div>
-				    <i id="right" class="fa-solid fa-angle-right"></i>
-				  </div>
-			 </div>
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-gem"></i>
+                  <h4>Furparent Guide 101</h4>
+                  <p>All you need to know on what to expect as a new pet owner.</p>
+                  <div class="text-center">
+                    <a href="#" class="more-btn">Learn More</a>
+                  </div>
+                </div>
+              </div><!-- End Icon Box -->
 
-			 <button class="slide-btn button1" onclick="location.href='/gallery'">View more</button>
-		</div>
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-inboxes"></i>
+                  <h4>FAQs about pet adoption</h4>
+                  <p>Get answers to all of your questions about pet adoption.</p>
+                  <div class="text-center">
+                    <a href="#" class="more-btn">Learn More</a>
+                  </div>
+                </div>
+              </div><!-- End Icon Box -->
 
-		<!-------------footer--------------->
-		<%- include('partials/footer.ejs') %>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Stats Counter Section ======= -->
+    <section id="stats-counter" class="stats-counter">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1178" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Rescued Strays</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="21" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="327" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Re-homed Strays</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Volunteers</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Stats Counter Section -->
+
+    <!-- ======= shop Section ======= -->
+    <section id="menu" class="menu">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Our Shop</h2>
+          <p>Check Out Some <span>Dog Essentials and Merchandise</span></p>
+        </div>
+
+        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+          <li class="nav-item">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+              <h4>Toys</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+              <h4>Bowls and Feeders</h4>
+            </a><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+              <h4>Accessories</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+              <h4>Care and Health Supplies</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+        </ul>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+          <div class="tab-pane fade active show" id="menu-starters">
+
+            <div class="tab-header text-center">
+              <p>Shop</p>
+              <h3>Toys</h3>
+            </div>
+
+            <div class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/toy-1.jpg" class="glightbox"><img src="assets/img/shop/toy-1.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Chewable Pig that Oinks</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/toy-2.jpg" class="glightbox"><img src="assets/img/shop/toy-2.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Jungle Plush Pals</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $14.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/toy-3.jpg" class="glightbox"><img src="assets/img/shop/toy-3.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Sratch Post</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $8.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Starter Menu Content -->
+
+          <div class="tab-pane fade">
+
+            <div class="tab-header text-center">
+              <p>Shop</p>
+              <h3>Bowls and Feeders</h3>
+            </div>
+
+            <div class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/bowl-1.jpg" class="glightbox"><img src="assets/img/shop/bowl-1.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Double Pet Bowl</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/bowl-2.jpg" class="glightbox"><img src="assets/img/shop/bowl-2.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Elevated Wooden Bowl</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $7.00
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/shop/bowl-2.jpg" class="glightbox"><img src="assets/img/shop/bowl-3.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Elevated Food Bowl</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $14.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Breakfast Menu Content -->
+
+          <div class="tab-pane fade" id="menu-lunch">
+
+            <div class="tab-header text-center">
+              <p>Shop</p>
+              <h3>Accessories</h3>
+            </div>
+
+            <div class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/shop/accessory-1.webp" class="menu-img img-fluid" alt=""></a>
+                <h4>Adjustable Pet Collar</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-2.png" class="glightbox"><img src="assets/img/shop/accessory-2.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Dog Muzzle</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $14.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-3.png" class="glightbox"><img src="assets/img/shop/accessory-3.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Very Cool Dog Sunglasses</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $8.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Accessories Content -->
+
+          <div class="tab-pane fade">
+
+            <div class="tab-header text-center">
+              <p>Shop</p>
+              <h3>Care and Health Supplies</h3>
+            </div>
+
+            <div class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/shop/care-1.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Pet Honesty - 10-in-1 Multivitamin</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <a href="assets/img/menu/menu-item-2.png" class="glightbox"><img src="assets/img/shop/care-2.jpg" class="menu-img img-fluid" alt=""></a>
+                <h4>Nature Remedy - Healthy Skin+</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $14.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Care and Health Essentials Content -->
+
+        </div>
+      </div>
+
+      <div class="text-center view-moreBtn"><button type="submit">View More</button></div>
+    </section><!-- End shop Section -->
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>gallery</h2>
+          <p>Check Out<span>Strays</span></p>
+        </div>
+
+        <div class="gallery-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+
+            <% if (strays.length > 0) {%>
+              <% strays.slice(0, 10).forEach(stray => { %>
+
+              <div class="swiper-slide">
+              <a class="glightbox" data-gallery="images-gallery"><img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>" class="img-fluid" alt=""></a>
+              <p class="name text-center"><%= stray.name %></p>
+            </div>
+
+              <% }) %>
+              <% } else { %>
+                <p>There are no strays to display</p>
+            <% } %>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+      <!--learn more button-->
+      <div class="text-center view-moreBtn"><button type="submit">View More</button></div>
+
+    </section><!-- End Gallery Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>Need Help? <span>Contact Us</span></p>
+        </div>
+
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250956.40928945362!2d121.967157125!3d10.64204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33ae5b8761c629f5%3A0x8b0a8c7844cc30cd!2sUniversity%20of%20the%20Philippines%20Visayas!5e0!3m2!1sen!2sph!4v1698933055009!5m2!1sen!2sph" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-map flex-shrink-0"></i>
+              <div>
+                <h3>Our Address</h3>
+                <p>Universiry of the Philippines - Visayas, Miagao, Iloilo</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>meowgaw@gmail.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-share flex-shrink-0"></i>
+              <div>
+                <h3>Opening Hours</h3>
+                <div><strong>Mon-Sat:</strong> 11AM - 23PM;
+                  <strong>Sunday:</strong> Closed
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+          <div class="row">
+            <div class="col-xl-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-xl-6 form-group">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form><!--End Contact Form -->
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-------------footer--------------->
+  <%- include('partials/footer.ejs') %>
 
 
-		<!--------------scripts-------------->
-		<%- include('partials/scripts.ejs') %>
+  <!--------------scripts-------------->
+  <%- include('partials/scripts.ejs') %>
 
-	</body>
+</body>
 
 </html>
