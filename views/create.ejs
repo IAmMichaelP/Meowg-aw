@@ -1,31 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>MeowgAw</title> 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-		<!---------------favicon----------------->
-		<link rel="shortcut icon" type="image/png" href="/pics/icon.png">
-		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-		<link rel= "stylesheet" href="/css/style.css">
-		<link rel= "stylesheet" href="/css/userstyle.css">
-	</head>
-<body>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeowgAw | Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!--fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!----addtional bootstrap---->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Icons dependencies -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <!---gallery css--->
+  <link href="/assets/css/gallery.css" rel="stylesheet">
+  <!---about css--->
+  <link href="/assets/css/about.css" rel="stylesheet">
+  <!---donate css--->
+  <link href="/assets/css/donate.css" rel="stylesheet">
+  <!---blog css--->
+  <link href="/assets/css/blog.css" rel="stylesheet">
+  <!---profile/dashboard css--->
+  <link href="/assets/css/profile.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Edit with caution
+  * KM2JS
+  ======================================================== -->
+</head>
     
     <!-------------header--------------->
 	<%- include('partials/banner.ejs') %>
-    
-    <div class="create-wrapper">
+
+      <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs gallery-container mb-3">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Surrender/Submit a stray</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Submit a stray</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <div class="container create-wrapper">
         <div class="create-content">
             <p class="createBack" href="#" onclick="window.history.back(); return false;">&lt;Back</p>
-            <h2>Surrender/sumbit a stray</h2>
             <!--<div class="create-stray content">-->
             <div class="create-stray content">
                 <!-- enctype assures the server that he is about to receive data and file so do not remove -->
                 <form action="/create" method="POST" enctype="multipart/form-data">
-                    <label for="name">name:</label><br>
+                    <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" required><br>
                     <label for="img">Upload Image</label>
                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="img" name="img" required><br>
@@ -101,8 +156,12 @@
             </div>
         <div>
     </div>
+</div>
+</div>
+    <%- include('partials/footer.ejs') %>
 
-    <!--------------scripts-------------->
-	<%- include('./partials/scripts.ejs') %>
+
+  <!--------------scripts-------------->
+  <%- include('partials/scripts.ejs') %>
 </body>
 </html>
