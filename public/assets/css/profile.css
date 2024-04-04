@@ -226,3 +226,31 @@
 	width: 200px;
 	border-radius: 50%;
 }
+
+/************CREATE*************/
+.create-wrapper{
+	margin: 15px 20px;
+}
+
+.createBack{
+	text-decoration: underline;
+	color: var(--darkgreen);
+	font-family: var(--font-secondary);
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.createBack:hover{
+	color: var(--darkpink);
+}
+
+.create-content h2{
+	font-family: var(--font-primary);
+}
+
+.create-stray label{
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 10px;
+}

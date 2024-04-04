@@ -59,15 +59,28 @@
     <!-------------header--------------->
 	<%- include('partials/banner.ejs') %>
 
-    <div class="container mt-5 create-wrapper">
+      <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs gallery-container mb-3">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Surrender/Submit a stray</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Submit a stray</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <div class="container create-wrapper">
         <div class="create-content">
             <p class="createBack" href="#" onclick="window.history.back(); return false;">&lt;Back</p>
-            <h2>Surrender/sumbit a stray</h2>
             <!--<div class="create-stray content">-->
             <div class="create-stray content">
                 <!-- enctype assures the server that he is about to receive data and file so do not remove -->
                 <form action="/create" method="POST" enctype="multipart/form-data">
-                    <label for="name">name:</label><br>
+                    <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" required><br>
                     <label for="img">Upload Image</label>
                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="img" name="img" required><br>
