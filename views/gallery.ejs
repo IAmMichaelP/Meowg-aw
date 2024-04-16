@@ -94,11 +94,30 @@
       </div>
     </div>
 
-    <div class="row galleryWrapper">
+    <!-------container/wrapper for stray cards----->
+    <div class="row galleryWrapper"></div>
 
+    <!-- Modal for displaying stray details -->
+    <div class="modal fade" id="strayModal" tabindex="-1" role="dialog" aria-labelledby="strayModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="strayModalLabel">Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="strayDetailsContent">
+              <!-- Stray details will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
+
   <!-- End -->
 
   <!-------------footer--------------->
