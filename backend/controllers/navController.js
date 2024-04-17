@@ -7,7 +7,14 @@ module.exports.home_get = (req, res) => {
     
     Stray.findApprovedStrays()
         .then((result) => {
-            res.render('index', { title: 'HOME', strays: result });
+            let filteredRes = [];
+            result.map((res) => {
+                
+                filteredRes.push({id: res._id, name: res.name, status: res.status})
+            })
+            
+            res.status(200).json({filteredRes});
+            // res.render('index', { title: 'HOME', strays: result });
         })
         .catch((err) => {
             console.log(err);
