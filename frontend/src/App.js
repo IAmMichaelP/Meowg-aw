@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './css/style.css';
 
 // pages & components
-import Home from './pages/home';
-import Navbar from './components/navbar';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <div className="pages"></div>
       <Routes>
         <Route 
-          path="/home" 
+          path="/" 
           element={<Home />}
         />
           

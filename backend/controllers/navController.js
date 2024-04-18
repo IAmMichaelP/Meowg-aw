@@ -12,8 +12,8 @@ module.exports.home_get = (req, res) => {
                 
                 filteredRes.push({id: res._id, name: res.name, status: res.status})
             })
-            
-            res.status(200).json({filteredRes});
+            console.log(filteredRes);
+            res.status(200).json(filteredRes);
             // res.render('index', { title: 'HOME', strays: result });
         })
         .catch((err) => {
