@@ -78,7 +78,7 @@ const Home = () => {
             <div className="row gy-4">
               <div
                 className="col-lg-7 position-relative about-img"
-                style={{ backgroundImage: "url(assets/img/about/2.jpg)" }}
+                style={{ backgroundImage: "url(./assets/img/about/2.jpg)" }}
                 data-aos="fade-up"
                 data-aos-delay={150}
               >
@@ -121,7 +121,7 @@ const Home = () => {
                   </p>
                   <div className="position-relative mt-4">
                     <img
-                      src="assets/img/about/1.jpg"
+                      src="./assets/img/about/1.jpg"
                       className="img-fluid"
                       alt=""
                     />
@@ -323,9 +323,9 @@ const Home = () => {
                 </div>
                 <div className="row gy-5">
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/toy-1.jpg" className="glightbox">
+                    <a href="./assets/img/shop/toy-1.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/toy-1.jpg"
+                        src="./assets/img/shop/toy-1.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -338,9 +338,9 @@ const Home = () => {
                   </div>
                   {/* Menu Item */}
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/toy-2.jpg" className="glightbox">
+                    <a href="./assets/img/shop/toy-2.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/toy-2.jpg"
+                        src="./assets/img/shop/toy-2.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -353,9 +353,9 @@ const Home = () => {
                   </div>
                   {/* Menu Item */}
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/toy-3.jpg" className="glightbox">
+                    <a href="./assets/img/shop/toy-3.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/toy-3.jpg"
+                        src="./assets/img/shop/toy-3.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -377,9 +377,9 @@ const Home = () => {
                 </div>
                 <div className="row gy-5">
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/bowl-1.jpg" className="glightbox">
+                    <a href="./assets/img/shop/bowl-1.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/bowl-1.jpg"
+                        src="./assets/img/shop/bowl-1.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -392,9 +392,9 @@ const Home = () => {
                   </div>
                   {/* Menu Item */}
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/bowl-2.jpg" className="glightbox">
+                    <a href="./assets/img/shop/bowl-2.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/bowl-2.jpg"
+                        src="./assets/img/shop/bowl-2.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -407,9 +407,9 @@ const Home = () => {
                   </div>
                   {/* Menu Item */}
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/shop/bowl-2.jpg" className="glightbox">
+                    <a href="./assets/img/shop/bowl-2.jpg" className="glightbox">
                       <img
-                        src="assets/img/shop/bowl-3.jpg"
+                        src="./assets/img/shop/bowl-3.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -461,9 +461,9 @@ const Home = () => {
                   </div>
                   {/* Menu Item */}
                   <div className="col-lg-4 menu-item">
-                    <a href="assets/img/menu/menu-item-3.png" className="glightbox">
+                    <a href="./assets/img/menu/menu-item-3.png" className="glightbox">
                       <img
-                        src="assets/img/shop/accessory-3.jpg"
+                        src="./assets/img/shop/accessory-3.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -487,7 +487,7 @@ const Home = () => {
                   <div className="col-lg-4 menu-item">
                     <a href="assets/img/menu/menu-item-1.png" className="glightbox">
                       <img
-                        src="assets/img/shop/care-1.jpg"
+                        src="./assets/img/shop/care-1.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
@@ -502,7 +502,7 @@ const Home = () => {
                   <div className="col-lg-4 menu-item">
                     <a href="assets/img/menu/menu-item-2.png" className="glightbox">
                       <img
-                        src="assets/img/shop/care-2.jpg"
+                        src="./assets/img/shop/care-2.jpg"
                         className="menu-img img-fluid"
                         alt=""
                       />
