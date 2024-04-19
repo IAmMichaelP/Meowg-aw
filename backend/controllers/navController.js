@@ -13,7 +13,7 @@ module.exports.home_get = (req, res) => {
                 filteredRes.push({id: res._id, name: res.name, status: res.status})
             })
             console.log(filteredRes);
-            res.status(200).json(filteredRes);
+            res.status(200).json(result);
             // res.render('index', { title: 'HOME', strays: result });
         })
         .catch((err) => {
