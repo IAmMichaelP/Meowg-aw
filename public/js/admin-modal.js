@@ -1,9 +1,9 @@
 console.log("admin admin");
 
-// function closeDesc(popupId) {
-//     var popup = document.getElementById(popupId);
-//         popup.style.display = "none";
-// }
+function closeDesc(popupId) {
+    var popup = document.getElementById(popupId);
+        popup.style.display = "none";
+}
 
 function editFaqs(faqs) {
     console.log("reading edit faqs");

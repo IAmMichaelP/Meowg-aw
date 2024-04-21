@@ -1,5 +1,6 @@
 let password = "";
 let repassword = "";
+console.log("hide hide");
 
 const signinError = () => {
     const warning = document.querySelector('.signin-warning');
