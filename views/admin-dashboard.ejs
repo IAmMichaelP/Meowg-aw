@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeowgAw | Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!--fontawesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!----addtional bootstrap---->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Icons dependencies -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <!---gallery css--->
+  <link href="/assets/css/gallery.css" rel="stylesheet">
+  <!---about css--->
+  <link href="/assets/css/about.css" rel="stylesheet">
+  <!---donate css--->
+  <link href="/assets/css/donate.css" rel="stylesheet">
+  <!---blog css--->
+  <link href="/assets/css/blog.css" rel="stylesheet">
+  <!---profile/dashboard css--->
+  <link href="/assets/css/profile.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Edit with caution
+  * KM2JS
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
+
+  <main>
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs gallery-container mb-3">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Admin Dashboard</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Admin Dashboard</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <div class="container">
+
+      <div class="dash-buttons">
+
+        <ul class="list-inline">
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('users')">Users</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('strays')">Strays</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('donations')">Donations</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('blogs')">Blogs</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('shop')">Shop</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
+          <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
+        </ul>
+
+      </div>
+
+      <div class="dash-contents">
+        <% user = JSON.parse(user) %>
+
+        <!------Users------>
+        <div id="users">
+
+          <div class="row justify-content-between">
+          <% if (users.length > 0) {%>
+            <% users.forEach(user => { %>
+              <div class="user-acct-details dash-container col-md-3 m-2 p-2">
+                <div class="user-acct-image dash-image">
+                    
+                  <% if (user.profilePicture) { %>
+                    <img class="img-fluid" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.name %>">  
+                  <% } else { %>
+                    <img class="img-fluid" src="/assets/img/favicon.png">  
+                  <% } %>
+                </div>
+      
+                <div class="user-acct-info dash-info">
+                  <p>Name: <%= user.name %></p>
+                  <p>Username: <%= user.username %></p>
+                  <p>Email: <%= user.email %></p>
+                  <p>Role: <%= user.role %></p>
+                </div>
+      
+                <div class="crud-btns">
+                  <button onclick="
+                    showUser('<%= user.profilePicture %>', 
+                    '<%= user.name %>', 
+                    '<%= user.username %>', 
+                    '<%= user.email %>', 
+                    '<%= user.role %>');
+                    editRole('<%= user._id %>')">Edit</button>
+                  <button onclick="userDelete('<%= user._id %>')">Block</button>
+                </div>
+              </div>
+
+            <% }) %>
+          <% } else { %>
+            There are no users to display
+          <% } %>
+
+        </div>
+        </div>
+
+        <!------Strays------>
+        <div id="strays" style="display: none;">
+
+          <div class="row justify-content-between">
+
+          <!-- create stray. redirected to /create page -->
+          <button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
+          <h3>APPROVED</h3>
+            
+            <% if (approvedStrays.length > 0) {%>
+              <% approvedStrays.forEach(stray => { %>
+
+                <div class="dash-container col-md-2 m-2">
+
+                  <div class="dash-image">
+                    <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+                  </div>
+      
+                  <div class="dash-info">
+                    <p>Submitted by: <%=  %></p>
+                    <p>Name: <%= stray.name %></p>
+                    <p>Age: <%= stray.age %></p>
+                    <p>Gender: <%= stray.gender %></p>
+                    <p>Breed: <%= stray.breed %></p>
+                    <p>Status: <%= stray.status %></p>
+                  </div>
+                  <div class="crud-btns">
+                    <button onclick="
+                      showStray('<%= JSON.stringify(stray) %>')">View</button>
+                    <button onclick="strayDelete('<%= stray._id %>');">Delete</button>
+                  </div>
+
+                </div>
+              <% }) %>
+            <% } else { %>
+              There are no strays to display
+            <% } %>
+
+          <h3>PENDING</h3>
+              
+            <% if (pendingStrays.length > 0) {%>
+              <% pendingStrays.forEach(stray => { %>
+
+                <div class="dash-container col-md-2 m-2">
+
+                  <div class="dash-image">
+                    <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+                  </div>
+      
+                  <div class="dash-info">
+                    <p>Submitted by: <%= stray.uploader.username %></p>
+                    <p>Name: <%= stray.name %></p>
+                    <p>Age: <%= stray.age %></p>
+                    <p>Gender: <%= stray.gender %></p>
+                    <p>Breed: <%= stray.breed %></p>
+                    <p>Status: <%= stray.status %></p>
+                  </div>
+      
+                  <div class="crud-btns">
+                    <button onclick="approveStray('<%= stray._id %>');">Approve</button>
+                    <button onclick="strayDelete('<%= stray._id %>');">Delete</button>
+                  </div>
+
+                </div>
+              <% }) %>
+            <% } else { %>
+              There are no strays to display
+            <% } %>
+          </div>
+        </div>
+
+        <!------Donations------>
+        <div id="donations" style="display: none;">
+          <% if (donation) {%>
+            <% donation.forEach(donate => { %>
+              <div class="dash-container">
+              <div class="dash-info">
+                <p>Donor: <%= donate.donor %></p>
+                <p>Donation Amount: <%= donate.donation.amount %></p>
+                <p>Transaction Type: <%= donate.donation.paymentType %></p>
+                <p>Account Number: <%= donate.donation.accountNumber %></p>
+                <p>Account Name: <%= donate.donation.accountName %></p>
+                <p>Phone Number: <%= donate.phoneNumber %></p>
+                <p>Transaction Date: <%= donate.createdAt %></p>
+              </div>
+  
+              <div class="crud-btns">
+                <button onclick="viewDonation('<%= JSON.stringify(donate) %>')">View</button>
+                <button onclick="deleteDonation('<%= donate._id %>');">Delete</button>
+              </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <% }); %>
+          <% } else { %>
+            There is no donation report to display
+          <% } %>
+        </div>
+
+        <!------Blogs------>
+        <div id="blogs" style="display: none;">
+          <% if (pendingBlogs.length > 0) {%>
+            <% pendingBlogs.forEach(blog => { %>
+              <div class="dash-container">
+
+                <div class="dash-image">
+                  <img src="/pics/stray1.jpg">
+                </div>
+    
+                <div class="dash-info">
+                  <p>Posted by: <%= blog.uploader.name %></p>
+                  <p>Title: <%= blog.title %></p>
+                  <p>Content: <%= blog.body %></p>
+                  <p>Status: <%= blog.status %></p>
+                </div>
+    
+                <div class="crud-btns">
+                  <button onclick="approveBlog('<%= blog._id %>');">Approve</button>
+                  <button onclick="deleteBlog('<%= blog._id %>');">Delete</button>
+                </div>
+    
+              </div>
+              <br>
+              <hr>
+              <br>
+            <% }) %>
+          <% } else { %>
+            There are no pending blogs to display
+          <% } %>
+        
+        </div>
+
+        <!------shop------>
+        <div id="shop" style="display: none;">
+          <button onclick="location.href='/sell-item'">Add an item</button>
+        </div>
+
+        <!------FAQs------>
+        <div id="faqs" style="display: none;">
+          <button class="add-stray" onclick="openPopup('add-faqs-popup'); addFaqs();">Add an faqs</button>    
+            <% if (faqs.length > 0) {%>
+              <% faqs.forEach(faqs => { %>
+
+                <div class="dash-container">
+      
+                  <div class="dash-info">
+                    <p>Question: <%= faqs.question %></p>
+                    <h4>Answer: <%= faqs.answer %></h4><br>
+                    <h5>Uploaded by: <%= faqs.uploader.username %></h5>
+                    
+                  </div>
+      
+                  <div class="crud-btns">
+                    <button onclick="
+                      editFaqs('<%= JSON.stringify(faqs) %>');
+                      faqChange('<%= faqs._id %>');">Edit</button>
+                    <button onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
+                  </div>
+      
+                </div>
+              <% }) %>
+            <% } else { %>
+              There are no approved faqs to display
+            <% } %>
+        </div>
+
+        <!------Messages------>
+        <div id="messages" style="display: none;">
+          <% if (messages.length > 0) {%>
+            <% messages.forEach(message => { %>
+              <div class="dash-container">
+
+                <div class="dash-image">
+                  <img src="/pics/stray1.jpg">
+                </div>
+    
+                <div class="dash-info">
+                  <p>Sent by: <%= message.senderName %> | <%= message.senderEmail %></p>
+                  <p>Content: <%= message.body %></p><br>
+                  <h6>Status: <%= message.status %></h6>
+                </div>
+    
+                <div class="crud-btns">
+                  <button onclick="acknowledgeMessage('<%= message._id %>');">Acknowledge</button>
+                  <button onclick="deleteMessage('<%= message._id %>');">Delete</button>
+                </div>
+              </div>
+              <br>
+              <hr>
+              <br>
+
+            <% }) %>
+          <% } else { %>
+            There are no messages to display
+          <% } %>
+
+        </div>
+
+      </div>
+    </div>
+    
+  </main>
+
+  <%- include('partials/footer.ejs') %>
+
+
+  <!--------------scripts-------------->
+  <%- include('partials/scripts.ejs') %>
+</body>
+
+</html>

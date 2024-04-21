@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head.ejs') %>
+
+<body>
+
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs about-container">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Donate</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Donate</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Donate Now Section ======= -->
+    <section id="donate-now" class="section">
+        <div class="container">
+          <div class="text-center mb-5">
+            <h1>Donate Now</h1>
+            <p class="lead">MeowgAw is not only a pet-adoption site, but an organization dedicated to the well-being of stray animals at UP Visayas. Our mission is to contribute positively to the lives of abandoned, abused, injured, and neglected animals in the locality. However, this is only possible with people like you, who share our love for animals.</p>
+          </div>
+        </div>
+      </section><!-- End Donate Now Section -->
+
+    <!-- ======= Stats Counter Section ======= -->
+    <section id="stats-counter" class="stats-counter">
+        <div class="container" data-aos="zoom-out">
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="1178" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Rescued Strays</p>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="21" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Projects</p>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="327" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Re-homed Strays</p>
+              </div>
+            </div><!-- End Stats Item -->
+  
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Volunteers</p>
+              </div>
+            </div><!-- End Stats Item -->
+  
+          </div>
+  
+        </div>
+    </section><!-- End Stats Counter Section -->
+
+    <!-- ======= Donate Options ======= -->
+    <section id="donate-options" class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title">Donate Online</h2>
+                  <p class="card-text">You can make an online donation securely through our website using your credit card or e-wallet account.</p>
+                  <a href="#donation-information" class="btn btn-primary">Donate Online</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title">Donate In Kind</h2>
+                  <p class="card-text">If you prefer to donate physical items such as pet food, toys, blankets, or other supplies, please visit our shelter during our operating hours.</p>
+                  <a href="#shelter-wishlist" class="btn btn-primary">Donate In-Kind</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Donate Options -->
+
+    <!-- ======= Donation Information Section ======= -->
+    <section id="donation-information" class="section">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Donation Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Make a One-Time Donation</h2>
+                        <p class="card-text">Help us give these animals a second chance at a happy and healthy life.</p>
+                        <div class="mb-3 d-flex align-items-center">
+                            <label for="donation-amount" class="me-3">I'm Donating</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₱</span>
+                                <input type="number" class="form-control" id="donation-amount" name="donation-amount" readonly required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="btn-group" role="group" aria-label="Donation Options">
+                                <button type="button" class="btn btn-outline-primary" data-donation-amount="1000">₱1000</button>
+                                <button type="button" class="btn btn-outline-primary" data-donation-amount="750">₱750</button>
+                                <button type="button" class="btn btn-outline-primary" data-donation-amount="500">₱500</button>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#customAmountModal">Other</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-donate">Donate</button>
+                    </div>
+                </div>
+                <!-- End Donation Form -->
+            </div>
+            <div class="col-lg-6">
+              <!-- Image Container -->
+              <div class="image-container">
+                <img src="assets/img/doCATe.jpg" alt="Donate Image" class="img-fluid">
+              </div>
+              <!-- End Image Container -->
+            </div>
+        </div>
+    </div>
+  </section><!-- End Donation Information Section -->
+      
+    <!-- ======= Cats & Dogs Wish List Section ======= -->
+    <section id="cats-dogs-wishlist" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cats & Dogs Wish List</h2>
+                <p>Here are some items that our cats and dogs would greatly appreciate:</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li>Dog and Cat food</li>
+                        <li>Blankets and bedding</li>
+                        <li>Interactive toys</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul>
+                        <li>Carriers or cages</li>
+                        <li>Collars and leashes</li>
+                        <li>Medical supplies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Cats & Dogs Wish List Section -->
+      
+    <!-- ======= Shelter Wish List Section ======= -->
+    <section id="shelter-wishlist" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shelter Wish List</h2>
+                <p>Additionally, here are some items that would greatly benefit our shelter:</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li>Cleaning supplies (such as mops, brooms, cleaning solution, etc.)</li>
+                        <li>Office supplies (such as paper, pens, etc.)</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul>
+                        <li>Building materials for shelter repairs and maintenance</li>
+                        <li>Volunteer uniforms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Shelter Wish List Section -->
+
+    <!-- ======= Donate Ending Section ======= -->
+    <section id="donate-ending" class="section">
+        <div class="container">
+          <div class="text-center mb-5">
+            <p class="lead">If you wish to make in-kind donations or have specific items you'd like to contribute, your donations can be dropped off at the address below. We welcome your support in any form, and your kindness goes a long way in making a difference in the lives of our animals.</p>
+          </div>
+        </div>
+    </section><!-- End Donate Ending Section -->
+  </main>
+
+  <!-------------footer--------------->
+  <%- include('partials/footer.ejs') %>
+
+  <%- include('partials/scripts.ejs') %>
+
+</body>
+
+</html>

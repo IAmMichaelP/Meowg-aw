@@ -1,0 +1,156 @@
+<!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center" style="z-index: 1 !important">
+
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Default logo for larger screens -->
+        <img src="/assets/img/logo.png" alt="" class="d-none d-md-block">
+
+        <!-- Logo for mobile screens -->
+        <img src="/assets/img/mobile-logo.png" alt="" class="d-md-none">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/donate">Donate</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/about">About Us</a></li>
+        </ul>
+      </nav><!-- navbar -->
+
+      <% user = JSON.parse(user) %>
+
+      <% if (user) { %>
+        <div class="user-account">
+            <% if (user.profilePicture) { %>
+                <img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
+            <% } else { %>
+                <img src="/pics/stray1.jpg" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
+            <% } %>
+                
+            <p class="username" onclick="toggleModal();" id="username">
+                <%= user.username %>
+                <i class="fa-solid fa-caret-down" id="dropdown-arrow"></i>
+            </p>
+        </div>
+
+        <!------------dropdown when profile is clicked-------------->
+        <div id="profile-modal" class="profile-popup">
+            <div class="profile-dropdown">
+                <button class="profile" onclick="location.href='/profile/<%= user._id %>'">Profile</button>
+                <!-- should check if the user is an admin -->
+                <% if (user.role == 'admin') { %> <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Dashboard</button> <% } %>
+                <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
+            </div>
+        </div>
+      <% } else { %>
+        <button class="user-authBtn" data-toggle="modal" data-target="#signUp">Sign In</button>
+        <button class="user-authBtn" data-toggle="modal" data-target="#signIn">Sign Up</button>
+      <% } %>
+      
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+
+  </header><!-- End Header -->
+
+  <!-- sign In modal -->
+  <div class="modal fade" id="signIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <form id="signup-form">
+            <img src="assets/img/favicon.png">
+            <h3>Sign Up to MeowgAw</h3>
+
+            <div class="inputs">
+              <input type="hidden" name="role" value="user">
+              <label for="username">Username</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-user'></i>
+                <input type="text" id="username" name="username" required><br>
+              </div>
+
+              <label for="email">Email Address</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-envelope'></i>
+                <input type="email"name="email" required><br>
+              </div>
+              <div class="email error" id="warning"></div>
+
+              <label for="password">Password</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-lock-alt'></i>
+                <input type="password" id="password" name="password" onkeyup="
+                        handleOnKeyUp('password', event);
+                        " required><br>
+              </div>
+              <div class="password error" id="warning"></div>
+
+              <label for="repassword">Re-enter Password</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-lock' ></i>
+                <input type="password" id="repassword" name="repassword" onkeyup="
+                        handleOnKeyUp('repassword', event);
+                        " required><br> 
+                </div>
+                </div><p class="warning hide-warning">Password and repassword do not match!</p>
+
+            <button type="submit" class="submit">Sign Up</button>
+            <p class="reminder">By clicking "Sign Up", I understand and agree to the MeowgAw's collective 
+            <a href="">Terms</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.</p>
+
+            <p class="alternate" data-toggle="modal" data-target="#signIn">Already have an account?><a href="#">Log in</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- sign In modal -->
+  <div class="modal fade" id="signUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form form id="login-form" action="/signin" method="POST">
+            <img src="assets/img/favicon.png">
+            <h3>Sign into MeowgAw</h3>
+
+            <div class="inputs">
+              <label for="username">Username</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-user'></i>
+                <input type="text" class="usernameSi" name="username" required><br>
+              </div>
+
+              <label for="email">Email Address</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-envelope'></i>
+                <input type="email" class="emailSi" name="email" required><br>
+              </div>
+              <div class="email error" id="warning"></div>
+
+              <label for="password">Password</label><br>
+              <div class="input-container">
+                <i class='icon bx bx-lock-alt'></i>
+                <input type="password" class="passwordSi" name="password" required><br>
+              </div>
+              <div class="password error" id="warning"></div>
+
+              </div>
+              <p class="warning signin-warning hide-warning">Password and email do not match!</p>
+
+            <button type="submit" class="submit">Sign In</button>
+            <a href="#" class="forgot">Forgot Password?</a>
+            <p class="alternate" data-toggle="modal" data-target="#signUp">Doesn't have an account yet? ><a href="#">Sign Up</a></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>

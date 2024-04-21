@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head.ejs') %>
+
+<body>
+
+  <!-------------web banner/header--------------->
+  <%- include('partials/banner.ejs') %>
+
+  <!--gallery banner-->
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs gallery-container mb-3">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-3">Gallery</h1>
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Gallery</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+  <div class="container p-1">
+
+    <div class="mb-4">
+
+      <!---filter buttons--->
+      <div class="dropdown d-inline mb-2">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Type
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Type</a></li>
+          <li><a class="dropdown-item" href="#">Cat</a></li>
+          <li><a class="dropdown-item" href="#">Dog</a></li>
+          <li><a class="dropdown-item" href="#">Reptile</a></li>
+          <li><a class="dropdown-item" href="#">Other</a></li>
+          </ul>
+      </div>
+
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="sexDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Sex
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Sex</a></li>
+          <li><a class="dropdown-item" href="#">Male</a></li>
+          <li><a class="dropdown-item" href="#">Female</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="colorDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Color
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Colorl</a></li>
+          <li><a class="dropdown-item" href="#">White</a></li>
+          <li><a class="dropdown-item" href="#">Black</a></li>
+          <li><a class="dropdown-item" href="#">Orange</a></li>
+          <li><a class="dropdown-item" href="#">Brown</a></li>
+          <li><a class="dropdown-item" href="#">Other</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="sizeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Size
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Size</a></li>
+          <li><a class="dropdown-item" href="#">< 1 kg</a></li>
+          <li><a class="dropdown-item" href="#">1 kg - 3 kg</a></li>
+          <li><a class="dropdown-item" href="#">3 kg - 7 kg</a></li>
+          <li><a class="dropdown-item" href="#">7 kg - 10 kg</a></li>
+          <li><a class="dropdown-item" href="#">> 10 kg</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown d-inline">
+        <button class="btn dropdown-toggle filterBtn" type="button" id="ageRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Age Range
+        </button>
+              
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Age Range</a></li>
+          <li><a class="dropdown-item" href="#"><1 year old</a></li>
+          <li><a class="dropdown-item" href="#">1 - 2 years old</a></li>
+          <li><a class="dropdown-item" href="#">3-4 years old</a></li>
+          <li><a class="dropdown-item" href="#">>5 years old</a></li>
+        </ul>
+      </div>
+
+      <button id="searchButton" class="btn btn-primary" onclick="searchStrayData()">Search</button>
+    </div>
+
+    <!-------container/wrapper for stray cards----->
+    <div class="row galleryWrapper"></div>
+
+    <!-- Modal for displaying stray details -->
+    <div class="modal fade" id="strayModal" tabindex="-1" role="dialog" aria-labelledby="strayModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="strayModalLabel">Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="strayDetailsContent">
+              <!-- Stray details will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- End -->
+
+  <!-------------footer--------------->
+  <%- include('partials/footer.ejs') %>
+
+
+  <!--------------scripts-------------->
+  <!--<script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>-->
+  <script> const strays = `<%- strays %>`; const user = `<%- user %>` </script>
+  <%- include('partials/scripts.ejs') %>
+
+
+</body>
+
+</html>
