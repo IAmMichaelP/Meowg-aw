@@ -64,7 +64,7 @@
       <div class="modal-content">
         <div class="modal-body">
 
-          <form class="bannerForm" id="signup-form">
+          <form id="signup-form">
             <img src="assets/img/favicon.png">
             <h3>Sign Up to MeowgAw</h3>
 
@@ -101,7 +101,7 @@
                 </div>
                 </div><p class="warning hide-warning">Password and repassword do not match!</p>
 
-            <button type="submit" class="submit">Sign Up</button>
+            <button type="submit" class="submit" onclick="listenForm('#signup-form')">Sign Up</button>
             <p class="reminder">By clicking "Sign Up", I understand and agree to the MeowgAw's collective 
             <a href="">Terms</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.</p>
 
@@ -117,8 +117,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-        
-          <form class="bannerForm" id="login-form" action="/signin" method="POST">
+          <form form id="login-form" action="/signin" method="POST">
             <img src="assets/img/favicon.png">
             <h3>Sign into MeowgAw</h3>
 
@@ -146,7 +145,7 @@
               </div>
               <p class="warning signin-warning hide-warning">Password and email do not match!</p>
 
-            <button type="submit" class="submit">Sign In</button>
+            <button type="submit" class="submit" onclick="listenForm('#login-form')">Sign In</button>
             <a href="#" class="forgot">Forgot Password?</a>
             <p class="alternate" data-toggle="modal" data-target="#signUp">Doesn't have an account yet? ><a href="#">Sign Up</a></p>
           </form>

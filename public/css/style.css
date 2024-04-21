@@ -916,14 +916,14 @@ footer{
 	object-fit: cover;
 }
 
-/**.adoptionForm{
+.adoptionForm{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
 	align-items: center;
 	padding-top: 70px;
-}*//
+}
 
 .adoptionForm h3{
 	color: var(--darkpink);

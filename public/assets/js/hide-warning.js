@@ -1,6 +1,6 @@
 let password = "";
 let repassword = "";
-		
+console.log("hide hide");
 
 const signinError = () => {
     const warning = document.querySelector('.signin-warning');
@@ -56,7 +56,7 @@ function warningToggle(status, popup) {
     }
 }
 
-listenForm = (formId) => {
+function listenForm(formId) {
     const form = document.querySelector(formId);
     const emailError = document.querySelector('.email.error');
     const passwordError = document.querySelector('.password.error');

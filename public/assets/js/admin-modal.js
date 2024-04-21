@@ -5,6 +5,22 @@ function closeDesc(popupId) {
         popup.style.display = "none";
 }
 
+function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    popup.style.display = "flex";
+    setTimeout(function () {
+        popup.classList.add('show');
+        popup.querySelector('.popup-content').style.opacity = '1';
+        popup.querySelector('.popup-content').style.transform = 'translateY(0)';
+    }, 0);
+               
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            closeDesc(popupId);
+        }
+    };
+}
+
 function editFaqs(faqs) {
     console.log("reading edit faqs");
     faqs = JSON.parse(faqs);
@@ -13,7 +29,7 @@ function editFaqs(faqs) {
     console.log(modal);
 
     let faqsContent = `
-        <span class="close" onclick="closePopup('edit-faqs-popup')">&times;</span>
+        <span class="close" onclick="closeDesc('edit-faqs-popup')">&times;</span>
         <h3>Edit an FAQs Component</h3>
         <form class="faqEdit" id="faqEdit">
 

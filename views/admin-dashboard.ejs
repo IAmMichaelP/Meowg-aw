@@ -49,6 +49,8 @@
   <link href="/assets/css/blog.css" rel="stylesheet">
   <!---profile/dashboard css--->
   <link href="/assets/css/profile.css" rel="stylesheet">
+  <!---profile/admin dashboard css--->
+  <link href="/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Edit with caution
@@ -76,6 +78,45 @@
         </div>
       </div>
     </div><!-- End Breadcrumbs -->
+    
+    <!-- modal for every object (user,stray,etc) in the dashboard -->
+		<div id="descModal" class="strayModal">
+			<div class="descContainer">
+			  <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
+			  <div id="desc">
+				<!---content in js---->
+			  </div>
+			</div>
+		</div>
+		<!-- user popup update after role is updated -->
+		<div id="result-popup" class="popup">
+			<div class="popup-content" id="popup-content">
+				<span class="close" onclick="closePopup('result-popup')">&times;</span>
+				<h1 id="result">USER ROLE UPDATED</h1>
+			</div>
+		</div>
+		<!-- create an faq -->
+		<div id="add-faqs-popup" class="popup">
+			<div class="popup-content" id="popup-content">
+				<span class="close" onclick="closePopup('add-faqs-popup')">&times;</span>
+				<h3>Add a FAQs Component</h3>
+				<form class="faqCreate" id="faqCreate">
+
+					<input type="hidden" name="faqUploader" id="faqUploader" value="<%= admin._id %>">
+					<label for="question">Question</label><br>
+					<input type="text" name="question" id="question" required>
+					<label for="answer">Answer</label><br>
+					<input type="text" name="answer" id="answer" required>
+					<button type="submit" class="submit">Add</button>
+				</form>
+			</div>
+		</div>
+		<div id="edit-faqs-popup" class="popup">
+			<div class="popup-content edit-faqs-popup" id="popup-content">
+				
+			</div>
+		</div>
+		
 
     <div class="container">
 
@@ -347,6 +388,7 @@
 
 
   <!--------------scripts-------------->
+  <script src="/assets/js/admin-modal.js"></script>
   <%- include('partials/scripts.ejs') %>
 </body>
 

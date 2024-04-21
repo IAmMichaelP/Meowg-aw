@@ -416,22 +416,22 @@ section {
   font-family: var(--font-primary);
 }
 
-.modal-body .bannerForm{
+.modal-body form{
   padding: 25px;
   text-align: center;
 }
 
-.modal-body .bannerForm img{
+.modal-body form img{
   width: 50px;
 }
 
-.modal-body .bannerForm label{
+.modal-body form label{
   text-transform: uppercase;
   font-weight: bold;
   font-size: 11px;
 }
 
-.modal-body .bannerForm input{
+.modal-body form input{
   border-radius: 0;
   width: 100%;
   background-color: transparent;
@@ -441,18 +441,18 @@ section {
   font-weight: bold;
 }
 
-.modal-body .bannerForm input:focus{
+.modal-body form input:focus{
   border: none;
   outline: none;
   border-bottom: black solid 1px;
 }
 
-.modal-body .bannerForm .reminder{
+.modal-body form .reminder{
   font-size: 9px;
   font-style: italic;
 }
 
-.modal-body .bannerForm .alternate{
+.modal-body form .alternate{
   padding-top: 25px;
   font-size: 13px;
 }
