@@ -76,6 +76,36 @@
               </div>
             </div>
 
+            <% if (blogs.length > 0) {%>
+              <% blogs.forEach(blog => { %>
+                <!-----single post------->
+              <div class="card single_post">
+                <div class="body">
+                  
+                  <h3><a href="blog-details.html"><%= blog.title %></a></h3>
+                  <p><%= blog.body %></p>
+                </div>
+                
+                <div class="footerBlog">
+                  <div class="actions">
+                    <a href="javascript:void(0);" class="btn btn-outline-secondary">Continue Reading</a>
+                  </div>
+                          
+                  <ul class="stats">
+                    <li><a href="javascript:void(0);">General</a></li>
+                    <li><a href="javascript:void(0);" class="fa fa-heart">28</a></li>
+                    <li><a href="javascript:void(0);" class="fa fa-comment">128</a></li>
+                  </ul>
+                </div>
+              </div>
+  
+              <% }) %>
+            <% } else { %>
+              There are no blogs to display
+            <% } %>
+
+            
+
           </div>
         </div>
       </div>

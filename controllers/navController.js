@@ -1,4 +1,5 @@
 const Stray = require('../models/stray');
+const Blog = require('../models/blog');
 const Message = require('../models/message');
 const Faqs = require('../models/faq');
 const url = require('url');
@@ -29,8 +30,9 @@ module.exports.about_get = (req, res) => {
     res.render('about', { title: 'ABOUT' });
 };
 
-module.exports.blogs_get = (req, res) => {
-    res.render('blogs', { title: 'BLOGS' });
+module.exports.blogs_get = async (req, res) => {
+    const blogs = await Blog.findApprovedBlogs();
+    res.render('blogs', { title: 'BLOGS', blogs: blogs });
 };
 
 module.exports.faqs_get = (req, res) => {
