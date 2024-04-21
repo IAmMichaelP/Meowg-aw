@@ -7,12 +7,6 @@ import './assets/css/blog.css';
 import './assets/css/donate.css';
 import './assets/css/profile.css';
 
-import { useEffect, useState } from 'react';
-
-// Favicons
-import faviconPng from './assets/img/favicon.png';
-import appleTouchIconPng from './assets/img/apple-touch-icon.png';
-
 // Font Awesome
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -24,10 +18,9 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'boxicons/css/boxicons.min.css';
 import 'remixicon/fonts/remixicon.css';
 import 'font-awesome/css/font-awesome.min.css';
-import WebFont from 'webfontloader';
 
 // pages & components
-import Home from './pages/About';
+import About from './pages/About';
 import AddItem from './pages/Add-item';
 import Blog from './pages/Blog';
 import Donate from './pages/Donate';
@@ -38,7 +31,7 @@ import Shop from './pages/Shop';
 import Gallery from './pages/Gallery';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AddItem from "./pages/Add-item";
+
 
 function App() {
   

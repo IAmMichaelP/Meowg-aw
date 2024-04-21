@@ -26,7 +26,7 @@ const About = () => {
       <div className="row">
         <div className="col-lg-4 col-md-12 col-12">
           <div className="about-img">
-            <img src="./assets/img/about/3.jpg" alt="" className="img-fluid" />
+            <img src="./about/3.jpg" alt="" className="img-fluid" />
           </div>
         </div>
         <div className="col-lg-8 col-md-12 col-12 ps-lg-3 mt-md-3">
@@ -70,7 +70,7 @@ const About = () => {
         </div>
         <div className="col-lg-4 col-md-12 col-12">
           <div className="about-img">
-            <img src="./assets/img/about/4.jpg" alt="" className="img-fluid" />
+            <img src="./about/4.jpg" alt="" className="img-fluid" />
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@ const About = () => {
           <div className="chef-member">
             <div className="member-img">
               <img
-                src="./assets/img/members/manejo.jpg"
+                src="../members/manejo.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -132,7 +132,7 @@ const About = () => {
           <div className="chef-member">
             <div className="member-img">
               <img
-                src="./assets/img/members/pelegrino.jpg"
+                src="../members/pelegrino.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -171,7 +171,7 @@ const About = () => {
           <div className="chef-member">
             <div className="member-img">
               <img
-                src="./assets/img/members/tuando.jpg"
+                src="../members/tuando.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -210,7 +210,7 @@ const About = () => {
           <div className="chef-member">
             <div className="member-img">
               <img
-                src="./assets/img/members/tiu.jpg"
+                src="../members/tiu.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -249,7 +249,7 @@ const About = () => {
           <div className="chef-member">
             <div className="member-img">
               <img
-                src="./assets/img/members/vito.jpg"
+                src="../members/vito.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -410,10 +410,6 @@ const About = () => {
   </section>
   {/* End Contact Section */}
 </main>
-
-      
-    
-        
     )
 }
 

@@ -205,7 +205,7 @@ const Donate = () => {
                 {/* Image Container */}
                 <div className="image-container">
                   <img
-                    src="./assets/img/doCATe.jpg"
+                    src="./doCATe.jpg"
                     alt="Donate Image"
                     className="img-fluid"
                   />

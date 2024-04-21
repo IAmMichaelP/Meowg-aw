@@ -3,7 +3,7 @@ const navController = require('../controllers/navController');
 
 const router = Router();
 
-router.get('/api/', navController.home_get);
+router.get('/api/all-strays', navController.home_get);
 router.get('/api/gallery', navController.gallery_get);
 router.get('/api/about', navController.about_get);
 router.get('/blogs', navController.blogs_get);

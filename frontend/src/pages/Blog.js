@@ -54,7 +54,7 @@ const Blog = () => {
                     <div className="img-post">
                       <img
                         className="d-block img-fluid"
-                        src="./assets/img/bg-parallax.jpg"
+                        src="./bg-parallax.jpg"
                         alt="First slide"
                       />
                     </div>
@@ -98,7 +98,7 @@ const Blog = () => {
                     <div className="img-post">
                       <img
                         className="d-block img-fluid"
-                        src="./assets/img/home-1.jpg"
+                        src="./home-1.jpg"
                         alt="First slide"
                       />
                     </div>

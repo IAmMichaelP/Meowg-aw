@@ -85,10 +85,6 @@ const Footer = () => {
   {/* <div id="preloader" /> */}
 </>
 
-
-      
-    
-
     )
 }
 
