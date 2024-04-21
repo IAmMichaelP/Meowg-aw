@@ -29,7 +29,7 @@
 
     <div class="mb-4">
 
-      <!---filter buttons--->
+      <!---filter buttons---
       <div class="dropdown d-inline mb-2">
         <button class="btn dropdown-toggle filterBtn" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           Type
@@ -101,8 +101,43 @@
       </div>
 
       <button id="searchButton" class="btn btn-primary" onclick="searchStrayData()">Search</button>
-    </div>
+    </div> --->
 
+      <div class="categoryButtons">
+        <select class="categoryDropdown" id="categoryDropdown">
+          <option value="all" selected>All</option>
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="dog">Reptile</option>
+          <option value="other">Other</option>
+        </select>
+
+        <select class="categoryDropdown" id="colorDropdown">
+          <option value="all" selected>Color</option>
+          <option value="Brown">Brown</option>
+          <option value="Black">Black</option>
+          <option value="Gray">Gray</option>
+          <option value="Orange">Orange</option>
+        </select>
+
+        <select class="categoryDropdown" id="sexDropdown">
+          <option value="all" selected>Sex</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <select class="categoryDropdown" id="ageDropdown">
+          <option value="all" selected>Age Range</option>
+          <option value="male"><1 year old</option>
+          <option value="female">1 - 2 years old</option>
+          <option value="female">3 - 4 years old</option>
+          <option value="female">>5 years old</option>
+        </select>
+
+        <!-- Search button to trigger filtering based on the selected dropdowns -->
+        <button class="gallerySearchBtn" onclick="searchStrayData()">Search</button>
+      </div>
+    </div>
     <!-------container/wrapper for stray cards----->
     <div class="row galleryWrapper"></div>
 

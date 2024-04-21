@@ -69,17 +69,17 @@ function displayStrayDetails(stray) {
   let strayDetailContent = `
 
     <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img-modal img-fluid card-img-top">
-
-    <h5>Name: ${stray.name}</h5>
-    <p>Status: ${stray.status}</p>
-    <p>Gender: ${stray.gender}</p>
-    <p>Breed: ${stray.breed}</p>
+    <br><br>
+    <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeTextDetail(stray.status)}</div>
+    <br><br>
+    <p><b>Name:</b> ${stray.name}</p>
+    <p><b>Gender: </b>${stray.gender}</p>
+    <p><b>Breed: </b>${stray.breed}</p>
     <p class="strayDetails"><b>Age:</b> ${stray.age}</p>
     <p class="strayDetails"><b>Color:</b> ${stray.color}</p>
     <p class="strayDetails"><b>Size:</b> ${stray.size} kg</p>
     <div class="strayDetails">
-      <label for="temperamentSlider"><b>Temperament:</b></label><br>
-
+      <p><label for="temperamentSlider"><b>Temperament:</b></label></p>
         <div class="custom-slider">
           <input type="range" id="temperamentSlider" name="temperament" min="1" max="10" value="${stray.temperament}" />
         </div>
@@ -88,6 +88,7 @@ function displayStrayDetails(stray) {
           <span>Chill</span>
           <span>Hyper</span>
         </div>
+        <br>
 
     </div>
     <p class="strayDetails"><b>Spayed/Neutered:</b> ${stray.spayedNeutered}</p>
@@ -135,7 +136,7 @@ function displayStrayDetails(stray) {
   else {
     // modal content
     if(stray.status != 'evaluation for adoption ongoing') {
-      strayDetailsContent.innerHTML = '<form class="">' + strayDetailContent + submitButton + '</form>';
+      strayDetailsContent.innerHTML = '<form>' + strayDetailContent + submitButton + '</form>';
       // handles the adoption when adopt button is clicked
       const adoptButton = document.querySelector('.adoptButton');
       adoptButton.addEventListener('click', async (e) => {
@@ -178,10 +179,23 @@ function getBadgeText(status) {
       return 'available';
     // Add more cases
     default:
-      return 'available';
+      return 'Available';
   }
 }
 
+
+// Helper function to get badge for stray details
+function getBadgeTextDetail(status){
+  switch (status.toLowerCase()) {
+    case 'evaluation for adoption ongoing':
+      return 'Evaluation for adoption ongoing';
+    case 'available for adoption':
+      return 'Available for adoption';
+    // Add more cases
+    default:
+      return 'Available for adoption';
+  }
+}
 
 //FILTERING CHURVA
 document.addEventListener("DOMContentLoaded", function() {
@@ -208,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // for filtering strays
-function showStrayData(category, color, sex) {
+function showStrayData(category, color, sex, age) {
   console.log('working');
   console.log(color);
 
@@ -222,7 +236,8 @@ function showStrayData(category, color, sex) {
   const filteredStrayData = storedStrayData.filter(stray => {
     return (category === 'all' || stray.animal === category) &&
            (color === 'all' || stray.color === color) &&
-           (sex === 'all' || stray.gender === sex);
+           (sex === 'all' || stray.gender === sex)&&
+            (age === 'all' || stray.age === age);
   });
 
   filteredStrayData.forEach(stray => {
@@ -236,17 +251,16 @@ function showStrayData(category, color, sex) {
 
     // Create gallery item content
     const galleryContent = `
-    <div class="bg-white rounded shadow-sm">
+      <div class="bg-white rounded shadow-sm">
         <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
 
         <div class="p-4">
           <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>
-          <p class="small text-muted mb-0">${stray.gender}</p>
-          <p class="small text-muted mb-0">STATUS: ${stray.status}</p>
+          <p class="small text-muted mb-0">Breed: ${stray.breed}</p>
 
           <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-            <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">${stray.breed.toUpperCase()}</span></p>
-            <div class="badge badge-${getBadgeColor(stray.animal)} px-3 rounded-pill font-weight-normal">${getBadgeText(stray.animal)}</div>
+            <p class="small mb-0"></i><span class="font-weight-bold">${stray.gender.toUpperCase()}</span></p>
+            <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeText(stray.status)}</div>
           </div>
 
         </div>
@@ -265,8 +279,8 @@ function showStrayData(category, color, sex) {
   const strayDetailLinks = document.querySelectorAll('.stray-detail-link');
   strayDetailLinks.forEach(link => {
     link.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-      console.log("Link clicked!"); // Check if this message is logged
+      event.preventDefault();       // Prevent default link behavior
+      console.log("Link clicked!"); 
       const strayData = JSON.parse(this.getAttribute('data-stray'));
       displayStrayDetails(strayData);
     });
@@ -275,11 +289,10 @@ function showStrayData(category, color, sex) {
 
 // Function to trigger filtering when the search button is clicked
 function searchStrayData() {
-    // Retrieve selected criteria from dropdowns
-    const type = document.getElementById('typeDropdown').textContent.trim();
-    const color = document.getElementById('colorDropdown').textContent.trim();
-    const sex = document.getElementById('sexDropdown').textContent.trim();
+    const category = document.getElementById('categoryDropdown').value;
+    const color = document.getElementById('colorDropdown').value;
+    const sex = document.getElementById('sexDropdown').value;
+    const age = document.getElementById('ageDropdown').value;
 
-    // Call function to filter and display stray data
-    showStrayData(type, color, sex);
+    showStrayData(category, color, sex, age);
 }
