@@ -31,6 +31,7 @@
   /* ======= Donate Options ======= */
   #donate-options {
     padding: 60px 0;
+    margin-bottom: 20px;
   }
   
   #donate-options .card {
@@ -50,34 +51,16 @@
     line-height: 1.8;
     color: #666;
   }
-  
-  /* ======= Donation Information Section ======= */
-  #donation-information {
-    padding: 60px 0;
-  }
-  
-  #donation-information .card {
-    background: #f9f9f9;
+
+  #donate-options .btn-primary {
+    background-color: #566f64;
     border: none;
-    padding: 30px;
-  }
-  
-  #donation-information .card h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  #donation-information .card p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #666;
-  }
-  
-  #donation-information .input-group-text {
-    background-color: #fff;
-    border: none;
-  }
+  }   
+
+  #donate-options .btn-primary:hover {
+    background-color: #ccc; 
+    color: #566f64; 
+}
   
   /* ======= Cats & Dogs Wish List Section ======= */
   #cats-dogs-wishlist {
