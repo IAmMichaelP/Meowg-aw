@@ -47,8 +47,13 @@
             </div>
         </div>
       <% } else { %>
-        <button class="user-authBtn" data-toggle="modal" data-target="#signUp">Sign In</button>
-        <button class="user-authBtn" data-toggle="modal" data-target="#signIn">Sign Up</button>
+        <div class="userAuthBtns">
+          <!---- <li><button class="user-authBtn" onclick="openPopup('signin-popup'); listenForm('#signup-form')">Sign Up</button></li>
+          <li><button class="user-authBtn" onclick="openPopup('login-popup'); listenForm('#login-form')">Sign In</button></li> ----->
+
+          <button class="user-authBtn" data-toggle="modal" data-target="#signUp" data-backdrop="false">Sign In</button>
+          <button class="user-authBtn" data-toggle="modal" data-target="#signIn" data-backdrop="false">Sign Up</button>
+        </div>
       <% } %>
       
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -59,7 +64,7 @@
   </header><!-- End Header -->
 
   <!-- sign In modal -->
-  <div class="modal fade" id="signIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade popup-content" id="signIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
@@ -105,7 +110,7 @@
             <p class="reminder">By clicking "Sign Up", I understand and agree to the MeowgAw's collective 
             <a href="">Terms</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.</p>
 
-            <p class="alternate" data-toggle="modal" data-target="#signIn">Already have an account?><a href="#">Log in</a></p>
+            <p class="alternate" data-toggle="modal" data-target="#signUp" data-dismiss="modal">Already have an account?> <a href="#">Log in</a></p>
           </form>
         </div>
       </div>
@@ -113,7 +118,7 @@
   </div>
 
   <!-- sign In modal -->
-  <div class="modal fade" id="signUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade popup-content" id="signUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
@@ -147,7 +152,7 @@
 
             <button type="submit" class="submit" onclick="listenForm('#login-form')">Sign In</button>
             <a href="#" class="forgot">Forgot Password?</a>
-            <p class="alternate" data-toggle="modal" data-target="#signUp">Doesn't have an account yet? ><a href="#">Sign Up</a></p>
+            <p class="alternate" data-toggle="modal" data-target="#signIn" data-dismiss="modal">Doesn't have an account yet? <a href="#">Sign Up</a></p>
           </form>
         </div>
 
