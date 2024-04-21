@@ -428,7 +428,7 @@ const showUser = (Img, name, username, email, role) => {
                         <option value="admin">admin</option>
                     </select>
                     <br>
-                    <button class="adoptButton">Save</button>
+                    <button class="adoptButton" id="edit">Save</button>
                 </form>
             </div>
         </div>`;

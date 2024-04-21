@@ -39,6 +39,38 @@
   scroll-behavior: smooth;
 }
 
+.standard-button{
+	color: white;
+	background: var(--darkgreen);
+	border: 1px solid transparent;
+	transition: all ease 0.5s;
+	border-radius: 25px;
+	padding: 5px 15px;
+	margin: 5px 0;
+}
+
+.danger{
+	border: 1px solid transparent;
+	background: red;
+	color: white;
+	padding: 5px 15px;
+	margin: 5px 0;
+	transition: all ease 0.5s;
+	border-radius: 25px;
+}
+
+.standard-button:hover{
+	background: white;
+	color: var(--darkgreen);
+	border: 1px solid var(--darkgreen);
+}
+
+.danger:hover{
+	border: 1px solid red;
+	background:white;
+	color: red;
+}
+
 .headerProfilePic{
 	height: 50px;
 	width: 50px;
@@ -76,9 +108,11 @@
 
 .profileButtons .delete{
 	background: red;
+	margin: 5px 0;
 }
 
 .profileButtons .edit{
+	margin: 5px 0;
 	background-color: var(--darkgreen);
 }
 
@@ -154,6 +188,24 @@
 	padding: 5px 25px;
 }
 
+.add-stray{
+	width: 200px;
+	background: var(--darkgreen);
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+	transition: all 0.5s ease;
+	margin: 10px 0;
+	border-radius: 25px;
+	border: 1px solid transparent;
+}
+
+.add-stray:hover{
+	border: 1px solid var(--darkgreen);
+	color: var(--darkgreen);
+	background: white;
+}
+
 .crud-btns #edit{
 	background: var(--darkgreen);
 	border: none;
@@ -201,6 +253,7 @@
 
 .dash-image img{
 	height: 150px;
+	width: 150px;
 	object-fit: cover;
 }
 
@@ -216,8 +269,10 @@
 }
 
 .user-acct-details{
-	background: gray;
-	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
 }
 
 .user-acct-image img{
@@ -254,3 +309,34 @@
 	font-size: 14px;
 	margin-top: 10px;
 }
+
+.descContainer{
+	padding: 30px 50px;
+	background: white;
+	width: 50rem;
+	height: auto;
+	margin: 30px auto;
+}
+
+.details .image img{
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
+}
+
+#role, .adoptButton{
+	padding: 5px 10px;
+	background-color: var(--darkgreen);
+	color: white;
+	font-family: var(--font-secondary);
+	border-radius: 25px;
+	margin: 5px 0;
+	border: 1px solid transparent;
+}
+
+#role:hover, .adoptButton:hover{
+	background: white;
+	border: 1px solid var(--darkgreen);
+	color: var(--darkgreen);
+}
+
