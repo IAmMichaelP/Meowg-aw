@@ -123,6 +123,7 @@ function displayStrayDetails(stray) {
 
           <label for="schedule">Preferred Interview Schedule:</label>
           <input type="date" id="schedule" name="interviewSchedule" required>
+          <br>
           <button class="adoptButton">Adopt ${stray.name}</button>
         </form>
       </div>
@@ -141,7 +142,7 @@ function displayStrayDetails(stray) {
       const adoptButton = document.querySelector('.adoptButton');
       adoptButton.addEventListener('click', async (e) => {
         e.preventDefault();
-        openPopup('login-popup');
+        openPopup('signUp');
       });
     } else {
       strayDetailsContent.innerHTML = strayDetailContent;
@@ -295,4 +296,22 @@ function searchStrayData() {
     const age = document.getElementById('ageDropdown').value;
 
     showStrayData(category, color, sex, age);
+}
+
+// POP UPS
+// Show and hide popups
+function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    popup.style.display = "flex";
+    setTimeout(function () {
+        popup.classList.add('show');
+        popup.querySelector('.popup-content').style.opacity = '1';
+        popup.querySelector('.popup-content').style.transform = 'translateY(0)';
+    }, 0);
+               
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            closePopup(popupId);
+        }
+    };
 }
