@@ -25,6 +25,7 @@
 
       <% if (user) { %>
         <div class="user-account">
+            <div class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
             <% if (user.profilePicture) { %>
                 <img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
             <% } else { %>
