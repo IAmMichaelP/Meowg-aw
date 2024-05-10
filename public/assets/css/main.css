@@ -376,6 +376,10 @@ section {
   color: var(--color-primary);
 }
 
+#userAuth{
+  margin-left: 30px;
+}
+
 .header .user-authBtn,
 .header .user-authBtn:focus {
   font-size: 14px;
@@ -384,7 +388,7 @@ section {
   background: var(--color-primary);
   padding: 8px 20px;
   border-radius: 50px;
-  margin-left: 15px;
+  margin-left: 10px;
   transition: 0.3s;
   border: none;
 }
@@ -497,7 +501,7 @@ section {
 
 .submit{
   background-color: var(--darkgreen);
-  border:none;
+  border: 1px solid transparent;
   color:white;
   text-transform: uppercase;
   font-size: 12px;
@@ -511,6 +515,7 @@ section {
 .submit:hover{
   background-color: white;
   color: var(--darkgreen);
+  border: 1px solid var(--darkgreen);
 }
 
 .inputs{

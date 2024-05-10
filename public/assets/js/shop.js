@@ -38,6 +38,8 @@ const shopItems = [
   // add more shop items here
 ];
 
+<% user = JSON.parse(user) %>
+
 // Function to display shop items
 function displayShopItems(category) {
   const shopContainer = document.querySelector('.row.gx-4.gx-lg-5.row-cols-1.row-cols-md-2.row-cols-xl-3.justify-content-center');
