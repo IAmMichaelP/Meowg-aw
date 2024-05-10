@@ -50,6 +50,8 @@
   <!---profile/dashboard css--->
   <link href="/assets/css/profile.css" rel="stylesheet">
 
+  <link href="/assets/css/hide-warning.css" rel="stylesheet">
+
   <!-- =======================================================
   * Edit with caution
   * KM2JS
@@ -68,7 +70,7 @@
 
       <div class="row pt-3 pb-3">
 
-        <div class="col-md-3 pt-5">
+        <div class="col-md-3 col-xs-4 pt-5">
 
             <% if (user.profilePicture) { %>
               <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
@@ -83,13 +85,14 @@
             </div>
 
             <div class="profileButtons text-center mt-3">
-              <button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>
+              <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
+              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup">Edit Profile</button>
               <button class="delete w-50">Delete Account</button>
             </div>
 
         </div>
 
-        <div class="col-md-9 pt-5" style="background-color: ; overflow-y: auto;">
+        <div class="col-md-9 col-xs-4 pt-5" style="background-color: ; overflow-y: auto;">
 
           <div class="userActivities m-3 h-7 p-4">
 
@@ -97,7 +100,6 @@
             <ul class="list-inline">
               <li class="list-inline-item activitiesBtn" onclick="showContent('blogs')">Blog</li>
               <li class="list-inline-item activitiesBtn" onclick="showContent('submissions')">Submitted Strays</li>
-              <li class="list-inline-item activitiesBtn" onclick="showContent('favorites')">Favorites</li>
               <li class="list-inline-item activitiesBtn" onclick="showContent('cart')">Cart</li>
               <hr>
             </ul>
@@ -172,14 +174,9 @@
               <h1>User cart content here.</h1>
             </div>
 
-            <!--------favorites content---------->
-            <div class="profile-favorites-content user-act" id="profile-favorites-content" style="display: none;">
-              <h1>User favorites content here.</h1>
-            </div>
           </div>
-
-          <!---------pop-up for editing profile details----
-          <div id="edit-profile-popup" class="popup">
+          <!---------pop-up for editing profile details---->
+          <div id="edit-profile-popup" class="modal fade popup">
             <div class="popup-content" id="popup-content">
             <span class="close" onclick="closePopup('edit-profile-popup')">&times;</span>
             <form id="edit-profile-form" enctype="multipart/form-data">
@@ -231,11 +228,10 @@
       
               <button type="submit" class="submit">SAVE</button>
             </form>
-          </div>---->
+          </div>
+        </div>
       </div>
-
     </div>
-
   </div>
 
   <!-------------footer--------------->

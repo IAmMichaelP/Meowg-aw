@@ -40,18 +40,6 @@
 	border: white 2px solid;
 }
 
-.profile-popup {
-	z-index: 10005;
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    width: 100%;
-}
-
 .profile-dropdown {
 	display: flex;
 	flex-direction: column;
