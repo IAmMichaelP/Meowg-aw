@@ -38,8 +38,6 @@ const shopItems = [
   // add more shop items here
 ];
 
-<% user = JSON.parse(user) %>
-
 // Function to display shop items
 function displayShopItems(category) {
   const shopContainer = document.querySelector('.row.gx-4.gx-lg-5.row-cols-1.row-cols-md-2.row-cols-xl-3.justify-content-center');
@@ -70,10 +68,11 @@ function displayShopItems(category) {
               <span class="text-muted">${item.price}</span>
             </div>
           </div>
+
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
-              <a class="btn btn-outline-dark mt-auto" href="#">${item.buttonText ? item.buttonText : 'View'}</a>
+              <a class="btn btn-outline-dark mt-auto" href="/shop-item">${item.buttonText ? item.buttonText : 'View'}</a>
             </div>
           </div>
         </div>

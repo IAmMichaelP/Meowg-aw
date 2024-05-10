@@ -25,7 +25,7 @@
 
       <% if (user) { %>
         <div class="user-account">
-            <div class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="cart"><i class="fa-solid fa-cart-shopping" data-toggle="modal" data-target="#cart"></i></div>
             <% if (user.profilePicture) { %>
                 <img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
             <% } else { %>
@@ -154,6 +154,23 @@
           </form>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!------- cart modal ------->
+  <div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+
+        <h1>Your Cart</h1>
+
+        <p>Your cart is currently empty.</p>
+
+        <button class="checkoutBtn">Checkout</button>
+
+        </div>
       </div>
     </div>
   </div>
