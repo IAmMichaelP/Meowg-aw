@@ -122,8 +122,3 @@ function closePopup(popupId) {
         selectedContent.style.display = 'block';
     }
 }
-
-// checkout button
-document.getElementById('checkoutButton').addEventListener('click', function() {
-    window.location.href = 'checkout.ejs';
-  });
