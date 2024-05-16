@@ -15,14 +15,20 @@
 
 .payment-deets{
     margin-top: 20px;
+    margin-left: 50px;
 }
 
-.checkout-section .btn-primary {
+.payment-details .form-group {
+      margin-left: 50px;
+}
+
+.btn-primary {
     background-color: #566f64;
     border: none;
-  }   
+    margin-bottom: 20px;
+}
 
-.checkout-section .btn-primary:hover {
+.btn-primary:hover {
     background-color: #ccc; 
     color: #566f64; 
 }

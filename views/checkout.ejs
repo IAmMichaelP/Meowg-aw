@@ -24,99 +24,122 @@
         </div>
       </div><!-- End Breadcrumbs -->
   
-          <!-- Checkout Form -->
-      <div class="container mt-5">
-          <div class="row">
-            <!-- Delivery Address -->
-            <div class="col-md-6">
-              <h4>Delivery Address</h4>
-              <form id="deliveryAddressForm">
-                <div class="form-group">
-                  <label for="fullName">Full Name</label>
-                  <input type="text" class="form-control" id="fullName" required>
-                </div>
-                <div class="form-group">
-                  <label for="contactNumber">Contact Number</label>
-                  <input type="text" class="form-control" id="contactNumber" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Region</label>
-                  <select name="region" class="form-control form-control-md" id="region"></select>
-                  <input type="hidden" class="form-control form-control-md" name="region_text" id="region-text" required>
-              </div>
-              <div class="form-group">
-                  <label class="form-label">Province</label>
-                  <select name="province" class="form-control form-control-md" id="province"></select>
-                  <input type="hidden" class="form-control form-control-md" name="province_text" id="province-text" required>
-              </div>
-              <div class="form-group">
-                  <label class="form-label">City/Municipality</label>
-                  <select name="city" class="form-control form-control-md" id="city"></select>
-                  <input type="hidden" class="form-control form-control-md" name="city_text" id="city-text" required>
-              </div>
-              <div class="form-group">
-                  <label class="form-label">Barangay</label>
-                  <select name="barangay" class="form-control form-control-md" id="barangay"></select>
-                  <input type="hidden" class="form-control form-control-md" name="barangay_text" id="barangay-text" required>
-              </div>
-                <div class="form-group">
-                  <label for="zipCode">Zip Code</label>
-                  <input type="text" class="form-control" id="zipCode" required>
-                </div>
-                <div class="form-group">
-                  <label for="street">Street Name, Building, House No.</label>
-                  <input type="text" class="form-control" id="street" required>
-                </div>
-              </form>
+              <!-- Checkout Form -->
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Delivery Address -->
+        <div class="col-md-6">
+          <h4>Delivery Address</h4>
+          <form id="deliveryAddressForm">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" class="form-control" id="fullName" required>
             </div>
-            <!-- Order Summary -->
-            <div class="col-md-6">
-              <div class="checkout-section">
-              <h4>Order Summary</h4>
-              <div id="orderSummary">
-                <!-- Order summary will be dynamically generated here -->
-              </div>
-              <!-- Payment Method -->
-          <div class="row mt-4">
-              <div class="payment-method">
-              <h4>Payment Method</h4>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="cashOnDelivery" checked>
-                <label class="form-check-label" for="cashOnDelivery">
-                  Cash on Delivery
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="eWallet" value="eWallet">
-                <label class="form-check-label" for="eWallet">
-                  E-Wallet
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="creditDebitCard" value="creditDebitCard">
-                <label class="form-check-label" for="creditDebitCard">
-                  Credit/Debit Card
-                </label>
-              </div>
+            <div class="form-group">
+              <label for="contactNumber">Contact Number</label>
+              <input type="text" class="form-control" id="contactNumber" required>
             </div>
+            <div class="form-group">
+              <label class="form-label">Region</label>
+              <select name="region" class="form-control form-control-md" id="region"></select>
+              <input type="hidden" class="form-control form-control-md" name="region_text" id="region-text" required>
           </div>
-            <!-- Payment Details -->
-            <div class="col-mt-4">
-              <div class="payment-deets">
-              <h4>Payment Details</h4>
-              <div class="payment-details">
-                <p>Merchandise Subtotal: $50.00</p>
-                <p>Shipping Subtotal: $5.00</p>
-                <p>Total Payment: $55.00</p>
-              </div>
+          <div class="form-group">
+              <label class="form-label">Province</label>
+              <select name="province" class="form-control form-control-md" id="province"></select>
+              <input type="hidden" class="form-control form-control-md" name="province_text" id="province-text" required>
+          </div>
+          <div class="form-group">
+              <label class="form-label">City/Municipality</label>
+              <select name="city" class="form-control form-control-md" id="city"></select>
+              <input type="hidden" class="form-control form-control-md" name="city_text" id="city-text" required>
+          </div>
+          <div class="form-group">
+              <label class="form-label">Barangay</label>
+              <select name="barangay" class="form-control form-control-md" id="barangay"></select>
+              <input type="hidden" class="form-control form-control-md" name="barangay_text" id="barangay-text" required>
+          </div>
+            <div class="form-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" class="form-control" id="zipCode" required>
             </div>
-            <div class="mt-4 text-center">
-              <button type="submit" class="btn btn-primary">Place Order</button>
+            <div class="form-group">
+              <label for="street">Street Name, Building, House No.</label>
+              <input type="text" class="form-control" id="street" required>
             </div>
+          </form>
+        </div>
+        <!-- Order Summary -->
+        <div class="col-md-6">
+          <div class="checkout-section">
+          <h4>Order Summary</h4>
+          <div id="orderSummary">
+            <!-- Order summary will be dynamically generated here -->
           </div>
+          <!-- Payment Method -->
+          
+          <div class="payment-method">
+          <h4>Payment Method</h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="cashOnDelivery" checked>
+            <label class="form-check-label" for="cashOnDelivery">
+              Cash on Delivery
+            </label>
           </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="eWallet" value="eWallet">
+            <label class="form-check-label" for="eWallet">
+              GCash
+            </label>
           </div>
-  </main>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentMethod" id="creditDebitCard" value="creditDebitCard">
+            <label class="form-check-label" for="creditDebitCard">
+              Credit/Debit Card
+            </label>
+          </div>
+        </div>
+      <div class="mt-4" id="paymentDetails">
+        <div class="payment-details" id="creditCardDetails" style="display: none;">
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber">
+          </div>
+          <div class="form-group">
+            <label for="cardExpiry">Card Expiry</label>
+            <input type="text" class="form-control" id="cardExpiry">
+          </div>
+          <div class="form-group">
+            <label for="cardCVC">Card CVC</label>
+            <input type="text" class="form-control" id="cardCVC">
+          </div>
+          <div class="form-group">
+            <label for="cardHolderName">Card Holder Name</label>
+            <input type="text" class="form-control" id="cardHolderName">
+          </div>
+        </div>
+        <div class="text-center">
+          <img id="eWalletImage" src="assets/img/donate/gcash-qr.png" alt="e-wallet" style="display: none;">
+        </div>
+      </div>
+    </div>
+        <!-- Payment Details -->
+        <div class="col-mt-4">
+          <div class="payment-deets">
+          <h4>Payment Details</h4>
+          <div class="payment-details">
+            <p>Merchandise Subtotal: $0.00</p>
+            <p>Shipping Subtotal: $0.00</p>
+            <p>Total Payment: $0.00</p>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </div>
+      </div>
+      </div>
+      </div>
+  </main>  
   
   <!-------------footer--------------->
   <%- include('partials/footer.ejs') %>

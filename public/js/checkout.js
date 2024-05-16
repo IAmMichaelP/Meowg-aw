@@ -49160,3 +49160,24 @@ window.onload = function() {
         regionObj.showBarangays(selectedRegion, selectedProvince, selectedCity, "#barangay");
     });
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+  const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+  const creditCardDetails = document.getElementById('creditCardDetails');
+  const eWalletImage = document.getElementById('eWalletImage');
+
+  paymentMethods.forEach(method => {
+    method.addEventListener('change', function () {
+      if (this.value === 'creditDebitCard') {
+        creditCardDetails.style.display = 'block';
+        eWalletImage.style.display = 'none';
+      } else if (this.value === 'eWallet') {
+        creditCardDetails.style.display = 'none';
+        eWalletImage.style.display = 'block';
+      } else {
+        creditCardDetails.style.display = 'none';
+        eWalletImage.style.display = 'none';
+      }
+    });
+  });
+});
