@@ -1668,6 +1668,11 @@ section {
   color: #fff;
 }
 
+.footer a{
+  color: white;
+  text-decoration: none;
+}
+
 .footer .footer-links {
   margin-bottom: 30px;
 }
