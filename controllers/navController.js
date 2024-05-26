@@ -45,7 +45,10 @@ module.exports.message_post = (req, res) => {
         senderEmail: req.body.senderEmail,
         senderName: req.body.senderName,
         receiver: "Admin",
-        body: req.body.body
+        messageSubject: req.body.messageSubject,
+        messageBody: req.body.messageBody,
+        status: "pending"
+
     });
 
     message.save()

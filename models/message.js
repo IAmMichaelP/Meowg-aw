@@ -14,7 +14,11 @@ const messageSchema = new Schema({
         type: String,
         required: true
     },
-    body: {
+    messageBody: {
+        type: String,
+        required: true
+    },
+    messageSubject: {
         type: String,
         required: true
     },

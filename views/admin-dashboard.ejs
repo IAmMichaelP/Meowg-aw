@@ -161,13 +161,14 @@
                 </div>
       
                 <div class="crud-btns">
-                  <button onclick="
-                    showUser('<%= user.profilePicture %>', 
-                    '<%= user.name %>', 
-                    '<%= user.username %>', 
-                    '<%= user.email %>', 
-                    '<%= user.role %>');
-                    editRole('<%= user._id %>')" class="standard-button">Edit</button>
+                  <% if (admin.role == 'superadmin') { %> <button onclick="
+                  showUser('<%= user.profilePicture %>', 
+                  '<%= user.name %>', 
+                  '<%= user.username %>', 
+                  '<%= user.email %>', 
+                  '<%= user.role %>');
+                  editRole('<%= user._id %>')" class="standard-button">Edit</button> <% } %>
+                  
                   <button onclick="userDelete('<%= user._id %>')" class="danger">Block</button>
                 </div>
               </div>
@@ -359,7 +360,8 @@
     
                 <div class="dash-info">
                   <p>Sent by: <%= message.senderName %> | <%= message.senderEmail %></p>
-                  <p>Content: <%= message.body %></p><br>
+                  <h7>Subject: <%= message.messageSubject %></h7><br>
+                  <p>Content: <%= message.messageBody %></p><br>
                   <h6>Status: <%= message.status %></h6>
                 </div>
     

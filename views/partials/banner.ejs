@@ -43,7 +43,7 @@
             <div class="profile-dropdown">
                 <button class="profile" onclick="location.href='/profile/<%= user._id %>'">Profile</button>
                 <!-- should check if the user is an admin -->
-                <% if (user.role == 'admin') { %> <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Dashboard</button> <% } %>
+                <% if (user.role == 'superadmin' || user.role == 'admin') { %> <button class="profile" onclick="location.href='/admin/<%= user._id %>'">Dashboard</button> <% } %>
                 <button class="logout-button" onclick="location.href='/logout'">Log Out</button>
             </div>
         </div>
