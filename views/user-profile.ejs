@@ -52,6 +52,8 @@
 
   <link href="/assets/css/hide-warning.css" rel="stylesheet">
 
+  <!-- <link href="/assets/css/style.css" rel="stylesheet"> -->
+
   <!-- =======================================================
   * Edit with caution
   * KM2JS
@@ -86,7 +88,7 @@
 
             <div class="profileButtons text-center mt-3">
               <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
-              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup">Edit Profile</button>
+              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup" >Edit Profile</button>
               <button class="delete w-50">Delete Account</button>
             </div>
 
@@ -190,35 +192,35 @@
                           <input type="file" accept="image/*" id="img" name="img"><br>  
                 <div class="warning" id="image-data-error"></div>
 
-                <label for="username">Username</label><br>
+                <label for="username-edit">Username</label><br>
                 <div class="input-container">
                   <i class='icon bx bx-user'></i>
-                  <input type="text" class="usernameSi" id="username" name="username" value="<%= user.username %>" required><br>
+                  <input type="text" class="usernameSi" id="username-edit" name="username" value="<%= user.username %>" required><br>
                 </div>
 
-                <label for="name">Name</label><br>
+                <label for="name-edit">Name</label><br>
                 <div class="input-container">
                   <i class='icon bx bx-user'></i>
-                  <input type="text" id="name" name="name" value="<%= user.name %>" required><br>
+                  <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
                 </div>
 
-                <label for="address">Address</label><br>
+                <label for="address-edit">Address</label><br>
                 <div class="input-container">
                   <i class='icon bx bx-user'></i>
-                  <input type="text" id="address" name="address" value="<%= user.address %>"><br>
+                  <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
                 </div>
       
-                <label for="email">Email Address</label><br>
+                <label for="email-edit">Email Address</label><br>
                 <div class="input-container">
                   <i class='icon bx bx-envelope'></i>
-                  <input type="email" class="emailSi" id="email" name="email" value="<%= user.email %>" required><br>
+                  <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>" required><br>
                 </div>
                 <div class="warning" id="email-error"></div>
       
                 <label for="password">Password</label><br>
                 <div class="input-container">
                   <i class='icon bx bx-lock-alt'></i>
-                  <input type="password" class="passwordSi" id="password" name="password" required><br>
+                  <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
                 </div>
                 <div class="warning" id="password-error"></div>
 
