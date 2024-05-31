@@ -88,7 +88,7 @@
 
             <div class="profileButtons text-center mt-3">
               <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
-              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup" >Edit Profile</button>
+              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup" onclick="console.log('clicked clicked');">Edit Profile</button>
               <button class="delete w-50">Delete Account</button>
             </div>
 
@@ -178,60 +178,60 @@
 
           </div>
           <!---------pop-up for editing profile details---->
-          <div id="edit-profile-popup" class="modal fade popup">
-            <div class="popup-content" id="popup-content">
-            <span class="close" onclick="closePopup('edit-profile-popup')">&times;</span>
-            <form id="edit-profile-form" enctype="multipart/form-data">
-              <div class="inputs">
-
-                <h3>Edit Profile</h3>
-
-                <input type="hidden" name="id" value="<%= user._id %>">
-
-                <label for="img">Upload new profile picture</label>
-                          <input type="file" accept="image/*" id="img" name="img"><br>  
-                <div class="warning" id="image-data-error"></div>
-
-                <label for="username-edit">Username</label><br>
-                <div class="input-container">
-                  <i class='icon bx bx-user'></i>
-                  <input type="text" class="usernameSi" id="username-edit" name="username" value="<%= user.username %>" required><br>
-                </div>
-
-                <label for="name-edit">Name</label><br>
-                <div class="input-container">
-                  <i class='icon bx bx-user'></i>
-                  <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
-                </div>
-
-                <label for="address-edit">Address</label><br>
-                <div class="input-container">
-                  <i class='icon bx bx-user'></i>
-                  <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
-                </div>
-      
-                <label for="email-edit">Email Address</label><br>
-                <div class="input-container">
-                  <i class='icon bx bx-envelope'></i>
-                  <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>" required><br>
-                </div>
-                <div class="warning" id="email-error"></div>
-      
-                <label for="password">Password</label><br>
-                <div class="input-container">
-                  <i class='icon bx bx-lock-alt'></i>
-                  <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
-                </div>
-                <div class="warning" id="password-error"></div>
-
+            <div id="edit-profile-popup" class="modal fade popup" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content" id="popup-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title">Edit Profile</h5>
+                          <!-- This uses html and bootstrap functionality of closing the modal -->
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="edit-profile-form" enctype="multipart/form-data">
+                              <div class="inputs">
+                                  <h3>Edit Profile</h3>
+                                  <input type="hidden" name="id" value="<%= user._id %>">
+                                  <label for="img">Upload new profile picture</label>
+                                  <input type="file" accept="image/*" id="img" name="img"><br>
+                                  <div class="warning" id="image-data-error"></div>
+                                  <label for="username-edit">Username</label><br>
+                                  <div class="input-container">
+                                      <i class='icon bx bx-user'></i>
+                                      <input type="text" class="usernameSi" id="username-edit" name="username" value="<%= user.username %>" required><br>
+                                  </div>
+                                  <label for="name-edit">Name</label><br>
+                                  <div class="input-container">
+                                      <i class='icon bx bx-user'></i>
+                                      <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
+                                  </div>
+                                  <label for="address-edit">Address</label><br>
+                                  <div class="input-container">
+                                      <i class='icon bx bx-user'></i>
+                                      <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
+                                  </div>
+                                  <label for="email-edit">Email Address</label><br>
+                                  <div class="input-container">
+                                      <i class='icon bx bx-envelope'></i>
+                                      <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>" required><br>
+                                  </div>
+                                  <div class="warning" id="email-error"></div>
+                                  <label for="password-edit">Password</label><br>
+                                  <div class="input-container">
+                                      <i class='icon bx bx-lock-alt'></i>
+                                      <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
+                                  </div>
+                                  <div class="warning" id="password-error"></div>
+                              </div>
+                              <p class="warning signin-warning hide-warning">Password and email do not match!</p>
+                              <button type="submit" onclick="listenEditProfile()" class="submit">SAVE</button>
+                          </form>
+                      </div>
+                  </div>
               </div>
-              <p class="warning signin-warning hide-warning">Password and email do not match!</p>
-              
-      
-              <button type="submit" class="submit">SAVE</button>
-            </form>
           </div>
-        </div>
+          </div>
       </div>
     </div>
   </div>

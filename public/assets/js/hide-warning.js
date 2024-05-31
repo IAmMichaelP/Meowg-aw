@@ -1,7 +1,12 @@
+/*** 
+    This js file handles the edit-profile, signup, and signin fetching and sending data to the server.
+    The associated errors during the events are also handled and rendered to the ui here. 
+***/
+
 let password = "";
 let repassword = "";
-console.log("hide hide");
 
+// handles the obvious errors during signin
 const signinError = () => {
     const warning = document.querySelector('.signin-warning');
     warning.classList.remove('hide-warning');
@@ -23,24 +28,26 @@ const toggleCall = (event) => {
     if (currentKeysUp.length != 0) { warningToggle(true, 'signin-warning') }
 }
 
+// handles the password and confirm password event in signup
 function handleOnKeyUp (input, event) {
     const currentKeys = document.querySelector(`#${input}`);
     const button = document.querySelector('.submit');
     let currentKeysUp = '';
     currentKeysUp = currentKeysUp ? currentKeysUp + currentKeys : currentKeys;
+
+    // checks if the current keys in confirm password matches the current keys in password field
     if (input === "repassword") { repassword = currentKeysUp.value } else { password = currentKeysUp.value }
 
-    if (repassword.length == 0) { console.log("waiting"); button.disabled = true; warningToggle(true, 'warning'); } else {
+    // disables the signup buttons until password and confirm password matches
+    if (repassword.length == 0) { button.disabled = true; warningToggle(true, 'warning'); } else {
         if (password === repassword) {
             button.disabled = false;
             warningToggle(true, 'warning');
         } else {
-            console.log("no");
             button.disabled = true;
             warningToggle(false, 'warning');
         }
     }
-                
 }
 
 function warningToggle(status, popup) {
@@ -56,13 +63,11 @@ function warningToggle(status, popup) {
     }
 }
 
+// this listens to signin and signup events and lets the backend send the error message when it exists.
 function listenForm(formId) {
     const form = document.querySelector(formId);
     const emailError = document.querySelector('.email.error');
     const passwordError = document.querySelector('.password.error');
-    
-    console.log(form);
-    console.log(formId);
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -75,8 +80,6 @@ function listenForm(formId) {
         const username = form.username.value;
         const email = form.email.value;
         const password = form.password.value;
-
-        console.log(username, email, password);
 
         try {
             if (formId == "#signup-form") {
@@ -111,8 +114,7 @@ function listenForm(formId) {
                 if (data.user) {
                     location.assign('/profile/' + data.user);
                 }
-            }
-                
+            }      
         }
         catch (err) {
             console.log(err);
@@ -120,6 +122,7 @@ function listenForm(formId) {
     });
 }
 
+// this listens the edit profile event and sends the error message when it exists
 listenEditProfile = () => {
     // edit profile form authentication method
     const editform = document.querySelector('#edit-profile-form');
@@ -142,11 +145,9 @@ listenEditProfile = () => {
         const email = editform.email.value;
         const password = editform.password.value;
 
-        console.log(img);
-
         const formData = new FormData(editform);
 
-        const URLencoded = new URLSearchParams(formData).toString();
+        // const URLencoded = new URLSearchParams(formData).toString();
 
         try {
             const res = await fetch('/profile/edit-profile', { 
@@ -154,18 +155,16 @@ listenEditProfile = () => {
                 body: formData,
             });
             const data = await res.json();
-            console.log(data);
             
+            // renders the error to email when it exists
             if (data.errors) {
                 emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password;
                 imageDataError.textContent = data.errors.imageData;
-                console.log(imageDataError, emailError, passwordError);
             }
             if (data.user) {
                 location.assign('/profile/' + data.user);
             }
-
         }
         catch (err) {
             console.log(err);

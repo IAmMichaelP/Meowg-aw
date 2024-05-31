@@ -1,25 +1,45 @@
-console.log("admin admin");
 
-function closeDesc(popupId) {
-    var popup = document.getElementById(popupId);
-        popup.style.display = "none";
-}
+// function closeDesc(popupId) {
+//     var popup = document.getElementById(popupId);
+//         popup.style.display = "none";
+// }
 
-function openPopup(popupId) {
-    var popup = document.getElementById(popupId);
-    popup.style.display = "flex";
-    setTimeout(function () {
-        popup.classList.add('show');
-        popup.querySelector('.popup-content').style.opacity = '1';
-        popup.querySelector('.popup-content').style.transform = 'translateY(0)';
-    }, 0);
+// function openPopup(popupId) {
+//     var popup = document.getElementById(popupId);
+//     popup.style.display = "flex";
+//     setTimeout(function () {
+//         popup.classList.add('show');
+//         popup.querySelector('.popup-content').style.opacity = '1';
+//         popup.querySelector('.popup-content').style.transform = 'translateY(0)';
+//     }, 0);
                
-    window.onclick = function(event) {
-        if (event.target == popup) {
-            closeDesc(popupId);
+//     window.onclick = function(event) {
+//         if (event.target == popup) {
+//             closeDesc(popupId);
+//         }
+//     };
+// }
+function closePopup(popupId) {
+    var popup = document.getElementById(popupId);
+    var backdrop = document.querySelector('.modal-backdrop'); // Assuming modal backdrop has this class
+  
+    // Animate modal close
+    popup.querySelector('.popup-content').style.opacity = '0';
+    popup.querySelector('.popup-content').style.transform = 'translateY(-50px)';
+    
+    setTimeout(function () {
+        popup.classList.remove('show');
+        popup.style.display = "none";
+        
+        // Remove the backdrop if it exists
+        if (backdrop) {
+            backdrop.parentNode.removeChild(backdrop);
         }
-    };
-}
+        
+        // Optionally remove the 'modal-open' class from the body if it exists
+        document.body.classList.remove('modal-open');
+    }, 500);
+  }
 
 function editFaqs(faqs) {
     console.log("reading edit faqs");
