@@ -140,9 +140,12 @@ function displayStrayDetails(stray) {
       strayDetailsContent.innerHTML = '<form>' + strayDetailContent + submitButton + '</form>';
       // handles the adoption when adopt button is clicked
       const adoptButton = document.querySelector('.adoptButton');
+      const signInButton = document.querySelector('[data-toggle="modal"][data-target="#signIn"]');
+
       adoptButton.addEventListener('click', async (e) => {
         e.preventDefault();
-        openPopup('signUp');
+        $('#strayModal').modal('hide');
+        signInButton.click();
       });
     } else {
       strayDetailsContent.innerHTML = strayDetailContent;
