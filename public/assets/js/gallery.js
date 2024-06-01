@@ -153,6 +153,10 @@ function displayStrayDetails(stray) {
   $('#strayModal').modal('show'); // Use jQuery to show the modal
 }
 
+// Close modal function
+function closeModal() {
+  $('#strayModal').modal('hide');
+}
 
 // Call the function to display stray images
 displayStrayImages();

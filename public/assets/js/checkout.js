@@ -49171,9 +49171,9 @@ paymentMethods.forEach(method => {
     if (this.value === 'creditDebitCard') {
       creditCardDetails.style.display = 'block';
       eWalletImage.style.display = 'none';
-    } else if (this.value === 'eWallet') {
-      creditCardDetails.style.display = 'none';
-      eWalletImage.style.display = 'block';
+    // } else if (this.value === 'eWallet') {
+    //   creditCardDetails.style.display = 'none';
+    //   eWalletImage.style.display = 'block';
     } else {
       creditCardDetails.style.display = 'none';
       eWalletImage.style.display = 'none';

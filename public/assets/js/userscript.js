@@ -55,18 +55,19 @@ function showContent(section) {
 
     document.getElementById('profile-blog-content').style.display = 'none';
     document.getElementById('profile-submission-content').style.display = 'none';
-    document.getElementById('profile-cart-content').style.display = 'none';
-    document.getElementById('profile-favorites-content').style.display = 'none';
+    document.getElementById('profile-purchases-content').style.display = 'none';
+    // document.getElementById('profile-favorites-content').style.display = 'none';
 
     if (section === 'blogs') {
         document.getElementById('profile-blog-content').style.display = 'block';
     } else if (section === 'submissions') {
         document.getElementById('profile-submission-content').style.display = 'block';
-    } else if (section === 'cart') {
-        document.getElementById('profile-cart-content').style.display = 'block';
-    }else if (section === 'favorites') {
-        document.getElementById('profile-favorites-content').style.display = 'block';
+    } else if (section === 'purchases') {
+        document.getElementById('profile-purchases-content').style.display = 'block';
     }
+    // else if (section === 'favorites') {
+    //     document.getElementById('profile-favorites-content').style.display = 'block';
+    // }
 }
 
 // admin-dashboard buttons

@@ -77,7 +77,7 @@
             <% if (user.profilePicture) { %>
               <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
             <% } else { %>
-              <img class="user-profile-pic" src="/assets/img/favicon.img">
+              <img class="user-profile-pic" src="/assets/img/favicon.png">
             <% } %>
 
             <div class="userDetails text-center mt-3">
@@ -94,7 +94,7 @@
 
         </div>
 
-        <div class="col-md-9 col-xs-4 pt-5" style="background-color: ; overflow-y: auto;">
+        <div class="col-md-9 col-xs-4 pt-5" style="background-color: white; overflow-y: auto;">
 
           <div class="userActivities m-3 h-7 p-4">
 
@@ -102,7 +102,7 @@
             <ul class="list-inline">
               <li class="list-inline-item activitiesBtn" onclick="showContent('blogs')">Blog</li>
               <li class="list-inline-item activitiesBtn" onclick="showContent('submissions')">Submitted Strays</li>
-              <li class="list-inline-item activitiesBtn" onclick="showContent('cart')">Cart</li>
+              <li class="list-inline-item activitiesBtn" onclick="showContent('purchases')">Purchases</li>
               <hr>
             </ul>
 
@@ -172,8 +172,8 @@
             </div>
 
             <!--------cart content------------->
-            <div class="profile-cart-content user-act" id="profile-cart-content" style="display: none;">
-              <h1>User cart content here.</h1>
+            <div class="profile-purchases-content user-act" id="profile-purchases-content" style="display: none;">
+              <h1>User purchases added here.  Just like in Shopee: To Pay, To Ship, Too Receive and To Rate.</h1>
             </div>
 
           </div>
@@ -191,35 +191,35 @@
                       <div class="modal-body">
                           <form id="edit-profile-form" enctype="multipart/form-data">
                               <div class="inputs">
-                                  <h3>Edit Profile</h3>
+                                  <!-- <h3>Edit Profile</h3> -->
                                   <input type="hidden" name="id" value="<%= user._id %>">
                                   <label for="img">Upload new profile picture</label>
                                   <input type="file" accept="image/*" id="img" name="img"><br>
                                   <div class="warning" id="image-data-error"></div>
                                   <label for="username-edit">Username</label><br>
                                   <div class="input-container">
-                                      <i class='icon bx bx-user'></i>
+                                      <!-- <i class='icon bx bx-user'></i> -->
                                       <input type="text" class="usernameSi" id="username-edit" name="username" value="<%= user.username %>" required><br>
                                   </div>
                                   <label for="name-edit">Name</label><br>
                                   <div class="input-container">
-                                      <i class='icon bx bx-user'></i>
+                                      <!-- <i class='icon bx bx-user'></i> -->
                                       <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
                                   </div>
                                   <label for="address-edit">Address</label><br>
                                   <div class="input-container">
-                                      <i class='icon bx bx-user'></i>
+                                      <!-- <i class='icon bx bx-user'></i> -->
                                       <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
                                   </div>
                                   <label for="email-edit">Email Address</label><br>
                                   <div class="input-container">
-                                      <i class='icon bx bx-envelope'></i>
+                                      <!-- <i class='icon bx bx-envelope'></i> -->
                                       <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>" required><br>
                                   </div>
                                   <div class="warning" id="email-error"></div>
                                   <label for="password-edit">Password</label><br>
                                   <div class="input-container">
-                                      <i class='icon bx bx-lock-alt'></i>
+                                      <!-- <i class='icon bx bx-lock-alt'></i> -->
                                       <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
                                   </div>
                                   <div class="warning" id="password-error"></div>

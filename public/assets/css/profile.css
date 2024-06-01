@@ -83,13 +83,14 @@
 	background: linear-gradient(320deg, rgba(169,99,87,1) 0%, rgba(195,148,215,1) 30%, rgba(241,197,183,1) 51%, rgba(255,220,209,0.5) 65%, rgba(166,208,172,0.5) 85%);
 }
 
-.profilePic{
-	height: 250px;
-	width: 250px;
+.profilePic, .user-profile-pic {
 	border-radius: 50%;
-	background: white;
-	border: 5px solid white;
+	width: 250px;
+	height: 250px;
 	object-fit: cover;
+	border: 5px solid white;
+	display: block;
+	margin: 0 auto;
 }
 
 .profileButtons button{
