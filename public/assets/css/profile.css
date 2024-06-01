@@ -134,6 +134,11 @@
 	font-size: 14px;
 }
 
+.inputs {
+    margin-bottom: 20px;
+	padding: 0;
+}
+
 .userActivities{
 	min-height: 550px;
 	background-color: white;
