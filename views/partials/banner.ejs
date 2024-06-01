@@ -29,7 +29,7 @@
             <% if (user.profilePicture) { %>
                 <img src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
             <% } else { %>
-                <img src="/pics/stray1.jpg" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
+                <img src="/assets/img/favicon.png" alt="<%= user.username %>" id="user-profile-pic" onclick="toggleModal()">
             <% } %>
                 
             <p class="username" onclick="toggleModal();" id="username">
