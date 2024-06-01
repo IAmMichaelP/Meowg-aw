@@ -77,14 +77,13 @@ function listenForm(formId) {
         passwordError.textContent = '';
 
         // get values
-        const username = form.username.value;
         const email = form.email.value;
         const password = form.password.value;
 
         try {
             if (formId == "#signup-form") {
                 const role = form.role.value;
-                console.log(role);
+                const username = form.username.value;
                 const res = await fetch('/signup', { 
                     method: 'POST', 
                     body: JSON.stringify({ username, email, password, role }),
@@ -171,3 +170,34 @@ listenEditProfile = () => {
         }
     });
 };
+
+function uploadPic() {
+    console.log("Uploading picture...");
+    const imgInput = document.querySelector('.img-input');
+    const imgError = document.querySelector('#image-data-error');
+    const editButton = document.querySelector('.submit-button');
+    console.log(editButton);
+
+   
+        let img = imgInput.files;
+
+        if(img.length > 0) {
+            if(img[0].size > 2 * 1024 * 1024){
+                imgError.innerText = 'Uploaded image must not exceed 2 MB';
+                imgError.style.color = 'red';
+                editButton.disabled = true;
+                editButton.style.opacity = '0.5';
+                
+                console.log("reading error: " + imgError);
+            } else {
+                imgError.innerText = ''; // Clear any previous error message
+                editButton.disabled = false; // Re-enable the button if the file is valid
+                console.log("reading error: " + imgError);
+                editButton.style.opacity = '1.0';
+            }
+        }
+
+ 
+
+}
+

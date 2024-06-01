@@ -194,8 +194,8 @@
                                   <!-- <h3>Edit Profile</h3> -->
                                   <input type="hidden" name="id" value="<%= user._id %>">
                                   <label for="img">Upload new profile picture</label>
-                                  <input type="file" accept="image/*" id="img" name="img"><br>
-                                  <div class="warning" id="image-data-error"></div>
+                                  <input class="img-input" type="file" accept="image/*" id="img" name="img" onchange="uploadPic();"><br>
+                                  <div class="warning img-error" id="image-data-error"></div>
                                   <label for="username-edit">Username</label><br>
                                   <div class="input-container">
                                       <!-- <i class='icon bx bx-user'></i> -->
@@ -225,7 +225,7 @@
                                   <div class="warning" id="password-error"></div>
                               </div>
                               <p class="warning signin-warning hide-warning">Password and email do not match!</p>
-                              <button type="submit" onclick="listenEditProfile()" class="submit">SAVE</button>
+                              <button id="edit-button" type="submit" onclick="console.log('submit button');listenEditProfile();  " class="submit submit-button">SAVE</button>
                           </form>
                       </div>
                   </div>
