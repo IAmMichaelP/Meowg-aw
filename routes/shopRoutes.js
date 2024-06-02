@@ -24,9 +24,10 @@ const storage = multer.diskStorage({
 
 router.get('/shop', shopController.shop_get);
 router.get('/shop-item/:id', shopController.shop_item_get);
-router.get('/checkout', shopController.checkout_get);
+router.get('/checkout/:id', requireAuth, shopController.checkout_get);
 router.get('/sell-item', requireAuth, shopController.sell_item_get); 
 router.post('/shop/add-item', fileUpload('img'), shopController.add_item_post); 
 router.put('/add-to-cart', shopController.add_to_cart_put); 
+router.post('/checkout-item', shopController.checkout_item_post); 
 
 module.exports = router;

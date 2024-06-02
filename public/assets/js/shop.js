@@ -140,20 +140,8 @@ console.log("Submit merch");
 submitMerch = async () => {
   console.log("run");
   const itemForm = document.querySelector('#add-item-form');
-  // const imageDataError = document.querySelector('#image-data-error');
-  // const emailError = document.querySelector('#email-error');
-  // const passwordError = document.querySelector('#password-error');
-  
-
-
-      // reset errors
-      // emailError.textContent = '';
-      // passwordError.textContent = '';
-      // imageDataError.textContent = '';
 
       const formData = new FormData(itemForm);
-      console.log(formData);
-      // const URLencoded = new URLSearchParams(formData).toString();
 
       try {
         console.log("trying to submit merch");
@@ -204,11 +192,77 @@ const addItemToCart = async (userId, merchId, amount) => {
     }
 };
 
+checkoutMerch = async () => {
+  console.log("run");
+  const itemForm = document.querySelector('#checkout-form');
+  const user = itemForm.user.value;
+  const selectedItems = [];
+
+  const checkoutButton = document.querySelector('#checkout-button');
+  checkoutButton.addEventListener('click', async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get all checked checkboxes
+    const checkboxes = itemForm.querySelectorAll('input[name="selectedItems"]:checked');
+    
+    // Check if any checkboxes are selected
+    if (checkboxes.length === 0) {
+      alert("The checklist is empty. Please select at least one item.");
+      return; // Exit the function early
+    }
+    checkboxes.forEach(checkbox => {
+      const itemId = checkbox.value; // Get the item ID from the checkbox value
+      const hiddenInput = document.querySelector(`input[type="hidden"][id="${itemId}"]`); // Find the corresponding hidden input
+      const amount = hiddenInput ? hiddenInput.value : null; // Get the amount from the hidden input if found
+  
+      // Push an object containing the item ID and amount to the selectedItems array
+      selectedItems.push({ itemId: itemId, amount: amount });
+    });
+
+    // Create a new FormData object
+    const formData = new FormData(itemForm);
+    
+    // Append the checked checkboxes to formData
+    // checkboxes.forEach(checkbox => {
+    //   formData.append('selectedItems', checkbox.value);
+    // });
+
+    console.log([...formData.entries()]); // Log formData entries to the console for debugging
+    console.log(selectedItems);
+
+    try {
+      console.log("Trying to submit merch");
+      const res = await fetch('/checkout-item', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ selectedItems, user })
+      });
+
+      console.log("Trying to submit merch1");
+      let data = await res.text();
+        console.log(data); 
+        data = JSON.parse(data);
+        if (data.user) {
+          location.assign('/checkout/' + data.user);
+      }
+      
+      
+    } catch (err) {
+      console.error(err);
+      // Handle error (e.g., show an error message)
+      alert('An error occurred. Please try again.');
+    }
+  });
+};
+
+checkoutMerch();
+
 function clickSignIn (){
   const signInButton = document.querySelector('[data-toggle="modal"][data-target="#signIn"]');
   signInButton.click();
 }
-
 
 // Call the function initially to display all items
 displayShopItems('All');

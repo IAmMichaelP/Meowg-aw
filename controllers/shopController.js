@@ -1,5 +1,7 @@
 const Merch = require('../models/merch');
 const Cart = require('../models/cart');
+const Checkout = require('../models/checkout');
+const url = require('url');
 
 module.exports.shop_get = async (req, res) => {
     console.log("shop")
@@ -12,6 +14,7 @@ module.exports.shop_item_get = async (req, res) => {
     try{
         const id = req.params.id;
         let merch = await Merch.findMerch(id);
+        
         merch = merch[0];
         console.log(typeof(merch));
         
@@ -22,9 +25,20 @@ module.exports.shop_item_get = async (req, res) => {
     
 };
 
-module.exports.checkout_get = (req, res) => {
-	console.log("checkout");
-    res.render('checkout', { title: 'Checkout' });
+module.exports.checkout_get = async (req, res) => {
+    try{
+        const user = req.params.id;
+        let checkout = await Checkout.findCheckout(user);
+        console.log(checkout);
+        
+        // checkout = checkout[0];
+        console.log(checkout);
+        
+        res.render('checkout', { title: 'Checkout', checkout: checkout });
+    } catch {
+        res.render('500');
+    }
+
 };
 
 module.exports.sell_item_get = (req, res) => {
@@ -90,5 +104,45 @@ module.exports.add_to_cart_put = async (req, res) => {
     } catch (error) {
         console.error('Error adding item to cart:', error);
         res.status(500).send('Internal server error');
+    }
+}
+
+module.exports.checkout_item_post = async (req, res) => {
+	try {
+        const userId = req.body.user; // Access user ID from req.body
+        const selectedItems = req.body.selectedItems;
+        let total = 0;
+        const itemsToPurchase = [];
+
+        // Iterate through selected items and calculate total price
+        for (const item of selectedItems) {
+            const merch = await Merch.findById(item.itemId);
+            const amount = Number(item.amount);
+
+            if (merch && merch.quantity && amount > 0) {
+                const itemTotalPrice = merch.price * amount;
+                total += itemTotalPrice;
+
+                itemsToPurchase.push({
+                    merch: item.itemId,
+                    amount: amount
+                });
+            }
+        }
+
+        // Save the checkout information to the database
+        const checkout = new Checkout({
+            user: userId,
+            totalPrice: total,
+            checkout: itemsToPurchase
+        });
+
+        await checkout.save();
+
+        // Send the response back to the client
+        res.status(200).json({ user: userId });
+    } catch (error) {
+        console.error('Error during checkout:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 }

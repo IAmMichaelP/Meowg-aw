@@ -23,7 +23,7 @@
 
 
 
-    <% if (user) { %>
+    <% if (locals.user) { %>
       <div class="user-account">
         <div class="cart"><i class="fa-solid fa-cart-shopping" data-toggle="modal" data-target="#cart"></i></div>
         <% if (user.profilePicture) { %>
@@ -174,21 +174,32 @@
         <h1>Your Cart</h1>
 
         <% if (locals.cart && locals.cart.length> 0) { %>
-          <ul class="list-group">
-            <% locals.cart.forEach(function(item) { %>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>
-                  <%= item.merch.name %> (x<%= item.amount %>)
-                </span>
-                <span>$<%= item.merch.price * item.amount %></span>
-              </li>
-              <% }) %>
-          </ul>
-          <a href="/checkout" class="btn btn-primary checkoutBtn mt-3">Checkout</a>
+          <form id="checkout-form">
+            <input type="hidden" name="user" value="<%= locals.user._id %>">
+            <ul class="list-group">
+              <% locals.cart.forEach(function(item) { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="<%= item.merch._id %>"
+                      id="item-<%= item._id %>" name="selectedItems">
+                    <input type="hidden" value="<%= item.amount %>" id="<%= item.merch._id %>">
+                    <label class="form-check-label" for="item-<%= item._id %>">
+                      <span>
+                        <%= item.merch.name %> (x<%= item.amount %>)
+                      </span>
+                    </label>
+                  </div>
+                  <span>$<%= item.merch.price * item.amount %></span>
+                </li>
+                <% }) %>
+            </ul>
+            <button type="submit" id="checkout-button" class="btn btn-primary mt-3">Checkout</button>
+          </form>
           <% } else { %>
             <p>Your cart is currently empty.</p>
-            <a href="/checkout" class="btn btn-primary checkoutBtn mt-3">Checkout</a>
+            <a href="/shop" class="btn btn-primary mt-3">Continue Shopping</a>
             <% } %>
+
 
 
 

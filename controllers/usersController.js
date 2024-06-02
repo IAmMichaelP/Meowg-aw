@@ -6,6 +6,7 @@ const Inventory = require('../models/inventory');
 const Donation = require('../models/donation');
 const Faqs = require('../models/faq');
 const Cart = require('../models/cart');
+const Purchase = require('../models/purchase');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -71,6 +72,10 @@ module.exports.signup_post = async (req, res) => {
                 const cart = new Cart({
                     user: user._id,
                     cart: []
+                });
+                const purchase = new Purchase({
+                    user: user._id,
+                    purchase: []
                 });
                 res.status(200).json({ user: user._id });
             })
