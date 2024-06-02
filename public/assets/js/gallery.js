@@ -79,16 +79,17 @@ function displayStrayDetails(stray) {
     <p class="strayDetails"><b>Color:</b> ${stray.color}</p>
     <p class="strayDetails"><b>Size:</b> ${stray.size} kg</p>
     <div class="strayDetails">
-      <p><label for="temperamentSlider"><b>Temperament:</b></label></p>
-        <div class="custom-slider">
-          <input type="range" id="temperamentSlider" name="temperament" min="1" max="10" value="${stray.temperament}" />
-        </div>
+      <p><label for="temperamentProgress"><b>Temperament:</b></label></p>
+    
+      <div class="custom-progress">
+        <progress id="temperamentProgress" value="${stray.temperament}" max="10"></progress>
+      </div>
 
-        <div class="slider-labels">
-          <span>Chill</span>
-          <span>Hyper</span>
-        </div>
-        <br>
+      <div class="progress-labels">
+        <span>Chill</span>
+        <span>Hyper</span>
+      </div>
+      <br>
 
     </div>
     <p class="strayDetails"><b>Spayed/Neutered:</b> ${stray.spayedNeutered}</p>
@@ -154,6 +155,7 @@ function displayStrayDetails(stray) {
 
   // Show the modal
   $('#strayModal').modal('show'); // Use jQuery to show the modal
+  z
 }
 
 // Close modal function
@@ -190,7 +192,6 @@ function getBadgeText(status) {
       return 'Available';
   }
 }
-
 
 // Helper function to get badge for stray details
 function getBadgeTextDetail(status){
