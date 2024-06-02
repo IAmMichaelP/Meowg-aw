@@ -219,17 +219,6 @@ checkoutMerch = async () => {
       selectedItems.push({ itemId: itemId, amount: amount });
     });
 
-    // Create a new FormData object
-    const formData = new FormData(itemForm);
-    
-    // Append the checked checkboxes to formData
-    // checkboxes.forEach(checkbox => {
-    //   formData.append('selectedItems', checkbox.value);
-    // });
-
-    console.log([...formData.entries()]); // Log formData entries to the console for debugging
-    console.log(selectedItems);
-
     try {
       console.log("Trying to submit merch");
       const res = await fetch('/checkout-item', { 
@@ -257,15 +246,65 @@ checkoutMerch = async () => {
   });
 };
 
+placeOrder = async () => {
+  console.log("place order");
+  const itemForm = document.querySelector('#deliveryAddressForm');
+  console.log(itemForm);
+  const user = itemForm.user.value;
+  const checkout = itemForm.checkout.value;
+  
+  
+  const orderButton = document.querySelector('#place-order-button');
+  itemForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const fullName = itemForm.fullName.value;
+  const contactNumber = itemForm.contactNumber.value;
+  const region_text = itemForm.region_text.value;
+  const province_text = itemForm.province_text.value;
+  const city_text = itemForm.city_text.value;
+  const barangay_text = itemForm.barangay_text.value;
+  const zipCode = itemForm.zipCode.value;
+  const street = itemForm.street.value;
+
+    try {
+      console.log("Trying to place order");
+      const res = await fetch('/place-order', { 
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ checkout, user, fullName, contactNumber, region_text, province_text, city_text, barangay_text, zipCode, street })
+      });
+
+      console.log("Trying to submit merch1");
+      let data = await res.text();
+        console.log(data); 
+        data = JSON.parse(data);
+        if (data.user) {
+          console.log(data);
+          alert("Your order is pending for approval");
+      }
+      
+      
+    } catch (err) {
+      console.error(err);
+      // Handle error (e.g., show an error message)
+      alert('An error occurred. Please try again.');
+    }
+  });
+};
+// Call the function initially to display all items
+
+
 checkoutMerch();
+placeOrder();
 
 function clickSignIn (){
   const signInButton = document.querySelector('[data-toggle="modal"][data-target="#signIn"]');
   signInButton.click();
 }
-
-// Call the function initially to display all items
-displayShopItems('All');
 function showSuccessPopup(message) {
   alert(message);
 }
+displayShopItems('All');

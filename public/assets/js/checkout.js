@@ -48,6 +48,7 @@ var Region = function() {
       document.querySelector(element).innerHTML = str;
       return this;
   }
+  
 };
 
 // Instantiate the Region object

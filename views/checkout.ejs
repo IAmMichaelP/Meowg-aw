@@ -31,13 +31,15 @@
             <div class="col-md-6">
               <h4>Delivery Address</h4>
               <form id="deliveryAddressForm">
+                <input type="hidden" name="user" value="<%= locals.user._id %>">
+                <input type="hidden" name="checkout" value="<%= checkout._id %>">
                 <div class="form-group">
                   <label for="fullName">Full Name</label>
-                  <input type="text" class="form-control" id="fullName" required>
+                  <input type="text" class="form-control" id="fullName" name="fullName" required>
                 </div>
                 <div class="form-group">
                   <label for="contactNumber">Contact Number</label>
-                  <input type="number" class="form-control" id="contactNumber" required>
+                  <input type="number" class="form-control" id="contactNumber" name="contactNumber" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">Region</label>
@@ -64,12 +66,13 @@
                 </div>
                 <div class="form-group">
                   <label for="zipCode">Zip Code</label>
-                  <input type="text" class="form-control" id="zipCode" required>
+                  <input type="text" class="form-control" id="zipCode" name="zipCode" required>
                 </div>
                 <div class="form-group">
                   <label for="street">Street Name, Building, House No.</label>
-                  <input type="text" class="form-control" id="street" required>
+                  <input type="text" class="form-control" id="street" name="street" required>
                 </div>
+                <button type="submit" id="place-order-button" class="btn btn-primary">Place Order</button><br>
               </form>
             </div>
             <!-- Order Summary -->
@@ -139,7 +142,7 @@
                   </div>
                 </div>
                 <div class="mt-4 text-center">
-                  <button type="submit" class="btn btn-primary">Place Order</button>
+
                 </div>
               </div>
             </div>

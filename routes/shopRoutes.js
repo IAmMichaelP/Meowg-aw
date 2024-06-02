@@ -29,5 +29,6 @@ router.get('/sell-item', requireAuth, shopController.sell_item_get);
 router.post('/shop/add-item', fileUpload('img'), shopController.add_item_post); 
 router.put('/add-to-cart', shopController.add_to_cart_put); 
 router.post('/checkout-item', shopController.checkout_item_post); 
+router.put('/place-order', shopController.place_order_post); 
 
 module.exports = router;

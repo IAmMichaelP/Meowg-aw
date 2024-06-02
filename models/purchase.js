@@ -33,8 +33,12 @@ const purchaseSchema = new Schema({
 // Static method to find cart content for a user
 purchaseSchema.statics.findPurchase = async function(user) {
     try {
-        const purchase = await this.findOne({ user: user }).populate('purchase.merch');
-        return purchase;
+        const purchases = await this.where("user").equals(`${user}`).populate({
+            path: 'purchase.merch',
+            strictPopulate: false // Add this if the path is not found
+        });
+        console.log(purchases);
+        return purchases;
     } catch (error) {
         console.error("Error finding purchase content:", error);
         throw error;

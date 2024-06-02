@@ -155,7 +155,10 @@ module.exports.profile_get = async (req, res) => {
         const id = req.params.id;
         const uploadedStrays = await Stray.findUploadedStrays(id);
         const userBlogs = await Blog.findUserBlogs(id);
-        res.render('user-profile', { uploadedStrays, userBlogs });
+        const purchases = await Purchase.findPurchase(id);
+        console.log(purchases);
+        
+        res.render('user-profile', { uploadedStrays, userBlogs, purchases });
     } catch {
         res.render('500');
     }

@@ -19,7 +19,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
 
   <!----addtional bootstrap---->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,182 +67,234 @@
   <!-------------web banner/header--------------->
   <%- include('partials/banner.ejs') %>
 
-  <div class="profileWrapper">
+    <div class="profileWrapper">
 
-    <section class="container mt-5">
+      <section class="container mt-5">
 
-      <div class="row pt-2 pb-3">
+        <div class="row pt-2 pb-3">
 
-        <div class="col-md-3 col-xs-6 col-sm-6">
+          <div class="col-md-3 col-xs-6 col-sm-6">
 
             <% if (user.profilePicture) { %>
-              <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
-            <% } else { %>
-              <img class="user-profile-pic" src="/assets/img/favicon.png">
-            <% } %>
-
-            <div class="userDetails text-center mt-3">
-              <h4 class="userName"><%= user.username %></h4>
-              <p class="name light"><%= user.name %></p>
-              <p class="email light"><%= user.email %></p>
-            </div>
-
-            <div class="profileButtons text-center mt-3">
-              <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
-              <button class="edit mx-2 p-2 w-50" data-toggle="modal" data-target="#edit-profile-popup" onclick="console.log('clicked clicked');">Edit Profile</button>
-              <button class="delete mx-2 p-2 w-50">Delete Account</button>
-            </div>
-
-        </div>
-
-        <div class="mt-4 col-md-9 col-xs-6 col-sm-6" style="background-color: white; overflow-y: auto; border-radius: 20px;">
-
-          <div class="userActivities m-3 h-7 p-3">
-
-            <!----buttons---->
-            <ul class="list-inline">
-              <li class="list-inline-item activitiesBtn" onclick="showContent('blogs')">Blog</li>
-              <li class="list-inline-item activitiesBtn" onclick="showContent('submissions')">Submitted Strays</li>
-              <li class="list-inline-item activitiesBtn" onclick="showContent('purchases')">Purchases</li>
-              <hr>
-            </ul>
-
-            <!-----blogs content------>
-            <div class="profile-blog-content user-act" id="profile-blog-content">
-              <form class="post-blog">
-                <h2>Share something with the community...</h2>
-                <input placeholder="Title..." type="text" name="title">
-                <textarea placeholder="Content..." name="body" rows="5"></textarea><br>
-                <input type="hidden" name="uploader" value="<%= user._id %>">
-                <button>Post</button>
-              </form>
-
-              <br>
-
-              <div class="posted-blogs">
-                <% if (userBlogs.length == 0) { %>
-                  <h3>You have no posts yet.</h3>
-                <% } else { %>
-                  <% userBlogs.forEach( blog => { %>
-                    <h3><%= blog.title %></h3>
-                    <p class="userBlogBody"><%= blog.body %></p><br>
-                    <p class="userBlogStatus">Status: <%= blog.status || 'pending' %></p>
-                    <hr><br>
-                  <% }); %>
+              <img class="profilePic d-block mx-auto"
+                src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
+              <% } else { %>
+                <img class="user-profile-pic" src="/assets/img/favicon.png">
                 <% } %>
-              </div>
-            </div>
 
-            <!------stray submission contents---------->
-            <div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
-              <div id="content-strays" class="contentStray"></div>
-              <div>
-              <div class="row">
-                <% if (uploadedStrays.length == 0) { %>
-                  <h3>You have no submissions yet.</h3>
-                <% } else { %>
-                  <% uploadedStrays.forEach( stray => { %>
-                    <div class="dash-container col-md-3">
+                  <div class="userDetails text-center mt-3">
+                    <h4 class="userName">
+                      <%= user.username %>
+                    </h4>
+                    <p class="name light">
+                      <%= user.name %>
+                    </p>
+                    <p class="email light">
+                      <%= user.email %>
+                    </p>
+                  </div>
 
-                      <div class="dash-image">
-                        <img class="img-fluid card-img-top w-100" src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
-                      </div>
-        
-                      <div class="dash-info">
-                        <p><b>Name:</b> <%= stray.name %></p>
-                        <p><b>Age:</b> <%= stray.age %></p>
-                        <p><b>Gender:</b> <%= stray.gender %></p>
-                        <p><b>Color:</b> <%= stray.color %></p>
-                        <p><b>Breed:</b> <%= stray.breed %></p>
-                        <p><b>Status:</b> <%= stray.status %></p>
-                      </div>
-        
-                      <div class="crud-btns">
-                        <button id="edit">Edit</button>
-                        <button id="delete">Delete</button>
-                      </div>
-        
-                    </div>
-                    <% }); %>
-                  <% } %>
-          
-                </div>
-                <hr>
-                <button class="submitStray" onclick="location.href='/create'">Submit a stray.</button>
-              </div>
-            </div>
-
-            <!--------cart content------------->
-            <div class="profile-purchases-content user-act" id="profile-purchases-content" style="display: none;">
-              <h1>User purchases added here.  Just like in Shopee: To Pay, To Ship, Too Receive and To Rate.</h1>
-            </div>
+                  <div class="profileButtons text-center mt-3">
+                    <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
+                    <button class="edit mx-2 p-2 w-50" data-toggle="modal" data-target="#edit-profile-popup"
+                      onclick="console.log('clicked clicked');">Edit Profile</button>
+                    <button class="delete mx-2 p-2 w-50">Delete Account</button>
+                  </div>
 
           </div>
-          <!---------pop-up for editing profile details---->
+
+          <div class="mt-4 col-md-9 col-xs-6 col-sm-6"
+            style="background-color: white; overflow-y: auto; border-radius: 20px;">
+
+            <div class="userActivities m-3 h-7 p-3">
+
+              <!----buttons---->
+              <ul class="list-inline">
+                <li class="list-inline-item activitiesBtn" onclick="showContent('blogs')">Blog</li>
+                <li class="list-inline-item activitiesBtn" onclick="showContent('submissions')">Submitted Strays</li>
+                <li class="list-inline-item activitiesBtn" onclick="showContent('purchases')">Purchases</li>
+                <hr>
+              </ul>
+
+              <!-----blogs content------>
+              <div class="profile-blog-content user-act" id="profile-blog-content">
+                <form class="post-blog">
+                  <h2>Share something with the community...</h2>
+                  <input placeholder="Title..." type="text" name="title">
+                  <textarea placeholder="Content..." name="body" rows="5"></textarea><br>
+                  <input type="hidden" name="uploader" value="<%= user._id %>">
+                  <button>Post</button>
+                </form>
+
+                <br>
+
+                <div class="posted-blogs">
+                  <% if (userBlogs.length==0) { %>
+                    <h3>You have no posts yet.</h3>
+                    <% } else { %>
+                      <% userBlogs.forEach( blog=> { %>
+                        <h3>
+                          <%= blog.title %>
+                        </h3>
+                        <p class="userBlogBody">
+                          <%= blog.body %>
+                        </p><br>
+                        <p class="userBlogStatus">Status: <%= blog.status || 'pending' %>
+                        </p>
+                        <hr><br>
+                        <% }); %>
+                          <% } %>
+                </div>
+              </div>
+
+              <!------stray submission contents---------->
+              <div class="profile-submission-content user-act" id="profile-submission-content" style="display: none;">
+                <div id="content-strays" class="contentStray"></div>
+                <div>
+                  <div class="row">
+                    <% if (uploadedStrays.length==0) { %>
+                      <h3>You have no submissions yet.</h3>
+                      <% } else { %>
+                        <% uploadedStrays.forEach( stray=> { %>
+                          <div class="dash-container col-md-3">
+
+                            <div class="dash-image">
+                              <img class="img-fluid card-img-top w-100"
+                                src="data:image/png; base64,<%= stray.imgData.toString('base64') %>"
+                                alt="<%= stray.name %>">
+                            </div>
+
+                            <div class="dash-info">
+                              <p><b>Name:</b>
+                                <%= stray.name %>
+                              </p>
+                              <p><b>Age:</b>
+                                <%= stray.age %>
+                              </p>
+                              <p><b>Gender:</b>
+                                <%= stray.gender %>
+                              </p>
+                              <p><b>Color:</b>
+                                <%= stray.color %>
+                              </p>
+                              <p><b>Breed:</b>
+                                <%= stray.breed %>
+                              </p>
+                              <p><b>Status:</b>
+                                <%= stray.status %>
+                              </p>
+                            </div>
+
+                            <div class="crud-btns">
+                              <button id="edit">Edit</button>
+                              <button id="delete">Delete</button>
+                            </div>
+
+                          </div>
+                          <% }); %>
+                            <% } %>
+
+                  </div>
+                  <hr>
+                  <button class="submitStray" onclick="location.href='/create'">Submit a stray.</button>
+                </div>
+              </div>
+
+              <!--------cart content------------->
+              <div class="profile-purchases-content user-act" id="profile-purchases-content" style="display: none;">
+                <% if (purchases.length===0) { %>
+                  <h1>User purchases added here. Just like in Shopee: To Pay, To Ship, To Receive, and To Rate.</h1>
+                  <% } else { %>
+                    <% purchases.forEach(purchase=> { %>
+                      <% purchase.purchase.forEach(item=> { %> <!-- Ensure to use 'purchases' here -->
+                        <div class="purchase-item">
+                          <h3>Item name:
+                            <%= item.merch.name %>
+                          </h3>
+                          <p>Amount: X<%= item.amount %>
+                          </p>
+                          <h8>Status:
+                            <%= item.status %>
+                          </h8>
+                          <br><br>
+                        </div>
+                        <% }); %>
+                          <% }); %>
+                            <% } %>
+              </div>
+
+
+            </div>
+            <!---------pop-up for editing profile details---->
             <div id="edit-profile-popup" class="modal fade popup" tabindex="-1" role="dialog">
               <div class="modal-dialog" role="document">
-                  <div class="modal-content" id="popup-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title">Edit Profile</h5>
-                          <!-- This uses html and bootstrap functionality of closing the modal -->
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                          <form id="edit-profile-form" enctype="multipart/form-data">
-                              <div class="inputs">
-                                  <!-- <h3>Edit Profile</h3> -->
-                                  <input type="hidden" name="id" value="<%= user._id %>">
-                                  <label for="img">Upload new profile picture</label>
-                                  <input class="img-input" type="file" accept="image/*" id="img" name="img" onchange="uploadPic();"><br>
-                                  <div class="warning img-error" id="image-data-error"></div>
-                                  <label for="username-edit">Username</label><br>
-                                  <div class="input-container">
-                                      <!-- <i class='icon bx bx-user'></i> -->
-                                      <input type="text" class="usernameSi" id="username-edit" name="username" value="<%= user.username %>" required><br>
-                                  </div>
-                                  <label for="name-edit">Name</label><br>
-                                  <div class="input-container">
-                                      <!-- <i class='icon bx bx-user'></i> -->
-                                      <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
-                                  </div>
-                                  <label for="address-edit">Address</label><br>
-                                  <div class="input-container">
-                                      <!-- <i class='icon bx bx-user'></i> -->
-                                      <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
-                                  </div>
-                                  <label for="email-edit">Email Address</label><br>
-                                  <div class="input-container">
-                                      <!-- <i class='icon bx bx-envelope'></i> -->
-                                      <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>" required><br>
-                                  </div>
-                                  <div class="warning" id="email-error"></div>
-                                  <label for="password-edit">Password</label><br>
-                                  <div class="input-container">
-                                      <!-- <i class='icon bx bx-lock-alt'></i> -->
-                                      <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
-                                  </div>
-                                  <div class="warning" id="password-error"></div>
-                              </div>
-                              <p class="warning signin-warning hide-warning">Password and email do not match!</p>
-                              <button id="edit-button" type="submit" onclick="console.log('submit button');listenEditProfile();  " class="submit submit-button">SAVE</button>
-                          </form>
-                      </div>
+                <div class="modal-content" id="popup-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <!-- This uses html and bootstrap functionality of closing the modal -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
+                  <div class="modal-body">
+                    <form id="edit-profile-form" enctype="multipart/form-data">
+                      <div class="inputs">
+                        <!-- <h3>Edit Profile</h3> -->
+                        <input type="hidden" name="id" value="<%= user._id %>">
+                        <label for="img">Upload new profile picture</label>
+                        <input class="img-input" type="file" accept="image/*" id="img" name="img"
+                          onchange="uploadPic();"><br>
+                        <div class="warning img-error" id="image-data-error"></div>
+                        <label for="username-edit">Username</label><br>
+                        <div class="input-container">
+                          <!-- <i class='icon bx bx-user'></i> -->
+                          <input type="text" class="usernameSi" id="username-edit" name="username"
+                            value="<%= user.username %>" required><br>
+                        </div>
+                        <label for="name-edit">Name</label><br>
+                        <div class="input-container">
+                          <!-- <i class='icon bx bx-user'></i> -->
+                          <input type="text" id="name-edit" name="name" value="<%= user.name %>" required><br>
+                        </div>
+                        <label for="address-edit">Address</label><br>
+                        <div class="input-container">
+                          <!-- <i class='icon bx bx-user'></i> -->
+                          <input type="text" id="address-edit" name="address" value="<%= user.address %>"><br>
+                        </div>
+                        <label for="email-edit">Email Address</label><br>
+                        <div class="input-container">
+                          <!-- <i class='icon bx bx-envelope'></i> -->
+                          <input type="email" class="emailSi" id="email-edit" name="email" value="<%= user.email %>"
+                            required><br>
+                        </div>
+                        <div class="warning" id="email-error"></div>
+                        <label for="password-edit">Password</label><br>
+                        <div class="input-container">
+                          <!-- <i class='icon bx bx-lock-alt'></i> -->
+                          <input type="password" class="passwordSi" id="password-edit" name="password" required><br>
+                        </div>
+                        <div class="warning" id="password-error"></div>
+                      </div>
+                      <p class="warning signin-warning hide-warning">Password and email do not match!</p>
+                      <button id="edit-button" type="submit"
+                        onclick="console.log('submit button');listenEditProfile();  "
+                        class="submit submit-button">SAVE</button>
+                    </form>
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
-          </div>
-      </div>
-    </section>
-  </div>
+        </div>
+      </section>
+    </div>
 
-  <!-------------footer--------------->
-  <%- include('partials/footer.ejs') %>
+    <!-------------footer--------------->
+    <%- include('partials/footer.ejs') %>
 
 
-  <!--------------scripts-------------->
-  <%- include('partials/scripts.ejs') %>
+      <!--------------scripts-------------->
+      <%- include('partials/scripts.ejs') %>
 </body>
 
 </html>

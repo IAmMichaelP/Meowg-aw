@@ -2,6 +2,7 @@ const Merch = require('../models/merch');
 const Cart = require('../models/cart');
 const Checkout = require('../models/checkout');
 const url = require('url');
+const Purchase = require('../models/purchase');
 
 module.exports.shop_get = async (req, res) => {
     console.log("shop")
@@ -29,10 +30,6 @@ module.exports.checkout_get = async (req, res) => {
     try{
         const user = req.params.id;
         let checkout = await Checkout.findCheckout(user);
-        console.log(checkout);
-        
-        // checkout = checkout[0];
-        console.log(checkout);
         
         res.render('checkout', { title: 'Checkout', checkout: checkout });
     } catch {
@@ -40,6 +37,7 @@ module.exports.checkout_get = async (req, res) => {
     }
 
 };
+
 
 module.exports.sell_item_get = (req, res) => {
 	console.log("checkout");
@@ -141,6 +139,39 @@ module.exports.checkout_item_post = async (req, res) => {
 
         // Send the response back to the client
         res.status(200).json({ user: userId });
+    } catch (error) {
+        console.error('Error during checkout:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
+module.exports.place_order_post = async (req, res) => {
+	try {
+        
+        console.log(req.body);
+        console.log("read from place order");
+        const checkout = req.body.checkout;
+        const user = req.body.user;
+
+        const order = await Checkout.findById(checkout);
+        let purchase = await Purchase.findOne({ user: user });
+        let merchId = order.checkout[0].merch;
+        const amount = order.checkout[0].amount;
+        console.log(order);
+        console.log("values: ", merchId, amount);
+
+        // const itemIndex = purchase.purchase.findIndex(item => item.merch.toString() === merchId);
+
+        purchase.purchase.push({
+            merch: merchId,
+            amount: amount,
+            status: "pending approval"
+        });
+
+        await purchase.save();
+        await Checkout.findByIdAndDelete(checkout);
+        res.status(200).json({ user: req.body.user });
+        
     } catch (error) {
         console.error('Error during checkout:', error);
         res.status(500).json({ message: 'Internal server error' });
