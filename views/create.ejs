@@ -139,7 +139,6 @@
                 <label for="surrenderDate">surrenderDate:</label><br>
                 <input type="date" name="surrenderDate" required><br>
 
-                <% user = JSON.parse(user) %>
                 <input type="hidden" name="uploader" value="<%= user._id %>" required><br>
 
                 <% if (user.role == 'admin') { %>
