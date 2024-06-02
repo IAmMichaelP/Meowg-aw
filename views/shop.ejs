@@ -3,126 +3,137 @@
 
 <%- include('partials/head.ejs') %>
 
-<body>
+  <body>
 
-  <!-------------web banner/header--------------->
-  <%- include('partials/banner.ejs') %>
+    <!-------------web banner/header--------------->
+    <%- include('partials/banner.ejs') %>
 
-  <main id="main">
+      <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs about-container">
-      <div class="container">
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs about-container">
+          <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h1 class="display-3">Shop</h1>
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>Shop</li>
-          </ol>
-        </div>
-      </div>
-    </div><!-- End Breadcrumbs -->
+            <div class="d-flex justify-content-between align-items-center">
+              <h1 class="display-3">Shop</h1>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li>Shop</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- End Breadcrumbs -->
 
-    <!-- ======= shop ======= -->
-    <section class="py-5">
+        <!-- ======= shop ======= -->
+        <section class="py-5">
 
-      <div class="menu">
-        <ul id="menuTabs" class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="menu">
+            <ul id="menuTabs" class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up"
+              data-aos-delay="200">
 
-          <li class="nav-item">
-            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-              <h4 class="shopCategory">All</h4>
-            </a>
-          </li><!-- End tab nav item -->
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                  <h4 class="shopCategory">All</h4>
+                </a>
+              </li><!-- End tab nav item -->
 
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-starters">
-              <h4 class="shopCategory">Toys</h4>
-            </a>
-          </li><!-- End tab nav item -->
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                  <h4 class="shopCategory">Toys</h4>
+                </a>
+              </li><!-- End tab nav item -->
 
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-              <h4 class="shopCategory">Bowls and Feeders</h4>
-            </a>
-          </ii><!-- End tab nav item -->
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+                  <h4 class="shopCategory">Bowls and Feeders</h4>
+                </a>
+                </ii><!-- End tab nav item -->
 
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-              <h4 class="shopCategory">Accessories</h4>
-            </a>
-          </li><!-- End tab nav item -->
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+                  <h4 class="shopCategory">Accessories</h4>
+                </a>
+              </li><!-- End tab nav item -->
 
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-              <h4 class="shopCategory">Care and Health Supplies</h4>
-            </a>
-          </li><!-- End tab nav item -->
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+                  <h4 class="shopCategory">Care and Health Supplies</h4>
+                </a>
+              </li><!-- End tab nav item -->
 
-        </ul>
-      </div>
+            </ul>
+          </div>
 
-      <div class="container px-4 px-lg-5 mt-5" id="shopItemsContainer">
-        
-    
-        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
-          
-          <% if (merches.length > 0) {%>
-            <% merches.forEach(merch => { %>
-  
-              <div class="col mb-5">
-                <div class="card h-100">
-                  <!-- Product image-->
-                  <img class="card-img-top" src="data:image/png; base64,<%= merch.imgData.toString('base64') %>" alt="<%= merch.name %>"/>
-                  <!-- Sale badge (optional) -->
-                  <% if (merch.sale) { %>
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                  <% } %>
+          <div class="container px-4 px-lg-5 mt-5" id="shopItemsContainer">
 
-                  
-                  <!-- Product details-->
-                  <div class="card-body p-4">
-                    <div class="text-center">
-                      <!-- Product name-->
-                      <h5 class="fw-bolder"><%= merch.name %></h5>
-                      <!-- Product description-->
-                      <p class="text-muted"><%= merch.description %></p>
-                      <!-- Product price-->
-                      <span class="text-muted"><%= merch.description %></span>
+
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+
+              <% if (merches.length> 0) {%>
+                <% merches.forEach(merch=> { %>
+
+                  <div class="col mb-5">
+                    <div class="card h-100">
+                      <!-- Product image-->
+                      <img class="card-img-top" src="data:image/png; base64,<%= merch.imgData.toString('base64') %>"
+                        alt="<%= merch.name %>" />
+                      <!-- Sale badge (optional) -->
+                      <% if (merch.sale) { %>
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div>
+                        <% } %>
+
+
+                          <!-- Product details-->
+                          <div class="card-body p-4">
+                            <div class="text-center">
+                              <!-- Product name-->
+                              <h5 class="fw-bolder">
+                                <%= merch.name %>
+                              </h5>
+                              <!-- Product description-->
+                              <p class="text-muted">
+                                <%= merch.description %>
+                              </p>
+                              <!-- Product price-->
+                              <span class="text-muted">
+                                <%= merch.price %>
+                              </span>
+                            </div>
+                          </div>
+
+                          <!-- Product actions-->
+                          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                              <a class="btn btn-outline-dark mt-auto" href="/shop-item/<%= merch._id %>">
+                                <%= merch.buttonText ? merch.buttonText : 'View' %>
+                              </a>
+                            </div>
+                          </div>
                     </div>
                   </div>
-    
-                  <!-- Product actions-->
-                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                    <div class="text-center">
-                      <a class="btn btn-outline-dark mt-auto" href="/shop-item/<%= merch._id %>"><%= merch.buttonText ? merch.buttonText : 'View'%></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-            <% }) %>
-          <% } else { %>
-            There are no merch to display
-          <% } %>  
 
-        <!---items added dynamically-->
+                  <% }) %>
+                    <% } else { %>
+                      There are no merch to display
+                      <% } %>
 
-        </div>
-      </div>
+                        <!---items added dynamically-->
 
-    </section>
+            </div>
+          </div>
 
-  </main>
-  
-  <!-------------footer--------------->
-  <%- include('partials/footer.ejs') %>
+        </section>
+
+      </main>
+
+      <!-------------footer--------------->
+      <%- include('partials/footer.ejs') %>
 
 
-  <!--------------scripts-------------->
-  <%- include('partials/scripts.ejs') %>
+        <!--------------scripts-------------->
+        <%- include('partials/scripts.ejs') %>
 
-</body>
+  </body>
 
 </html>
