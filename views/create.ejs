@@ -85,7 +85,7 @@
               <label for="img">Upload Image</label>
               <input type="file" accept="image/jpeg, image/png, image/jpg" id="img" class="img-input" name="img" onchange="uploadPic()" required><br>
               <div class="warning img-error" id="image-data-error"></div>
-              <label for="age">Age:</label><br>
+              <label for="age">Age (months):</label><br>
               <input type="number" name="age" required><br>
               <label for="breed">Breed:</label><br>
               <input type="text" name="breed" required><br>
@@ -136,7 +136,7 @@
                 <input type="radio" class="animal" id="other" value="other" name="animal">
                 <label for="other">Other</label><br>
 
-                <label for="surrenderDate">surrenderDate:</label><br>
+                <label for="surrenderDate">Surrender Date:</label><br>
                 <input type="date" name="surrenderDate" required><br>
 
                 <input type="hidden" name="uploader" value="<%= user._id %>" required><br>
@@ -158,7 +158,6 @@
       </div>
     </div>
     <%- include('partials/footer.ejs') %>
-
 
   <!--------------scripts-------------->
   <%- include('partials/scripts.ejs') %>

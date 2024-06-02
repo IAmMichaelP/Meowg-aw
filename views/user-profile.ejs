@@ -67,11 +67,11 @@
 
   <div class="profileWrapper">
 
-    <div class="container mt-5">
+    <section class="container mt-5">
 
-      <div class="row pt-3 pb-3">
+      <div class="row pt-2 pb-3">
 
-        <div class="col-md-3 col-xs-4 pt-5">
+        <div class="col-md-3 col-xs-6 col-sm-6">
 
             <% if (user.profilePicture) { %>
               <img class="profilePic d-block mx-auto" src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>" alt="<%= user.username %>">
@@ -87,15 +87,15 @@
 
             <div class="profileButtons text-center mt-3">
               <!---<button class="edit w-50" onclick="openPopup('edit-profile-popup'); listenEditProfile()">Edit Profile</button>--->
-              <button class="edit w-50" data-toggle="modal" data-target="#edit-profile-popup" onclick="console.log('clicked clicked');">Edit Profile</button>
-              <button class="delete w-50">Delete Account</button>
+              <button class="edit mx-2 p-2 w-50" data-toggle="modal" data-target="#edit-profile-popup" onclick="console.log('clicked clicked');">Edit Profile</button>
+              <button class="delete mx-2 p-2 w-50">Delete Account</button>
             </div>
 
         </div>
 
-        <div class="col-md-9 col-xs-4 pt-5" style="background-color: white; overflow-y: auto;">
+        <div class="mt-4 col-md-9 col-xs-6 col-sm-6" style="background-color: white; overflow-y: auto; border-radius: 20px;">
 
-          <div class="userActivities m-3 h-7 p-4">
+          <div class="userActivities m-3 h-7 p-3">
 
             <!----buttons---->
             <ul class="list-inline">
@@ -166,7 +166,7 @@
           
                 </div>
                 <hr>
-                <button onclick="location.href='/create'">Submit a stray.</button>
+                <button class="submitStray" onclick="location.href='/create'">Submit a stray.</button>
               </div>
             </div>
 
@@ -232,7 +232,7 @@
           </div>
           </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <!-------------footer--------------->

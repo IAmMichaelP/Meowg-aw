@@ -84,7 +84,7 @@
       <!-- modal for every object (user,stray,etc) in the dashboard -->
       <div id="descModal" class="strayModal">
         <div class="descContainer">
-          <span class="close" onclick="closeDesc('descModal')" style="color:#a96357;">&times;</span>
+          <span class="close" onclick="closeDesc('descModal')">&times;</span>
           <div id="desc">
             <!---content in js---->
           </div>
@@ -132,6 +132,8 @@
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('shop')">Shop</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
+            <br>
+            <hr>
           </ul>
 
         </div>
@@ -202,7 +204,7 @@
               <% if (approvedStrays.length> 0) {%>
                 <% approvedStrays.forEach(stray=> { %>
 
-                  <div class="dash-container col-md-2 m-2">
+                  <div class="dash-container col-md-3">
 
                     <div class="dash-image">
                       <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
@@ -223,9 +225,8 @@
                       </p>
                     </div>
                     <div class="crud-btns">
-                      <button onclick="
-                      showStray('<%= JSON.stringify(stray) %>')" class="standard-button">View</button>
-                      <button onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
+                      <button class="standard-button" onclick="showStray('<%= JSON.stringify(stray) %>')" class="standard-button">View</button>
+                      <button class="danger" onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
                     </div>
 
                   </div>
@@ -262,9 +263,8 @@
                               </div>
 
                               <div class="crud-btns">
-                                <button onclick="approveStray('<%= stray._id %>');"
-                                  class="standard-button">Approve</button>
-                                <button onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
+                                <button class="standard-button" onclick="approveStray('<%= stray._id %>');"class="standard-button">Approve</button>
+                                <button class="danger" onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
                               </div>
 
                             </div>
@@ -298,8 +298,7 @@
                   </div>
 
                   <div class="crud-btns">
-                    <button onclick="viewDonation('<%= JSON.stringify(donate) %>')"
-                      class="standard-button">View</button>
+                    <button onclick="viewDonation('<%= JSON.stringify(donate) %>')"class="standard-button">View</button>
                     <button onclick="deleteDonation('<%= donate._id %>');" class="danger">Delete</button>
                   </div>
                 </div>
@@ -334,8 +333,8 @@
                   </div>
 
                   <div class="crud-btns">
-                    <button onclick="approveBlog('<%= blog._id %>');">Approve</button>
-                    <button onclick="deleteBlog('<%= blog._id %>');">Delete</button>
+                    <button class="standard-button" onclick="approveBlog('<%= blog._id %>');">Approve</button>
+                    <button class="danger" onclick="deleteBlog('<%= blog._id %>');">Delete</button>
                   </div>
 
                 </div>
@@ -351,7 +350,7 @@
 
           <!------shop------>
           <div id="shop" style="display: none;">
-            <button onclick="location.href='/sell-item'">Add an item</button>
+            <button class="sellItemBtn" onclick="location.href='/sell-item'">Add an item</button>
           </div>
 
           <!------FAQs------>
@@ -363,21 +362,25 @@
                 <div class="dash-container">
 
                   <div class="dash-info">
-                    <p>Question: <%= faqs.question %>
+                    <h4>Question: <%= faqs.question %>
+                    </h4>
+                    <h5>Answer: <%= faqs.answer %>
+                    </h5><br>
+                    <p>Uploaded by: <%= faqs.uploader.username %>
                     </p>
-                    <h4>Answer: <%= faqs.answer %>
-                    </h4><br>
-                    <h5>Uploaded by: <%= faqs.uploader.username %>
-                    </h5>
 
                   </div>
 
                   <div class="crud-btns">
-                    <button onclick="
+                    <button class="standard-button" onclick="
                       editFaqs('<%= JSON.stringify(faqs) %>');
                       faqChange('<%= faqs._id %>');">Edit</button>
-                    <button onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
+                    <button class="danger" onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
                   </div>
+
+                  <br>
+                  <hr>
+                  <br>
 
                 </div>
                 <% }) %>
@@ -397,10 +400,10 @@
                   </div>
 
                   <div class="dash-info">
-                    <p>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
-                    </p>
-                    <h7>Subject: <%= message.messageSubject %>
-                    </h7><br>
+                    <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
+                    </h5>
+                    <h6>Subject: <%= message.messageSubject %>
+                    </h6><br>
                     <p>Content: <%= message.messageBody %>
                     </p><br>
                     <h6>Status: <%= message.status %>
@@ -408,9 +411,9 @@
                   </div>
 
                   <div class="crud-btns">
-                    <button onclick="acknowledgeMessage('<%= message._id %>');"
+                    <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
                       class="standard-button">Acknowledge</button>
-                    <button onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
+                    <button class="danger" onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
                   </div>
                 </div>
                 <br>
