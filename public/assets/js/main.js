@@ -1,17 +1,11 @@
 /**
-* Template Name: Yummy
-* Updated: Jan 30 2024 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Meowgaw
 */
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
+  // Remove preloader after window load - No longer needed since we're using an image
+  const preloader = document.querySelector('#preloader-logo');
   if (preloader) {
     window.addEventListener('load', () => {
       preloader.remove();

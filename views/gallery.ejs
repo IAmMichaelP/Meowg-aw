@@ -29,80 +29,6 @@
 
     <div class="mb-4">
 
-      <!---filter buttons---
-      <div class="dropdown d-inline mb-2">
-        <button class="btn dropdown-toggle filterBtn" type="button" id="typeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Type
-        </button>
-              
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Type</a></li>
-          <li><a class="dropdown-item" href="#">Cat</a></li>
-          <li><a class="dropdown-item" href="#">Dog</a></li>
-          <li><a class="dropdown-item" href="#">Reptile</a></li>
-          <li><a class="dropdown-item" href="#">Other</a></li>
-          </ul>
-      </div>
-
-      <div class="dropdown d-inline">
-        <button class="btn dropdown-toggle filterBtn" type="button" id="sexDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Sex
-        </button>
-              
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Sex</a></li>
-          <li><a class="dropdown-item" href="#">Male</a></li>
-          <li><a class="dropdown-item" href="#">Female</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown d-inline">
-        <button class="btn dropdown-toggle filterBtn" type="button" id="colorDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Color
-        </button>
-              
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Colorl</a></li>
-          <li><a class="dropdown-item" href="#">White</a></li>
-          <li><a class="dropdown-item" href="#">Black</a></li>
-          <li><a class="dropdown-item" href="#">Orange</a></li>
-          <li><a class="dropdown-item" href="#">Brown</a></li>
-          <li><a class="dropdown-item" href="#">Other</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown d-inline">
-        <button class="btn dropdown-toggle filterBtn" type="button" id="sizeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Size
-        </button>
-              
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Size</a></li>
-          <li><a class="dropdown-item" href="#">< 1 kg</a></li>
-          <li><a class="dropdown-item" href="#">1 kg - 3 kg</a></li>
-          <li><a class="dropdown-item" href="#">3 kg - 7 kg</a></li>
-          <li><a class="dropdown-item" href="#">7 kg - 10 kg</a></li>
-          <li><a class="dropdown-item" href="#">> 10 kg</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown d-inline">
-        <button class="btn dropdown-toggle filterBtn" type="button" id="ageRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          Age Range
-        </button>
-              
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Age Range</a></li>
-          <li><a class="dropdown-item" href="#"><1 year old</a></li>
-          <li><a class="dropdown-item" href="#">1 - 2 years old</a></li>
-          <li><a class="dropdown-item" href="#">3-4 years old</a></li>
-          <li><a class="dropdown-item" href="#">>5 years old</a></li>
-        </ul>
-      </div>
-
-      <button id="searchButton" class="btn btn-primary" onclick="searchStrayData()">Search</button>
-    </div> --->
-
       <div class="categoryButtons">
         <select class="categoryDropdown" id="categoryDropdown">
           <option value="all" selected>All</option>
@@ -128,16 +54,14 @@
 
         <select class="categoryDropdown" id="ageDropdown">
           <option value="all" selected>Age Range</option>
-          <option value="male"><1 year old</option>
+          <option value="male">1 year old</option>
           <option value="female">1 - 2 years old</option>
           <option value="female">3 - 4 years old</option>
           <option value="female">>5 years old</option>
         </select>
-
-        <!-- Search button to trigger filtering based on the selected dropdowns -->
-        <button class="gallerySearchBtn" onclick="searchStrayData()">Search</button>
       </div>
     </div>
+
     <!-------container/wrapper for stray cards----->
     <div class="row galleryWrapper"></div>
 
