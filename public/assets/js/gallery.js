@@ -18,7 +18,9 @@ function displayStrayImages() {
     // Create gallery item content
     const galleryContent = `
       <div class="bg-white rounded shadow-sm">
-        <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
+      <a href="#" class="stray-detail-link" data-stray='${JSON.stringify(stray)}'>
+      <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
+      </a>
 
         <div class="p-4">
           <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>
@@ -144,8 +146,12 @@ function displayStrayDetails(stray) {
 
       adoptButton.addEventListener('click', async (e) => {
         e.preventDefault();
+
         $('#strayModal').modal('hide');
-        signInButton.click();
+        setTimeout(function () {
+          signInButton.click();
+        }, 300);
+        
       });
     } else {
       strayDetailsContent.innerHTML = strayDetailContent;
@@ -260,7 +266,9 @@ function showStrayData(category, color, sex, age) {
     // Create gallery item content
     const galleryContent = `
       <div class="bg-white rounded shadow-sm">
+        <a href="#" class="stray-detail-link" data-stray='${JSON.stringify(stray)}'>
         <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
+        </a>
 
         <div class="p-4">
           <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>

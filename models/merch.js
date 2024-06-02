@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const merchSchema = new Schema({
+    imgData: {
+        type: String,
+        required: true
+    },
     uploader:{
         type: mongoose.SchemaTypes.ObjectId,
         ref: "User",
@@ -15,7 +19,11 @@ const merchSchema = new Schema({
         type: Number,
         required: true
     },
-    type: {
+    quantity: {
+        type: Number,
+        required: true
+    },
+    category: {
         type: String,
         required: true
     },
@@ -24,14 +32,28 @@ const merchSchema = new Schema({
         required: true
     },
     size: {
-        type: String
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 
 // the parameter user is an object id of a specific user
-merchSchema.statics.findMerch = async function(user) {
+merchSchema.statics.findUserMerch = async function(user) {
     const merch = await this.find({ user: user });
+    return merch;
+}
 
+merchSchema.statics.findMerch = async function(id) {
+    const merch = await this.find({ _id: id });
+    return merch;
+}
+
+merchSchema.statics.findAllMerch = async function() {
+    const merch = await this.find();
     return merch;
 }
 

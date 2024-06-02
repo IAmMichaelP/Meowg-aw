@@ -407,7 +407,9 @@
               <% strays.slice(0, 10).forEach(stray => { %>
 
               <div class="swiper-slide">
-              <a class="glightbox" data-gallery="images-gallery"><img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>" class="img-fluid" alt=""></a>
+              <a href="data:image/png; base64,<%= stray.imgData.toString('base64') %>" class="glightbox" data-gallery="images-gallery">
+                <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>" class="img-fluid" alt="">
+              </a>
               <p class="name text-center"><%= stray.name %></p>
             </div>
 

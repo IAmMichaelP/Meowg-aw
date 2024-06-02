@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const User = require('../models/user');
+const Cart = require('../models/cart');
 
 const app = express();
 app.use(cookieParser());
@@ -26,24 +27,38 @@ const requireAuth = (req, res, next) => {
 }
 
 // check the current user
-const checkUser = (req, res, next) => {
+const checkUser = async (req, res, next) => {
     const token = req.cookies.jwt;
     
     if (token) {
         jwt.verify(token, 'kmjs holdings secret payload', async (err, decodedToken) => {
-            if (err){
+            if (err) {
                 res.locals.user = null;
+                res.locals.cart = null;
                 next();
             } else {
-                let user = await User.findById(decodedToken.id);
-                
-                user = JSON.stringify(user);
-                res.locals.user = user;
-                next();
+                try {
+                    let user = await User.findById(decodedToken.id);
+                    if (user) {
+                        let cart = await Cart.findOne({ user: user._id }).populate('cart.merch');
+                        res.locals.user = user;
+                        res.locals.cart = cart ? cart.cart : [];
+                    } else {
+                        res.locals.user = null;
+                        res.locals.cart = null;
+                    }
+                    next();
+                } catch (error) {
+                    console.error('Error fetching user or cart:', error);
+                    res.locals.user = null;
+                    res.locals.cart = null;
+                    next();
+                }
             }
         });  
     } else {
         res.locals.user = null;
+        res.locals.cart = null;
         next();
     }
 }

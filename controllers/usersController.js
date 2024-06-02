@@ -5,6 +5,7 @@ const Message = require('../models/message');
 const Inventory = require('../models/inventory');
 const Donation = require('../models/donation');
 const Faqs = require('../models/faq');
+const Cart = require('../models/cart');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -64,9 +65,13 @@ module.exports.signup_post = async (req, res) => {
 
         user.save()
             .then((result) => {
-    
+                
                 const token = createToken(user._id);
                 res.cookie('jwt', token, { maxAge: maxAge * 1000 });
+                const cart = new Cart({
+                    user: user._id,
+                    cart: []
+                });
                 res.status(200).json({ user: user._id });
             })
             .catch((err) => {
