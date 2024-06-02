@@ -8,7 +8,7 @@ const { requireAuth } = require('../middlewares/authMiddleware');
 const router = Router();
 
 // this is defining the folderpath where to receive the path
-let folderPath = 'public/pics';
+let folderPath = 'public/assets/img';
 let files = fsExtra.readdirSync(folderPath);
 let numberOfFiles = files.length;
 // defining the storage where the images are uploaded by the users
