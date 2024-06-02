@@ -17,7 +17,7 @@ function displayStrayImages() {
 
     // Create gallery item content
     const galleryContent = `
-      <div class="bg-white rounded shadow-sm">
+      <div class="bg-white rounded shadow-sm stray-modal" data-stray='${JSON.stringify(stray)}'>
         <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
 
         <div class="p-4">
@@ -41,15 +41,15 @@ function displayStrayImages() {
     galleryContainer.appendChild(galleryItem);
   });
 
-  // Event listener for stray detail links
-  const strayDetailLinks = document.querySelectorAll('.stray-detail-link');
-  strayDetailLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent default link behavior
-      console.log("Link clicked!"); // Check if this message is logged
-      const strayData = JSON.parse(this.getAttribute('data-stray'));
-      displayStrayDetails(strayData);
-    });
+  // Modify the event listener for stray detail links to attach it to the entire card container
+  const galleryItems = document.querySelectorAll('.stray-modal');
+  galleryItems.forEach(item => {
+      item.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
+          console.log("Stray card clicked!");
+          const strayData = JSON.parse(this.getAttribute('data-stray'));
+          displayStrayDetails(strayData);
+      });
   });
 }
 
