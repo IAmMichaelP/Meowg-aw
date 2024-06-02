@@ -44,6 +44,7 @@
 	background: var(--darkgreen);
 	border: 1px solid transparent;
 	transition: all ease 0.5s;
+	font-weight: bold;
 	border-radius: 25px;
 	padding: 5px 15px;
 	margin: 5px 0;
@@ -52,6 +53,7 @@
 .danger{
 	border: 1px solid transparent;
 	background: red;
+	font-weight: bold;
 	color: white;
 	padding: 5px 15px;
 	margin: 5px 0;
@@ -107,7 +109,7 @@
 	transition: all ease 0.5s;
 }
 
-.profileButtons .delete{
+.delete{
 	background: red;
 	margin: 5px 0;
 }
@@ -357,3 +359,31 @@
     height: 100%;
     width: 100%;
 }
+
+.submitStray, .sellItemBtn{
+	background-color: var(--darkgreen);
+	color: white;
+	border-radius: 20px;
+	padding: 7px 10px;
+	margin: 10px 0;
+	font-weight: bold;
+	border: 1px solid transparent;
+}
+
+.submitStray:hover, .sellItemBtn:hover{
+	background-color: white;
+	color: var(--darkgreen);
+	border: 1px solid var(--darkergreen);
+}
+
+/* tab indicator when active */
+.activeUserAct{
+	color: var(--darkgreen);
+}
+
+/* Style for active tab */
+.activitiesBtn.active {
+	/* Add your active tab styling here */
+	font-weight: bold; /* For example, make the text bold */
+  }
+  

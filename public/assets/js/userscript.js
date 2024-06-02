@@ -64,7 +64,7 @@ function showContent(section) {
         document.getElementById('profile-submission-content').style.display = 'block';
     } else if (section === 'purchases') {
         document.getElementById('profile-purchases-content').style.display = 'block';
-    }
+    } 
     // else if (section === 'favorites') {
     //     document.getElementById('profile-favorites-content').style.display = 'block';
     // }
@@ -72,7 +72,6 @@ function showContent(section) {
 
 // admin-dashboard buttons
 function showDashContent(section) {
-    
     document.getElementById('users').style.display = 'none';
     document.getElementById('strays').style.display = 'none';
     document.getElementById('donations').style.display = 'none';
@@ -80,22 +79,32 @@ function showDashContent(section) {
     document.getElementById('shop').style.display = 'none';
     document.getElementById('faqs').style.display = 'none';
     document.getElementById('messages').style.display = 'none';
-
+  
     if (section === 'users') {
-        document.getElementById('users').style.display = 'block';
+      document.getElementById('users').style.display = 'block';
     } else if (section === 'strays') {
-        document.getElementById('strays').style.display = 'block';
+      document.getElementById('strays').style.display = 'block';
     } else if (section === 'donations') {
-        document.getElementById('donations').style.display = 'block';
-    }else if (section === 'blogs') {
-        document.getElementById('blogs').style.display = 'block';
-    }else if (section === 'shop') {
-        document.getElementById('shop').style.display = 'block';
-    }else if (section === 'faqs') {
-        document.getElementById('faqs').style.display = 'block';
-    }else if (section === 'messages') {
-        document.getElementById('messages').style.display = 'block';
+      document.getElementById('donations').style.display = 'block';
+    } else if (section === 'blogs') {
+      document.getElementById('blogs').style.display = 'block';
+    } else if (section === 'shop') {
+      document.getElementById('shop').style.display = 'block';
+    } else if (section === 'faqs') {
+      document.getElementById('faqs').style.display = 'block';
+    } else if (section === 'messages') {
+      document.getElementById('messages').style.display = 'block';
     }
+  
+    document.querySelectorAll('.activitiesBtn').forEach(tab => {
+      tab.classList.remove('active');
+    });
+  
+    // Add active class to the clicked tab
+    const activeTab = document.querySelector(`.activitiesBtn[data-tab="${section}"]`);
+    activeTab.classList.add('active');
+  }
+  
 
-}
+
 
