@@ -26,3 +26,9 @@
   border-bottom-left-radius: 25px;
   background: #ffafc0;
 }
+
+.aboutImg{
+  height: 250px;
+  width: 400px;
+  object-fit: cover;
+}
