@@ -52,14 +52,24 @@ h1{
   font-family: var(--font-primary);
 }
 
+/* For screens wider than 850px */
 @media screen and (min-width: 850px) {
   .gallery-img {
-    width: 280px;
-    height: 170px;
-    object-fit: cover;
+    width: 100%; 
+    height: 180px;
+    max-width: 100%;
+    object-fit: cover; 
   }
 }
 
+/* For screens narrower than 850px */
+@media screen and (max-width: 849px) {
+  .gallery-img {
+    width: 300px; 
+    height: 180px; 
+    object-fit: cover;
+  }
+}
 
 /*****inside modal*****/
 
@@ -114,24 +124,7 @@ progress{
   border-radius: 20px;
 }
 
-.gallerySearchBtn{
-  border: 1px solid transparent;
-  background-color: var(--darkgreen);
-  color: white;
-  font-weight: bold;
-  font-family: var(--font-secondary);
-  padding: 7px 15px;
-  margin: 3px 5px;
-  border-radius: 20px;
-}
-
 .categoryDropdown:hover{
-  border: 1px solid var(--darkgreen);
-  color: var(--darkgreen);
-  background-color: white;
-}
-
-.gallerySearchBtn:hover{
   border: 1px solid var(--darkgreen);
   color: var(--darkgreen);
   background-color: white;

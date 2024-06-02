@@ -53,7 +53,6 @@ function displayStrayImages() {
   });
 }
 
-
 function displayStrayDetails(stray) {
   const modalTitle = document.querySelector('#strayModalLabel');
   modalTitle.textContent = `Meet ${stray.name}`;
@@ -66,6 +65,35 @@ function displayStrayDetails(stray) {
   strayDetailsContent.innerHTML = '';
 
   // Populate modal with stray details
+
+  // changed the surrender date to display in the format "Month Day, Year"
+  const formattedSurrenderDate = new Date(stray.surrenderDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+// Create gallery item content
+const galleryContent = `
+  <div class="bg-white rounded shadow-sm">
+      <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
+
+      <div class="p-4">
+          <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>
+          <p class="small text-muted mb-0">Breed: ${stray.breed}</p>
+          <p class="small text-muted mb-0">Surrender Date: ${formattedSurrenderDate}</p>
+
+          <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <p class="small mb-0"></i><span class="font-weight-bold">${stray.gender.toUpperCase()}</span></p>
+              <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeText(stray.status)}</div>
+          </div>
+
+      </div>
+
+  </div>
+`;
+
+
   let strayDetailContent = `
 
     <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img-modal img-fluid card-img-top">
@@ -94,7 +122,7 @@ function displayStrayDetails(stray) {
     </div>
     <p class="strayDetails"><b>Spayed/Neutered:</b> ${stray.spayedNeutered}</p>
     <p class="strayDetails"><b>Vaccinated:</b> ${stray.vaccinated}</p>
-    <p class="strayDetails"><b>Surrender Date:</b> ${stray.surrenderDate}</p><br>
+    <p class="strayDetails"><b>Surrender Date:</b> ${formattedSurrenderDate}</p><br>
   `;
 
   // checks the display when a user is logged in
@@ -249,40 +277,48 @@ function showStrayData(category, color, sex, age) {
             (age === 'all' || stray.age === age);
   });
 
-  filteredStrayData.forEach(stray => {
-    var parsedImg = stray.imgData.toString('base64');
+  if (filteredStrayData.length === 0) {
+    // Display "No strays found" message
+    const noStraysMessage = document.createElement('h1');
+    noStraysMessage.textContent = 'No strays found.';
+    galleryContainer.appendChild(noStraysMessage);
+  } else {
+      // Display filtered strays
+      filteredStrayData.forEach(stray => {
+          var parsedImg = stray.imgData.toString('base64');
 
-    console.log('working');
+          console.log('working');
 
-    // Create gallery item
-    const galleryItem = document.createElement('div');
-    galleryItem.classList.add('col-xl-3', 'col-lg-4', 'col-md-6', 'mb-4');
+          // Create gallery item
+          const galleryItem = document.createElement('div');
+          galleryItem.classList.add('col-xl-3', 'col-lg-4', 'col-md-6', 'mb-4');
 
-    // Create gallery item content
-    const galleryContent = `
-      <div class="bg-white rounded shadow-sm">
-        <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
+          // Create gallery item content
+          const galleryContent = `
+            <div class="bg-white rounded shadow-sm strayModal">
+              <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img img-fluid card-img-top">
 
-        <div class="p-4">
-          <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>
-          <p class="small text-muted mb-0">Breed: ${stray.breed}</p>
+              <div class="p-4">
+                <h5><a href="#" class="text-dark stray-detail-link" data-stray='${JSON.stringify(stray)}'>${stray.name}</a></h5>
+                <p class="small text-muted mb-0">Breed: ${stray.breed}</p>
 
-          <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-            <p class="small mb-0"></i><span class="font-weight-bold">${stray.gender.toUpperCase()}</span></p>
-            <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeText(stray.status)}</div>
-          </div>
+                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                  <p class="small mb-0"></i><span class="font-weight-bold">${stray.gender.toUpperCase()}</span></p>
+                  <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeText(stray.status)}</div>
+                </div>
 
-        </div>
+              </div>
 
-      </div>
-    `;
+            </div>
+          `;
 
-    // Set gallery item content
-    galleryItem.innerHTML = galleryContent;
+          // Set gallery item content
+          galleryItem.innerHTML = galleryContent;
 
-    // Append gallery item to the container
-    galleryContainer.appendChild(galleryItem);
-  });
+          // Append gallery item to the container
+          galleryContainer.appendChild(galleryItem);
+      });
+    }
 
   // Event listener for stray detail links
   const strayDetailLinks = document.querySelectorAll('.stray-detail-link');
@@ -296,14 +332,20 @@ function showStrayData(category, color, sex, age) {
   });
 }
 
-// Function to trigger filtering when the search button is clicked
-function searchStrayData() {
-    const category = document.getElementById('categoryDropdown').value;
-    const color = document.getElementById('colorDropdown').value;
-    const sex = document.getElementById('sexDropdown').value;
-    const age = document.getElementById('ageDropdown').value;
+// Add event listeners to the dropdowns to trigger filtering on change
+document.getElementById('categoryDropdown').addEventListener('change', searchStrayData);
+document.getElementById('colorDropdown').addEventListener('change', searchStrayData);
+document.getElementById('sexDropdown').addEventListener('change', searchStrayData);
+document.getElementById('ageDropdown').addEventListener('change', searchStrayData);
 
-    showStrayData(category, color, sex, age);
+// this function directly filters data
+function searchStrayData() {
+  const category = document.getElementById('categoryDropdown').value;
+  const color = document.getElementById('colorDropdown').value;
+  const sex = document.getElementById('sexDropdown').value;
+  const age = document.getElementById('ageDropdown').value;
+
+  showStrayData(category, color, sex, age);
 }
 
 // POP UPS
