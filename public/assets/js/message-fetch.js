@@ -18,6 +18,7 @@ function contactFormSubmit(formId){
             const data = await res.json();
             
             if (data.message) {
+                alert("message sent successfully");
                 location.assign('/about');
             } else {
                 location.assign('/500');

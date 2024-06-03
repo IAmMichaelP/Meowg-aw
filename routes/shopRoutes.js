@@ -9,7 +9,7 @@ const multer = require('multer');
 const router = Router();
 
 // this is defining the folderpath where to receive the path
-let folderPath = 'public/assets/img';
+let folderPath = 'public/pics';
 let files = fsExtra.readdirSync(folderPath);
 let numberOfFiles = files.length;
 // defining the storage where the images are uploaded by the users

@@ -70,6 +70,7 @@ userSchema.statics.editProfile = async function (userData) {
     const update = await this.findByIdAndUpdate(userData.id, { 
         $set: { 
             profilePicture: userData.img,
+            username: userData.username,
             name: userData.name,
             email: userData.email,
             address: userData.address,
