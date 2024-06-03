@@ -203,7 +203,7 @@
               <!--------cart content------------->
               <div class="profile-purchases-content user-act" id="profile-purchases-content" style="display: none;">
                 <% if (purchases.length===0) { %>
-                  <!-- <h1>User purchases added here. Just like in Shopee: To Pay, To Ship, To Receive, and To Rate.</h1> -->
+                  <h2>You have no purchases yet.</h2>
                   <% } else { %>
                     <% purchases.forEach(purchase=> { %>
                       <% purchase.purchase.forEach(item=> { %> <!-- Ensure to use 'purchases' here -->
