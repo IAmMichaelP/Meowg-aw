@@ -19,7 +19,7 @@ function contactFormSubmit(formId){
             
             if (data.message) {
                 alert("message sent successfully");
-                location.reload();
+                location.assign('/about');
             } else {
                 location.assign('/500');
             }

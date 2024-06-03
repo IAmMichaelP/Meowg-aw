@@ -133,7 +133,6 @@
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('adopt')">Adopt</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('purchases')">Purchases</li>
             <br>
             <hr>
           </ul>
@@ -430,92 +429,48 @@
                     <% } else { %>
                       There are no strays to display
                       <% } %>
-          </div>
 
-          <!-- purchases -->
-          <div id="purchases" style="display: none;">
-            <% if (purchasers.length> 0) { %>
-              <% purchasers.forEach(purchaser=> { %>
-                <div class="dash-container">
-                  <div class="dash-info">
-                    <p>Name: <%= purchaser.user.name %>
-                    </p>
-                    <p>Email: <%= purchaser.user.email %>
-                    </p>
-                    <p>Total Purchases: <%= purchaser.purchases.length %>
-                    </p>
-                  </div>
+                        <!------Messages------>
+                        <div id="messages" style="display: none;">
+                          <% if (messages.length> 0) {%>
+                            <% messages.forEach(message=> { %>
+                              <div class="dash-container">
 
-                  <% if (purchaser.purchases.length> 0) { %>
-                    <% purchaser.purchases.forEach(purchase=> { %>
-                      <div class="dash-container">
-                        <div class="dash-info">
-                          <p>Purchase ID: <%= purchase._id %>
-                          </p>
-                          <p>Merch: <%= purchase.merch %>
-                          </p>
-                          <p>Quantity: <%= purchase.quantity %>
-                          </p>
-                          <p>Status: <%= purchase.status %>
-                          </p>
-                        </div>
-                        <div class="crud-btns">
-                          <button class="standard-button">Approve</button>
-                          <button class="danger">Delete</button>
-                        </div>
-                      </div>
-                      <% }) %>
-                        <% } else { %>
-                          <p>No purchases to display</p>
-                          <% } %>
-                </div>
-                <% }) %>
-                  <% } else { %>
-                    <p>No purchasers to display</p>
-                    <% } %>
-          </div>
-
-
-          <!------Messages------>
-          <div id="messages" style="display: none;">
-            <% if (messages.length> 0) {%>
-              <% messages.forEach(message=> { %>
-                <div class="dash-container">
-
-                  <!-- <div class="dash-image">
+                                <!-- <div class="dash-image">
                     <img src="/pics/stray1.jpg">
                   </div> -->
 
-                  <div class="dash-info">
-                    <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
-                    </h5>
-                    <h6>Subject: <%= message.messageSubject %>
-                    </h6><br>
-                    <p>Content: <%= message.messageBody %>
-                    </p><br>
-                    <h6>Status: <%= message.status %>
-                    </h6>
-                  </div>
+                                <div class="dash-info">
+                                  <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
+                                  </h5>
+                                  <h6>Subject: <%= message.messageSubject %>
+                                  </h6><br>
+                                  <p>Content: <%= message.messageBody %>
+                                  </p><br>
+                                  <h6>Status: <%= message.status %>
+                                  </h6>
+                                </div>
 
-                  <div class="crud-btns">
-                    <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
-                      class="standard-button">Acknowledge</button>
-                    <button class="danger" onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
-                  </div>
-                </div>
-                <br>
-                <hr>
-                <br>
+                                <div class="crud-btns">
+                                  <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
+                                    class="standard-button">Acknowledge</button>
+                                  <button class="danger" onclick="deleteMessage('<%= message._id %>');"
+                                    class="danger">Delete</button>
+                                </div>
+                              </div>
+                              <br>
+                              <hr>
+                              <br>
 
-                <% }) %>
-                  <% } else { %>
-                    There are no messages to display
-                    <% } %>
+                              <% }) %>
+                                <% } else { %>
+                                  There are no messages to display
+                                  <% } %>
+
+                        </div>
 
           </div>
-
         </div>
-      </div>
 
     </main>
 

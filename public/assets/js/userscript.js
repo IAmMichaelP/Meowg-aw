@@ -79,8 +79,6 @@ function showDashContent(section) {
     document.getElementById('shop').style.display = 'none';
     document.getElementById('faqs').style.display = 'none';
     document.getElementById('messages').style.display = 'none';
-    document.getElementById('adopt').style.display = 'none';
-    document.getElementById('purchases').style.display = 'none';
   
     if (section === 'users') {
       document.getElementById('users').style.display = 'block';
@@ -96,10 +94,6 @@ function showDashContent(section) {
       document.getElementById('faqs').style.display = 'block';
     } else if (section === 'messages') {
       document.getElementById('messages').style.display = 'block';
-    } else if (section === 'adopt') {
-      document.getElementById('adopt').style.display = 'block';
-    } else if (section === 'purchases') {
-      document.getElementById('purchases').style.display = 'block';
     }
   
     document.querySelectorAll('.activitiesBtn').forEach(tab => {
