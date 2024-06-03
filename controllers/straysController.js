@@ -72,7 +72,7 @@ module.exports.upload_post = (req, res) => {
                 const stray = new Stray(req.body);
                 stray.save()
                     .then((result) => {
-                        res.redirect('/gallery')
+                        res.redirect(`/profile/${req.body.uploader}`)
                     })
                     .catch((err) => {
                         console.log(err);
