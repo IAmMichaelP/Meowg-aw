@@ -32,31 +32,31 @@
               data-aos-delay="200">
 
               <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                <a class="nav-link active show" data-category="All">
                   <h4 class="shopCategory">All</h4>
                 </a>
               </li><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                <a class="nav-link" data-category="Toys">
                   <h4 class="shopCategory">Toys</h4>
                 </a>
               </li><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+                <a class="nav-link" data-category="Bowls and Feeders">
                   <h4 class="shopCategory">Bowls and Feeders</h4>
                 </a>
                 </ii><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+                <a class="nav-link" data-category="Accessories">
                   <h4 class="shopCategory">Accessories</h4>
                 </a>
               </li><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+                <a class="nav-link" data-category="Care and Health Supplies">
                   <h4 class="shopCategory">Care and Health Supplies</h4>
                 </a>
               </li><!-- End tab nav item -->
@@ -66,13 +66,12 @@
 
           <div class="container px-4 px-lg-5 mt-5" id="shopItemsContainer">
 
-
             <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
 
               <% if (merches.length> 0) {%>
                 <% merches.forEach(merch=> { %>
 
-                  <div class="col mb-5">
+                  <div class="col mb-5 <%=merch.category%>">
                     <div class="card h-100">
                       <!-- Product image-->
                       <img class="card-img-top" src="data:image/png; base64,<%= merch.imgData.toString('base64') %>"
@@ -82,7 +81,6 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                         </div>
                         <% } %>
-
 
                           <!-- Product details-->
                           <div class="card-body p-4">
@@ -134,6 +132,26 @@
         <!--------------scripts-------------->
         <%- include('partials/scripts.ejs') %>
 
+        <!-- Add JavaScript/jQuery to handle filtering -->
+        <script>
+          $(document).ready(function() {
+            // Handle click event on filter buttons
+            $('.nav-link').click(function(e) {
+              e.preventDefault(); // Prevent default anchor behavior
+              var category = $(this).data('category'); // Get category from data-category attribute
+              $('.col').hide(); // Hide all items
+              if (category === 'All') {
+                $('.col').show(); // Show all items if category is All
+              } else {
+                $('.' + category).show(); // Show items with matching category
+              }
+            });
+          });
+        </script>
+
   </body>
 
 </html>
+
+
+
