@@ -124,6 +124,8 @@ module.exports.admin_get = (req, res) => {
             const users = await User.find();
             const faqs = await Faqs.findApprovedFaqs();
             const donation = await Donation.find();
+            const purchaser = await Purchase.find().populate("user");
+            const purchases = await Purchase.findPurchase(id);
             
 
             res.render('admin-dashboard', { 
@@ -137,7 +139,9 @@ module.exports.admin_get = (req, res) => {
                 inventory: inventory,
                 users: users,
                 faqs: faqs,
-                donation: donation
+                donation: donation,
+                purchases,
+                purchaser
              });
         })
         .catch((err) => {
