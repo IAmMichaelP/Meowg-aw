@@ -1,0 +1,21 @@
+.shop-img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.shop-viewBtn{
+    color: white;
+    border: 1px solid transparent;
+    font-weight: bold;
+    padding: 7px 15px;
+    background: var(--darkgreen);
+    transition: all ease 0.7s;
+    border-radius: 25px;
+}
+
+.shop-viewBtn:hover{
+    color: var(--darkgreen);
+    background: white;
+    border: 1px var(--darkgreen) solid;
+}

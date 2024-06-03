@@ -30,19 +30,33 @@
                   src="data:image/png; base64,<%= merch.imgData.toString('base64') %>" alt="<%= merch.name %>" />
               </div>
               <div class="col-md-6">
-                <h1 class="display-5 fw-bolder">
+                <h1 class="display-5 fw-bolder mb-2">
                   <%= merch.name %>
                 </h1>
-                <div class="fs-5 mb-5">
-                  <span id="price">$<%= merch.price %></span>
+                <div class="fs-5 mb-4">
+                  <span style="font-weight: bold;" id="price">Price: ₱ <%= merch.price %></span>
                 </div>
 
-                <p class="lead">
+                <p style="font-size: 14px;" class="justify-content-center" class="lead">
+                  <b>About <%= merch.name %>: </b>
+                  <br>
+                  <br>
                   <%= merch.description %>
                 </p>
+
+                <p style="font-size: 14px;" class="lead">
+                  <b>Brand: </b> 
+                  <%= merch.brand %>
+                </p>
+
+                <p style="font-size: 14px;" class="lead">
+                  <b>Quantity: </b>
+                  <%= merch.quantity %>
+                </p>
+
                 <div class="d-flex">
                   <input class="form-control text-center me-3" id="inputQuantity" type="num"
-                    value="<%= merch.quantity %>" style="max-width: 3rem" />
+                    value="" style="max-width: 3rem" />
                   <button class="btn btn-outline-dark flex-shrink-0" type="button" <% if(user) { %>
 
                     onclick="console.log('clicking the addItemToCart button'); addItemToCart(`<%= user._id %>`, `<%=

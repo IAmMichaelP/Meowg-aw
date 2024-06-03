@@ -75,7 +75,7 @@
                   <div class="col mb-5 <%=merch.category%>">
                     <div class="card h-100">
                       <!-- Product image-->
-                      <img class="card-img-top" src="data:image/png; base64,<%= merch.imgData.toString('base64') %>"
+                      <img class="card-img-top shop-img" src="data:image/png; base64,<%= merch.imgData.toString('base64') %>"
                         alt="<%= merch.name %>" />
                       <!-- Sale badge (optional) -->
                       <% if (merch.sale) { %>
@@ -84,27 +84,27 @@
                         <% } %>
 
                           <!-- Product details-->
-                          <div class="card-body p-4">
+                          <div class="card-body p-2">
                             <div class="text-center">
                               <!-- Product name-->
-                              <h5 class="fw-bolder">
+                              <h5 class="fw-bolder mt-3">
                                 <%= merch.name %>
                               </h5>
                               <!-- Product description-->
-                              <p class="text-muted" id="description">
+                              <p style="font-size: 13px;" class="text-muted mt-4" id="description">
                                 <%= merch.description.substring(0, 150) %>...
                               </p>
                               <!-- Product price-->
-                              <span class="text-muted">
+                              <span style="font-weight: bold;" class="text-muted">
                                 Price: ₱ <%= merch.price %>
                               </span>
                             </div>
                           </div>
 
                           <!-- Product actions-->
-                          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                          <div class="card-footer pb-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                              <a class="btn btn-outline-dark mt-auto" href="/shop-item/<%= merch._id %>">
+                              <a class="shop-viewBtn" href="/shop-item/<%= merch._id %>">
                                 <%= merch.buttonText ? merch.buttonText : 'View' %>
                               </a>
                             </div>
