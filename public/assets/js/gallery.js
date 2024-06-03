@@ -3,6 +3,12 @@ function retrieveStrayData() {
   return parsedStrayData ? parsedStrayData : [];
 }
 
+function retrieveUserData() {
+  parsedUserData = JSON.parse(user);
+  return parsedUserData ? parsedUserData : [];
+}
+
+
 // Function to display stray data images
 function displayStrayImages() {
   const strayData = retrieveStrayData();
@@ -93,9 +99,7 @@ const galleryContent = `
   </div>
 `;
 
-
   let strayDetailContent = `
-
     <img src="data:image/png; base64,${parsedImg}" alt="${stray.name}" class="gallery-img-modal img-fluid card-img-top">
     <br><br>
     <div class="badge badge-${getBadgeColor(stray.status)} px-3 rounded-pill font-weight-normal">${getBadgeTextDetail(stray.status)}</div>
@@ -128,7 +132,7 @@ const galleryContent = `
   // checks the display when a user is logged in
   if (user) {
     if(stray.status != 'evaluation for adoption ongoing') {
-      const parsedUser = JSON.parse(user);
+      const parsedUser = retrieveUserData;
       strayDetailContent += `
       <div class="adoptionForm">
         <h3>Interested in adopting ${stray.name}?</h3>
@@ -197,7 +201,6 @@ function closeModal() {
 
 // Call the function to display stray images
 displayStrayImages();
-
 
 // Helper function to get badge color based on type
 function getBadgeColor(status) {
