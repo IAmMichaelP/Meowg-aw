@@ -585,7 +585,7 @@ const approveAdoption = async (id) => {
         const data = await res.json();
         console.log(data);
         
-        if (data.user) {
+        if (data.stray) {
             const modal = document.getElementById('descModal');
             modal.style.display = 'none';
             document.getElementById('result').innerHTML = "STRAY ADOPTION APPROVED SUCCESSFULLY";

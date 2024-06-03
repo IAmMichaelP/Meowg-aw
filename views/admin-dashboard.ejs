@@ -132,6 +132,7 @@
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('shop')">Shop</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
             <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
+            <li class="list-inline-item activitiesBtn" onclick="showDashContent('adopt')">Adopt</li>
             <br>
             <hr>
           </ul>
@@ -225,7 +226,8 @@
                       </p>
                     </div>
                     <div class="crud-btns">
-                      <button class="standard-button" onclick="showStray('<%= JSON.stringify(stray) %>')" class="standard-button">View</button>
+                      <button class="standard-button" onclick="showStray('<%= JSON.stringify(stray) %>')"
+                        class="standard-button">View</button>
                       <button class="danger" onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
                     </div>
 
@@ -263,8 +265,10 @@
                               </div>
 
                               <div class="crud-btns">
-                                <button class="standard-button" onclick="approveStray('<%= stray._id %>');"class="standard-button">Approve</button>
-                                <button class="danger" onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
+                                <button class="standard-button" onclick="approveStray('<%= stray._id %>');"
+                                  class="standard-button">Approve</button>
+                                <button class="danger" onclick="strayDelete('<%= stray._id %>');"
+                                  class="danger">Delete</button>
                               </div>
 
                             </div>
@@ -298,7 +302,8 @@
                   </div>
 
                   <div class="crud-btns">
-                    <button onclick="viewDonation('<%= JSON.stringify(donate) %>')"class="standard-button">View</button>
+                    <button onclick="viewDonation('<%= JSON.stringify(donate) %>')"
+                      class="standard-button">View</button>
                     <button onclick="deleteDonation('<%= donate._id %>');" class="danger">Delete</button>
                   </div>
                 </div>
@@ -389,46 +394,83 @@
                     <% } %>
           </div>
 
-          <!------Messages------>
-          <div id="messages" style="display: none;">
-            <% if (messages.length> 0) {%>
-              <% messages.forEach(message=> { %>
-                <div class="dash-container">
+          <div id="adopt" style="display: none;">
+            <% strays=JSON.parse(strays)%>
+              <% if (strays.length> 0) {%>
+                <% strays.forEach(stray=> { %>
 
-                  <!-- <div class="dash-image">
+                  <div class="dash-container">
+
+                    <div class="dash-image">
+                      <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
+                    </div>
+
+                    <div class="dash-info">
+                      <p>Name: <%= stray.name %>
+                      </p>
+                      <p>Age: <%= stray.age %>
+                      </p>
+                      <p>Gender: <%= stray.gender %>
+                      </p>
+                      <p>Breed: <%= stray.breed %>
+                      </p>
+                      <p>Status: <%= stray.status %>
+                      </p>
+                    </div>
+
+                    <div class="crud-btns">
+                      <button class="standard-button" onclick="approveAdoption('<%= stray._id %>');">Approve</button>
+                      <button class="danger" class="danger">Delete</button>
+                    </div>
+
+                  </div>
+
+                  <% }) %>
+                    <% } else { %>
+                      There are no strays to display
+                      <% } %>
+
+                        <!------Messages------>
+                        <div id="messages" style="display: none;">
+                          <% if (messages.length> 0) {%>
+                            <% messages.forEach(message=> { %>
+                              <div class="dash-container">
+
+                                <!-- <div class="dash-image">
                     <img src="/pics/stray1.jpg">
                   </div> -->
 
-                  <div class="dash-info">
-                    <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
-                    </h5>
-                    <h6>Subject: <%= message.messageSubject %>
-                    </h6><br>
-                    <p>Content: <%= message.messageBody %>
-                    </p><br>
-                    <h6>Status: <%= message.status %>
-                    </h6>
-                  </div>
+                                <div class="dash-info">
+                                  <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
+                                  </h5>
+                                  <h6>Subject: <%= message.messageSubject %>
+                                  </h6><br>
+                                  <p>Content: <%= message.messageBody %>
+                                  </p><br>
+                                  <h6>Status: <%= message.status %>
+                                  </h6>
+                                </div>
 
-                  <div class="crud-btns">
-                    <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
-                      class="standard-button">Acknowledge</button>
-                    <button class="danger" onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
-                  </div>
-                </div>
-                <br>
-                <hr>
-                <br>
+                                <div class="crud-btns">
+                                  <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
+                                    class="standard-button">Acknowledge</button>
+                                  <button class="danger" onclick="deleteMessage('<%= message._id %>');"
+                                    class="danger">Delete</button>
+                                </div>
+                              </div>
+                              <br>
+                              <hr>
+                              <br>
 
-                <% }) %>
-                  <% } else { %>
-                    There are no messages to display
-                    <% } %>
+                              <% }) %>
+                                <% } else { %>
+                                  There are no messages to display
+                                  <% } %>
+
+                        </div>
 
           </div>
-
         </div>
-      </div>
 
     </main>
 
