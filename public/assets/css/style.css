@@ -2,6 +2,7 @@
 .popup {
     display: none;
     position: fixed;
+	border-radius: 20px;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,7 +22,8 @@
 }
 
 .popup-content {
-    background-color: var(--darkpink);
+    background-color: white;
+	border-radius: 25px;
     padding: 20px;
     width: 30vw;
     height: auto;
@@ -143,7 +145,7 @@
 }
 
 .close {
-	color: white;
+	color: var(--darkgreen);
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
@@ -152,7 +154,7 @@
 }
 
 .close:hover {
-	color: black;
+	color: var(--green);
 }
 
 .strayModal {
