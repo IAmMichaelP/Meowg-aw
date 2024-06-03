@@ -140,8 +140,8 @@ module.exports.admin_get = (req, res) => {
                 users: users,
                 faqs: faqs,
                 donation: donation,
-                purchases,
-                purchaser
+                purchases: purchases,
+                purchasers: purchasers
              });
         })
         .catch((err) => {
