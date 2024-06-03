@@ -79,6 +79,29 @@ function displayStrayDetails(stray) {
     day: 'numeric'
   });
 
+  // Convert months to years and months format
+  function convertAge(months) {
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+    let ageString = "";
+    if (years > 0) {
+        ageString += years + " year";
+        if (years > 1) {
+            ageString += "s";
+        }
+    }
+    if (remainingMonths > 0) {
+        if (years > 0) {
+            ageString += " and ";
+        }
+        ageString += remainingMonths + " month";
+        if (remainingMonths > 1) {
+            ageString += "s";
+        }
+    }
+    return ageString;
+  }
+  
 // Create gallery item content
 const galleryContent = `
   <div class="bg-white rounded shadow-sm">
@@ -107,7 +130,7 @@ const galleryContent = `
     <p><b>Name:</b> ${stray.name}</p>
     <p><b>Gender: </b>${stray.gender}</p>
     <p><b>Breed: </b>${stray.breed}</p>
-    <p class="strayDetails"><b>Age:</b> ${stray.age}</p>
+    <p class="strayDetails"><b>Age:</b> ${convertAge(stray.age)}</p>
     <p class="strayDetails"><b>Color:</b> ${stray.color}</p>
     <p class="strayDetails"><b>Size:</b> ${stray.size} kg</p>
     <div class="strayDetails">
@@ -281,8 +304,23 @@ function showStrayData(category, color, sex, age) {
     return (category === 'all' || stray.animal === category) &&
            (color === 'all' || stray.color === color) &&
            (sex === 'all' || stray.gender === sex)&&
-            (age === 'all' || stray.age === age);
+            (age === 'all' || checkAge(stray.age, age));
   });
+
+  function checkAge(strayAge, selectedAge) {
+    switch(selectedAge) {
+        case 'one':
+            return strayAge < 12;
+        case 'one-two':
+            return strayAge >= 12 && strayAge < 36;
+        case 'three-four':
+            return strayAge >= 25 && strayAge < 48;
+        case 'five':
+            return strayAge > 5;
+        default:
+            return false;
+    }
+  }
 
   if (filteredStrayData.length === 0) {
     // Display "No strays found" message
