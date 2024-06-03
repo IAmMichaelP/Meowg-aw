@@ -87,7 +87,7 @@
               <i class='icon bx bx-envelope'></i>
               <input type="email" name="email" required><br>
             </div>
-            <div class="email error" id="warning"></div>
+            <div class="email error signup" id="warning"></div>
 
             <label for="password">Password</label><br>
             <div class="input-container">
@@ -96,7 +96,7 @@
                         handleOnKeyUp('password', event);
                         " required><br>
             </div>
-            <div class="password error" id="warning"></div>
+            <div class="password error signup" id="warning"></div>
 
             <label for="repassword">Re-enter Password</label><br>
             <div class="input-container">
@@ -113,7 +113,7 @@
             <a href="">Terms</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.
           </p>
 
-          <p class="alternate" data-toggle="modal" data-target="#signUp">Already have an account? <a href="#">Log in</a>
+          <p id="signUpButton" class="alternate">Already have an account? <a href="#" id="swap-login">Log in</a>
           </p>
         </form>
       </div>
@@ -142,22 +142,24 @@
               <i class='icon bx bx-envelope'></i>
               <input type="email" class="emailSi" name="email" required><br>
             </div>
-            <div class="email error" id="warning"></div>
+            <div class="email error signin" id="warning"></div>
 
             <label for="password">Password</label><br>
             <div class="input-container">
               <i class='icon bx bx-lock-alt'></i>
               <input type="password" class="passwordSi" name="password" required><br>
             </div>
-            <div class="password error" id="warning"></div>
+            <div class="password error signin" id="warning"></div>
 
           </div>
           <p class="warning signin-warning hide-warning">Password and email do not match!</p>
 
           <button type="submit" class="submit" onclick="listenForm('#login-form')">Sign In</button>
           <a href="#" class="forgot">Forgot Password?</a>
-          <p class="alternate" data-toggle="modal" data-target="#signIn">Doesn't have an account yet? <a href="#">Sign
-              Up</a></p>
+          <p id="signInButton" class="alternate">Doesn't have an account yet?
+            <a href="#" id="swap-signup">Sign
+              Up</a>
+          </p>
         </form>
       </div>
 
@@ -193,7 +195,8 @@
                 </li>
                 <% }) %>
             </ul>
-            <button class="standard-button p-2 m-2" type="submit" id="checkout-button" class="btn btn-primary mt-3">Checkout</button>
+            <button class="standard-button p-2 m-2" type="submit" id="checkout-button"
+              class="btn btn-primary mt-3">Checkout</button>
           </form>
           <% } else { %>
             <p>Your cart is currently empty.</p>

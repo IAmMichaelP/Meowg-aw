@@ -66,8 +66,12 @@ function warningToggle(status, popup) {
 // this listens to signin and signup events and lets the backend send the error message when it exists.
 function listenForm(formId) {
     const form = document.querySelector(formId);
-    const emailError = document.querySelector('.email.error');
-    const passwordError = document.querySelector('.password.error');
+    let signToggle = 'signin';
+    if (formId == "#signup-form"){
+        signToggle = 'signup';
+    }
+    const emailError = document.querySelector(`.email.error.${signToggle}`);
+    const passwordError = document.querySelector(`.password.error.${signToggle}`);
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -196,8 +200,5 @@ function uploadPic() {
                 editButton.style.opacity = '1.0';
             }
         }
-
- 
-
 }
 

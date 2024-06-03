@@ -27,6 +27,11 @@ const purchaseSchema = new Schema({
         ref: "User",
         required: true
     },
+    totalPrice: {
+        type: Number,
+        required: true
+    },
+    
     purchase: [purchaseContentSchema] // Changed to an array of cartContentSchema
 }, { timestamps: true });
 
