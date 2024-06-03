@@ -23,3 +23,32 @@ function closePopup(popupId) {
         // document.body.classList.remove('modal-open');
     }, 200);
   }
+
+  function swapAuthModal() {
+    console.log("swap auth");
+    const signInButton = document.querySelector('#swap-signup');
+    const signUpButton = document.querySelector('#swap-login');
+
+    signUpButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log("sign in auth");
+
+      setTimeout(() => {
+        $('#signIn').modal('hide');
+        $('#signUp').modal('show');
+      }, 500);  // Adjust the timeout duration if needed
+    });
+  
+    signInButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log("sign up auth");
+
+      setTimeout(() => {
+        $('#signUp').modal('hide');
+        $('#signIn').modal('show');
+      }, 500);  // Adjust the timeout duration if needed
+    });
+  }
+  
+  // Call the function to attach the event listeners
+  swapAuthModal();

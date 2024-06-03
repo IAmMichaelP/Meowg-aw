@@ -161,12 +161,13 @@ module.exports.place_order_post = async (req, res) => {
         console.log("values: ", merchId, amount);
 
         // const itemIndex = purchase.purchase.findIndex(item => item.merch.toString() === merchId);
-
+        purchase.totalPrice = order.totalPrice;
         purchase.purchase.push({
             merch: merchId,
             amount: amount,
             status: "pending approval"
         });
+
 
         await purchase.save();
         await Checkout.findByIdAndDelete(checkout);

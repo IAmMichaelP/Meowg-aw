@@ -211,7 +211,8 @@
                           <h3>Item name:
                             <%= item.merch.name %>
                           </h3>
-                          <p>Amount: X<%= item.amount %>
+                          <p>Quantity: x<%= item.amount %>
+
                           </p>
                           <h8>Status:
                             <%= item.status %>
@@ -219,6 +220,8 @@
                           <br><br>
                         </div>
                         <% }); %>
+                          <p>Total: <%= purchases.totalPrice || 0.00 %>
+                          </p>
                           <% }); %>
                             <% } %>
               </div>
