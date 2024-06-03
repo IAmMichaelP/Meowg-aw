@@ -44,7 +44,7 @@
               </li><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-category="Bowls and Feeders">
+                <a class="nav-link" data-category="Bowls">
                   <h4 class="shopCategory">Bowls and Feeders</h4>
                 </a>
                 </ii><!-- End tab nav item -->
@@ -56,7 +56,7 @@
               </li><!-- End tab nav item -->
 
               <li class="nav-item">
-                <a class="nav-link" data-category="Care and Health Supplies">
+                <a class="nav-link" data-category="Health">
                   <h4 class="shopCategory">Care and Health Supplies</h4>
                 </a>
               </li><!-- End tab nav item -->
@@ -71,6 +71,7 @@
               <% if (merches.length> 0) {%>
                 <% merches.forEach(merch=> { %>
 
+                  <h1 id="no-results-message" style="display: none;">No results found.</h1>
                   <div class="col mb-5 <%=merch.category%>">
                     <div class="card h-100">
                       <!-- Product image-->
@@ -90,12 +91,12 @@
                                 <%= merch.name %>
                               </h5>
                               <!-- Product description-->
-                              <p class="text-muted">
-                                <%= merch.description %>
+                              <p class="text-muted" id="description">
+                                <%= merch.description.substring(0, 150) %>...
                               </p>
                               <!-- Product price-->
                               <span class="text-muted">
-                                <%= merch.price %>
+                                ₱<%= merch.price %>
                               </span>
                             </div>
                           </div>
@@ -117,7 +118,6 @@
                       <% } %>
 
                         <!---items added dynamically-->
-
             </div>
           </div>
 
@@ -140,14 +140,24 @@
               e.preventDefault(); // Prevent default anchor behavior
               var category = $(this).data('category'); // Get category from data-category attribute
               $('.col').hide(); // Hide all items
+        
+              // Filter items based on category
               if (category === 'All') {
                 $('.col').show(); // Show all items if category is All
               } else {
                 $('.' + category).show(); // Show items with matching category
               }
+        
+              // Check if there are no filtered items
+              if ($('.col:visible').length === 0) {
+                $('#no-results-message').show(); // Show no results message
+              } else {
+                $('#no-results-message').hide(); // Hide no results message
+              }
             });
           });
         </script>
+        
 
   </body>
 

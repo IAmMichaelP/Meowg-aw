@@ -129,7 +129,7 @@
                 <div class="body">
                   
                   <h3><a href="blog-details.html"><%= blog.title %></a></h3>
-                  <p><%= blog.body %></p>
+                  <p id="description"><%= blog.body.substring(0, 150)%>...</p>
                 </div>
                 
                 <div class="footerBlog">

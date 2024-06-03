@@ -323,3 +323,19 @@ function showSuccessPopup(message) {
   alert(message);
 }
 displayShopItems('All');
+
+// limit text
+
+var descriptionElement = document.getElementById("description");
+
+  // Get the full description
+  var fullDescription = descriptionElement.innerHTML;
+
+  // Check if the description exceeds the limit
+  if (fullDescription.length > 150) {
+    // Truncate the description
+    var truncatedDescription = fullDescription.substring(0, 150) + "...";
+
+    // Update the description in the HTML
+    descriptionElement.innerHTML = truncatedDescription;
+  }
