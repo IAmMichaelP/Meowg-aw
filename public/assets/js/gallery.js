@@ -134,7 +134,7 @@ const galleryContent = `
     if(stray.status != 'evaluation for adoption ongoing') {
       const parsedUser = retrieveUserData;
       strayDetailContent += `
-      <div class="adoptionForm">
+      <div class="adoptionForm p-4">
         <h3>Interested in adopting ${stray.name}?</h3>
 
         <form action="/adopt" method="POST">
