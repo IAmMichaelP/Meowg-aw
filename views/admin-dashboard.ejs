@@ -429,48 +429,50 @@
                     <% } else { %>
                       There are no strays to display
                       <% } %>
+          </div>
 
-                        <!------Messages------>
-                        <div id="messages" style="display: none;">
-                          <% if (messages.length> 0) {%>
-                            <% messages.forEach(message=> { %>
-                              <div class="dash-container">
 
-                                <!-- <div class="dash-image">
+
+          <!------Messages------>
+          <div id="messages" style="display: none;">
+            <% if (messages.length> 0) {%>
+              <% messages.forEach(message=> { %>
+                <div class="dash-container">
+
+                  <!-- <div class="dash-image">
                     <img src="/pics/stray1.jpg">
                   </div> -->
 
-                                <div class="dash-info">
-                                  <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
-                                  </h5>
-                                  <h6>Subject: <%= message.messageSubject %>
-                                  </h6><br>
-                                  <p>Content: <%= message.messageBody %>
-                                  </p><br>
-                                  <h6>Status: <%= message.status %>
-                                  </h6>
-                                </div>
+                  <div class="dash-info">
+                    <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
+                    </h5>
+                    <h6>Subject: <%= message.messageSubject %>
+                    </h6><br>
+                    <p>Content: <%= message.messageBody %>
+                    </p><br>
+                    <h6>Status: <%= message.status %>
+                    </h6>
+                  </div>
 
-                                <div class="crud-btns">
-                                  <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
-                                    class="standard-button">Acknowledge</button>
-                                  <button class="danger" onclick="deleteMessage('<%= message._id %>');"
-                                    class="danger">Delete</button>
-                                </div>
-                              </div>
-                              <br>
-                              <hr>
-                              <br>
+                  <div class="crud-btns">
+                    <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
+                      class="standard-button">Acknowledge</button>
+                    <button class="danger" onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
+                  </div>
+                </div>
+                <br>
+                <hr>
+                <br>
 
-                              <% }) %>
-                                <% } else { %>
-                                  There are no messages to display
-                                  <% } %>
-
-                        </div>
+                <% }) %>
+                  <% } else { %>
+                    There are no messages to display
+                    <% } %>
 
           </div>
+
         </div>
+      </div>
 
     </main>
 

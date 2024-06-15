@@ -94,7 +94,9 @@ function showDashContent(section) {
       document.getElementById('faqs').style.display = 'block';
     } else if (section === 'messages') {
       document.getElementById('messages').style.display = 'block';
-    }
+    } else if (section === 'purchases') {
+      document.getElementById('purchases').style.display = 'block';
+    } 
   
     document.querySelectorAll('.activitiesBtn').forEach(tab => {
       tab.classList.remove('active');
