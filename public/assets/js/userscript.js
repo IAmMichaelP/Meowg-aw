@@ -71,7 +71,7 @@ function showContent(section) {
 }
 
 // admin-dashboard buttons
-function showDashContent(section) {
+async function showDashContent(section) {
     document.getElementById('users').style.display = 'none';
     document.getElementById('strays').style.display = 'none';
     document.getElementById('donations').style.display = 'none';
@@ -83,19 +83,27 @@ function showDashContent(section) {
     if (section === 'users') {
       document.getElementById('users').style.display = 'block';
     } else if (section === 'strays') {
+      console.log("strays clicked");
       document.getElementById('strays').style.display = 'block';
+      await straysSection();
     } else if (section === 'donations') {
       document.getElementById('donations').style.display = 'block';
+      await donationsSection();
     } else if (section === 'blogs') {
       document.getElementById('blogs').style.display = 'block';
+      await blogsSection();
     } else if (section === 'shop') {
       document.getElementById('shop').style.display = 'block';
+      await shopSection();
     } else if (section === 'faqs') {
       document.getElementById('faqs').style.display = 'block';
+      await faqsSection();
     } else if (section === 'messages') {
       document.getElementById('messages').style.display = 'block';
+      await messagesSection();
     } else if (section === 'purchases') {
       document.getElementById('purchases').style.display = 'block';
+      await purchasesSection();
     } 
   
     document.querySelectorAll('.activitiesBtn').forEach(tab => {
