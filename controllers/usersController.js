@@ -106,46 +106,19 @@ module.exports.signin_post = async (req, res) => {
     }
 };
 
-module.exports.admin_get = (req, res) => {
+module.exports.admin_get = async (req, res) => {
     const id = req.params.id;
     
-    User.findById(id).
-        then( async (result) =>{
-            let strays = await Stray.find();
-            strays = strays.filter(stray => stray.status == "evaluation for adoption ongoing");
-            strays = JSON.stringify(strays);
-            const pendingStrays = await Stray.findPendingStrays();
-            const approvedStrays = await Stray.findApprovedStrays();
-            const pendingBlogs = await Blog.findPendingBlogs();
-            const messages = await Message.find();
             // let currentInventory = await Inventory.find().sort({_id: -1}).limit(1);
             // currentInventory = currentInventory[0];
-            const inventory = await Inventory.find().sort({ 'week.start': -1 });
+            // const inventory = await Inventory.find().sort({ 'week.start': -1 });
             const users = await User.find();
-            const faqs = await Faqs.findApprovedFaqs();
-            const donation = await Donation.find();
-            // const purchaser = await Purchase.find().populate("user");
-            // const purchases = await Purchase.findPurchase(id);
-            
 
             res.render('admin-dashboard', { 
                 title: 'ADMIN', 
-                admin: result, 
-                strays: strays, 
-                pendingStrays: pendingStrays, 
-                approvedStrays: approvedStrays,
-                pendingBlogs: pendingBlogs,
-                messages: messages,
-                inventory: inventory,
                 users: users,
-                faqs: faqs,
-                donation: donation,
                 
              });
-        })
-        .catch((err) => {
-            console.log(err);
-        });
 };
 
 module.exports.logout_get = (req, res) => {

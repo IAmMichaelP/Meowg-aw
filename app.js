@@ -5,6 +5,7 @@ const usersRoutes = require('./routes/usersRoutes');
 const donateRoutes = require('./routes/donateRoutes');
 const straysRoutes = require('./routes/straysRoutes');
 const shopRoutes = require('./routes/shopRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middlewares/authMiddleware');
 
@@ -33,6 +34,7 @@ app.use(usersRoutes);
 app.use(donateRoutes);
 app.use(straysRoutes);
 app.use(shopRoutes);
+app.use(adminRoutes);
 
 app.use((req, res) => {
     res.render('404');

@@ -61,427 +61,175 @@
 </head>
 
 <body>
+  <% const admin=locals.user %>
+    <!-------------web banner/header--------------->
+    <%- include('partials/banner.ejs') %>
 
-  <!-------------web banner/header--------------->
-  <%- include('partials/banner.ejs') %>
+      <main>
 
-    <main>
+        <!-- ======= Breadcrumbs ======= -->
+        <div class="breadcrumbs gallery-container mb-3">
+          <div class="container">
 
-      <!-- ======= Breadcrumbs ======= -->
-      <div class="breadcrumbs gallery-container mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <h1 class="display-3">Admin Dashboard</h1>
+              <ol>
+                <li><a href="/">Home</a></li>
+                <li>Admin Dashboard</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- End Breadcrumbs -->
+
+        <!-- modal for every object (user,stray,etc) in the dashboard -->
+        <div id="descModal" class="strayModal">
+          <div class="descContainer">
+            <span class="close" onclick="closeDesc('descModal')">&times;</span>
+            <div id="desc">
+              <!---content in js---->
+            </div>
+          </div>
+        </div>
+        <!-- user popup update after role is updated -->
+        <div id="result-popup" class="popup">
+          <div class="popup-content" id="popup-content">
+            <span class="close" onclick="closePopup('result-popup')">&times;</span>
+            <h1 id="result">USER ROLE UPDATED</h1>
+          </div>
+        </div>
+        <!-- create an faq -->
+        <div id="add-faqs-popup" class="popup">
+          <div class="popup-content" id="popup-content">
+            <span class="close" onclick="closePopup('add-faqs-popup')">&times;</span>
+            <h3>Add a FAQs Component</h3>
+            <form class="faqCreate" id="faqCreate">
+
+              <input type="hidden" name="faqUploader" id="faqUploader" value="<%= admin._id %>">
+              <label for="question">Question</label><br>
+              <input type="text" name="question" id="question" required>
+              <label for="answer">Answer</label><br>
+              <input type="text" name="answer" id="answer" required>
+              <button type="submit" class="submit">Add</button>
+            </form>
+          </div>
+        </div>
+        <div id="edit-faqs-popup" class="popup">
+          <div class="popup-content edit-faqs-popup" id="popup-content">
+
+          </div>
+        </div>
+
+
         <div class="container">
 
-          <div class="d-flex justify-content-between align-items-center">
-            <h1 class="display-3">Admin Dashboard</h1>
-            <ol>
-              <li><a href="/">Home</a></li>
-              <li>Admin Dashboard</li>
-            </ol>
+          <div class="dash-buttons">
+
+            <ul class="list-inline">
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('users')">Users</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('strays')">Strays</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('donations')">Donations</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('blogs')">Blogs</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('shop')">Shop</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
+              <li class="list-inline-item activitiesBtn" onclick="showDashContent('adopt')">Adopt</li>
+              <br>
+              <hr>
+            </ul>
+
           </div>
-        </div>
-      </div><!-- End Breadcrumbs -->
 
-      <!-- modal for every object (user,stray,etc) in the dashboard -->
-      <div id="descModal" class="strayModal">
-        <div class="descContainer">
-          <span class="close" onclick="closeDesc('descModal')">&times;</span>
-          <div id="desc">
-            <!---content in js---->
-          </div>
-        </div>
-      </div>
-      <!-- user popup update after role is updated -->
-      <div id="result-popup" class="popup">
-        <div class="popup-content" id="popup-content">
-          <span class="close" onclick="closePopup('result-popup')">&times;</span>
-          <h1 id="result">USER ROLE UPDATED</h1>
-        </div>
-      </div>
-      <!-- create an faq -->
-      <div id="add-faqs-popup" class="popup">
-        <div class="popup-content" id="popup-content">
-          <span class="close" onclick="closePopup('add-faqs-popup')">&times;</span>
-          <h3>Add a FAQs Component</h3>
-          <form class="faqCreate" id="faqCreate">
+          <div class="dash-contents">
+            <!------Users------>
+            <div id="users">
 
-            <input type="hidden" name="faqUploader" id="faqUploader" value="<%= admin._id %>">
-            <label for="question">Question</label><br>
-            <input type="text" name="question" id="question" required>
-            <label for="answer">Answer</label><br>
-            <input type="text" name="answer" id="answer" required>
-            <button type="submit" class="submit">Add</button>
-          </form>
-        </div>
-      </div>
-      <div id="edit-faqs-popup" class="popup">
-        <div class="popup-content edit-faqs-popup" id="popup-content">
+              <div class="row justify-content-between">
+                <% if (users.length> 0) {%>
+                  <% users.forEach(user=> { %>
+                    <div class="user-acct-details dash-container col-md-3 m-2 p-2">
+                      <div class="user-acct-image dash-image">
 
-        </div>
-      </div>
+                        <% if (user.profilePicture) { %>
+                          <img class="img-fluid"
+                            src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>"
+                            alt="<%= user.name %>">
+                          <% } else { %>
+                            <img class="img-fluid" src="/assets/img/favicon.png">
+                            <% } %>
+                      </div>
 
+                      <div class="user-acct-info dash-info">
+                        <p>Name: <%= user.name %>
+                        </p>
+                        <p>Username: <%= user.username %>
+                        </p>
+                        <p>Email: <%= user.email %>
+                        </p>
+                        <p>Role: <%= user.role %>
+                        </p>
+                      </div>
 
-      <div class="container">
-
-        <div class="dash-buttons">
-
-          <ul class="list-inline">
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('users')">Users</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('strays')">Strays</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('donations')">Donations</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('blogs')">Blogs</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('shop')">Shop</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('faqs')">FAQs</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('messages')">Messages</li>
-            <li class="list-inline-item activitiesBtn" onclick="showDashContent('adopt')">Adopt</li>
-            <br>
-            <hr>
-          </ul>
-
-        </div>
-
-        <div class="dash-contents">
-          <!------Users------>
-          <div id="users">
-
-            <div class="row justify-content-between">
-              <% if (users.length> 0) {%>
-                <% users.forEach(user=> { %>
-                  <div class="user-acct-details dash-container col-md-3 m-2 p-2">
-                    <div class="user-acct-image dash-image">
-
-                      <% if (user.profilePicture) { %>
-                        <img class="img-fluid"
-                          src="data:image/png; base64,<%= user.profilePicture.toString('base64') %>"
-                          alt="<%= user.name %>">
-                        <% } else { %>
-                          <img class="img-fluid" src="/assets/img/favicon.png">
-                          <% } %>
-                    </div>
-
-                    <div class="user-acct-info dash-info">
-                      <p>Name: <%= user.name %>
-                      </p>
-                      <p>Username: <%= user.username %>
-                      </p>
-                      <p>Email: <%= user.email %>
-                      </p>
-                      <p>Role: <%= user.role %>
-                      </p>
-                    </div>
-
-                    <div class="crud-btns">
-                      <% if (admin.role==='superadmin' && user.role!=='superadmin' ) {%> <button onclick="
+                      <div class="crud-btns">
+                        <% if (admin.role==='superadmin' && user.role!=='superadmin' ) {%> <button onclick="
                   showUser('<%= user.profilePicture %>', 
                   '<%= user.name %>', 
                   '<%= user.username %>', 
                   '<%= user.email %>', 
                   '<%= user.role %>');
                   editRole('<%= user._id %>')" class="standard-button">Edit</button>
-                        <button onclick="userDelete('<%= user._id %>')" class="danger">Block</button>
-                        <% } else { %>
-                          <button disabled="true" style="opacity: 0.5;" class="danger">Block</button>
-                          <% } %>
+                          <button onclick="userDelete('<%= user._id %>')" class="danger">Block</button>
+                          <% } else { %>
+                            <button disabled="true" style="opacity: 0.5;" class="danger">Block</button>
+                            <% } %>
 
+                      </div>
                     </div>
-                  </div>
 
-                  <% }) %>
-                    <% } else { %>
-                      There are no users to display
-                      <% } %>
+                    <% }) %>
+                      <% } else { %>
+                        There are no users to display
+                        <% } %>
 
+              </div>
+            </div>
+
+            <!-- strays content goes here -->
+            <div id="strays">
+            </div>
+
+            <!-- donations content goes here -->
+            <div id="donations">
+            </div>
+
+            <!-- blogs content goes here -->
+            <div id="blogs">
+            </div>
+
+            <!-- shop content goes here -->
+            <div id="shop">
+            </div>
+
+            <!-- faqs content goes here -->
+            <div id="faqs">
+            </div>
+
+            <!-- messages content goes here -->
+            <div id="messages">
+            </div>
+
+            <!-- adopt content goes here -->
+            <div id="adopt">
             </div>
           </div>
 
-          <!------Strays------>
-          <div id="strays" style="display: none;">
+      </main>
 
-            <div class="row justify-content-between">
-
-              <!-- create stray. redirected to /create page -->
-              <button class="add-stray" onclick="location.href='/create'">Add a Stray</button>
-              <h3>APPROVED</h3>
-
-              <% if (approvedStrays.length> 0) {%>
-                <% approvedStrays.forEach(stray=> { %>
-
-                  <div class="dash-container col-md-3">
-
-                    <div class="dash-image">
-                      <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
-                    </div>
-
-                    <div class="dash-info">
-                      <p>Submitted by: <%= %>
-                      </p>
-                      <p>Name: <%= stray.name %>
-                      </p>
-                      <p>Age: <%= stray.age %>
-                      </p>
-                      <p>Gender: <%= stray.gender %>
-                      </p>
-                      <p>Breed: <%= stray.breed %>
-                      </p>
-                      <p>Status: <%= stray.status %>
-                      </p>
-                    </div>
-                    <div class="crud-btns">
-                      <button class="standard-button" onclick="showStray('<%= JSON.stringify(stray) %>')"
-                        class="standard-button">View</button>
-                      <button class="danger" onclick="strayDelete('<%= stray._id %>');" class="danger">Delete</button>
-                    </div>
-
-                  </div>
-                  <% }) %>
-                    <% } else { %>
-                      There are no strays to display
-                      <% } %>
-
-                        <h3>PENDING</h3>
-
-                        <% if (pendingStrays.length> 0) {%>
-                          <% pendingStrays.forEach(stray=> { %>
-
-                            <div class="dash-container col-md-2 m-2">
-
-                              <div class="dash-image">
-                                <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>"
-                                  alt="<%= stray.name %>">
-                              </div>
-
-                              <div class="dash-info">
-                                <p>Submitted by: <%= stray.uploader.username %>
-                                </p>
-                                <p>Name: <%= stray.name %>
-                                </p>
-                                <p>Age: <%= stray.age %>
-                                </p>
-                                <p>Gender: <%= stray.gender %>
-                                </p>
-                                <p>Breed: <%= stray.breed %>
-                                </p>
-                                <p>Status: <%= stray.status %>
-                                </p>
-                              </div>
-
-                              <div class="crud-btns">
-                                <button class="standard-button" onclick="approveStray('<%= stray._id %>');"
-                                  class="standard-button">Approve</button>
-                                <button class="danger" onclick="strayDelete('<%= stray._id %>');"
-                                  class="danger">Delete</button>
-                              </div>
-
-                            </div>
-                            <% }) %>
-                              <% } else { %>
-                                There are no strays to display
-                                <% } %>
-            </div>
-          </div>
-
-          <!------Donations------>
-          <div id="donations" style="display: none;">
-            <% if (donation) {%>
-              <% donation.forEach(donate=> { %>
-                <div class="dash-container">
-                  <div class="dash-info">
-                    <p>Donor: <%= donate.donor %>
-                    </p>
-                    <p>Donation Amount: <%= donate.donation.amount %>
-                    </p>
-                    <p>Transaction Type: <%= donate.donation.paymentType %>
-                    </p>
-                    <p>Account Number: <%= donate.donation.accountNumber %>
-                    </p>
-                    <p>Account Name: <%= donate.donation.accountName %>
-                    </p>
-                    <p>Phone Number: <%= donate.phoneNumber %>
-                    </p>
-                    <p>Transaction Date: <%= donate.createdAt %>
-                    </p>
-                  </div>
-
-                  <div class="crud-btns">
-                    <button onclick="viewDonation('<%= JSON.stringify(donate) %>')"
-                      class="standard-button">View</button>
-                    <button onclick="deleteDonation('<%= donate._id %>');" class="danger">Delete</button>
-                  </div>
-                </div>
-                <br>
-                <hr>
-                <br>
-                <% }); %>
-                  <% } else { %>
-                    There is no donation report to display
-                    <% } %>
-          </div>
-
-          <!------Blogs------>
-          <div id="blogs" style="display: none;">
-            <% if (pendingBlogs.length> 0) {%>
-              <% pendingBlogs.forEach(blog=> { %>
-                <div class="dash-container">
-
-                  <!-- <div class="dash-image">
-                    <img src="/pics/stray1.jpg">
-                  </div> -->
-
-                  <div class="dash-info">
-                    <p>Posted by: <%= blog.uploader.name %>
-                    </p>
-                    <p>Title: <%= blog.title %>
-                    </p>
-                    <p>Content: <%= blog.body %>
-                    </p>
-                    <p>Status: <%= blog.status %>
-                    </p>
-                  </div>
-
-                  <div class="crud-btns">
-                    <button class="standard-button" onclick="approveBlog('<%= blog._id %>');">Approve</button>
-                    <button class="danger" onclick="deleteBlog('<%= blog._id %>');">Delete</button>
-                  </div>
-
-                </div>
-                <br>
-                <hr>
-                <br>
-                <% }) %>
-                  <% } else { %>
-                    There are no pending blogs to display
-                    <% } %>
-
-          </div>
-
-          <!------shop------>
-          <div id="shop" style="display: none;">
-            <button class="sellItemBtn" onclick="location.href='/sell-item'">Add an item</button>
-          </div>
-
-          <!------FAQs------>
-          <div id="faqs" style="display: none;">
-            <button class="add-stray" onclick="openPopup('add-faqs-popup'); addFaqs();">Add an faqs</button>
-            <% if (faqs.length> 0) {%>
-              <% faqs.forEach(faqs=> { %>
-
-                <div class="dash-container">
-
-                  <div class="dash-info">
-                    <h4>Question: <%= faqs.question %>
-                    </h4>
-                    <h5>Answer: <%= faqs.answer %>
-                    </h5><br>
-                    <p>Uploaded by: <%= faqs.uploader.username %>
-                    </p>
-
-                  </div>
-
-                  <div class="crud-btns">
-                    <button class="standard-button" onclick="
-                      editFaqs('<%= JSON.stringify(faqs) %>');
-                      faqChange('<%= faqs._id %>');">Edit</button>
-                    <button class="danger" onclick="deleteFaqs('<%= faqs._id %>');">Delete</button>
-                  </div>
-
-                  <br>
-                  <hr>
-                  <br>
-
-                </div>
-                <% }) %>
-                  <% } else { %>
-                    There are no approved faqs to display
-                    <% } %>
-          </div>
-
-          <div id="adopt" style="display: none;">
-            <% strays=JSON.parse(strays)%>
-              <% if (strays.length> 0) {%>
-                <% strays.forEach(stray=> { %>
-
-                  <div class="dash-container">
-
-                    <div class="dash-image">
-                      <img src="data:image/png; base64,<%= stray.imgData.toString('base64') %>" alt="<%= stray.name %>">
-                    </div>
-
-                    <div class="dash-info">
-                      <p>Name: <%= stray.name %>
-                      </p>
-                      <p>Age: <%= stray.age %>
-                      </p>
-                      <p>Gender: <%= stray.gender %>
-                      </p>
-                      <p>Breed: <%= stray.breed %>
-                      </p>
-                      <p>Status: <%= stray.status %>
-                      </p>
-                    </div>
-
-                    <div class="crud-btns">
-                      <button class="standard-button" onclick="approveAdoption('<%= stray._id %>');">Approve</button>
-                      <button class="danger" class="danger">Delete</button>
-                    </div>
-
-                  </div>
-
-                  <% }) %>
-                    <% } else { %>
-                      There are no strays to display
-                      <% } %>
-          </div>
+      <%- include('partials/footer.ejs') %>
 
 
-
-          <!------Messages------>
-          <div id="messages" style="display: none;">
-            <% if (messages.length> 0) {%>
-              <% messages.forEach(message=> { %>
-                <div class="dash-container">
-
-                  <!-- <div class="dash-image">
-                    <img src="/pics/stray1.jpg">
-                  </div> -->
-
-                  <div class="dash-info">
-                    <h5>Sent by: <%= message.senderName %> | <%= message.senderEmail %>
-                    </h5>
-                    <h6>Subject: <%= message.messageSubject %>
-                    </h6><br>
-                    <p>Content: <%= message.messageBody %>
-                    </p><br>
-                    <h6>Status: <%= message.status %>
-                    </h6>
-                  </div>
-
-                  <div class="crud-btns">
-                    <button class="standard-button" onclick="acknowledgeMessage('<%= message._id %>');"
-                      class="standard-button">Acknowledge</button>
-                    <button class="danger" onclick="deleteMessage('<%= message._id %>');" class="danger">Delete</button>
-                  </div>
-                </div>
-                <br>
-                <hr>
-                <br>
-
-                <% }) %>
-                  <% } else { %>
-                    There are no messages to display
-                    <% } %>
-
-          </div>
-
-        </div>
-      </div>
-
-    </main>
-
-    <%- include('partials/footer.ejs') %>
-
-
-      <!--------------scripts-------------->
-      <script src="/assets/js/admin-modal.js"></script>
-      <%- include('partials/scripts.ejs') %>
+        <!--------------scripts-------------->
+        <script src="/assets/js/admin-modal.js"></script>
+        <%- include('partials/scripts.ejs') %>
 </body>
 
 </html>

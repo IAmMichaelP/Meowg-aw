@@ -79,6 +79,7 @@ async function showDashContent(section) {
     document.getElementById('shop').style.display = 'none';
     document.getElementById('faqs').style.display = 'none';
     document.getElementById('messages').style.display = 'none';
+    document.getElementById('adopt').style.display = 'none';
   
     if (section === 'users') {
       document.getElementById('users').style.display = 'block';
@@ -101,6 +102,9 @@ async function showDashContent(section) {
     } else if (section === 'messages') {
       document.getElementById('messages').style.display = 'block';
       await messagesSection();
+    } else if (section === 'adopt') {
+      document.getElementById('adopt').style.display = 'block';
+      await adoptSection();
     } else if (section === 'purchases') {
       document.getElementById('purchases').style.display = 'block';
       await purchasesSection();
