@@ -7,7 +7,6 @@ const Donation = require('../models/donation');
 const Faqs = require('../models/faq');
 const Cart = require('../models/cart');
 const Purchase = require('../models/purchase');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports.users_get = async (req, res) => {
