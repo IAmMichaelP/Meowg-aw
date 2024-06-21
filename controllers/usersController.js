@@ -7,7 +7,7 @@ const Donation = require('../models/donation');
 const Faqs = require('../models/faq');
 const Cart = require('../models/cart');
 const Purchase = require('../models/purchase');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // handle errors
