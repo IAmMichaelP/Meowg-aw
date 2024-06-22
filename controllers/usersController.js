@@ -132,7 +132,6 @@ module.exports.profile_get = async (req, res) => {
         const uploadedStrays = await Stray.findUploadedStrays(id);
         const userBlogs = await Blog.findUserBlogs(id);
         const purchases = await Purchase.findPurchase(id);
-        console.log(purchases);
         
         res.render('user-profile', { uploadedStrays, userBlogs, purchases });
     } catch {
@@ -142,6 +141,7 @@ module.exports.profile_get = async (req, res) => {
 };
 
 module.exports.edit_profile_put = async (req, res) => {
+    console.log(req.body);
     try{
         // defines image data into base64 string before saving into database
         let imageData = req.body.image;

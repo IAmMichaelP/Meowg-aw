@@ -6,10 +6,6 @@ const straySchema = new Schema({
         type: String,
         required: true
     },
-    imgSrc: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true

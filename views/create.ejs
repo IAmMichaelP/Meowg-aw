@@ -81,7 +81,7 @@
       <!--<div class="create-stray content">-->
       <div class="create-stray content">
         <!-- enctype assures the server that he is about to receive data and file so do not remove -->
-        <form action="/create" method="POST" enctype="multipart/form-data">
+        <form id="upload-stray-form" enctype="multipart/form-data">
           <label for="name">Name:</label><br>
           <input type="text" id="name" name="name" required><br>
           <label for="img">Upload Image</label>
@@ -153,8 +153,7 @@
                 <label for="story">Story:</label><br>
                 <textarea type="text" name="story" required></textarea><br>
 
-                <button class="submitStray submit-button"
-                  onclick="alert('Stray submitted successfully')">Submit</button>
+                <button class="submitStray submit-button" onclick="uploadStraysEndpoint();">Submit</button>
         </form>
       </div>
       <div>

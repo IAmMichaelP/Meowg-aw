@@ -143,11 +143,6 @@ listenEditProfile = () => {
         imageDataError.textContent = '';
 
         // get values
-        const img = editform.img;
-        const username = editform.username.value;
-        const email = editform.email.value;
-        const password = editform.password.value;
-
         const formData = new FormData(editform);
 
         // const URLencoded = new URLSearchParams(formData).toString();
@@ -202,3 +197,32 @@ function uploadPic() {
         }
 }
 
+
+uploadStraysEndpoint = () => {
+    const uploadForm = document.querySelector('#upload-stray-form');
+
+    uploadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // get values
+        const formData = new FormData(uploadForm);
+
+        // const URLencoded = new URLSearchParams(formData).toString();
+
+        try {
+            const res = await fetch('/create', { 
+                method: "POST", 
+                body: formData,
+            });
+            const data = await res.json();
+            
+            if (data.user) {
+                alert('Stray submitted successfully');
+                location.assign('/profile/' + data.user);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+};
