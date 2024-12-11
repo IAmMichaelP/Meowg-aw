@@ -1,6 +1,6 @@
-MeowgAw
 
 Overview
+
 MeowgAw is a unique platform designed to simplify the pet adoption process within a campus-wide scope. Focused on fostering a sense of community and well-being, MeowgAw connects potential adopters with adorable pets in need of loving homes.
 
 Features
