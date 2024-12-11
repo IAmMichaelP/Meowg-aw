@@ -10,4 +10,4 @@ User-Friendly Interface: Our intuitive interface ensures a seamless and enjoyabl
 
 Comprehensive Pet Profiles: Each pet comes with a detailed profile, including information on their temperament, health status, and any special requirements, allowing adopters to make informed decisions.
 
-Access MeowgAw at: https://meowg-aw.onrender.com/
+Access MeowgAw at: https://meowg-aw.onrender.com/ or https://meowgaw.vercel.app/
